@@ -235,3 +235,27 @@
 ‎                    <div class="bg-fondo/40 rounded-xl p-5 border border-gray-700/50 max-w-2xl mx-auto">
 ‎                        <h
 
+<!-- Botón de Acceder con Google -->
+<div id="g_id_onload"
+     data-client_id="500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="iniciarSesion"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
+
+<script>
+function iniciarSesion(respuesta) {
+  // Aquí ya puedes usar la información de la cuenta si quieres
+  console.log("Inicio de sesión correcto");
+}
+</script>
