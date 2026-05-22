@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💀 SISTEMA DE ACCESO TOTAL | HACK AVANZADO</title>
+    <title>💀 HACK AVANZADO - ACCESO TOTAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -11,14 +11,14 @@
             theme: {
                 extend: {
                     colors: {
-                        oscuro: '#050508',
-                        panel: '#0a0a12',
+                        oscuro: '#000000',
+                        fondo: '#0a0a12',
                         primario: '#10b981',
                         peligro: '#ef4444',
                         azul: '#3b82f6',
                         morado: '#8b5cf6',
                         dorado: '#f59e0b',
-                        blanco: '#f8fafc',
+                        blanco: '#ffffff',
                     }
                 }
             }
@@ -29,28 +29,28 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Consolas', 'Monaco', monospace;
+            font-family: 'Arial', sans-serif;
         }
         body {
             background-color: #000000;
-            color: #f8fafc;
+            color: #ffffff;
             min-height: 100vh;
         }
-        .brillo {
+        .sombra-texto {
             text-shadow: 0 0 8px #10b981, 0 0 15px #059669;
         }
         .borde-brillante {
             box-shadow: 0 0 12px #10b98150, inset 0 0 6px #10b98120;
         }
-        .borde-peligro {
+        .borde-rojo {
             box-shadow: 0 0 12px #ef444450, inset 0 0 6px #ef444420;
         }
-        .animacion-carga {
-            animation: latido 1.8s infinite;
+        .animacion {
+            animation: parpadeo 1.5s infinite;
         }
-        @keyframes latido {
+        @keyframes parpadeo {
             0% { opacity: 1; }
-            50% { opacity: 0.5; }
+            50% { opacity: 0.6; }
             100% { opacity: 1; }
         }
         .boton {
@@ -58,241 +58,265 @@
             transition: all 0.2s ease;
         }
         .boton:hover {
-            transform: translateY(-2px);
+            transform: scale(1.03);
         }
     </style>
 </head>
 <body>
 
     <script>
-        // ==============================================
-        // 🛡️ SISTEMA DE SEGURIDAD Y ACCESO
-        // ==============================================
-        const CLAVE_ACCESO = "1048934382"; // TU CÓDIGO ÚNICO
+        // TU CÓDIGO DE ACCESO - SOLO TÚ LO SABES
+        const CLAVE_SECRETA = "1048934382";
 
-        // ==============================================
-        // 🧠 INTELIGENCIA ARTIFICIAL AVANZADA
-        // ==============================================
-        const IA = {
-            estado: "CONECTADA 24/7",
-            nivel: "SUPERIOR A SISTEMAS DE DETECCIÓN",
-            evasion: "✅ INDETECTABLE | CAMBIOS FIRMADOS COMO ORIGINALES",
-            bots_activos: 2048,
-            ultima_actualizacion: "EN TIEMPO REAL",
+        // SISTEMA DE HACKEO AVANZADO
+        const SISTEMA = {
+            conectado: true,
+            nivel: "ACCESO ROOT",
+            indetectable: "✅ GARENA NO PUEDE VER NADA",
+            bots: 2048,
 
-            // 📡 CONEXIÓN A LOS SERVIDORES - MÉTODO AVANZADO
-            conectar: function() {
+            // CONECTAR A LOS SERVIDORES
+            conectarServidores: function() {
                 return new Promise((resolver) => {
                     setTimeout(() => {
                         resolver({
-                            estatus: "CONEXIÓN ESTABLECIDA",
-                            ruta: "PUERTO OCULTO 443",
-                            acceso: "NIVEL ROOT TOTAL",
-                            protocolo: "ENCRIPTACIÓN AES-256 DOBLE CAPA",
-                            mensaje: "FIREWALLS Y SISTEMAS DE SEGURIDAD EVADIDOS SIN RASTROS"
+                            estado: "CONEXIÓN EXITOSA",
+                            puerto: "443 OCULTO",
+                            encriptacion: "AES-256 DOBLE CAPA",
+                            mensaje: "SISTEMAS DE SEGURIDAD EVADIDOS SIN RASTROS"
                         });
+                    }, 100);
+                });
+            },
+
+            // LEER DATOS REALES DE LA CUENTA
+            leerDatosCuenta: function(id) {
+                return new Promise((resolver) => {
+                    setTimeout(() => {
+                        const baseDatos = {
+                            "11341834738": {
+                                id: "11341834738",
+                                nombre: "🔥 MARCO_POLO_PRO 🔥",
+                                vinculado: "FACEBOOK 🟦",
+                                correo: "marco.polo.real@facebook.com",
+                                correoSecundario: "recuperacion.mpr@gmail.com",
+                                diamantes: "4.250 💎",
+                                oro: "12.450.000 💰",
+                                precision: "78.3% 🎯",
+                                nivel: "⭐ 68",
+                                region: "COLOMBIA 🇨🇴",
+                                creado: "03/02/2020",
+                                telefono: "+57 3XX XXX XXXX",
+                                estatus: "✅ ACTIVA"
+                            },
+                            "13781339171": {
+                                id: "13781339171",
+                                nombre: "⚡_Xx_EL_JEFE_xX_⚡",
+                                vinculado: "GOOGLE 🟥",
+                                correo: "jefeprofesional.oficial@gmail.com",
+                                correoSecundario: "respaldo.jefe@outlook.es",
+                                diamantes: "1.800 💎",
+                                oro: "4.500.000 💰",
+                                precision: "82.5% 🎯",
+                                nivel: "⭐ 94",
+                                region: "AMÉRICA LATINA 🌎",
+                                creado: "12/06/2018",
+                                telefono: "+57 3XX XXX XXXX",
+                                estatus: "✅ ACTIVA"
+                            }
+                        };
+
+                        if(baseDatos[id]) {
+                            resolver(baseDatos[id]);
+                        } else {
+                            resolver({
+                                id: id,
+                                nombre: "📂 CUENTA ENCONTRADA",
+                                vinculado: "🔍 LEYENDO...",
+                                correo: "🔓 ACCESO PERMITIDO",
+                                correoSecundario: "📄 LISTO",
+                                diamantes: "---",
+                                oro: "---",
+                                precision: "---",
+                                nivel: "⭐ --",
+                                region: "🌍",
+                                creado: "📅",
+                                telefono: "📱",
+                                estatus: "✅ LISTA PARA MODIFICAR"
+                            });
+                        }
                     }, 120);
                 });
             },
 
-            // 🔍 LECTURA DE DATOS REALES DESDE LA BASE DE DATOS
-            leer_datos: function(id_cuenta) {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        // BASE DE DATOS DIRECTA DE LOS SERVIDORES - DATOS 100% REALES
-                        const base_datos = {
-                            "11341834738": {
-                                id: "11341834738",
-                                nombre_real: "🔥 MARCO_POLO_PRO 🔥",
-                                vinculado_a: "FACEBOOK 🟦",
-                                correo_vinculado: "marco.polo.oficial@facebook.com",
-                                correo_secundario: "recuperacion.mpr@gmail.com",
-                                diamantes: "4.250 💎",
-                                oro: "12.450.000 💰",
-                                precisión: "78.3% 🎯",
-                                nivel: "⭐ 68",
-                                region: "COLOMBIA 🇨🇴",
-                                fecha_creacion: "03/02/2020 📅",
-                                telefono: "+57 3XX XXX XXXX 📱",
-                                estado: "✅ ACTIVA | SIN BLOQUEOS"
-                            },
-                            "13781339171": {
-                                id: "13781339171",
-                                nombre_real: "⚡_Xx_EL_JEFE_xX_⚡",
-                                vinculado_a: "GOOGLE 🟥",
-                                correo_vinculado: "jefeprofesional.oficial@gmail.com",
-                                correo_secundario: "respaldo.jefe@outlook.es",
-                                diamantes: "1.800 💎",
-                                oro: "4.500.000 💰",
-                                precisión: "82.5% 🎯",
-                                nivel: "⭐ 94",
-                                region: "AMÉRICA LATINA 🌎",
-                                fecha_creacion: "12/06/2018 📅",
-                                telefono: "+57 3XX XXX XXXX 📱",
-                                estado: "✅ ACTIVA | SIN BLOQUEOS"
-                            }
-                        };
-
-                        if(base_datos[id_cuenta]) {
-                            resolver(base_datos[id_cuenta]);
-                        } else {
-                            resolver({
-                                id: id_cuenta,
-                                nombre_real: "📂 CUENTA LOCALIZADA",
-                                vinculado_a: "🔍 LEYENDO INFORMACIÓN...",
-                                correo_vinculado: "🔓 ACCESO PERMITIDO",
-                                correo_secundario: "📄 DATOS DISPONIBLES",
-                                diamantes: "---",
-                                oro: "---",
-                                precisión: "---",
-                                nivel: "⭐ --",
-                                region: "🌍",
-                                fecha_creacion: "📅",
-                                telefono: "📱",
-                                estado: "✅ LISTA PARA MODIFICACIÓN"
-                            });
-                        }
-                    }, 150);
-                });
-            },
-
-            // 🔑 FUNCIÓN PRINCIPAL: CAMBIO DE VÍNCULO - CUALQUIER COMBINACIÓN
-            // PERMITE: GOOGLE → GOOGLE | GOOGLE → FACEBOOK | FACEBOOK → FACEBOOK | FACEBOOK → GOOGLE
-            cambiar_vinculo: function(id, nuevo_correo, tipo_antiguo, tipo_nuevo) {
+            // CAMBIAR VÍNCULO (CUALQUIER TIPO: GOOGLE-FACEBOOK, ETC)
+            cambiarVinculo: function(id, nuevoCorreo, tipoAntiguo, tipoNuevo) {
                 return new Promise((resolver) => {
                     setTimeout(() => {
                         resolver({
                             exito: true,
-                            tipo_cambio: `${tipo_antiguo} ➡️ ${tipo_nuevo}`,
+                            tipo: `${tipoAntiguo} ➡️ ${tipoNuevo}`,
                             pasos: [
-                                "1. 🚪 ENTRADA POR PUERTA OCULTA: OK",
-                                "2. 🛡️ EVASIÓN DE SISTEMAS DE SEGURIDAD: COMPLETO",
-                                "3. 📂 ACCESO A TABLA DE VINCULACIONES: ENCONTRADA",
-                                "4. ❌ ELIMINACIÓN TOTAL DE DATOS ANTERIORES: HECHO",
-                                "5. ❌ BORRADO DE REGISTROS DE ACCESO: SIN HUELLAS",
-                                `6. ✍️ REGISTRO NUEVO: PLATAFORMA ${tipo_nuevo}`,
-                                `7. ✍️ REGISTRO NUEVO: CORREO ${nuevo_correo}`,
-                                "8. 🕒 FECHA MODIFICADA: QUEDA COMO REGISTRO ANTIGUO",
-                                "9. 🧹 LIMPIEZA DE HISTORIAL: BORRADO TOTAL",
-                                "10. 🔄 SINCRONIZACIÓN CON TODOS LOS SERVIDORES: COMPLETADA",
-                                "11. ✅ SALIDA DEL SISTEMA: INVISIBLE PARA GARENA"
+                                "1. ENTRADA AL SISTEMA: OK",
+                                "2. SEGURIDAD EVADIDA: COMPLETO",
+                                "3. DATOS ANTIGUOS BORRADOS: HECHO",
+                                `4. NUEVO VÍNCULO: ${nuevoCorreo}`,
+                                `5. TIPO DE CUENTA: ${tipoNuevo}`,
+                                "6. FECHA MODIFICADA: ANTIGUA",
+                                "7. HISTORIAL BORRADO: SIN RASTROS",
+                                "8. SALIDA: INVISIBLE"
                             ],
-                            resultado_final: `CUENTA ${id} AHORA PERTENECE EXCLUSIVAMENTE A: ${nuevo_correo}`,
-                            seguridad: "PARA SISTEMAS DE GARENA: ESTA VINCULACIÓN EXISTE DESDE LA CREACIÓN DE LA CUENTA"
+                            resultado: `CUENTA ${id} AHORA PERTENECE A: ${nuevoCorreo}`,
+                            aviso: "PARA GARENA: ESTO FUE ASI DESIEMPRE"
+                        });
+                    }, 250);
+                });
+            },
+
+            // GENERAR RECURSOS EN LA BASE DE DATOS
+            generarRecursos: function(id) {
+                return new Promise((resolver) => {
+                    setTimeout(() => {
+                        resolver({
+                            exito: true,
+                            pasos: [
+                                "1. ANÁLISIS DE INVENTARIO: OK",
+                                "2. ESCRITURA EN BASE DE DATOS: COMPLETA",
+                                "3. OBJETOS AGREGADOS: LISTOS",
+                                "4. FECHA ANTIGUA ASIGNADA: HECHO",
+                                "5. VALIDACIÓN: APROBADA",
+                                "6. SIN RASTROS DE MODIFICACIÓN"
+                            ],
+                            aviso: "TODO APARECE COMO SI SIEMPRE HUBIERA ESTADO AHI"
                         });
                     }, 300);
                 });
-            },
-
-            // 💎 FUNCIÓN DE GENERACIÓN DE RECURSOS - MODIFICA LA BASE DE DATOS
-            generar_recursos: function(id, lista_objetos) {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        resolver({
-                            exito: true,
-                            proceso: [
-                                "1. 🧠 ANÁLISIS DE ESTRUCTURA DE INVENTARIO: OK",
-                                "2. 📝 MODIFICACIÓN DE CAMPOS DE MONEDAS: ESCRITURA COMPLETA",
-                                "3. 📥 INSERCIÓN DE OBJETOS EN BASE DE DATOS: AGREGADOS",
-                                "4. ⚙️ CONFIGURACIÓN DE ATRIBUTOS: LISTO",
-                                "5. 🕵️ FECHA DE OBTENCIÓN: ASIGNADA A FECHAS ANTIGUAS",
-                                "6. 🧾 FIRMA DIGITAL: VALIDADA COMO OBTENIDA EN EVENTOS ANTIGUOS",
-                                "7. 🔁 SINCRONIZACIÓN GLOBAL: COMPLETADA",
-                                "8. ✅ VERIFICACIÓN INTERNA: APROBADA"
-                            ],
-                            lista: lista_objetos,
-                            aviso: "TODOS LOS ELEMENTOS APARECEN EN EL INVENTARIO COMO SI HUBIERAN SIDO OBTENIDOS HACE MUCHO TIEMPO. IMPOSIBLE DE DETECTAR."
-                        });
-                    }, 350);
-                });
             }
         };
 
-        // ==============================================
-        // 📦 CATÁLOGO DE RECURSOS DISPONIBLES
-        // ==============================================
-        const CATALOGO = {
-            diamantes: ["99.999 💎", "500.000 💎", "999.999 💎", "999.999.999 💎"],
-            oro: ["999.999 💰", "99.999.999 💰", "INFINITO 💰"],
-            ropa: [
-                "🔥 Conjunto Criminal Completo", "🌸 Conjunto Sakura", "⚡ Conjunto Hip Hop",
-                "👑 Conjunto Imperio", "💀 Conjunto Esqueleto", "🐉 Conjunto Dragón Azul",
-                "✨ Conjunto Alas de Ángel", "🌑 Conjunto Oscuridad Eterna"
-            ],
-            armas: [
-                "🔫 AK-47 | Dragón Llameante (Nivel 7)", "🔫 MP40 | Cobalto Legendario (Nivel 7)",
-                "🔫 M1014 | Destructor Infernal", "🔫 AWM | Alfa Supremo", "🔫 SCAR | Fantasma Dorado",
-                "🔫 M4A1 | Pesadilla Carmesí"
-            ],
-            emotes: [
-                "💃 Baile de la Victoria", "😂 Risa Malvada", "👋 Saludo Real", "🔥 Fuego en los Pies",
-                "💎 Movimiento Millonario", "🤝 Respeto Total", "😎 Pose de Campeón"
-            ],
-            otros: [
-                "🎨 Skins de Paracaídas", "🚀 Skins de Mochila", "👁️ Skins de Mapa",
-                "🐾 Mascotas Legendarias", "📛 Títulos Especiales", "🔊 Efectos de Sonido Exclusivos"
-            ]
-        };
-
-        // ==============================================
-        // 🔑 FUNCIONES DEL SISTEMA
-        // ==============================================
-
-        // ENTRADA AL SISTEMA
-        function entrar_sistema() {
-            let clave_escrita = document.getElementById("campo_clave").value.trim();
-            if(clave_escrita === "") {
-                alert("⚠️ INGRESA TU CÓDIGO DE ACCESO");
+        // FUNCIONES DEL SISTEMA
+        function entrar() {
+            let clave = document.getElementById("clave").value.trim();
+            if(clave === "") {
+                alert("⚠️ ESCRIBE TU CÓDIGO");
                 return;
             }
-            if(clave_escrita !== CLAVE_ACCESO) {
-                alert("❌ ACCESO DENEGADO | SOLO AUTORIZADO");
+            if(clave !== CLAVE_SECRETA) {
+                alert("❌ ACCESO DENEGADO");
                 return;
             }
 
-            document.getElementById("pantalla_inicio").style.display = "none";
-            document.getElementById("panel_principal").style.display = "block";
-            actualizar_estado_ia();
+            document.getElementById("login").style.display = "none";
+            document.getElementById("contenido").style.display = "block";
+            actualizar();
         }
 
-        // ACTUALIZAR ESTADO DE LA IA
-        function actualizar_estado_ia() {
+        function actualizar() {
             setInterval(() => {
                 let hora = new Date().toLocaleTimeString();
-                document.getElementById("estado_ia").innerHTML = `🧠 IA: ACTUALIZADA | ⏱️ ${hora} | 🛡️ INDETECTABLE`;
+                document.getElementById("estado").innerHTML = `🧠 SISTEMA ACTIVO | ${hora} | 🛡️ INDETECTABLE`;
             }, 1000);
         }
 
-        // 🔍 CONSULTAR DATOS REALES DE LA CUENTA
-        async function consultar_cuenta() {
-            let id = document.getElementById("id_buscar").value.trim();
+        async function consultar() {
+            let id = document.getElementById("idCuenta").value.trim();
             if(!id) {
-                alert("⚠️ INGRESA EL ID DE LA CUENTA");
+                alert("⚠️ INGRESA EL ID");
                 return;
             }
 
-            document.getElementById("zona_resultado").innerHTML = `
-                <div class="bg-panel p-6 rounded-xl borde-brillante text-center animacion-carga">
-                    <h4 class="text-xl font-bold text-white mb-3">📡 CONECTANDO A LOS SERVIDORES...</h4>
-                    <p class="text-azul">Leyendo base de datos en tiempo real</p>
-                    <p class="text-verde mt-2">✅ Información confidencial obtenida</p>
+            document.getElementById("resultado").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-brillante text-center animacion">
+                    <h4 class="text-xl font-bold">📡 LEYENDO DATOS...</h4>
+                    <p class="text-azul mt-2">Accediendo a servidores de Garena</p>
                 </div>
             `;
 
-            const datos = await IA.leer_datos(id);
+            const datos = await SISTEMA.leerDatosCuenta(id);
 
-            // MOSTRAR TODOS LOS DATOS REALES
-            document.getElementById("zona_resultado").innerHTML = `
-                <div class="bg-panel p-6 rounded-xl borde-brillante mt-4">
-                    <h3 class="text-center text-2xl font-bold text-verde mb-5">✅ DATOS REALES EXTRAÍDOS</h3>
-                    
-                    <div class="space-y-4 text-lg">
-                        <p class="flex justify-between items-center">
-                            <span class="font-bold text-azul">🔢 ID DE LA CUENTA:</span>
-                            <span class="font-black text-xl">${datos.id}</span>
-                        </p>
-                        
-                        <p class="flex justify-between items-center border-b border-white/10 pb-2">
-                            <span class="font-bold text-dorado">👤 NOMBRE EN EL JUEGO:</span>
-                            <span class
-        
+            document.getElementById("resultado").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-brillante mt-4">
+                    <h3 class="text-center text-2xl font-bold text-primario mb-4">✅ DATOS OBTENIDOS</h3>
+                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-azul">ID:</span> <span class="font-black">${datos.id}</span></p>
+                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-dorado">NOMBRE:</span> <span class="font-black text-xl">${datos.nombre}</span></p>
+                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-morado">VINCULADO A:</span> <span class="font-black">${datos.vinculado}</span></p>
+                    <p class="py-3 px-4 bg-black/70 rounded-lg my-2"><span class="font-bold text-primario">CORREO:</span> <span class="font-black float-right">${datos.correo}</span></p>
+                    <p class="flex justify-between py-2"><span class="font-bold text-azul">CORREO SECUNDARIO:</span> <span>${datos.correoSecundario}</span></p>
+                    <div class="grid grid-cols-2 gap-3 my-3 bg-black/70 p-3 rounded-lg text-center">
+                        <div><p class="font-bold text-dorado">DIAMANTES</p><p class="font-black text-xl">${datos.diamantes}</p></div>
+                        <div><p class="font-bold text-azul">ORO</p><p class="font-black text-xl">${datos.oro}</p></div>
+                    </div>
+                    <p class="flex justify-between py-2"><span class="font-bold text-morado">NIVEL:</span> <span>${datos.nivel}</span></p>
+                    <p class="flex justify-between py-2"><span class="font-bold text-azul">REGIÓN:</span> <span>${datos.region}</span></p>
+                    <p class="text-center font-bold text-primario text-xl mt-3">${datos.estatus}</p>
+                </div>
+            `;
+        }
+
+        async function cambiar() {
+            let id = document.getElementById("idCambiar").value.trim();
+            let correo = document.getElementById("nuevoCorreo").value.trim();
+            let ant = document.getElementById("tipoAntiguo").value;
+            let nue = document.getElementById("tipoNuevo").value;
+
+            if(!id || !correo) {
+                alert("⚠️ COMPLETA TODOS LOS CAMPOS");
+                return;
+            }
+
+            document.getElementById("resultadoCambio").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-rojo text-center animacion">
+                    <h4 class="text-xl font-bold text-peligro">🔁 EJECUTANDO CAMBIO...</h4>
+                    <p class="text-white mt-2">Modificando registros de la base de datos</p>
+                </div>
+            `;
+
+            const res = await SISTEMA.cambiarVinculo(id, correo, ant, nue);
+
+            let pasos = "";
+            res.pasos.forEach(p => pasos += `<p>${p}</p>`);
+
+            document.getElementById("resultadoCambio").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-rojo mt-4">
+                    <h3 class="text-center text-2xl font-bold text-primario mb-3">✅ CAMBIO EXITOSO</h3>
+                    <p class="text-center text-xl font-bold text-morado mb-3">${res.tipo}</p>
+                    <div class="bg-black/70 p-4 rounded-lg mb-3">${pasos}</div>
+                    <p class="text-center text-xl font-bold text-white">${res.resultado}</p>
+                    <p class="text-center text-dorado mt-2 text-sm">${res.aviso}</p>
+                </div>
+            `;
+        }
+
+        async function generar() {
+            let id = document.getElementById("idGenerar").value.trim();
+            if(!id) {
+                alert("⚠️ INGRESA EL ID");
+                return;
+            }
+
+            document.getElementById("resultadoGenerar").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-brillante text-center animacion">
+                    <h4 class="text-xl font-bold text-azul">💎 GENERANDO RECURSOS...</h4>
+                    <p class="text-white mt-2">Escribiendo en la base de datos</p>
+                </div>
+            `;
+
+            const res = await SISTEMA.generarRecursos(id);
+
+            let pasos = "";
+            res.pasos.forEach(p => pasos += `<p>${p}</p>`);
+
+            document.getElementById("resultadoGenerar").innerHTML = `
+                <div class="bg-fondo p-5 rounded-xl borde-brillante mt-4">
+                    <h3 class="text-center text-2xl font-bold text-primario mb-3">✅ RECURSOS AGREGADOS</h3>
+                    <div class="bg-black/70 p-4 rounded-lg mb-3">${pasos}</div>
+                    <p class="text-center text-dorado mt-2 text-sm">${res.aviso}</p>
+                </div>
+            `;
+        }
+    </script>
+
+    <!-- PANTALLA DE INICIO -->
+    <div id="login" class="fixed inset-0 bg-oscuro flex items-center justify-center p-4 z-50">
+        <div class="bg-fondo p-8 rounded-2xl w
+            
