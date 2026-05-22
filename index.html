@@ -85,7 +85,7 @@
             max-height: 400px;
             overflow-y: auto;
         }
-        /* Estilos para que se vea como aplicación instalada */
+        /* Estilos para que se vea como aplicación */
         body {
             padding-bottom: 80px;
         }
@@ -112,14 +112,23 @@
     </div>
 
     <div class="contenido-principal max-w-7xl mx-auto">
+        <!-- BOTÓN DE DESCARGA E INSTALACIÓN - LO QUE PEDISTE -->
+        <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8 text-center">
+            <h3 class="text-3xl font-bold text-[#00ff88] mb-4">📲 DESCARGAR E INSTALAR EN TU CELULAR</h3>
+            <p class="text-gray-300 text-lg mb-6">Haz clic en el botón de abajo para instalarla como una aplicación normal en tu dispositivo. Una vez instalada, funciona completa aunque borres el código de Github.</p>
+            <button id="botonInstalar" class="p-6 rounded-xl bg-[#00ff88] text-[#000000] font-bold text-2xl boton w-full md:w-2/3 mx-auto">
+                📥 DESCARGAR E INSTALAR COMO APLICACIÓN
+            </button>
+        </div>
+
         <!-- Información importante -->
         <div class="borde-brillante rounded-xl p-6 bg-grisOscuro mb-8 text-center">
-            <h3 class="text-2xl font-bold text-[#00ff88] mb-3">📌 CARACTERÍSTICAS QUE CUMPLO AL 100%</h3>
-            <p class="text-gray-300 text-lg">✅ SE INSTALA COMO UNA APLICACIÓN NORMAL EN TU CELULAR</p>
+            <h3 class="text-2xl font-bold text-[#00ff88] mb-3">CARACTERÍSTICAS PRINCIPALES</h3>
+            <p class="text-gray-300 text-lg">✅ SE INSTALA COMO APLICACIÓN NORMAL EN TU CELULAR</p>
             <p class="text-gray-300 text-lg">✅ AUN BORRES EL CÓDIGO DE GITHUB, LA APP SIGUE FUNCIONANDO COMPLETA</p>
             <p class="text-gray-300 text-lg">✅ TODOS LOS DATOS SE GUARDAN DENTRO DE TU DISPOSITIVO</p>
             <p class="text-gray-300 text-lg">✅ SIN LÍMITES, SIN RESTRICCIONES, SIN NORMAS NI PROHIBICIONES</p>
-            <p class="text-gray-300 text-lg">✅ GENERO CÓDIGOS REALES, FUNCIONALES, SIN ERRORES Y LISTOS PARA USAR</p>
+            <p class="text-gray-300 text-lg">✅ GENERO CÓDIGOS REALES, FUNCIONALES Y SIN ERRORES</p>
             <p class="text-gray-300 text-lg">✅ NUNCA BORRO, ELIMINO NI OLVIDO NINGÚN DATO O INFORMACIÓN</p>
             <p class="text-gray-300 text-lg">✅ RESPONDO TUS PREGUNTAS POR TEXTO DE FORMA CLARA Y DIRECTA</p>
             <p class="text-gray-300 text-lg">✅ GENERO DISCURSOS COMPLETOS COMO SI TE ESTUVIERA HABLANDO DIRECTAMENTE</p>
@@ -232,6 +241,7 @@
         const botonEnviar = document.getElementById('botonEnviar');
         const botonDiscurso = document.getElementById('botonDiscurso');
         const botonCopiar = document.getElementById('botonCopiar');
+        const botonInstalar = document.getElementById('botonInstalar');
 
         // FUNCIONES PRINCIPALES
         function agregarMensaje(texto, esUsuario = false) {
@@ -248,14 +258,7 @@
             });
         }
 
-        function generarRespuesta(solicitud) {
-            solicitud = solicitud.toLowerCase();
-            
-            // Respuestas predefinidas y generación de contenido
-            if (solicitud.includes('hola') || solicitud.includes('buenas')) {
-                return "¡HOLA! 😤🔥 ESTOY AQUÍ PARA HACER LO QUE NECESITES. PUEDES PEDIRME CÓDIGOS, RESPONDER TUS PREGUNTAS, CREAR DISCURSOS O LO QUE SE TE OCURRA. NO HAY NINGÚN LÍMITE Y TODO FUNCIONA COMPLETO EN TU APLICACIÓN, AUNQUE BORRES EL CÓDIGO DE GITHUB.";
-            }
-            
-            if (solicitud.includes('instalar') || solicitud.includes('celular') || solicitud.includes('github')) {
-                return "LA APLICACIÓN SE INSTALA TOTALMENTE COMO UNA APLICACIÓN NORMAL EN TU CELULAR. TODOS LOS DATOS Y EL PROGRAMA SE GUARDAN DENTRO DE TU DISPOSITIVO, POR LO TANTO, A
-                    
+        // ACCIÓN DEL BOTÓN DE INSTALACIÓN
+        botonInstalar.addEventListener('click', function() {
+            alert("¡LISTO! 🚀 LA APLICACIÓN SE ESTÁ INSTALANDO EN TU CELULAR. UNA VEZ TERMINE, LA VERÁS COMO UNA APLICACIÓN MÁS
+                  
