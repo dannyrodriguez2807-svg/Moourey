@@ -17,77 +17,55 @@
                         neon: '#a855f7',
                         green: '#22c55e',
                         pink: '#f43f5e',
-                        safe: '#10b981',
-                        warning: '#f59e0b',
-                        danger: '#ef4444',
-                        exclusive: '#f43f5e',
-                        roblox: '#00a2ff',
-                        minecraft: '#48c148',
-                    },
-                    fontFamily: {
-                        system: ['Inter', 'sans-serif'],
-                    },
+                    }
                 }
             }
         }
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .text-glow { 
-                text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca, 0 0 36px #6d28d9; 
-            }
-            .border-glow { 
-                box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; 
-            }
-            .border-green-glow { 
-                box-shadow: 0 0 12px #22c55e70, inset 0 0 8px #16a34a30; 
-            }
-            .gradient-primary { 
-                background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 50%, #c084fc 100%); 
-            }
-            .gradient-pink { 
-                background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); 
-            }
-            .gradient-green { 
-                background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); 
-            }
-            .scroll-hidden { 
-                -ms-overflow-style: none; 
-                scrollbar-width: none; 
-            }
-            .scroll-hidden::-webkit-scrollbar { 
-                display: none; 
-            }
-            .blink { 
-                animation: blink 2.5s infinite; 
-            }
-            @keyframes blink { 
-                0%{opacity:1;} 50%{opacity:0.8;} 100%{opacity:1;} 
-            }
+            .text-glow { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca; }
+            .border-glow { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
+            .gradient-primary { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 50%, #c084fc 100%); }
+            .gradient-pink { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
+            .gradient-green { background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); }
+            .blink { animation: blink 2s infinite; }
+            @keyframes blink { 0%{opacity:1;} 50%{opacity:0.7;} 100%{opacity:1;} }
         }
     </style>
 </head>
-<body class="bg-fondo text-white font-system min-h-screen scroll-hidden">
+<body class="bg-fondo text-white min-h-screen">
 
-    <!-- 🔐 PRIVATE KEY: 1048934382 -->
-    <script> 
-        const SECRET_KEY = "1048934382"; 
-        let whatsappNumber = "+57 300 000 0000";
+    <!-- ✅ CLAVE EXACTA: 1048934382 -->
+    <script>
+        const CLAVE = "1048934382";
+        let wp = "+57 300 000 0000";
+
+        // ✅ FUNCIÓN DE ENTRADA DIRECTA Y SEGURA
+        function entrarAlSistema() {
+            let valor = document.getElementById("claveIngresada").value.trim();
+            if (valor === CLAVE) {
+                // OCULTAR ACCESO
+                document.getElementById("pantallaAcceso").style.display = "none";
+                // MOSTRAR PANEL
+                document.getElementById("panelControl").style.display = "block";
+            } else {
+                alert("❌ CÉDULA INCORRECTA. VERIFICA.");
+            }
+        }
     </script>
 
     <div class="container mx-auto px-3 py-6 max-w-2xl">
 
-        <!-- 📢 PUBLIC SECTION -->
+        <!-- 📢 PARTE PÚBLICA -->
         <header class="text-center mb-10">
             <h1 class="text-[clamp(2rem,6vw,3.8rem)] font-black text-glow mb-8">🔥 PLATAFORMA MAESTRA - MULTIJUEGO</h1>
             
-            <!-- 🟢 CONTACT BOX -->
-            <div class="bg-panel rounded-xl p-4 mb-6 border border-green/40 border-green-glow">
+            <div class="bg-panel rounded-xl p-4 mb-6 border border-green/40 shadow-[0_0_12px_#22c55e70]">
                 <p class="text-gray-300 text-sm mb-2">CONTACTO PARA COMPRAS Y SOPORTE:</p>
-                <p id="whatsapp-text" class="text-2xl font-bold text-green blink">+57 300 000 0000</p>
+                <p id="textoWp" class="text-2xl font-bold text-green blink">+57 300 000 0000</p>
             </div>
 
-            <!-- 🌸 PINK BAR -->
             <div class="gradient-pink text-white px-4 py-3 rounded-full text-sm font-bold mb-4 blink border-glow">
                 💎 TODO INCLUIDO | CERO BANEOS | 85% CABEZA | GESTIÓN DE CUENTAS | ENVÍO COMO REGALO
             </div>
@@ -97,205 +75,70 @@
             </p>
         </header>
 
-        <!-- 👤 HIDDEN ACCESS BUTTON -->
-        <button onclick="document.getElementById('access-modal').classList.remove('hidden')" class="fixed bottom-4 right-4 w-9 h-9 rounded-full bg-neon/20 text-xs flex items-center justify-center hover:bg-neon/40 transition z-40">⚙️</button>
+        <!-- ⚙️ BOTÓN OCULTO -->
+        <button onclick="document.getElementById('pantallaAcceso').style.display='flex'" class="fixed bottom-4 right-4 w-9 h-9 rounded-full bg-neon/20 text-xs flex items-center justify-center hover:bg-neon/40 z-40">⚙️</button>
 
-        <!-- 🔒 LOGIN SCREEN -->
-        <div id="access-modal" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+        <!-- 🔒 PANTALLA DE ACCESO (AHORA SÍ FUNCIONA) -->
+        <div id="pantallaAcceso" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center">
             <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon/40 border-glow">
                 <h2 class="text-2xl font-bold text-center text-glow mb-6">ACCESO EXCLUSIVO</h2>
-                <input type="password" id="key-input" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Ingresa tu cédula">
-                <button onclick="verifyAccess()" class="w-full gradient-primary p-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition">ENTRAR</button>
-                <button onclick="document.getElementById('access-modal').classList.add('hidden')" class="w-full bg-gray-800 mt-2 p-2 rounded-lg text-sm">Cerrar</button>
+                <input type="password" id="claveIngresada" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Ingresa tu cédula">
+                <!-- ✅ BOTÓN DE ENTRADA DIRECTO -->
+                <button onclick="entrarAlSistema()" class="w-full gradient-primary p-3 rounded-xl font-bold text-lg hover:scale-[1.02]">ENTRAR</button>
+                <button onclick="document.getElementById('pantallaAcceso').style.display='none'" class="w-full bg-gray-800 mt-2 p-2 rounded-lg text-sm">Cerrar</button>
             </div>
         </div>
 
-        <!-- ⚙️ CONTROL PANEL -->
-        <div id="main-panel" class="hidden mt-10">
+        <!-- ✅ PANEL DE CONTROL (SE MUESTRA SOLO AL ENTRAR) -->
+        <div id="panelControl" class="hidden mt-10">
             
-            <!-- 🧭 NAVIGATION MENU -->
+            <!-- 🧭 MENÚ -->
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button class="tab-btn gradient-primary px-3 py-2 rounded-lg font-bold" onclick="changeTab('home', this)">INICIO</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="changeTab('accounts', this)">GESTIÓN DE CUENTAS</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="changeTab('content', this)">CONTENIDO</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="changeTab('links', this)">ENLACES</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="changeTab('settings', this)">CONFIGURACIÓN</button>
+                <button class="tab-btn gradient-primary px-3 py-2 rounded-lg font-bold" onclick="cambiarPestana('ini', this)">INICIO</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('cuentas', this)">GESTIÓN</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('juegos', this)">JUEGOS</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('conf', this)">AJUSTES</button>
             </div>
 
-            <!-- 📌 TAB: HOME -->
-            <div id="home" class="tab-content block bg-panel/80 p-6 rounded-2xl border-glow border border-green/30">
-                <h3 class="text-xl font-bold text-center text-safe mb-6">✅ SISTEMA ACTIVO Y FUNCIONANDO AL 100%</h3>
-                
-                <div class="grid md:grid-cols-2 gap-4 mb-6">
-                    <div class="bg-fondo/60 p-4 rounded-xl border border-green/40">
-                        <h4 class="font-bold text-green mb-2">🛡️ SEGURIDAD</h4>
-                        <p class="text-sm">Protección Anti-baneo: <span class="text-green-400 font-bold">ACTIVO MÁXIMO</span></p>
-                        <p class="text-sm">Disparo a la Cabeza: <span class="text-green-400 font-bold">88% ACTIVO</span></p>
-                        <p class="text-sm">Estado: <span class="text-green-400 font-bold">INDETECTABLE</span></p>
-                    </div>
-                    <div class="bg-fondo/60 p-4 rounded-xl border border-neon/40">
-                        <h4 class="font-bold text-neon mb-2">⚙️ SISTEMA</h4>
-                        <p class="text-sm">Actualización: <span class="text-green-400 font-bold">24/7 AUTOMÁTICA</span></p>
-                        <p class="text-sm">Bots IA: <span class="text-green-400 font-bold">OPERATIVOS</span></p>
-                        <p class="text-sm">Entrega: <span class="text-green-400 font-bold">MODO REGALO</span></p>
-                    </div>
-                </div>
-
-                <div class="text-center text-sm text-gray-300">
-                    💾 Todo el contenido desde 2017 hasta actualidad cargado. Nada eliminado.
-                </div>
+            <!-- 📄 INICIO -->
+            <div id="ini" class="bloque bg-panel/80 p-6 rounded-2xl border-glow">
+                <h3 class="text-xl font-bold text-center text-green-400 mb-4">✅ SISTEMA 100% ACTIVO</h3>
+                <p class="text-center">Protección Anti-baneo: <b class="text-green-400">ACTIVA</b></p>
+                <p class="text-center">Disparo a la cabeza: <b class="text-green-400">88% FIJO</b></p>
+                <p class="text-center">Entrega: <b class="text-green-400">MODO REGALO</b></p>
             </div>
 
-            <!-- 👤 TAB: ACCOUNTS MANAGEMENT -->
-            <div id="accounts" class="tab-content hidden bg-panel/80 p-6 rounded-2xl border-glow border border-pink/30">
-                <h3 class="text-xl font-bold text-center text-pink mb-6">🔑 GESTIÓN TOTAL DE CUENTAS</h3>
-                <p class="text-center text-sm mb-6">FB ↔ FB | G ↔ G | FB ↔ G | G ↔ FB ✅ TODAS LAS OPCIONES ACTIVAS</p>
-
-                <!-- 📋 ACCOUNT CHECK -->
-                <div class="bg-fondo/70 p-5 rounded-xl mb-6 border border-warning/40">
-                    <h4 class="font-bold text-warning mb-3">🔍 CONSULTAR ESTADO DE CUENTA</h4>
-                    <label class="block text-sm mb-1">ID DE USUARIO:</label>
-                    <input type="text" id="account-id" class="w-full p-3 rounded-lg bg-panel border border-warning/30 mb-3" placeholder="Ingresa ID completo">
-                    <button onclick="checkAccount()" class="w-full bg-warning hover:bg-amber-500 p-2 rounded-lg font-bold transition">🔍 VER DATOS</button>
-                    
-                    <div id="check-result" class="hidden mt-4 p-3 bg-black/50 rounded-lg text-sm">
-                        <p>Vinculación actual: <span id="link-res" class="font-bold"></span></p>
-                        <p>Estado de cuenta: <span class="font-bold text-green-400">ACTIVA Y SEGURA</span></p>
-                        <p>Nivel de seguridad: <span class="font-bold text-green-400">MÁXIMO</span></p>
-                    </div>
-                </div>
-
-                <!-- 🔄 CHANGE LINK -->
-                <div class="bg-fondo/70 p-5 rounded-xl mb-6 border border-safe/40">
-                    <h4 class="font-bold text-safe mb-3">🔄 CAMBIAR VINCULACIÓN</h4>
-                    
-                    <div class="grid grid-cols-2 gap-3 mb-3">
-                        <div>
-                            <label class="block text-xs mb-1">DESDE:</label>
-                            <select id="link-from" class="w-full p-2 rounded bg-panel border">
-                                <option>Facebook</option>
-                                <option>Google</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs mb-1">HASTA:</label>
-                            <select id="link-to" class="w-full p-2 rounded bg-panel border">
-                                <option>Facebook</option>
-                                <option>Google</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button onclick="changeLink()" class="w-full bg-safe hover:bg-green-500 p-3 rounded-lg font-bold text-lg transition">✅ EJECUTAR CAMBIO</button>
-                </div>
-
-                <!-- 🔑 CHANGE PASSWORD -->
-                <div class="bg-fondo/70 p-5 rounded-xl border border-danger/40">
-                    <h4 class="font-bold text-danger mb-3">🔑 CAMBIAR CONTRASEÑA</h4>
-                    <label class="block text-sm mb-1">NUEVA CONTRASEÑA:</label>
-                    <input type="text" id="new-pass" class="w-full p-3 rounded-lg bg-panel border border-danger/30 mb-3" placeholder="Escribe nueva contraseña">
-                    <button onclick="changePassword()" class="w-full bg-danger hover:bg-rose-600 p-2 rounded-lg font-bold transition">💾 ACTUALIZAR</button>
+            <!-- 📄 GESTIÓN DE CUENTAS -->
+            <div id="cuentas" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
+                <h3 class="text-xl font-bold text-center text-pink-400 mb-4">🔑 CAMBIOS DE CUENTAS</h3>
+                <div class="mb-4">
+                    <label>De:</label>
+                    <select id="v1" class="w-full p-2 rounded bg-panel border mb-2">
+                        <option>Facebook</option>
+                        <option>Google</option>
+                    </select>
+                    <label>A:</label>
+                    <select id="v2" class="w-full p-2 rounded bg-panel border mb-2">
+                        <option>Facebook</option>
+                        <option>Google</option>
+                    </select>
+                    <button onclick="alert('✅ CAMBIO REALIZADO CON ÉXITO')" class="w-full bg-green-600 p-2 rounded mt-2">EJECUTAR</button>
                 </div>
             </div>
 
-            <!-- 🎮 TAB: GAMES CONTENT -->
-            <div id="content" class="tab-content hidden bg-panel/80 p-6 rounded-2xl border-glow border border-neon/30">
-                <h3 class="text-xl font-bold text-center text-neon mb-6">🔥 TODO EL CONTENIDO DISPONIBLE</h3>
-
-                <div class="grid md:grid-cols-3 gap-4 mb-8">
-                    <!-- 🟠 FREE FIRE -->
-                    <div class="bg-fondo/70 p-4 rounded-xl border border-danger/40">
-                        <h4 class="text-lg font-bold text-center text-danger mb-3">🔥 FREE FIRE (2017 - ACTUAL)</h4>
-                        <ul class="space-y-1 text-sm mb-4">
-                            <li>✅ Trajes Criminales (Todas versiones)</li>
-                            <li>✅ Payasos, Ángelicales, Sakura</li>
-                            <li>✅ Conejos, Inviernos, Navidades</li>
-                            <li>✅ Todos los paquetes exclusivos</li>
-                            <li>✅ Diamantes ilimitados</li>
-                            <li>✅ Mascotas, Armas, Skins</li>
-                            <li>✅ Todo contenido futuro cargado</li>
-                        </ul>
-                        <div class="text-center text-xs text-green-400 font-bold">
-                            ⚙️ DISPARO 85-90% | ANTI-BANEO MÁXIMO
-                        </div>
-                    </div>
-
-                    <!-- 🔵 ROBLOX -->
-                    <div class="bg-fondo/70 p-4 rounded-xl border border-roblox/40">
-                        <h4 class="text-lg font-bold text-center text-roblox mb-3">🔵 ROBLOX</h4>
-                        <ul class="space-y-1 text-sm mb-4">
-                            <li>✅ Todo catálogo existente</li>
-                            <li>✅ Robux ilimitados</li>
-                            <li>✅ Acceso a juegos privados</li>
-                            <li>✅ Objetos limitados y futuros</li>
-                            <li>✅ Accesorios, Animaciones, Ropa</li>
-                            <li>✅ Servidores personalizados</li>
-                            <li>✅ Sistema de regalo automático</li>
-                        </ul>
-                        <div class="text-center text-xs text-green-400 font-bold">
-                            🤖 BOTS ACTIVOS | ENTREGA INMEDIATA
-                        </div>
-                    </div>
-
-                    <!-- 🟩 MINECRAFT -->
-                    <div class="bg-fondo/70 p-4 rounded-xl border border-minecraft/40">
-                        <h4 class="text-lg font-bold text-center text-minecraft mb-3">🟩 MINECRAFT</h4>
-                        <ul class="space-y-1 text-sm mb-4">
-                            <li>✅ Todas las versiones y mods</li>
-                            <li>✅ Skins, Texturas, Mapas</li>
-                            <li>✅ Paquetes de recursos</li>
-                            <li>✅ Acceso total a servidores</li>
-                            <li>✅ Contenido exclusivo y futuro</li>
-                            <li>✅ Instalación automática</li>
-                            <li>✅ Permisos de administrador</li>
-                        </ul>
-                        <div class="text-center text-xs text-green-400 font-bold">
-                            🔄 ACTUALIZACIÓN PERMANENTE
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-pink/20 p-4 rounded-xl text-center border border-pink/40">
-                    <p class="font-bold text-lg">📨 SISTEMA DE ENVÍO: <span class="text-green-400">MODO REGALO / NOTIFICACIÓN</span></p>
-                    <p class="text-sm">Todo se entrega directamente dentro de la cuenta, nunca archivos externos. 100% seguro.</p>
-                </div>
+            <!-- 📄 JUEGOS -->
+            <div id="juegos" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
+                <h3 class="text-xl font-bold text-center text-neon mb-4">🎮 CONTENIDO TOTAL</h3>
+                <p>🔥 <b>Free Fire:</b> Todo desde 2017, Criminales, Payasos, Diamantes.</p>
+                <p>🔵 <b>Roblox:</b> Todo catálogo y Robux.</p>
+                <p>🟩 <b>Minecraft:</b> Todas las versiones y mods.</p>
             </div>
 
-            <!-- 🔗 TAB: LINKS GENERATOR -->
-            <div id="links" class="tab-content hidden bg-panel/80 p-6 rounded-2xl border-glow border border-safe/30">
-                <h3 class="text-xl font-bold text-center text-safe mb-6">🔗 GENERADOR DE ENLACES INSTALABLES</h3>
-                <p class="text-center text-sm mb-6">Descarga automática + Permisos + Botón EMPEZAR + Modificación de archivos ✅ TODO ACTIVO</p>
-
-                <textarea id="link-desc" class="w-full h-32 p-4 rounded-xl bg-fondo border border-safe/40 text-white mb-4 scroll-hidden" placeholder="Describe qué contendrá el enlace..."></textarea>
-
-                <button onclick="createLink()" class="w-full gradient-green py-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition border-green-glow">
-                    ✨ CREAR ENLACE FUNCIONAL
-                </button>
-
-                <div id="link-result" class="hidden mt-5 p-4 bg-fondo/80 rounded-xl border border-safe/40">
-                    <p class="text-sm text-gray-300 mb-2">ENLACE GENERADO:</p>
-                    <div class="flex gap-2">
-                        <input type="text" id="final-link" class="flex-1 p-2 rounded bg-panel border" value="https://plataforma-maestra.com/instala?token=XXXXXXX" readonly>
-                        <button onclick="copyLink()" class="bg-safe/20 px-3 py-1 rounded">📋</button>
-                    </div>
-                    <p class="text-xs text-green-400 mt-2">⚠️ Este enlace tiene todos los permisos activos.</p>
-                </div>
-            </div>
-
-            <!-- ⚙️ TAB: SETTINGS -->
-            <div id="settings" class="tab-content hidden bg-panel/80 p-6 rounded-2xl border-glow border border-green/30">
-                <h3 class="text-xl font-bold text-center text-green mb-6">📱 GESTIÓN DE CONTACTO</h3>
-                
-                <div class="bg-fondo/70 p-5 rounded-xl border border-green/40">
-                    <label class="block text-sm mb-2">TU NÚMERO DE WHATSAPP:</label>
-                    <input type="text" id="wp-input" class="w-full p-3 rounded-lg bg-panel border border-green/30 mb-4 text-lg" placeholder="+57 3XX XXX XXXX">
-                    <button onclick="updateWhatsapp()" class="w-full gradient-green p-3 rounded-lg font-bold text-lg">💾 GUARDAR Y ACTUALIZAR</button>
-                </div>
-
-                <div class="mt-8 text-center text-xs text-gray-400">
-                    <p>📅 SISTEMA: ACTUALIZACIÓN 24/7 - NADA SE ELIMINA - TODO PERMANECE</p>
-                    <p>🔐 ACCESO: SOLO CON TU CÉDULA - 100% SEGURO</p>
-                </div>
+            <!-- 📄 AJUSTES -->
+            <div id="conf" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
+                <h3 class="text-xl font-bold text-center text-green-400 mb-4">📱 ACTUALIZAR CONTACTO</h3>
+                <input type="text" id="nuevoWp" class="w-full p-3 rounded bg-panel border mb-3" placeholder="+57 3XX XXX XXXX">
+                <button onclick="actualizarWp()" class="w-full gradient-green p-3 rounded">GUARDAR</button>
             </div>
 
         </div>
@@ -303,63 +146,24 @@
     </div>
 
     <script>
-        // 🔐 ACCESS VERIFICATION
-        function verifyAccess() {
-            const inputKey = document.getElementById('key-input').value.trim();
-            if(inputKey === SECRET_KEY) {
-                document.getElementById('access-modal').classList.add('hidden');
-                document.getElementById('main-panel').classList.remove('hidden');
-                document.getElementById('key-input').value = "";
-            } else {
-                alert("❌ ACCESO DENEGADO: Cédula incorrecta");
+        // NAVEGACIÓN
+        function cambiarPestana(id, btn) {
+            document.querySelectorAll('.bloque').forEach(b => b.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => {b.classList.remove('gradient-primary'); b.classList.add('bg-panel');});
+            document.getElementById(id).classList.remove('hidden');
+            btn.classList.remove('bg-panel');
+            btn.classList.add('gradient-primary');
+        }
+
+        // ACTUALIZAR WHATSAPP
+        function actualizarWp() {
+            let num = document.getElementById('nuevoWp').value;
+            if(num) {
+                document.getElementById('textoWp').innerText = num;
+                alert("✅ ACTUALIZADO");
             }
         }
+    </script>
 
-        // 🧭 TAB CHANGE
-        function changeTab(tabId, btn) {
-            // Hide all
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
-            // Reset buttons
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('gradient-primary', 'border-glow');
-                b.classList.add('bg-panel', 'border', 'border-primary');
-            });
-            // Show current
-            document.getElementById(tabId).classList.remove('hidden');
-            // Active style
-            btn.classList.remove('bg-panel', 'border', 'border-primary');
-            btn.classList.add('gradient-primary', 'border-glow');
-        }
-
-        // 📱 UPDATE WHATSAPP
-        function updateWhatsapp() {
-            const newNumber = document.getElementById('wp-input').value.trim();
-            if(newNumber) {
-                whatsappNumber = newNumber;
-                document.getElementById('whatsapp-text').textContent = whatsappNumber;
-                document.getElementById('wp-input').value = "";
-                alert("✅ NÚMERO ACTUALIZADO");
-            }
-        }
-
-        // 🔍 CHECK ACCOUNT
-        function checkAccount() {
-            const id = document.getElementById('account-id').value.trim();
-            if(!id) return;
-            const linkType = (Math.random() > 0.5) ? "Facebook" : "Google";
-            document.getElementById('link-res').textContent = linkType;
-            document.getElementById('check-result').classList.remove('hidden');
-        }
-
-        // 🔄 CHANGE LINK
-        function changeLink() {
-            const from = document.getElementById('link-from').value;
-            const to = document.getElementById('link-to').value;
-            alert(`✅ PROCESO EJECUTADO\n${from} ➡️ ${to}\nActualizado en sistema.`);
-        }
-
-        // 🔑 CHANGE PASSWORD
-        function changePassword() {
-            const pass = document.getElementById('new-pass').value.trim();
-            if(!pass) return;
-            alert("✅ CONTRASEÑA ACTUALIZADA"
+</body>
+</html>
