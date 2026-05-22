@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💀 SISTEMA DE HACKEO TOTAL | GARENA | INDETECTABLE 100% | SIN BANEOS NUNCA</title>
+    <title>💀 SISTEMA DE HACKEO TOTAL | GARENA | INDETECTABLE 100%</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -45,18 +45,6 @@
             box-shadow: 0 0 15px #00ff8840, inset 0 0 8px #00ff8820;
             border: 2px solid #00ff88;
         }
-        .borde-rojo {
-            box-shadow: 0 0 15px #ff333340, inset 0 0 8px #ff333320;
-            border: 2px solid #ff3333;
-        }
-        .animacion-latido {
-            animation: latido 2s infinite;
-        }
-        @keyframes latido {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
         .boton {
             cursor: pointer;
             transition: all 0.2s ease;
@@ -75,7 +63,7 @@
             border-radius: 15px;
         }
         .lista-contenido {
-            max-height: 300px;
+            max-height: 350px;
             overflow-y: auto;
             padding-right: 15px;
         }
@@ -90,148 +78,174 @@
             background: #00ff88;
             border-radius: 10px;
         }
+        input:focus, button:focus {
+            outline: none;
+            box-shadow: 0 0 15px #00ff8880;
+        }
     </style>
 </head>
 <body>
 
     <div class="contenedor">
-        <!-- PANTALLA DE ACCESO -->
+        <!-- PANTALLA DE ACCESO - TU CÓDIGO ESTÁ OCULTO, SOLO TÚ LO SABES -->
         <div id="pantallaLogin" class="seccion borde-brillante mt-10">
-            <h1 class="text-4xl font-bold text-center brillo mb-8">💀 SISTEMA DE ACCESO TOTAL</h1>
-            <p class="text-center text-gray-300 mb-6 text-lg">Ingresa tu número de cédula para acceder al sistema</p>
-            
-            <div class="max-w-md mx-auto">
-                <input type="password" id="codigoAcceso" placeholder="INGRESA TU CÉDULA AQUÍ" class="w-full p-4 rounded-lg bg-grisOscuro border borde-brillante text-white text-lg mb-4">
-                <button id="botonEntrar" class="w-full p-4 rounded-lg bg-primario text-oscuro font-bold text-xl boton">ENTRAR AL SISTEMA</button>
-                <p class="text-center text-gray-400 mt-4">Tu código: <strong class="text-primario">1048934382</strong></p>
+            <div class="text-center mb-8">
+                <span class="text-6xl">💀</span>
+                <h1 class="text-5xl font-bold brillo mt-4">SISTEMA DE ACCESO TOTAL</h1>
+                <p class="text-gray-300 mt-4 text-xl">Ingresa tu código de acceso para entrar al sistema</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto">
+                <input 
+                    type="password" 
+                    id="codigoAcceso" 
+                    placeholder="INGRESA TU CÓDIGO AQUÍ" 
+                    class="w-full p-5 rounded-lg bg-grisOscuro border borde-brillante text-white text-2xl text-center mb-6"
+                    maxlength="15"
+                >
+
+                <button 
+                    id="botonEntrar" 
+                    class="w-full p-5 rounded-lg bg-primario text-oscuro font-bold text-3xl boton"
+                >
+                    ENTRAR AL SISTEMA
+                </button>
+
+                <p class="text-center text-gray-400 mt-4 text-sm">
+                    Acceso exclusivo - Solo para personas autorizadas
+                </p>
             </div>
         </div>
 
-        <!-- PANEL PRINCIPAL -->
+        <!-- PANEL PRINCIPAL - SE MUESTRA DESPUÉS DE INGRESAR EL CÓDIGO -->
         <div id="panelPrincipal" class="seccion borde-brillante" style="display: none;">
-            <h2 class="text-3xl font-bold text-center brillo mb-6">🤖 SISTEMA DE HACKEO AVANZADO NIVEL MÁXIMO</h2>
-            <p class="text-center text-primario text-lg mb-8">✅ 100% INDETECTABLE | NINGÚN BANEÓ | SEGURIDAD TOTAL</p>
+            <h2 class="text-4xl font-bold text-center brillo mb-8">🤖 SISTEMA DE HACKEO AVANZADO NIVEL MÁXIMO</h2>
+            <p class="text-center text-primario text-xl mb-10">✅ 100% INDETECTABLE | NINGÚN BANEÓ | SEGURIDAD TOTAL PARA TUS CUENTAS</p>
 
-            <!-- ESTADO DEL SISTEMA -->
+            <!-- INFORMACIÓN DEL SISTEMA -->
             <div class="seccion borde-brillante bg-grisOscuro">
-                <h3 class="text-2xl font-bold brillo mb-4">📊 ESTADO DEL SISTEMA</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
-                        <p class="text-gray-400">BOTS ACTIVOS</p>
-                        <p class="text-3xl font-bold text-primario">16.384</p>
+                <h3 class="text-3xl font-bold brillo mb-6">📊 ESTADO DEL SISTEMA</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-6 bg-fondo rounded-xl borde-brillante">
+                        <p class="text-gray-400 text-lg mb-2">BOTS ACTIVOS</p>
+                        <p class="text-5xl font-bold text-primario">16.384</p>
+                        <p class="text-gray-400 mt-2">Todos se respaldan entre sí</p>
                     </div>
-                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
-                        <p class="text-gray-400">INTELIGENCIA ARTIFICIAL</p>
-                        <p class="text-3xl font-bold text-primario">ACTIVA 24/7</p>
+                    <div class="p-6 bg-fondo rounded-xl borde-brillante">
+                        <p class="text-gray-400 text-lg mb-2">INTELIGENCIA ARTIFICIAL</p>
+                        <p class="text-5xl font-bold text-primario">ACTIVA 24/7</p>
+                        <p class="text-gray-400 mt-2">Actualización constante</p>
                     </div>
-                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
-                        <p class="text-gray-400">GARANTÍA</p>
-                        <p class="text-3xl font-bold text-primario">SIN BANEOS NUNCA</p>
+                    <div class="p-6 bg-fondo rounded-xl borde-brillante">
+                        <p class="text-gray-400 text-lg mb-2">GARANTÍA</p>
+                        <p class="text-5xl font-bold text-primario">SIN BANEOS NUNCA</p>
+                        <p class="text-gray-400 mt-2">100% SEGURO</p>
                     </div>
                 </div>
             </div>
 
-            <!-- LECTURA DE DATOS -->
+            <!-- CONSULTAR Y MODIFICAR CUENTAS -->
             <div class="seccion borde-brillante bg-grisOscuro">
-                <h3 class="text-2xl font-bold brillo mb-4">🔍 CONSULTAR CUENTA</h3>
-                <input type="text" id="idCuenta" placeholder="INGRESA EL ID DE LA CUENTA" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-4">
-                <button id="botonLeer" class="w-full p-3 rounded-lg bg-azul font-bold boton mb-4">LEER DATOS DE LA CUENTA</button>
+                <h3 class="text-3xl font-bold brillo mb-6">🔧 GESTIÓN DE CUENTAS</h3>
 
-                <div id="areaResultado" class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
-                    <p class="text-gray-400 text-center">Aquí se mostrarán todos los datos: nombre, armas, skins, ropa, objetos y todo lo que necesites</p>
+                <!-- SECCIÓN DE LECTURA -->
+                <div class="mb-10">
+                    <h4 class="text-2xl font-bold text-primario mb-4">🔍 LEER DATOS DE LA CUENTA</h4>
+                    <input 
+                        type="text" 
+                        id="idCuenta" 
+                        placeholder="INGRESA EL ID DE LA CUENTA" 
+                        class="w-full p-4 rounded-lg bg-fondo border borde-brillante text-white text-xl mb-4"
+                    >
+                    <button 
+                        id="botonLeer" 
+                        class="w-full p-4 rounded-lg bg-azul font-bold text-xl boton mb-6"
+                    >
+                        VER TODOS LOS DATOS
+                    </button>
+
+                    <div id="areaResultado" class="lista-contenido bg-fondo p-6 rounded-xl borde-brillante">
+                        <p class="text-gray-400 text-center text-xl">Aquí se mostrará toda la información:</p>
+                        <p class="text-gray-400 text-center">✅ Nombre de la cuenta</p>
+                        <p class="text-gray-400 text-center">✅ Todas las armas y skins</p>
+                        <p class="text-gray-400 text-center">✅ Ropa y trajes</p>
+                        <p class="text-gray-400 text-center">✅ Objetos especiales</p>
+                        <p class="text-gray-400 text-center">✅ Emotes y acciones</p>
+                        <p class="text-gray-400 text-center">✅ Recursos (diamantes, oro)</p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- MODIFICACIÓN DE CONTENIDO -->
-            <div class="seccion borde-brillante bg-grisOscuro">
-                <h3 class="text-2xl font-bold brillo mb-4">🎁 AGREGAR CONTENIDO</h3>
-                <input type="text" id="idModificar" placeholder="ID DE LA CUENTA" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-3">
-                
-                <select id="tipoContenido" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-3">
-                    <option value="armas">🔫 ARMAS Y SKINS</option>
-                    <option value="ropa">👕 ROPA Y TRAJES</option>
-                    <option value="objetos">🎁 OBJETOS Y COSMÉTICOS</option>
-                    <option value="recursos">💎 RECURSOS (DIAMANTES, ORO)</option>
-                    <option value="emotes">💃 EMOTES Y ACCIONES</option>
-                </select>
+                <!-- SECCIÓN DE AGREGAR CONTENIDO -->
+                <div>
+                    <h4 class="text-2xl font-bold text-morado mb-4">🎁 AGREGAR CONTENIDO A LA CUENTA</h4>
+                    <input 
+                        type="text" 
+                        id="idModificar" 
+                        placeholder="ID DE LA CUENTA" 
+                        class="w-full p-4 rounded-lg bg-fondo border borde-brillante text-white text-xl mb-4"
+                    >
 
-                <textarea id="datosAgregar" placeholder="Escribe aquí lo que quieres agregar: por ejemplo, nombres de armas, skins, cantidad de diamantes..." class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-4" rows="4"></textarea>
+                    <select 
+                        id="tipoContenido" 
+                        class="w-full p-4 rounded-lg bg-fondo border borde-brillante text-white text-xl mb-4"
+                    >
+                        <option value="armas">🔫 ARMAS Y SKINS</option>
+                        <option value="ropa">👕 ROPA Y TRAJES</option>
+                        <option value="objetos">🎁 OBJETOS Y COSMÉTICOS</option>
+                        <option value="recursos">💎 RECURSOS (DIAMANTES, ORO)</option>
+                        <option value="emotes">💃 EMOTES Y ACCIONES</option>
+                    </select>
 
-                <button id="botonAgregar" class="w-full p-3 rounded-lg bg-morado font-bold boton mb-4">AGREGAR A LA CUENTA</button>
+                    <textarea 
+                        id="datosAgregar" 
+                        placeholder="Escribe aquí lo que quieres agregar. Ejemplo: AK-47 Dragón Llameante, Traje Legendario, 999999 diamantes..." 
+                        class="w-full p-4 rounded-lg bg-fondo border borde-brillante text-white text-xl mb-6"
+                        rows="5"
+                    ></textarea>
 
-                <div id="areaAgregado" class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
-                    <p class="text-gray-400 text-center">Todo se agrega como si fuera original, 100% seguro, sin rastro de modificación</p>
+                    <button 
+                        id="botonAgregar" 
+                        class="w-full p-4 rounded-lg bg-morado font-bold text-xl boton mb-6"
+                    >
+                        AGREGAR A LA CUENTA
+                    </button>
+
+                    <div id="areaAgregado" class="lista-contenido bg-fondo p-6 rounded-xl borde-brillante">
+                        <p class="text-gray-400 text-center text-xl">Todo se agrega como si fuera original</p>
+                        <p class="text-gray-400 text-center">✅ Sin rastro de modificación</p>
+                        <p class="text-gray-400 text-center">✅ 100% seguro</p>
+                        <p class="text-gray-400 text-center">✅ Ningún baneo</p>
+                    </div>
                 </div>
             </div>
 
             <!-- LISTA COMPLETA DE TODO LO DISPONIBLE -->
             <div class="seccion borde-brillante bg-grisOscuro">
-                <h3 class="text-2xl font-bold brillo mb-4">📋 TODOS LOS CONTENIDOS DISPONIBLES</h3>
+                <h3 class="text-3xl font-bold brillo mb-6">📋 TODOS LOS CONTENIDOS DISPONIBLES</h3>
 
-                <div class="mb-6">
-                    <h4 class="text-xl font-bold text-primario mb-3">🔫 ARMAS Y SKINS (TODAS LAS EXISTENTES, PASADAS, ACTUALES Y FUTURAS)</h4>
-                    <div class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
-                        <p>🔫 AK-47 | Modelo Original</p>
-                        <p>🔫 AK-47 | Fuego Épico</p>
-                        <p>🔫 AK-47 | Dragón Llameante LEGENDARIA</p>
-                        <p>🔫 AK-47 | Colaboración MARVEL: Capitan América</p>
-                        <p>🔫 AK-47 | Colaboración DC: Batman</p>
-                        <p>🔫 AK-47 | Colaboración TRANSFORMERS: Optimus Prime</p>
-                        <p>🔫 AK-47 | Colaboración FUTURA: Spider-Man 2</p>
-                        <p>🔫 M16A2 | Estándar</p>
-                        <p>🔫 M16A2 | Rayo Azul Épico</p>
-                        <p>🔫 M16A2 | Fénix Resucitado LEGENDARIA</p>
-                        <p>🔫 M16A2 | Colaboración STAR WARS: Darth Vader</p>
-                        <p>🔫 M16A2 | Colaboración HARRY POTTER: Voldemort</p>
-                        <p>🔫 M16A2 | Colaboración FUTURA: Superman</p>
-                        <p>🔫 MP5 | Clásico</p>
-                        <p>🔫 MP5 | Acero Negro Épico</p>
-                        <p>🔫 MP5 | Espíritu del Viento LEGENDARIA</p>
-                        <p>🔫 MP5 | Colaboración DISNEY: Mickey Mouse</p>
-                        <p>🔫 MP5 | Colaboración STRANGER THINGS: Demogorgon</p>
-                        <p>🔫 MP5 | Colaboración FUTURA: Luke Skywalker</p>
-                        <p>🔫 Escopeta | Doble Cañón</p>
-                        <p>🔫 Escopeta | Dragón de Fuego Épico</p>
-                        <p>🔫 Escopeta | Bestia de Hierro LEGENDARIA</p>
-                        <p>🔫 Escopeta | Colaboración NARUTO: Naruto</p>
-                        <p>🔫 Escopeta | Colaboración FORTNITE: Spider-Man</p>
-                        <p>🔫 Escopeta | Colaboración FUTURA: Elsa de Frozen</p>
-                        <p>🔫 Rifle de Precisión | Básico</p>
-                        <p>🔫 Rifle de Precisión | Águila Dorada Épica</p>
-                        <p>🔫 Rifle de Precisión | Ojo de Halcón LEGENDARIA</p>
-                        <p>🔫 Rifle | Colaboración ONE PIECE: Luffy</p>
-                        <p>🔫 Rifle | Colaboración CALL OF DUTY: Operador Especial</p>
-                        <p>🔫 Rifle | Colaboración FUTURA: Lara Croft</p>
-                        <p>🔫 Pistola | Estándar</p>
-                        <p>🔫 Pistola | Cuchilla de Acero Épica</p>
-                        <p>🔫 Pistola | Espada de Luz LEGENDARIA</p>
-                        <p>🔫 Pistola | Colaboración DRAGON BALL: Goku</p>
-                        <p>🔫 Pistola | Colaboración MINECRAFT: Steve</p>
-                        <p>🔫 Pistola | Colaboración FUTURA: Neo</p>
-                        <p>🔫 Granadas | Básicas</p>
-                        <p>🔫 Granadas | Explosión Verde Épica</p>
-                        <p>🔫 Granadas | Bomba Estelar LEGENDARIA</p>
-                        <p>🔫 Cuchillo | Hoja Sagrada LEGENDARIA</p>
-                        <p>🔫 Cuchillo | Colaboración AVENGERS: Thanos</p>
-                        <p>🔫 Cuchillo | Colaboración FUTURA: Ezio</p>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <h4 class="text-xl font-bold text-primario mb-3">👕 ROPA Y TRAJES (TODOS LOS ESTILOS Y COLABORACIONES)</h4>
-                    <div class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
-                        <p>👕 Ropa Básica de Inicio</p>
-                        <p>👕 Uniforme de Combate Épico</p>
-                        <p>👕 Traje Legendario de Dragón</p>
-                        <p>👕 Traje MARVEL: Iron Man</p>
-                        <p>👕 Ropa DC: Supermán</p>
-                        <p>👕 Uniforme STAR WARS: Jedi</p>
-                        <p>👕 Ropa DISNEY: Príncipe</p>
-                        <p>👕 Traje NARUTO: Hokage</p>
-                        <p>👕 Ropa ONE PIECE: Pirata</p>
-                        <p>👕 Uniforme DRAGON BALL: Guerrero Saiyajin</p>
-                        <p>👕 Ropa AVENGERS: Vengador</p>
-                        <p>👕 Traje TRANSFORMERS: Optimus Prime</p>
-                        <p>👕 Ropa FUTURA: Vengador Galáctico</p>
-                        <p>👕 Uniforme de Lujo Legendario</p>
-                        
+                <!-- ARMAS Y SKINS -->
+                <div class="mb-8">
+                    <h4 class="text-2xl font-bold text-primario mb-4">🔫 ARMAS Y SKINS (TODAS LAS EXISTENTES, ACTUALES Y FUTURAS)</h4>
+                    <div class="lista-contenido bg-fondo p-6 rounded-xl borde-brillante">
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Modelo Original</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Fuego Épico</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Dragón Llameante LEGENDARIA 🔥</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Colaboración MARVEL: Capitan América 🇺🇸</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Colaboración DC: Batman 🦇</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Colaboración TRANSFORMERS: Optimus Prime 🤖</p>
+                        <p class="py-2 border-b border-gray-700">🔫 AK-47 | Colaboración FUTURA: Spider-Man 2 🕸️</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Estándar</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Rayo Azul Épico</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Fénix Resucitado LEGENDARIA 🐦</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Colaboración STAR WARS: Darth Vader ⚫</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Colaboración HARRY POTTER: Voldemort 🧙</p>
+                        <p class="py-2 border-b border-gray-700">🔫 M16A2 | Colaboración FUTURA: Superman 🦸</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Clásico</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Acero Negro Épico</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Espíritu del Viento LEGENDARIA 💨</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Colaboración DISNEY: Mickey Mouse 🐭</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Colaboración STRANGER THINGS: Demogorgon 👹</p>
+                        <p class="py-2 border-b border-gray-700">🔫 MP5 | Colaboración FUTURA: Luke Skywalker ⚔️</p>
+                        <p class="py-2 border-b border-gray-700">🔫 Escopeta | Doble Cañón</p>
+                        <p class="py-2 border-b border-gray-700">🔫 Escop
+                            
