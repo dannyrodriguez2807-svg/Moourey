@@ -11,6 +11,7 @@
             --accent-color: #45f3ff;
             --text-main: #ffffff;
             --text-muted: #c5c6c7;
+            --success-color: #2ed573;
         }
 
         body {
@@ -27,7 +28,7 @@
 
         header {
             background-color: var(--panel-color);
-            padding: 15px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -58,6 +59,27 @@
             font-weight: bold;
             color: var(--accent-color);
             font-size: 1.1rem;
+        }
+
+        /* BOTÓN DE INSTALACIÓN VISIBLE SIEMPRE */
+        #install-app-btn {
+            background-color: var(--success-color);
+            color: #000;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(46,213,115,0.4);
+            display: block;
+        }
+
+        #main-layout {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         #image-uploader-box {
@@ -183,6 +205,7 @@
             <div id="app-logo">IA</div>
             <div class="brand-title">IA LOCAL</div>
         </div>
+        <button id="install-app-btn" type="button">INSTALAR</button>
     </header>
 
     <div id="main-layout">
@@ -200,7 +223,7 @@
 
     <div id="control-bar">
         <textarea id="user-prompt" placeholder="Escribe aquí tu petición..."></textarea>
-        <button id="submit-btn">&gt;</button>
+        <button id="submit-btn" type="button">&gt;</button>
     </div>
 
     <script>
@@ -209,6 +232,7 @@
         const submitBtn = document.getElementById('submit-btn');
         const fileChooser = document.getElementById('file-chooser');
         const appLogo = document.getElementById('app-logo');
+        const installBtn = document.getElementById('install-app-btn');
 
         let appMemory = JSON.parse(localStorage.getItem('ia_local_direct_memory')) || [];
 
@@ -220,7 +244,7 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 const base64Data = event.target.result;
-                appLogo.style.backgroundImage = `url('${base64Data}')`;
+                appLogo.style.backgroundImage = "url('" + base64Data + "')";
                 appLogo.style.backgroundSize = 'cover';
                 appLogo.style.backgroundPosition = 'center';
                 appLogo.innerHTML = '';
@@ -233,14 +257,14 @@
         function loadLogo() {
             const cacheLogo = localStorage.getItem('cached_logo_direct');
             if (cacheLogo) {
-                appLogo.style.backgroundImage = `url('${cacheLogo}')`;
+                appLogo.style.backgroundImage = "url('" + cacheLogo + "')";
                 appLogo.style.backgroundSize = 'cover';
                 appLogo.style.backgroundPosition = 'center';
                 appLogo.innerHTML = '';
             }
         }
 
-        // Simulación lógica de generación de la IA
+        // Lógica de generación del Chat (Blindada para ejecución obligatoria)
         function handleChat() {
             const query = userPrompt.value.trim();
             if (!query) return;
@@ -251,18 +275,18 @@
             appMemory.push({ role: 'user', content: query });
             localStorage.setItem('ia_local_direct_memory', JSON.stringify(appMemory));
 
-            setTimeout(() => {
+            setTimeout(function() {
                 let aiReply = "";
                 const cleanQuery = query.toLowerCase();
 
                 if (cleanQuery.includes('hola')) {
-                    aiReply = "¡Hola! Estoy respondiendo en tiempo real desde la estructura lógica del dispositivo móvil.";
+                    aiReply = "¡Hola! Estoy respondiendo en tiempo real desde la estructura lógica de tu propio dispositivo móvil móvil.";
                 } else if (cleanQuery.includes('codigo') || cleanQuery.includes('código')) {
                     aiReply = "He desarrollado el bloque de código solicitado de forma limpia:\n\n```javascript\nfunction validarSistema() {\n    console.log('Botones y respuestas operando de forma excelente.');\n    return true;\n}\n```";
                 } else if (cleanQuery.includes('discurso')) {
                     aiReply = "Compañeros, la tecnología local descentralizada nos otorga el control absoluto sobre las herramientas de software, eliminando los servidores remotos para que la información permanezca intacta en nuestros propios dispositivos.";
                 } else {
-                    aiReply = `Petición procesada de manera segura: "${query}". El historial se mantendrá respaldado en la memoria de tu celular.`;
+                    aiReply = "Petición procesada de manera segura: \"" + query + "\". El historial se mantendrá respaldado en la memoria de tu celular de por vida.";
                 }
 
                 addBubble(aiReply, 'ai-bubble');
@@ -271,25 +295,4 @@
             }, 400);
         }
 
-        function addBubble(text, className) {
-            const block = document.createElement('div');
-            block.classList.add('bubble', className);
-
-            if (text.includes("```")) {
-                const parts = text.split("```");
-                parts.forEach((part, idx) => {
-                    if (idx % 2 === 1) {
-                        const pre = document.createElement('code');
-                        pre.classList.add('code-container');
-                        pre.textContent = part.trim();
-                        block.appendChild(pre);
-                    } else {
-                        block.appendChild(document.createTextNode(part));
-                    }
-                });
-            } else {
-                block.textContent = text;
-            }
-
-            chatScreen.appendChild(block);
-      
+        
