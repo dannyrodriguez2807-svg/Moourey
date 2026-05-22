@@ -17,55 +17,115 @@
                         neon: '#a855f7',
                         green: '#22c55e',
                         pink: '#f43f5e',
-                    }
+                        safe: '#10b981',
+                        warning: '#f59e0b',
+                        danger: '#ef4444',
+                        roblox: '#00a2ff',
+                        minecraft: '#48c148',
+                    },
+                    fontFamily: {
+                        system: ['Inter', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .text-glow { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca; }
+            .text-glow { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca, 0 0 36px #6d28d9; }
             .border-glow { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
+            .border-green-glow { box-shadow: 0 0 12px #22c55e70, inset 0 0 8px #16a34a30; }
             .gradient-primary { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 50%, #c084fc 100%); }
             .gradient-pink { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
             .gradient-green { background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); }
-            .blink { animation: blink 2s infinite; }
-            @keyframes blink { 0%{opacity:1;} 50%{opacity:0.7;} 100%{opacity:1;} }
+            .scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }
+            .scroll-hidden::-webkit-scrollbar { display: none; }
+            .blink { animation: blink 2.5s infinite; }
+            @keyframes blink { 0%{opacity:1;} 50%{opacity:0.8;} 100%{opacity:1;} }
         }
     </style>
 </head>
-<body class="bg-fondo text-white min-h-screen">
+<body class="bg-fondo text-white font-system min-h-screen scroll-hidden">
 
-    <!-- ✅ CLAVE EXACTA: 1048934382 -->
+    <!-- 🔐 TU CLAVE: 1048934382 -->
     <script>
-        const CLAVE = "1048934382";
-        let wp = "+57 300 000 0000";
+        const CLAVE_SECRETA = "1048934382";
+        let numeroWhatsApp = "+57 300 000 0000";
 
-        // ✅ FUNCIÓN DE ENTRADA DIRECTA Y SEGURA
-        function entrarAlSistema() {
-            let valor = document.getElementById("claveIngresada").value.trim();
-            if (valor === CLAVE) {
-                // OCULTAR ACCESO
-                document.getElementById("pantallaAcceso").style.display = "none";
-                // MOSTRAR PANEL
-                document.getElementById("panelControl").style.display = "block";
+        // ✅ FUNCIÓN DE ENTRADA ARREGLADA Y DIRECTA
+        function verificarAcceso() {
+            let input = document.getElementById("campoClave").value.trim();
+            if (input === CLAVE_SECRETA) {
+                // OCULTAR VENTANA DE LOGIN
+                document.getElementById("ventanaLogin").style.display = "none";
+                // MOSTRAR PANEL PRINCIPAL
+                document.getElementById("panelPrincipal").style.display = "block";
+                // ACTIVAR PRIMERA PESTAÑA AUTOMÁTICAMENTE
+                cambiarPestana('inicio', document.querySelector('.tab-btn'));
             } else {
-                alert("❌ CÉDULA INCORRECTA. VERIFICA.");
+                alert("❌ CÉDULA INCORRECTA. INTENTA DE NUEVO.");
             }
+        }
+
+        // 🧭 SISTEMA DE PESTAÑAS
+        function cambiarPestana(id, boton) {
+            // Ocultar todo
+            let contenidos = document.querySelectorAll('.contenido-pestana');
+            contenidos.forEach(el => el.style.display = 'none');
+
+            // Resetear botones
+            let botones = document.querySelectorAll('.tab-btn');
+            botones.forEach(btn => {
+                btn.classList.remove('gradient-primary', 'border-glow');
+                btn.classList.add('bg-panel', 'border', 'border-primary');
+            });
+
+            // Mostrar el seleccionado
+            document.getElementById(id).style.display = 'block';
+            // Activar botón
+            boton.classList.remove('bg-panel', 'border', 'border-primary');
+            boton.classList.add('gradient-primary', 'border-glow');
+        }
+
+        // 📱 ACTUALIZAR WHATSAPP
+        function actualizarWhatsApp() {
+            let nuevo = document.getElementById("nuevoNumero").value.trim();
+            if(nuevo) {
+                numeroWhatsApp = nuevo;
+                document.getElementById("textoWhatsApp").innerText = numeroWhatsApp;
+                alert("✅ ACTUALIZADO EN LA PARTE PÚBLICA");
+            }
+        }
+
+        // 🔄 CAMBIO DE VÍNCULO
+        function ejecutarCambio() {
+            let desde = document.getElementById("origen").value;
+            let hasta = document.getElementById("destino").value;
+            alert(`✅ CAMBIO REALIZADO CON ÉXITO\n\n${desde} ➡️ ${hasta}\n\nSistema Anti-baneo activado durante proceso.`);
+        }
+
+        // 🔗 GENERADOR DE ENLACES
+        function generarEnlace() {
+            let token = Math.random().toString(36).substring(2, 10).toUpperCase();
+            let link = `https://plataforma.com/inst?key=${token}&permisos=total`;
+            document.getElementById("enlaceGenerado").innerText = link;
+            document.getElementById("cajaEnlace").style.display = 'block';
         }
     </script>
 
     <div class="container mx-auto px-3 py-6 max-w-2xl">
 
-        <!-- 📢 PARTE PÚBLICA -->
+        <!-- 📢 SECCIÓN PÚBLICA (LO QUE VE TODO EL MUNDO) -->
         <header class="text-center mb-10">
             <h1 class="text-[clamp(2rem,6vw,3.8rem)] font-black text-glow mb-8">🔥 PLATAFORMA MAESTRA - MULTIJUEGO</h1>
             
-            <div class="bg-panel rounded-xl p-4 mb-6 border border-green/40 shadow-[0_0_12px_#22c55e70]">
+            <!-- 🟢 RECUADRO VERDE DE CONTACTO -->
+            <div class="bg-panel rounded-xl p-4 mb-6 border border-green/40 border-green-glow">
                 <p class="text-gray-300 text-sm mb-2">CONTACTO PARA COMPRAS Y SOPORTE:</p>
-                <p id="textoWp" class="text-2xl font-bold text-green blink">+57 300 000 0000</p>
+                <p id="textoWhatsApp" class="text-2xl font-bold text-green blink">+57 300 000 0000</p>
             </div>
 
+            <!-- 🌸 FRANJA ROSA -->
             <div class="gradient-pink text-white px-4 py-3 rounded-full text-sm font-bold mb-4 blink border-glow">
                 💎 TODO INCLUIDO | CERO BANEOS | 85% CABEZA | GESTIÓN DE CUENTAS | ENVÍO COMO REGALO
             </div>
@@ -75,70 +135,150 @@
             </p>
         </header>
 
-        <!-- ⚙️ BOTÓN OCULTO -->
-        <button onclick="document.getElementById('pantallaAcceso').style.display='flex'" class="fixed bottom-4 right-4 w-9 h-9 rounded-full bg-neon/20 text-xs flex items-center justify-center hover:bg-neon/40 z-40">⚙️</button>
+        <!-- ⚙️ BOTÓN DE ACCESO (AHORA VISIBLE Y FUNCIONAL) -->
+        <button onclick="document.getElementById('ventanaLogin').style.display='flex'" class="fixed bottom-4 right-4 w-10 h-10 rounded-full bg-neon/30 text-white flex items-center justify-center hover:bg-neon/60 transition z-50 text-lg">⚙️</button>
 
-        <!-- 🔒 PANTALLA DE ACCESO (AHORA SÍ FUNCIONA) -->
-        <div id="pantallaAcceso" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center">
+        <!-- 🔒 VENTANA DE INICIO DE SESIÓN (ARREGLADA) -->
+        <div id="ventanaLogin" class="hidden fixed inset-0 bg-black/95 z-[100] items-center justify-center">
             <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon/40 border-glow">
                 <h2 class="text-2xl font-bold text-center text-glow mb-6">ACCESO EXCLUSIVO</h2>
-                <input type="password" id="claveIngresada" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Ingresa tu cédula">
+                <input type="password" id="campoClave" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Ingresa tu cédula">
                 <!-- ✅ BOTÓN DE ENTRADA DIRECTO -->
-                <button onclick="entrarAlSistema()" class="w-full gradient-primary p-3 rounded-xl font-bold text-lg hover:scale-[1.02]">ENTRAR</button>
-                <button onclick="document.getElementById('pantallaAcceso').style.display='none'" class="w-full bg-gray-800 mt-2 p-2 rounded-lg text-sm">Cerrar</button>
+                <button onclick="verificarAcceso()" class="w-full gradient-primary p-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition">ENTRAR</button>
+                <button onclick="document.getElementById('ventanaLogin').style.display='none'" class="w-full bg-gray-800 mt-2 p-2 rounded-lg text-sm">Cerrar</button>
             </div>
         </div>
 
-        <!-- ✅ PANEL DE CONTROL (SE MUESTRA SOLO AL ENTRAR) -->
-        <div id="panelControl" class="hidden mt-10">
+        <!-- ✅ PANEL DE CONTROL (AQUÍ ESTÁ TODO LO QUE PEDISTE) -->
+        <div id="panelPrincipal" class="hidden mt-10">
             
-            <!-- 🧭 MENÚ -->
+            <!-- 🧭 MENÚ DE NAVEGACIÓN -->
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button class="tab-btn gradient-primary px-3 py-2 rounded-lg font-bold" onclick="cambiarPestana('ini', this)">INICIO</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('cuentas', this)">GESTIÓN</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('juegos', this)">JUEGOS</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary" onclick="cambiarPestana('conf', this)">AJUSTES</button>
+                <button class="tab-btn gradient-primary px-3 py-2 rounded-lg font-bold" onclick="cambiarPestana('inicio', this)">INICIO</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('cuentas', this)">GESTIÓN DE CUENTAS</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('contenido', this)">CONTENIDO</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('enlaces', this)">ENLACES</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('configuracion', this)">CONFIGURACIÓN</button>
             </div>
 
-            <!-- 📄 INICIO -->
-            <div id="ini" class="bloque bg-panel/80 p-6 rounded-2xl border-glow">
-                <h3 class="text-xl font-bold text-center text-green-400 mb-4">✅ SISTEMA 100% ACTIVO</h3>
-                <p class="text-center">Protección Anti-baneo: <b class="text-green-400">ACTIVA</b></p>
-                <p class="text-center">Disparo a la cabeza: <b class="text-green-400">88% FIJO</b></p>
-                <p class="text-center">Entrega: <b class="text-green-400">MODO REGALO</b></p>
-            </div>
-
-            <!-- 📄 GESTIÓN DE CUENTAS -->
-            <div id="cuentas" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
-                <h3 class="text-xl font-bold text-center text-pink-400 mb-4">🔑 CAMBIOS DE CUENTAS</h3>
-                <div class="mb-4">
-                    <label>De:</label>
-                    <select id="v1" class="w-full p-2 rounded bg-panel border mb-2">
-                        <option>Facebook</option>
-                        <option>Google</option>
-                    </select>
-                    <label>A:</label>
-                    <select id="v2" class="w-full p-2 rounded bg-panel border mb-2">
-                        <option>Facebook</option>
-                        <option>Google</option>
-                    </select>
-                    <button onclick="alert('✅ CAMBIO REALIZADO CON ÉXITO')" class="w-full bg-green-600 p-2 rounded mt-2">EJECUTAR</button>
+            <!-- 📌 PESTAÑA: INICIO -->
+            <div id="inicio" class="contenido-pestana block bg-panel/80 p-6 rounded-2xl border-glow border border-green/30">
+                <h3 class="text-xl font-bold text-center text-safe mb-6">✅ SISTEMA ACTIVO Y FUNCIONANDO AL 100%</h3>
+                
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-fondo/60 p-4 rounded-xl border border-green/40">
+                        <h4 class="font-bold text-green mb-2">🛡️ SEGURIDAD</h4>
+                        <p class="text-sm">Protección Anti-baneo: <span class="text-green-400 font-bold">ACTIVO MÁXIMO</span></p>
+                        <p class="text-sm">Disparo a la Cabeza: <span class="text-green-400 font-bold">88% ACTIVO</span></p>
+                        <p class="text-sm">Estado: <span class="text-green-400 font-bold">INDETECTABLE</span></p>
+                    </div>
+                    <div class="bg-fondo/60 p-4 rounded-xl border border-neon/40">
+                        <h4 class="font-bold text-neon mb-2">⚙️ SISTEMA</h4>
+                        <p class="text-sm">Actualización: <span class="text-green-400 font-bold">24/7 AUTOMÁTICA</span></p>
+                        <p class="text-sm">Bots IA: <span class="text-green-400 font-bold">OPERATIVOS</span></p>
+                        <p class="text-sm">Entrega: <span class="text-green-400 font-bold">MODO REGALO</span></p>
+                    </div>
                 </div>
             </div>
 
-            <!-- 📄 JUEGOS -->
-            <div id="juegos" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
-                <h3 class="text-xl font-bold text-center text-neon mb-4">🎮 CONTENIDO TOTAL</h3>
-                <p>🔥 <b>Free Fire:</b> Todo desde 2017, Criminales, Payasos, Diamantes.</p>
-                <p>🔵 <b>Roblox:</b> Todo catálogo y Robux.</p>
-                <p>🟩 <b>Minecraft:</b> Todas las versiones y mods.</p>
+            <!-- 👤 PESTAÑA: GESTIÓN DE CUENTAS (TODOS LOS CAMBIOS) -->
+            <div id="cuentas" class="contenido-pestana hidden bg-panel/80 p-6 rounded-2xl border-glow border border-pink/30">
+                <h3 class="text-xl font-bold text-center text-pink mb-6">🔑 GESTIÓN TOTAL DE CUENTAS</h3>
+                <p class="text-center text-sm mb-6">FB ↔ FB | G ↔ G | FB ↔ G | G ↔ FB ✅ TODAS LAS OPCIONES ACTIVAS</p>
+
+                <!-- 📋 CONSULTA DE CUENTA -->
+                <div class="bg-fondo/70 p-5 rounded-xl mb-6 border border-warning/40">
+                    <h4 class="font-bold text-warning mb-3">🔍 CONSULTAR ESTADO</h4>
+                    <input type="text" class="w-full p-3 rounded-lg bg-panel border border-warning/30 mb-3" placeholder="ID de usuario">
+                    <button class="w-full bg-warning p-2 rounded-lg font-bold">🔍 VER DATOS</button>
+                </div>
+
+                <!-- 🔄 CAMBIO DE VINCULACIÓN -->
+                <div class="bg-fondo/70 p-5 rounded-xl mb-6 border border-safe/40">
+                    <h4 class="font-bold text-safe mb-3">🔄 CAMBIAR VÍNCULO</h4>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div>
+                            <label class="block text-xs mb-1">DESDE:</label>
+                            <select id="origen" class="w-full p-2 rounded bg-panel border">
+                                <option>Facebook</option>
+                                <option>Google</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs mb-1">HASTA:</label>
+                            <select id="destino" class="w-full p-2 rounded bg-panel border">
+                                <option>Facebook</option>
+                                <option>Google</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="ejecutarCambio()" class="w-full bg-safe p-3 rounded-lg font-bold text-lg">✅ EJECUTAR CAMBIO</button>
+                </div>
+
+                <!-- 🔑 CAMBIO DE CONTRASEÑA -->
+                <div class="bg-fondo/70 p-5 rounded-xl border border-danger/40">
+                    <h4 class="font-bold text-danger mb-3">🔑 CAMBIAR CONTRASEÑA</h4>
+                    <input type="text" class="w-full p-3 rounded-lg bg-panel border border-danger/30 mb-3" placeholder="Nueva contraseña">
+                    <button class="w-full bg-danger p-2 rounded-lg font-bold">💾 ACTUALIZAR</button>
+                </div>
             </div>
 
-            <!-- 📄 AJUSTES -->
-            <div id="conf" class="bloque hidden bg-panel/80 p-6 rounded-2xl border-glow">
-                <h3 class="text-xl font-bold text-center text-green-400 mb-4">📱 ACTUALIZAR CONTACTO</h3>
-                <input type="text" id="nuevoWp" class="w-full p-3 rounded bg-panel border mb-3" placeholder="+57 3XX XXX XXXX">
-                <button onclick="actualizarWp()" class="w-full gradient-green p-3 rounded">GUARDAR</button>
+            <!-- 🎮 PESTAÑA: CONTENIDO DE JUEGOS (TAL COMO LO PEDISTE) -->
+            <div id="contenido" class="contenido-pestana hidden bg-panel/80 p-6 rounded-2xl border-glow border border-neon/30">
+                <h3 class="text-xl font-bold text-center text-neon mb-6">🔥 TODO EL CONTENIDO DISPONIBLE</h3>
+
+                <div class="space-y-4">
+                    <!-- 🟠 FREE FIRE -->
+                    <div class="bg-fondo/70 p-4 rounded-xl border border-danger/40">
+                        <h4 class="text-lg font-bold text-center text-danger mb-3">🔥 FREE FIRE (2017 - ACTUAL)</h4>
+                        <p>✅ Trajes Criminales, Payasos, Ángelicales, Sakura, Conejos, Inviernos.</p>
+                        <p>✅ Todos los paquetes exclusivos, Diamantes ilimitados, Mascotas y Armas.</p>
+                        <p>✅ Todo contenido futuro cargado automáticamente.</p>
+                        <p class="text-green-400 text-sm mt-2">⚙️ DISPARO 85-90% | ANTI-BANEO MÁXIMO</p>
+                    </div>
+
+                    <!-- 🔵 ROBLOX -->
+                    <div class="bg-fondo/70 p-4 rounded-xl border border-roblox/40">
+                        <h4 class="text-lg font-bold text-center text-roblox mb-3">🔵 ROBLOX</h4>
+                        <p>✅ Todo catálogo existente, Robux ilimitados, Objetos limitados.</p>
+                        <p>✅ Acceso a juegos privados, Accesorios, Animaciones, Servidores.</p>
+                        <p>✅ Sistema de regalo automático activo.</p>
+                    </div>
+
+                    <!-- 🟩 MINECRAFT -->
+                    <div class="bg-fondo/70 p-4 rounded-xl border border-minecraft/40">
+                        <h4 class="text-lg font-bold text-center text-minecraft mb-3">🟩 MINECRAFT</h4>
+                        <p>✅ Todas las versiones, Mods, Skins, Texturas, Mapas.</p>
+                        <p>✅ Paquetes de recursos, Acceso total a servidores, Permisos de administrador.</p>
+                    </div>
+                </div>
+
+                <div class="bg-pink/20 p-4 rounded-xl text-center border border-pink/40 mt-6">
+                    <p class="font-bold text-lg">📨 ENVÍO: <span class="text-green-400">MODO REGALO / NOTIFICACIÓN DENTRO DEL JUEGO</span></p>
+                </div>
+            </div>
+
+            <!-- 🔗 PESTAÑA: GENERADOR DE ENLACES -->
+            <div id="enlaces" class="contenido-pestana hidden bg-panel/80 p-6 rounded-2xl border-glow border border-safe/30">
+                <h3 class="text-xl font-bold text-center text-safe mb-6">🔗 GENERADOR DE ENLACES INSTALABLES</h3>
+                <textarea class="w-full h-32 p-4 rounded-xl bg-fondo border border-safe/40 text-white mb-4 scroll-hidden" placeholder="Funciones, permisos especiales..."></textarea>
+                <button onclick="generarEnlace()" class="w-full gradient-green py-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition border-green-glow">
+                    ✨ CREAR ENLACE (PERMISOS TOTALES)
+                </button>
+                <div id="cajaEnlace" class="hidden mt-5 p-4 bg-fondo/80 rounded-xl border border-safe/40">
+                    <p class="text-sm text-gray-300 mb-2">ENLACE GENERADO:</p>
+                    <p id="enlaceGenerado" class="text-green-400 font-bold"></p>
+                </div>
+            </div>
+
+            <!-- ⚙️ PESTAÑA: CONFIGURACIÓN (TU WHATSAPP) -->
+            <div id="configuracion" class="contenido-pestana hidden bg-panel/80 p-6 rounded-2xl border-glow border border-green/30">
+                <h3 class="text-xl font-bold text-center text-green mb-6">📱 GESTIÓN DE CONTACTO</h3>
+                <div class="bg-fondo/70 p-5 rounded-xl border border-green/40">
+                    <label class="block text-sm mb-2">ACTUALIZAR NÚMERO (SE VE EN LA PARTE DE ARRIBA):</label>
+                    <input type="text" id="nuevoNumero" class="w-full p-3 rounded-lg bg-panel border border-green/30 mb-4 text-lg" placeholder="+57 3XX XXX XXXX">
+                    <button onclick="actualizarWhatsApp()" class="w-full gradient-green p-3 rounded-lg font-bold text-lg">💾 GUARDAR</button>
+                </div>
             </div>
 
         </div>
@@ -146,24 +286,13 @@
     </div>
 
     <script>
-        // NAVEGACIÓN
-        function cambiarPestana(id, btn) {
-            document.querySelectorAll('.bloque').forEach(b => b.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(b => {b.classList.remove('gradient-primary'); b.classList.add('bg-panel');});
-            document.getElementById(id).classList.remove('hidden');
-            btn.classList.remove('bg-panel');
-            btn.classList.add('gradient-primary');
-        }
-
-        // ACTUALIZAR WHATSAPP
-        function actualizarWp() {
-            let num = document.getElementById('nuevoWp').value;
-            if(num) {
-                document.getElementById('textoWp').innerText = num;
-                alert("✅ ACTUALIZADO");
-            }
-        }
+        // BLOQUEO DE CÓDIGO FUENTE
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123 || (e.ctrlKey && e.shiftKey && e.keyCode == 73)) return false;
+        };
     </script>
 
 </body>
 </html>
+Arreglo final
