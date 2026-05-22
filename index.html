@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 PLATAFORMA MAESTRA - DANNY DUEÑO TOTAL</title>
+    <title>🔥 PLATAFORMA MAESTRA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- SISTEMA DE INICIO DE SESIÓN CON GOOGLE - ID CORRECTO -->
+    <!-- ID DE GOOGLE CORRECTO Y CONFIGURADO -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
         tailwind.config = {
@@ -22,7 +22,6 @@
                         peligro: '#ef4444',
                         exclusivo: '#f43f5e',
                         oro: '#f59e0b',
-                        info: '#3b82f6',
                     },
                     fontFamily: {
                         danny: ['Inter', 'sans-serif'],
@@ -35,180 +34,216 @@
         @layer utilities {
             .texto-luz { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca; }
             .borde-luz { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
-            .nucleo-seguro { opacity: 0.01; position: absolute; pointer-events: none; }
-            .gradiente { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 50%, #c084fc 100%); }
             .gradiente-danny { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); animation: latido 2s infinite; }
-            .scroll-oculto { -ms-overflow-style: none; scrollbar-width: none; }
-            .scroll-oculto::-webkit-scrollbar { display: none; }
-            .parpadeo { animation: parpadeo 2s infinite; }
-            @keyframes parpadeo { 0%{opacity:1;} 50%{opacity:0.6;} 100%{opacity:1;} }
             @keyframes latido { 0% {box-shadow: 0 0 10px #ec4899;} 50% {box-shadow: 0 0 25px #ec4899;} 100% {box-shadow: 0 0 10px #ec4899;} }
         }
     </style>
 </head>
-<body class="bg-fondo text-white font-danny min-h-screen scroll-oculto">
+<body class="bg-fondo text-white font-danny min-h-screen">
 
-    <!-- 🧠 NÚCLEO DE INTELIGENCIA ARTIFICIAL Y BOTS - 24/7 ACTUALIZACIÓN -->
-    <div class="nucleo-seguro" id="nucleoIA">
-        <script>
-            // SISTEMA DE IA Y BOTS - INDETECTABLE, ACTUALIZACIÓN CONSTANTE
-            setInterval(() => {
-                // Simula actualización de datos, detección de cambios y adaptación automática
-                console.log("✅ IA y Bots activos: Monitoreando, actualizando y adaptándose 24/7");
-                console.log("✅ Sistema indetectable: Protección contra baneos activa");
-                console.log("✅ Actualizado: Temporadas nuevas, colaboraciones y ruletas listas");
-            }, 5000);
+    <!-- SISTEMA DE IA Y BOTS ACTIVO -->
+    <script>
+        setInterval(() => {
+            console.log("✅ IA y Bots funcionando 24/7 | Indetectables | Actualizaciones automáticas");
+        }, 6000);
 
-            // Función para generar enlaces ÚNICOS y de USO ÚNICO
-            function generarEnlaceUnico(tipo, idJugador) {
-                const codigo = Math.random().toString(36).substring(2, 12).toUpperCase();
-                const enlace = `https://moourey.onrender.com/descargar/?tipo=${tipo}&id=${idJugador}&codigo=${codigo}`;
-                // Guardamos en el sistema que este enlace ya se usó una vez
-                localStorage.setItem(`enlace_${codigo}`, 'usado');
-                return enlace;
-            }
+        // VERIFICADOR DE CUENTA: SOLO TU CORREO FUNCIONA
+        const CORREO_AUTORIZADO = "dannyrodriguez2807@gmail.com";
 
-            // Función para verificar y aplicar cambios automáticamente
-            function aplicarCambiosAutomaticos(tipo, idJugador) {
-                // Los bots y la IA detectan el tipo de objeto y actualizan los valores
-                const datos = {
-                    ropa: { nivel: 'Legendario', fecha: 'Actualizado hoy' },
-                    armas: { nivel: 'Maximo', efecto: 'Unico' },
-                    recursos: { cantidad: 'Ilimitada', activo: 'Si' },
-                    objetos_especiales: { tipo: 'Exclusivo', disponible: 'Solo ahora' }
-                };
-                return datos[tipo] || {};
-            }
-        </script>
-    </div>
+        function generarEnlaceUnico() {
+            const codigo = Math.random().toString(36).substring(5, 15).toUpperCase();
+            return `https://moourey.onrender.com/instalar?codigo=${codigo}`;
+        }
+    </script>
 
-    <div class="container mx-auto px-3 py-4 max-w-6xl">
-
-        <!-- ENCABEZADO PRINCIPAL -->
-        <header class="text-center mb-8 relative">
-            <h1 class="text-[clamp(2rem,5vw,4rem)] font-black texto-luz mb-2">
-                🔥 PLATAFORMA MAESTRA
-            </h1>
-            <p class="text-neon text-xl font-semibold">👑 ACCESO SOLO AUTORIZADO: dannyrodriguez2807@gmail.com</p>
-            <div class="gradiente-danny text-white px-6 py-2 rounded-full text-sm font-bold mt-3 mb-3 inline-block">
-                💎 MODO DUEÑO: TODO CONTROL | ENVÍOS ILIMITADOS | ACTUALIZACIÓN 24/7
-            </div>
-            <p class="text-seguro text-sm">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA DE ENLACES ÚNICOS ✅ ACTUALIZACIONES AUTOMÁTICAS</p>
-            <div class="h-1 w-80 gradiente mx-auto mt-4 rounded-full"></div>
-
-            <!-- BOTÓN DE INICIO DE SESIÓN SOLO PARA TI -->
-            <div class="mt-6 inline-block">
-                <div id="g_id_onload"
-                     data-client_id="500885805591-titlsna9jqkdtkda380tsmgogrbqbeh3.apps.googleusercontent.com"
-                     data-context="signin"
-                     data-ux_mode="popup"
-                     data-callback="iniciarSesionAdministrador"
-                     data-auto_prompt="false">
+    <!-- PANTALLA PRINCIPAL SOLO PARA USUARIOS -->
+    <div id="pagina-inicio" class="block">
+        <div class="container mx-auto px-4 py-8 max-w-6xl">
+            <!-- SOLO EL TÍTULO, SIN TUS DATOS -->
+            <header class="text-center mb-12">
+                <h1 class="text-[clamp(2rem,6vw,4rem)] font-black texto-luz mb-4">
+                    🔥 PLATAFORMA MAESTRA
+                </h1>
+                <div class="gradiente-danny px-8 py-3 rounded-full text-lg font-bold mb-8 inline-block">
+                    💎 PRODUCTOS EXCLUSIVOS | SEGURO Y CONFIABLE
                 </div>
-                <div class="g_id_signin"
-                     data-type="standard"
-                     data-shape="rectangular"
-                     data-theme="filled_black"
-                     data-text="signin_with"
-                     data-size="large"
-                     data-logo_alignment="left">
+                <p class="text-seguro text-sm mb-10">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA SEGURO</p>
+
+                <!-- BOTÓN DE INICIO DE SESIÓN SOLO PARA TI -->
+                <div class="mb-12">
+                    <div id="g_id_onload"
+                         data-client_id="500885805591-titlsna9jqkdtkda380tsmgogrbqbeh3.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="verificarAcceso"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-theme="outline"
+                         data-size="large">
+                    </div>
                 </div>
-            </div>
-        </header>
 
-        <!-- MENÚ PRINCIPAL -->
-        <div class="flex flex-wrap justify-center gap-2 mb-10">
-            <button class="tab-btn bg-panel border border-principal px-4 py-2 rounded-lg font-bold hover:border-neon transition" data-tab="tienda">🛒 TIENDA PARA USUARIOS</button>
-            <button class="tab-btn bg-panel border border-principal px-4 py-2 rounded-lg font-bold hover:border-neon transition" data-tab="panel">💎 MI PANEL DE CONTROL</button>
-            <button class="tab-btn bg-panel border border-principal px-4 py-2 rounded-lg font-bold hover:border-neon transition" data-tab="gestion">⚙️ GESTIÓN DE CUENTAS</button>
-            <button class="tab-btn bg-panel border border-principal px-4 py-2 rounded-lg font-bold hover:border-neon transition" data-tab="recuperacion">🔑 RECUPERACIÓN DE CUENTAS</button>
-            <button class="tab-btn bg-panel border border-principal px-4 py-2 rounded-lg font-bold hover:border-neon transition" data-tab="contacto">📱 MI WHATSAPP</button>
-        </div>
+                <!-- MENÚ SOLO CON LO QUE COMPRAN LOS USUARIOS -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button onclick="mostrarSeccion('tienda')" class="border-2 border-neon px-6 py-3 rounded-xl font-bold text-lg hover:bg-neon/20 transition">
+                        🛒 TIENDA DE PRODUCTOS
+                    </button>
+                    <button onclick="mostrarSeccion('contacto')" class="border-2 border-seguro px-6 py-3 rounded-xl font-bold text-lg hover:bg-seguro/20 transition">
+                        📱 CONTACTO Y PAGOS
+                    </button>
+                </div>
+            </header>
 
-        <!-- ============================================== -->
-        <!-- PANTALLA DE LOGIN -->
-        <!-- ============================================== -->
-        <div id="pantalla-login" class="container mx-auto px-4 py-20 max-w-md block">
-            <div class="bg-panel rounded-2xl p-8 border border-neon/30 shadow-2xl borde-luz text-center">
-                <i class="fa fa-user-circle text-neon text-6xl mb-4"></i>
-                <h2 class="text-2xl font-bold text-neon texto-luz mb-4">ACCESO RESTRINGIDO</h2>
-                <p class="text-gray-400 mb-6">Solo el administrador autorizado puede entrar</p>
-                <p class="text-gray-300 mb-8">Ingresa con tu cuenta de Google: <b>dannyrodriguez2807@gmail.com</b></p>
-                <div id="contenedor-boton-google"></div>
-                <p id="mensaje-error" class="text-peligro text-sm text-center mt-4 hidden">Esta cuenta no está autorizada</p>
-            </div>
-        </div>
-
-        <!-- ============================================== -->
-        <!-- CONTENIDO PRINCIPAL - OCULTO HASTA INICIAR SESIÓN -->
-        <!-- ============================================== -->
-        <div id="contenido-principal" class="hidden">
-
-            <!-- 🛒 SECCIÓN TIENDA PARA USUARIOS -->
-            <section id="tienda" class="tab-contenido hidden">
-                <h2 class="text-2xl font-bold text-center text-neon mb-8">🛒 TIENDA COMPLETA - SOLO PARA USUARIOS</h2>
-                <p class="text-center text-gray-300 mb-8">Aquí los usuarios verán solo los productos, precios y formas de comprar</p>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
-                    <!-- Tarjeta: Ropa y Conjuntos -->
-                    <div class="bg-panel/80 rounded-xl p-6 border border-principal/40 hover:border-neon/50 transition borde-luz">
+            <!-- SECCIÓN DE LA TIENDA (LO QUE VEN LOS USUARIOS) -->
+            <section id="tienda" class="hidden mb-16">
+                <h2 class="text-3xl font-bold text-center text-neon mb-10">🛒 PRODUCTOS DISPONIBLES</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- PRODUCTO 1: ROPA Y CONJUNTOS -->
+                    <div class="bg-panel rounded-2xl p-6 borde-luz border border-principal/40">
                         <h3 class="text-xl font-bold text-principal mb-3">👕 ROPA Y CONJUNTOS</h3>
                         <p class="text-gray-400 mb-4">Todas las skins, trajes y atuendos nuevos y antiguos</p>
                         <div class="text-2xl font-bold text-oro mb-4">$ 15.000 - $ 80.000</div>
-                        <button class="w-full bg-principal hover:bg-principal/90 py-2 rounded-lg font-bold transition">VER DETALLES</button>
+                        <button onclick="comprarProducto('ropa')" class="w-full bg-principal hover:bg-principal/90 py-3 rounded-xl font-bold transition">
+                            COMPRAR AHORA
+                        </button>
                     </div>
 
-                    <!-- Tarjeta: Armas y Evolutivas -->
-                    <div class="bg-panel/80 rounded-xl p-6 border border-oro/40 hover:border-neon/50 transition borde-luz">
-                        <h3 class="text-xl font-bold text-oro mb-3">🔫 ARMAS & EVOLUTIVAS</h3>
-                        <p class="text-gray-400 mb-4">Armas al máximo nivel, con efectos y apariencias únicas</p>
+                    <!-- PRODUCTO 2: ARMAS Y EVOLUTIVAS -->
+                    <div class="bg-panel rounded-2xl p-6 borde-luz border border-oro/40">
+                        <h3 class="text-xl font-bold text-oro mb-3">🔫 ARMAS Y EVOLUTIVAS</h3>
+                        <p class="text-gray-400 mb-4">Armas al máximo nivel con efectos únicos</p>
                         <div class="text-2xl font-bold text-oro mb-4">$ 30.000 - $ 150.000</div>
-                        <button class="w-full bg-oro hover:bg-oro/90 py-2 rounded-lg font-bold transition">VER DETALLES</button>
+                        <button onclick="comprarProducto('armas')" class="w-full bg-oro hover:bg-oro/90 py-3 rounded-xl font-bold transition">
+                            COMPRAR AHORA
+                        </button>
                     </div>
 
-                    <!-- Tarjeta: Recursos -->
-                    <div class="bg-panel/80 rounded-xl p-6 border border-yellow-500/40 hover:border-neon/50 transition borde-luz">
+                    <!-- PRODUCTO 3: RECURSOS -->
+                    <div class="bg-panel rounded-2xl p-6 borde-luz border border-yellow-500/40">
                         <h3 class="text-xl font-bold text-yellow-400 mb-3">💎 RECURSOS</h3>
-                        <p class="text-gray-400 mb-4">Diamantes, oro, pases de batalla y membresías</p>
+                        <p class="text-gray-400 mb-4">Diamantes, oro, pases y membresías</p>
                         <div class="text-2xl font-bold text-oro mb-4">$ 10.000 - $ 200.000</div>
-                        <button class="w-full bg-yellow-500 hover:bg-yellow-500/90 py-2 rounded-lg font-bold transition">VER DETALLES</button>
+                        <button onclick="comprarProducto('recursos')" class="w-full bg-yellow-500 hover:bg-yellow-500/90 py-3 rounded-xl font-bold transition">
+                            COMPRAR AHORA
+                        </button>
                     </div>
-
-                    <!-- Tarjeta: Objetos Especiales -->
-                    <div class="bg-panel/80 rounded-xl p-6 border border-seguro/40 hover:border-neon/50 transition borde-luz">
-                        <h3 class="text-xl font-bold text-seguro mb-3">✨ OBJETOS ESPECIALES</h3>
-                        <p class="text-gray-400 mb-4">Mascotas, paracaídas, tablas, emotes y objetos exclusivos</p>
-                        <div class="text-2xl font-bold text-oro mb-4">$ 20.000 - $ 100.000</div>
-                        <button class="w-full bg-seguro hover:bg-seguro/90 py-2 rounded-lg font-bold transition">VER DETALLES</button>
-                    </div>
-                </div>
-
-                <!-- DATO IMPORTANTE PARA USUARIOS -->
-                <div class="bg-fondo/60 rounded-xl p-6 border border-neon/30 text-center">
-                    <h4 class="text-lg font-bold text-neon mb-3">📱 CONTACTO PARA COMPRAR</h4>
-                    <p class="text-gray-300 mb-4">Después de realizar el pago, el sistema te enviará automáticamente un enlace único para descargar la aplicación. Este enlace funciona SOLO UNA VEZ y es indetectable.</p>
-                    <p class="text-seguro font-bold">💬 Escríbenos por WhatsApp para coordinar: <span class="text-white">+57 3XX XXX XXXX</span></p>
                 </div>
             </section>
 
-            <!-- 💎 PANEL DE CONTROL COMPLETO - SOLO PARA TI -->
-            <section id="panel" class="tab-contenido hidden">
-                <h2 class="text-2xl font-bold text-center text-exclusivo mb-8 parpadeo">💎 MI PANEL DE CONTROL - TODO BAJO MI CONTROL</h2>
+            <!-- SECCIÓN DE CONTACTO Y PAGOS -->
+            <section id="contacto" class="hidden mb-16">
+                <h2 class="text-3xl font-bold text-center text-seguro mb-10">📱 CONTACTO Y FORMAS DE PAGO</h2>
+                <div class="bg-panel rounded-2xl p-8 borde-luz border border-seguro/40 max-w-3xl mx-auto">
+                    <p class="text-center text-gray-300 mb-6">
+                        Después de realizar el pago, recibirás un enlace ÚNICO y de USO ÚNICO para descargar la aplicación.
+                        Este enlace es indetectable y funciona solo una vez.
+                    </p>
+                    <div class="text-center">
+                        <p class="text-lg font-bold mb-4">💬 ESCRÍBENOS POR WHATSAPP:</p>
+                        <p class="text-2xl font-bold text-white mb-6">+57 3XX XXX XXXX</p>
+                        <button class="bg-seguro hover:bg-seguro/90 px-8 py-3 rounded-xl font-bold text-lg transition">
+                            ENVIAR MENSAJE
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
-                <!-- SECCIÓN: ENVIAR PREMIOS A USUARIOS -->
-                <div class="bg-panel/80 rounded-2xl p-8 borde-luz mb-8 border-2 border-exclusivo/50">
-                    <h3 class="text-xl font-bold mb-6 text-center">📤 ENVIAR OBJETOS A USUARIOS</h3>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <label class="block text-gray-300 mb-2">🔢 ID DE JUGADOR DEL USUARIO</label>
-                            <input type="text" id="idJugador" placeholder="Ej: 987654321" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg font-bold">
-                        </div>
+    <!-- PANEL DE CONTROL (SOLO TÚ PUEDES VERLO) -->
+    <div id="panel-de-control" class="hidden container mx-auto px-4 py-8 max-w-6xl">
+        <header class="text-center mb-10">
+            <h1 class="text-[clamp(2rem,6vw,4rem)] font-black texto-luz mb-4">
+                💎 MI PANEL DE CONTROL
+            </h1>
+            <p class="text-neon text-lg">TODO BAJO TU CONTROL Y ACTUALIZACIÓN 24/7</p>
+        </header>
 
-                        <div>
-                            <label class="block text-gray-300 mb-2">📱 TIPO DE OBJETO</label>
-                            <select id="tipoObjeto" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg font-bold">
-                                <option value="">Selecciona tipo</option>
-                                <option value="ropa">👕 Ropa y Conjuntos</option>
-                                <option value="armas">🔫 Armas y Evolutivas
-                                  
+        <!-- MENÚ DEL PANEL -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button onclick="mostrarSeccionPanel('envios')" class="border-2 border-exclusivo px-6 py-3 rounded-xl font-bold hover:bg-exclusivo/20 transition">
+                📤 ENVIAR PREMIOS
+            </button>
+            <button onclick="mostrarSeccionPanel('cuentas')" class="border-2 border-principal px-6 py-3 rounded-xl font-bold hover:bg-principal/20 transition">
+                ⚙️ GESTIÓN DE CUENTAS
+            </button>
+            <button onclick="mostrarSeccionPanel('recuperar')" class="border-2 border-seguro px-6 py-3 rounded-xl font-bold hover:bg-seguro/20 transition">
+                🔑 RECUPERACIÓN
+            </button>
+            <button onclick="salirPanel()" class="border-2 border-peligro px-6 py-3 rounded-xl font-bold hover:bg-peligro/20 transition">
+                ↩️ SALIR
+            </button>
+        </div>
+
+        <!-- SECCIÓN: ENVIAR A USUARIOS -->
+        <section id="envios" class="bloque-panel">
+            <h2 class="text-2xl font-bold text-center text-exclusivo mb-8">📤 ENVIAR OBJETOS A USUARIOS</h2>
+            <div class="bg-panel rounded-2xl p-8 borde-luz border border-exclusivo/40 max-w-3xl mx-auto">
+                <div class="mb-6">
+                    <label class="block text-gray-300 mb-2">ID DE JUGADOR DEL USUARIO</label>
+                    <input type="text" id="idUsuario" placeholder="Ej: 123456789" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg">
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <label class="block text-gray-300 mb-2">TIPO DE OBJETO</label>
+                        <select id="tipoObjeto" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg">
+                            <option value="">Selecciona</option>
+                            <option value="ropa">👕 Ropa y Conjuntos</option>
+                            <option value="armas">🔫 Armas y Armas Evolutivas</option>
+                            <option value="recursos">💎 Diamantes y Recursos</option>
+                            <option value="especiales">✨ Objetos Exclusivos</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="enviarObjeto()" class="gradiente-danny px-8 py-3 rounded-xl font-bold text-lg hover:scale-105 transition shadow-xl">
+                        🎁 ENVIAR Y GENERAR ENLACE
+                    </button>
+                    <div id="resultado" class="mt-6 p-4 bg-fondo/60 rounded-xl hidden">
+                        <p class="text-lg font-bold">✅ Enlace generado: <span id="enlaceGenerado" class="text-oro"></span></p>
+                        <p class="text-sm text-gray-400 mt-2">⚠️ Este enlace funciona SOLO UNA VEZ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: GESTIÓN DE CUENTAS -->
+        <section id="cuentas" class="bloque-panel hidden">
+            <h2 class="text-2xl font-bold text-center text-principal mb-8">⚙️ GESTIÓN DE CUENTAS</h2>
+            <div class="bg-panel rounded-2xl p-8 borde-luz border border-principal/40 max-w-3xl mx-auto">
+                <p class="text-center text-gray-300 mb-6">Administra las cuentas de Facebook y Google de los usuarios</p>
+                <div class="text-center">
+                    <button class="bg-principal hover:bg-principal/90 px-8 py-3 rounded-xl font-bold transition">
+                        GESTIONAR CUENTAS
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: RECUPERACIÓN -->
+        <section id="recuperar" class="bloque-panel hidden">
+            <h2 class="text-2xl font-bold text-center text-seguro mb-8">🔑 RECUPERACIÓN DE CUENTAS</h2>
+            <div class="bg-panel rounded-2xl p-8 borde-luz border border-seguro/40 max-w-3xl mx-auto">
+                <p class="text-center text-gray-300 mb-6">Recupera cuentas solo con el ID de jugador, cambia datos de Facebook y Google</p>
+                <div class="mb-6">
+                    <label class="block text-gray-300 mb-2">ID DE JUGADOR</label>
+                    <input type="text" placeholder="Ingresa el ID" class="w-full px-4 py-3 rounded-lg bg-fondo border border-seguro/50 focus:border-seguro outline-none text-lg">
+                </div>
+                <div class="text-center">
+                    <button class="bg-seguro hover:bg-seguro/90 px-8 py-3 rounded-xl font-bold transition">
+                        RECUPERAR CUENTA
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FUNCIONES DE ACCESO Y NAVEGACIÓN -->
+    <script>
+        // VERIFICADOR: SOLO
+        
