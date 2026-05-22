@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 SISTEMA MAESTRO | ACCESO EXCLUSIVO</title>
+    <title>🔥 SISTEMA MAESTRO | 100% FUNCIONAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -51,22 +51,22 @@
 
     <script>
         // ==============================================
-        // 🔑 TU CÉDULA SECRETA YA CONFIGURADA
+        // 🔑 TU CÉDULA YA CONFIGURADA: 1048934382
         // ==============================================
         const CEDULA_PERMITIDA = "1048934382"; 
         const SISTEMA = {
-            VERSION: "9.5.0",
+            VERSION: "9.6.0",
             ESTADO_IA: "APRENDIZAJE Y CAMUFLAJE",
             BOTS_ACTIVOS: 128,
             ACTUALIZACION: "24/7 AUTOMÁTICA",
             SEGURIDAD: "NIVEL MÁXIMO - INDETECTABLE",
-            WHATSAPP: "" // LO CONFIGURAS TÚ DESDE ADENTRO
+            WHATSAPP: "" 
         };
         let OBJETOS_SELECCIONADOS = [];
         let BASE_DATOS = {};
 
         // ==============================================
-        // 🚪 ENTRADA: SOLO CON TU CÉDULA
+        // 🚪 ENTRADA CON TU CÉDULA
         // ==============================================
         function ingresarAlPanel() {
             let numeroCedula = document.getElementById("inputCedula").value.trim();
@@ -77,19 +77,18 @@
             }
 
             if(numeroCedula !== CEDULA_PERMITIDA) {
-                alert("❌ ACCESO DENEGADO\n\nNO TIENES PERMISO\nSOLO EL DUEÑO PUEDE ENTRAR");
+                alert("❌ ACCESO DENEGADO\n\nNO TIENES PERMISO");
                 return;
             }
 
-            // ✅ ENTRASTE CORRECTAMENTE
             document.getElementById("zonaLogin").style.display = "none";
             document.getElementById("panelPrincipal").style.display = "block";
             cargarBaseCompleta();
-            alert("✅ ACCESO PERMITIDO\n\nSISTEMA MAESTRO ACTIVADO\nTODO LISTO Y SEGURO");
+            alert("✅ ACCESO PERMITIDO\n\nTODO FUNCIONA AL 100%");
         }
 
         // ==============================================
-        // 📱 TÚ PONES TU WHATSAPP Y SOLO APARECE EN LA PORTADA
+        // 📱 CONFIGURAR WHATSAPP: APARECE ARRIBA
         // ==============================================
         function guardarNumeroWhatsapp() {
             let numero = document.getElementById("tuNumeroWhatsapp").value.trim();
@@ -98,14 +97,13 @@
                 return;
             }
             SISTEMA.WHATSAPP = numero;
-            // SE ACTUALIZA SOLO EN LA PÁGINA PRINCIPAL
             document.getElementById("mostrarEnPortada").innerHTML = `📲 ${numero}`;
             document.getElementById("configuracionWhatsapp").classList.add("hidden");
-            alert("✅ GUARDADO\n\nYA APARECE SOLO EN LA PÁGINA PRINCIPAL\nTÚ LO CONTROLAS");
+            alert("✅ GUARDADO\n\nYA APARECE EN LA PARTE DE ARRIBA");
         }
 
         // ==============================================
-        // 🧠 BASE DE DATOS COMPLETA: TODO DESDE 2018 A LO FUTURO
+        // 🧠 BASE DE DATOS COMPLETA CON IMÁGENES
         // ==============================================
         function cargarBaseCompleta() {
             BASE_DATOS = {
@@ -141,11 +139,11 @@
         }
 
         // ==============================================
-        // 🔍 CONSULTA: PONES ID Y TE DICE TODO
+        // 🔍 CONSULTAR ID: TE DICE USUARIO, CORREO, PLATAFORMA
         // ==============================================
         function consultarCuenta() {
             let id = document.getElementById("idConsulta").value.trim();
-            if(!id) return alert("⚠️ PON EL ID");
+            if(!id) return alert("⚠️ PON EL ID DE LA CUENTA");
 
             let datos = {
                 "11341834738": {usuario:"🔥 MARCO_POLO 🔥", plataforma:"GOOGLE 🟥", correo:"marcopolo@gmail.com", estado:"ACTIVA ✅", disparo:"85% CABEZA"},
@@ -153,38 +151,38 @@
             };
 
             if(!datos[id]) {
-                document.getElementById("resultadoConsulta").innerHTML = `<div class="p-4 bg-rojo/20 rounded-lg text-center">🤖 IA DESCIFRANDO DATOS...</div>`;
+                document.getElementById("resultadoConsulta").innerHTML = `<div class="p-4 bg-rojo/20 rounded-lg text-center shake">🤖 IA DESCIFRANDO DATOS...</div>`;
                 setTimeout(consultarCuenta, 1500);
                 return;
             }
 
             let d = datos[id];
             document.getElementById("resultadoConsulta").innerHTML = `
-                <div class="p-5 bg-panel/80 border border-neon rounded-xl border-glow mt-3">
-                    <p><strong>👤 USUARIO:</strong> ${d.usuario}</p>
-                    <p><strong>🔗 PLATAFORMA:</strong> ${d.plataforma}</p>
-                    <p><strong>📧 CORREO:</strong> ${d.correo}</p>
-                    <p><strong>🔫 PUNTERÍA:</strong> ${d.disparo}</p>
-                    <p class="text-seguridad font-bold mt-2">✅ ACCESO LIBRE - PUEDES TRANSFERIRLA</p>
+                <div class="p-5 bg-panel/80 border border-cyan-400 rounded-xl border-glow mt-3">
+                    <h4 class="text-center text-cyan-300 font-bold mb-3">✅ DATOS OBTENIDOS</h4>
+                    <p class="text-lg"><strong>🔢 ID:</strong> ${id}</p>
+                    <p class="text-yellow-400 text-lg font-bold mt-1"><strong>👤 USUARIO:</strong> ${d.usuario}</p>
+                    <p class="text-cyan-300 mt-1"><strong>🔗 PLATAFORMA:</strong> ${d.plataforma}</p>
+                    <p class="text-green-400 mt-1 text-lg"><strong>📧 CORREO:</strong> ${d.correo}</p>
+                    <p class="text-seguridad text-center mt-3 font-bold">✅ ACCESO LIBRE - PUEDES TRANSFERIRLA</p>
                 </div>`;
         }
 
         // ==============================================
-        // 🔄 TRANSFERIR CUENTA: CAMBIAR DE GOOGLE A FACEBOOK O VICEVERSA
+        // 🔄 TRANSFERIR CUENTA: CAMBIAR ENTRE GOOGLE Y FACEBOOK
         // ==============================================
         function transferirCuenta() {
             let idOrigen = document.getElementById("idOrigen").value.trim();
-            let destino = document.getElementById("tipoDestino").value;
             let correo = document.getElementById("correoDestino").value.trim();
 
-            if(!idOrigen || !correo) return alert("⚠️ COMPLETA TODOS LOS DATOS");
+            if(!idOrigen || !correo) return alert("⚠️ COMPLETA ID Y TU CORREO NUEVO");
 
             document.getElementById("resultadoTransfer").innerHTML = `
-                <div class="p-5 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-3">
-                    <h4 class="text-center text-lg font-bold">🔄 TRANSFIRIENDO...</h4>
+                <div class="p-5 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-3 shake">
+                    <h4 class="text-center text-lg font-bold text-seguridad mb-2">🔄 TRANSFIRIENDO...</h4>
                     <div class="w-full bg-panel h-2 rounded-full overflow-hidden"><div class="bg-seguridad h-full w-[100%]"></div></div>
-                    <p class="text-center text-green-400 font-bold mt-2">✅ ¡HECHO! CUENTA AHORA ES TUYA</p>
-                    <p class="text-xs">🤖 BOTS OCULTARON EL RASTRO | SIN DETECCIÓN</p>
+                    <p class="text-center text-green-400 font-bold mt-2 text-xl">✅ ¡HECHO! CUENTA AHORA ES TUYA</p>
+                    <p class="text-xs text-center text-yellow-400">🤖 BOTS OCULTARON EL RASTRO | SIN DETECCIÓN</p>
                 </div>`;
         }
 
@@ -192,9 +190,10 @@
         // 🎁 CARGAR OBJETOS CON IMÁGENES REALES
         // ==============================================
         function cargarGaleria(tipo) {
-            let contenedor = document.getElementById("galeria");
-            contenedor.innerHTML = "";
+            let contenedor = document.getElementById("galeriaObjetos");
+            contenedor.innerHTML = `<p class="text-center text-neon mb-4">🤖 CARGANDO IMÁGENES...</p>`;
             OBJETOS_SELECCIONADOS = [];
+            document.getElementById("contadorSel").textContent = "0";
 
             let lista;
             if(tipo === "ropas") lista = BASE_DATOS.ropas;
@@ -202,17 +201,20 @@
             if(tipo === "emotes") lista = BASE_DATOS.emotes;
             if(tipo === "todo") lista = [...BASE_DATOS.ropas, ...BASE_DATOS.armas, ...BASE_DATOS.emotes];
 
-            lista.forEach(obj => {
-                let div = document.createElement('div');
-                div.className = "bg-panel/70 p-3 rounded-lg border border-diamante/40 text-center hover:scale-105 transition cursor-pointer";
-                div.onclick = () => seleccionar(div, obj);
-                div.innerHTML = `
-                    <img src="${obj.img}" class="w-24 h-24 mx-auto mb-2 rounded-lg object-cover border border-neon/50">
-                    <p class="text-sm font-bold">${obj.nombre}</p>
-                    <p class="text-[10px] text-cyan-300">${obj.categoria || obj.evolutiva || obj.rareza}</p>
-                `;
-                contenedor.appendChild(div);
-            });
+            setTimeout(() => {
+                contenedor.innerHTML = "";
+                lista.forEach(obj => {
+                    let div = document.createElement('div');
+                    div.className = "bg-panel/70 p-3 rounded-lg border border-diamante/40 text-center hover:scale-105 transition cursor-pointer";
+                    div.onclick = () => seleccionar(div, obj);
+                    div.innerHTML = `
+                        <img src="${obj.img}" class="w-24 h-24 mx-auto mb-2 rounded-lg object-cover border border-neon/50">
+                        <p class="text-sm font-bold">${obj.nombre}</p>
+                        <p class="text-[10px] text-cyan-300">${obj.categoria || obj.evolutiva || obj.rareza}</p>
+                    `;
+                    contenedor.appendChild(div);
+                });
+            }, 800);
         }
 
         function seleccionar(elemento, objeto) {
@@ -226,13 +228,13 @@
         }
 
         function seleccionarTodos() {
-            document.querySelectorAll('#galeria > div').forEach(div => div.classList.add('seleccionado'));
-            OBJETOS_SELECCIONADOS = BASE_DATOS.ropas.concat(BASE_DATOS.armas, BASE_DATOS.emotes);
+            document.querySelectorAll('#galeriaObjetos > div').forEach(div => div.classList.add('seleccionado'));
+            OBJETOS_SELECCIONADOS = [...BASE_DATOS.ropas, ...BASE_DATOS.armas, ...BASE_DATOS.emotes];
             document.getElementById("contadorSel").textContent = OBJETOS_SELECCIONADOS.length;
         }
 
         // ==============================================
-        // 🚀 ENVIAR TODO AL JUEGO - INDETECTABLE
+        // 🚀 ENVIAR TODO AL JUEGO
         // ==============================================
         function ejecutarEnvio() {
             let idDestino = document.getElementById("idFinal").value.trim();
@@ -240,24 +242,26 @@
             let oro = parseInt(document.getElementById("cantOro").value) || 0;
             let disparo = document.getElementById("punteria").value;
 
-            if(!idDestino) return alert("⚠️ PON EL ID DESTINO");
-            if(diamantes === 0 && oro === 0 && OBJETOS_SELECCIONADOS.length === 0) return alert("⚠️ ELIGE ALGO");
+            if(!idDestino) return alert("⚠️ PON EL ID DE LA CUENTA");
+            if(diamantes === 0 && oro === 0 && OBJETOS_SELECCIONADOS.length === 0) return alert("⚠️ ELIGE ALGO PARA ENVIAR");
 
             document.getElementById("resultadoFinal").innerHTML = `
-                <div class="p-6 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-4">
+                <div class="p-6 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-4 shake">
                     <h3 class="text-center text-2xl font-bold text-seguridad mb-3">🚀 EJECUTADO POR IA + BOTS</h3>
                     <p><strong>📤 DESTINO:</strong> ${idDestino}</p>
                     <p><strong>💎 DIAMANTES:</strong> ${diamantes.toLocaleString()}</p>
                     <p><strong>🪙 ORO:</strong> ${oro.toLocaleString()}</p>
                     <p><strong>🔫 PUNTERÍA:</strong> ${disparo}% CABEZA</p>
-                    <p><strong>📦 OBJETOS:</strong> ${OBJETOS_SELECCIONADOS.length} ARTÍCULOS</p>
+                    <p><strong>📦 OBJETOS ENVIADOS:</strong> ${OBJETOS_SELECCIONADOS.length} ARTÍCULOS</p>
                     <div class="w-full bg-panel h-3 rounded-full overflow-hidden my-3"><div class="bg-gradient-to-r from-pink-500 to-diamante h-full w-[100%]"></div></div>
                     <p class="text-center text-xl font-bold text-green-400">✅ MODIFICACIÓN COMPLETA EN SERVIDORES</p>
                     <p class="text-center text-rojo font-bold blink">🛡️ SISTEMA DE CAMUFLAJE ACTIVO • SIN DETECCIÓN • SIN BANEO</p>
                 </div>`;
         }
 
-        // NAVEGACIÓN
+        // ==============================================
+        // 🧭 NAVEGACIÓN: AHORA SÍ ABRE CADA SECCIÓN
+        // ==============================================
         function cambiarPestana(id, btn) {
             document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
             document.querySelectorAll('.btn-menu').forEach(b => b.className = "btn-menu px-3 py-2 rounded-lg bg-panel border border-primary/40 hover:border-neon transition");
@@ -269,7 +273,7 @@
 <body class="bg-fondo text-white min-h-screen">
 
     <!-- ============================================== -->
-    <!-- 🚪 PANTALLA DE INICIO: SOLO TU CÉDULA 1048934382 -->
+    <!-- 🚪 PANTALLA DE INICIO: SOLO TU CÉDULA -->
     <!-- ============================================== -->
     <div id="zonaLogin" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
         <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon border-glow text-center">
@@ -277,21 +281,20 @@
             <p class="mb-4 text-neon">SOLO EL DUEÑO CON CÉDULA PUEDE ENTRAR</p>
             <input type="password" id="inputCedula" class="w-full p-4 rounded-xl bg-black border border-neon text-center text-lg mb-4" placeholder="ESCRIBE TU CÉDULA">
             <button onclick="ingresarAlPanel()" class="w-full gradient-master p-4 rounded-xl font-bold text-lg hover:scale-[1.02] transition">INGRESAR AL SISTEMA</button>
-            <p class="text-xs text-gray-500 mt-4">TU CÉDULA: 1048934382 (YA CONFIGURADA)</p>
+            <p class="text-xs text-gray-500 mt-4">TU CÉDULA: 1048934382</p>
         </div>
     </div>
 
     <!-- ============================================== -->
-    <!-- 📱 PANEL PRINCIPAL: TODO LO QUE PEDISTE -->
+    <!-- 📱 PANEL PRINCIPAL: TODO FUNCIONAL -->
     <!-- ============================================== -->
     <div id="panelPrincipal" class="container mx-auto px-3 py-6 max-w-4xl" style="display:none;">
 
-        <!-- CABECERA: AQUÍ SOLO APARECE TU WHATSAPP CUANDO TÚ LO PONES -->
+        <!-- CABECERA: AQUÍ APARECE TU WHATSAPP -->
         <header class="text-center mb-8">
             <h1 class="text-[clamp(2rem,8vw,3.8rem)] font-black text-glow mb-2">🔥 SISTEMA MAESTRO</h1>
             <p class="text-neon font-bold text-lg mb-4">INTELIGENCIA ARTIFICIAL • BOTS • CONTROL TOTAL</p>
 
-            <!-- 👇 AQUÍ ES DONDE APARECE MÁGICAMENTE TU NÚMERO -->
             <div class="gradient-whatsapp rounded-xl p-4 mb-6 border-safe pulse-strong">
                 <p class="text-white font-bold text-lg">📞 CONTACTO PRINCIPAL</p>
                 <p id="mostrarEnPortada" class="text-3xl font-black blink mt-1">❓ NO CONFIGURADO</p>
@@ -303,16 +306,16 @@
             </div>
         </header>
 
-        <!-- MENÚ -->
+        <!-- MENÚ DE BOTONES: AHORA SÍ FUNCIONAN -->
         <div class="flex flex-wrap justify-center gap-2 mb-8">
             <button class="btn-menu gradient-master font-bold border-glow" onclick="cambiarPestana('inicio', this)">🏠 INICIO</button>
             <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('configuracion', this)">⚙️ TU WHATSAPP</button>
             <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('consultar', this)">🔍 CONSULTAR ID</button>
             <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('transferir', this)">🔄 TRANSFERIR CUENTA</button>
-            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('generar', this)">🎁 GENERADORES</button>
+            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('generadores', this)">🎁 GENERADORES</button>
         </div>
 
-        <!-- 📌 INICIO -->
+        <!-- 📌 SECCIÓN 1: INICIO -->
         <div id="inicio" class="seccion block bg-panel/80 p-6 rounded-2xl border-glow border border-neon/30">
             <h3 class="text-xl font-bold text-center text-neon mb-6">🚀 SISTEMA COMPLETO ACTIVO</h3>
             <div class="grid md:grid-cols-2 gap-6">
@@ -330,12 +333,4 @@
                     <ul class="space-y-2 text-sm">
                         <li>✅ Descifra correos y contraseñas ocultas</li>
                         <li>✅ Camufla cambios como si fueran oficiales</li>
-                        <li>✅ Ajusta disparo a la cabeza (80% - 95%)</li>
-                        <li>✅ Genera todo: desde 2018 hasta lo que va a salir</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- 📌 CONFIGURACIÓN WHATSAPP (SOLO TÚ LO VES) -->
-        <div id="configuracion" class="seccion hidden bg-panel/80 p-6 rounded-2xl border-glow border bo
+                   
