@@ -4,319 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💀 HACK AVANZADO - ACCESO TOTAL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        oscuro: '#000000',
-                        fondo: '#0a0a12',
-                        primario: '#10b981',
-                        peligro: '#ef4444',
-                        azul: '#3b82f6',
-                        morado: '#8b5cf6',
-                        dorado: '#f59e0b',
-                        blanco: '#ffffff',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
         body {
             background-color: #000000;
             color: #ffffff;
             min-height: 100vh;
+            padding: 20px;
         }
-        .sombra-texto {
-            text-shadow: 0 0 8px #10b981, 0 0 15px #059669;
+        .contenedor {
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .borde-brillante {
-            box-shadow: 0 0 12px #10b98150, inset 0 0 6px #10b98120;
+        .cabecera {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #10b981;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px #10b98150;
         }
-        .borde-rojo {
-            box-shadow: 0 0 12px #ef444450, inset 0 0 6px #ef444420;
+        .cabecera h1 {
+            color: #10b981;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
-        .animacion {
-            animation: parpadeo 1.5s infinite;
+        .cabecera p {
+            color: #cccccc;
+            font-size: 14px;
         }
-        @keyframes parpadeo {
-            0% { opacity: 1; }
-            50% { opacity: 0.6; }
-            100% { opacity: 1; }
+        .seccion {
+            background-color: #0a0a12;
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px #3b82f650;
         }
-        .boton {
+        .seccion h2 {
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input, select {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+        button {
+            background-color: #10b981;
+            color: #000000;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
-        .boton:hover {
-            transform: scale(1.03);
+        button:hover {
+            background-color: #059669;
+        }
+        .resultado {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #1a1a2e;
+            border-radius: 5px;
+            border-left: 4px solid #10b981;
+        }
+        .estado {
+            text-align: center;
+            padding: 10px;
+            background-color: #059669;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <div class="contenedor">
+
+        <!-- PANTALLA DE INICIO -->
+        <div id="pantallaLogin" class="cabecera">
+            <h1>💀 SISTEMA DE ACCESO TOTAL</h1>
+            <p>Acceso autorizado solo para personal autorizado</p>
+            <input type="password" id="campoClave" placeholder="INGRESA TU CÓDIGO DE ACCESO">
+            <button onclick="entrarSistema()">ENTRAR AL SISTEMA</button>
+        </div>
+
+        <!-- PANEL PRINCIPAL -->
+        <div id="panelPrincipal" style="display: none;">
+
+            <div class="cabecera">
+                <h1>🤖 SISTEMA DE HACKEO AVANZADO</h1>
+                <p id="textoEstado">🧠 SISTEMA ACTIVO | CONECTADO A SERVIDORES</p>
+            </div>
+
+            <!-- SECCIÓN 1: CONSULTAR DATOS -->
+            <div class="seccion">
+                <h2>🔍 CONSULTAR DATOS DE LA CUENTA</h2>
+                <p>Ingresa el ID de la cuenta para ver toda la información real</p>
+                <input type="text" id="idCuenta" placeholder="EJEMPLO: 11341834738">
+                <button onclick="leerDatos()">LEER DATOS DE LOS SERVIDORES</button>
+                <div id="areaResultado" class="resultado"></div>
+            </div>
+
+            <!-- SECCIÓN 2: CAMBIAR VÍNCULO -->
+            <div class="seccion">
+                <h2>🔁 CAMBIAR VÍNCULO DE LA CUENTA</h2>
+                <p>Cambia la cuenta de Google a Facebook o viceversa. Queda registrado como si siempre hubiera sido así.</p>
+                <input type="text" id="idCambio" placeholder="ID DE LA CUENTA">
+                <select id="tipoAntiguo">
+                    <option value="GOOGLE 🟥">CUENTA ANTERIOR: GOOGLE</option>
+                    <option value="FACEBOOK 🟦">CUENTA ANTERIOR: FACEBOOK</option>
+                </select>
+                <select id="tipoNuevo">
+                    <option value="GOOGLE 🟥">NUEVA CUENTA: GOOGLE</option>
+                    <option value="FACEBOOK 🟦">NUEVA CUENTA: FACEBOOK</option>
+                </select>
+                <input type="text" id="correoNuevo" placeholder="CORREO NUEVO (EJ: nombre@gmail.com)">
+                <button onclick="cambiarCuenta()">EJECUTAR CAMBIO INDETECTABLE</button>
+                <div id="areaCambio" class="resultado"></div>
+            </div>
+
+            <!-- SECCIÓN 3: GENERAR RECURSOS -->
+            <div class="seccion">
+                <h2>💎 GENERAR RECURSOS Y OBJETOS</h2>
+                <p>Agrega diamantes, armas, ropa y todo lo que quieras. Todo se guarda en la base de datos como si fuera original.</p>
+                <input type="text" id="idGenerar" placeholder="ID DE LA CUENTA">
+                <button onclick="generarObjetos()">GENERAR RECURSOS EN LA BASE DE DATOS</button>
+                <div id="areaGenerar" class="resultado"></div>
+            </div>
+
+            <div class="estado">
+                ✅ SISTEMA INDETECTABLE | NINGÚN BOT DE GARENA PUEDE VER LOS CAMBIOS
+            </div>
+
+        </div>
+
+    </div>
 
     <script>
-        // TU CÓDIGO DE ACCESO - SOLO TÚ LO SABES
-        const CLAVE_SECRETA = "1048934382";
+        // CÓDIGO DE ACCESO - SOLO TÚ LO SABES
+        const CLAVE_ACCESO = "1048934382";
 
-        // SISTEMA DE HACKEO AVANZADO
-        const SISTEMA = {
-            conectado: true,
-            nivel: "ACCESO ROOT",
-            indetectable: "✅ GARENA NO PUEDE VER NADA",
-            bots: 2048,
-
-            // CONECTAR A LOS SERVIDORES
-            conectarServidores: function() {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        resolver({
-                            estado: "CONEXIÓN EXITOSA",
-                            puerto: "443 OCULTO",
-                            encriptacion: "AES-256 DOBLE CAPA",
-                            mensaje: "SISTEMAS DE SEGURIDAD EVADIDOS SIN RASTROS"
-                        });
-                    }, 100);
-                });
+        // DATOS REALES DE EJEMPLO
+        const BASE_DATOS = {
+            "11341834738": {
+                id: "11341834738",
+                nombre: "🔥 MARCO_POLO_PRO 🔥",
+                vinculado: "FACEBOOK 🟦",
+                correo: "marco.polo.real@facebook.com",
+                correoSecundario: "recuperacion.mpr@gmail.com",
+                diamantes: "4.250 💎",
+                oro: "12.450.000 💰",
+                precision: "78.3% 🎯",
+                nivel: "⭐ 68",
+                region: "COLOMBIA 🇨🇴",
+                creado: "03/02/2020",
+                telefono: "+57 3XX XXX XXXX",
+                estado: "✅ ACTIVA"
             },
-
-            // LEER DATOS REALES DE LA CUENTA
-            leerDatosCuenta: function(id) {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        const baseDatos = {
-                            "11341834738": {
-                                id: "11341834738",
-                                nombre: "🔥 MARCO_POLO_PRO 🔥",
-                                vinculado: "FACEBOOK 🟦",
-                                correo: "marco.polo.real@facebook.com",
-                                correoSecundario: "recuperacion.mpr@gmail.com",
-                                diamantes: "4.250 💎",
-                                oro: "12.450.000 💰",
-                                precision: "78.3% 🎯",
-                                nivel: "⭐ 68",
-                                region: "COLOMBIA 🇨🇴",
-                                creado: "03/02/2020",
-                                telefono: "+57 3XX XXX XXXX",
-                                estatus: "✅ ACTIVA"
-                            },
-                            "13781339171": {
-                                id: "13781339171",
-                                nombre: "⚡_Xx_EL_JEFE_xX_⚡",
-                                vinculado: "GOOGLE 🟥",
-                                correo: "jefeprofesional.oficial@gmail.com",
-                                correoSecundario: "respaldo.jefe@outlook.es",
-                                diamantes: "1.800 💎",
-                                oro: "4.500.000 💰",
-                                precision: "82.5% 🎯",
-                                nivel: "⭐ 94",
-                                region: "AMÉRICA LATINA 🌎",
-                                creado: "12/06/2018",
-                                telefono: "+57 3XX XXX XXXX",
-                                estatus: "✅ ACTIVA"
-                            }
-                        };
-
-                        if(baseDatos[id]) {
-                            resolver(baseDatos[id]);
-                        } else {
-                            resolver({
-                                id: id,
-                                nombre: "📂 CUENTA ENCONTRADA",
-                                vinculado: "🔍 LEYENDO...",
-                                correo: "🔓 ACCESO PERMITIDO",
-                                correoSecundario: "📄 LISTO",
-                                diamantes: "---",
-                                oro: "---",
-                                precision: "---",
-                                nivel: "⭐ --",
-                                region: "🌍",
-                                creado: "📅",
-                                telefono: "📱",
-                                estatus: "✅ LISTA PARA MODIFICAR"
-                            });
-                        }
-                    }, 120);
-                });
-            },
-
-            // CAMBIAR VÍNCULO (CUALQUIER TIPO: GOOGLE-FACEBOOK, ETC)
-            cambiarVinculo: function(id, nuevoCorreo, tipoAntiguo, tipoNuevo) {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        resolver({
-                            exito: true,
-                            tipo: `${tipoAntiguo} ➡️ ${tipoNuevo}`,
-                            pasos: [
-                                "1. ENTRADA AL SISTEMA: OK",
-                                "2. SEGURIDAD EVADIDA: COMPLETO",
-                                "3. DATOS ANTIGUOS BORRADOS: HECHO",
-                                `4. NUEVO VÍNCULO: ${nuevoCorreo}`,
-                                `5. TIPO DE CUENTA: ${tipoNuevo}`,
-                                "6. FECHA MODIFICADA: ANTIGUA",
-                                "7. HISTORIAL BORRADO: SIN RASTROS",
-                                "8. SALIDA: INVISIBLE"
-                            ],
-                            resultado: `CUENTA ${id} AHORA PERTENECE A: ${nuevoCorreo}`,
-                            aviso: "PARA GARENA: ESTO FUE ASI DESIEMPRE"
-                        });
-                    }, 250);
-                });
-            },
-
-            // GENERAR RECURSOS EN LA BASE DE DATOS
-            generarRecursos: function(id) {
-                return new Promise((resolver) => {
-                    setTimeout(() => {
-                        resolver({
-                            exito: true,
-                            pasos: [
-                                "1. ANÁLISIS DE INVENTARIO: OK",
-                                "2. ESCRITURA EN BASE DE DATOS: COMPLETA",
-                                "3. OBJETOS AGREGADOS: LISTOS",
-                                "4. FECHA ANTIGUA ASIGNADA: HECHO",
-                                "5. VALIDACIÓN: APROBADA",
-                                "6. SIN RASTROS DE MODIFICACIÓN"
-                            ],
-                            aviso: "TODO APARECE COMO SI SIEMPRE HUBIERA ESTADO AHI"
-                        });
-                    }, 300);
-                });
+            "13781339171": {
+                id: "13781339171",
+                nombre: "⚡_Xx_EL_JEFE_xX_⚡",
+                vinculado: "GOOGLE 🟥",
+                correo: "jefeprofesional.oficial@gmail.com",
+                correoSecundario: "respaldo.jefe@outlook.es",
+                diamantes: "1.800 💎",
+                oro: "4.500.000 💰",
+                precision: "82.5% 🎯",
+                nivel: "⭐ 94",
+                region: "AMÉRICA LATINA 🌎",
+                creado: "12/06/2018",
+                telefono: "+57 3XX XXX XXXX",
+                estado: "✅ ACTIVA"
             }
         };
 
-        // FUNCIONES DEL SISTEMA
-        function entrar() {
-            let clave = document.getElementById("clave").value.trim();
-            if(clave === "") {
-                alert("⚠️ ESCRIBE TU CÓDIGO");
-                return;
+        // FUNCIONES
+        function entrarSistema() {
+            let clave = document.getElementById("campoClave").value;
+            if(clave === CLAVE_ACCESO) {
+                document.getElementById("pantallaLogin").style.display = "none";
+                document.getElementById("panelPrincipal").style.display = "block";
+                actualizarHora();
+            } else {
+                alert("❌ CÓDIGO INCORRECTO. ACCESO DENEGADO.");
             }
-            if(clave !== CLAVE_SECRETA) {
-                alert("❌ ACCESO DENEGADO");
-                return;
-            }
-
-            document.getElementById("login").style.display = "none";
-            document.getElementById("contenido").style.display = "block";
-            actualizar();
         }
 
-        function actualizar() {
+        function actualizarHora() {
             setInterval(() => {
-                let hora = new Date().toLocaleTimeString();
-                document.getElementById("estado").innerHTML = `🧠 SISTEMA ACTIVO | ${hora} | 🛡️ INDETECTABLE`;
+                let fecha = new Date();
+                let hora = fecha.toLocaleTimeString();
+                document.getElementById("textoEstado").innerHTML = `🧠 SISTEMA ACTIVO | ⏱️ ${hora} | 🛡️ INDETECTABLE`;
             }, 1000);
         }
 
-        async function consultar() {
+        function leerDatos() {
             let id = document.getElementById("idCuenta").value.trim();
-            if(!id) {
-                alert("⚠️ INGRESA EL ID");
+            let resultado = document.getElementById("areaResultado");
+
+            if(id === "") {
+                resultado.innerHTML = "<p style='color: #ef4444;'>⚠️ INGRESA UN ID VÁLIDO</p>";
                 return;
             }
 
-            document.getElementById("resultado").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-brillante text-center animacion">
-                    <h4 class="text-xl font-bold">📡 LEYENDO DATOS...</h4>
-                    <p class="text-azul mt-2">Accediendo a servidores de Garena</p>
-                </div>
-            `;
+            // SIMULACIÓN DE CONEXIÓN A LOS SERVIDORES
+            resultado.innerHTML = "<p style='color: #f59e0b;'>📡 CONECTANDO A LOS SERVIDORES...</p><p style='color: #10b981;'>✅ LEYENDO DATOS EN LA BASE DE DATOS</p>";
 
-            const datos = await SISTEMA.leerDatosCuenta(id);
-
-            document.getElementById("resultado").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-brillante mt-4">
-                    <h3 class="text-center text-2xl font-bold text-primario mb-4">✅ DATOS OBTENIDOS</h3>
-                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-azul">ID:</span> <span class="font-black">${datos.id}</span></p>
-                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-dorado">NOMBRE:</span> <span class="font-black text-xl">${datos.nombre}</span></p>
-                    <p class="flex justify-between py-2 border-b border-white/10"><span class="font-bold text-morado">VINCULADO A:</span> <span class="font-black">${datos.vinculado}</span></p>
-                    <p class="py-3 px-4 bg-black/70 rounded-lg my-2"><span class="font-bold text-primario">CORREO:</span> <span class="font-black float-right">${datos.correo}</span></p>
-                    <p class="flex justify-between py-2"><span class="font-bold text-azul">CORREO SECUNDARIO:</span> <span>${datos.correoSecundario}</span></p>
-                    <div class="grid grid-cols-2 gap-3 my-3 bg-black/70 p-3 rounded-lg text-center">
-                        <div><p class="font-bold text-dorado">DIAMANTES</p><p class="font-black text-xl">${datos.diamantes}</p></div>
-                        <div><p class="font-bold text-azul">ORO</p><p class="font-black text-xl">${datos.oro}</p></div>
-                    </div>
-                    <p class="flex justify-between py-2"><span class="font-bold text-morado">NIVEL:</span> <span>${datos.nivel}</span></p>
-                    <p class="flex justify-between py-2"><span class="font-bold text-azul">REGIÓN:</span> <span>${datos.region}</span></p>
-                    <p class="text-center font-bold text-primario text-xl mt-3">${datos.estatus}</p>
-                </div>
-            `;
+            setTimeout(() => {
+                if(BASE_DATOS[id]) {
+                    let datos = BASE_DATOS[id];
+                    resultado.innerHTML = `
+                        <h3 style="color: #10b981; margin-bottom: 10px;">✅ DATOS OBTENIDOS CORRECTAMENTE</h3>
+                        <p><strong>ID:</strong> ${datos.id}</p>
+                        <p><strong>NOMBRE EN JUEGO:</strong> <span style="font-size: 18px; color: #f59e0b;">${datos.nombre}</span></p>
+                        <p><strong>VINCULADO A:</strong> ${datos.vinculado}</p>
+                        <p><strong>CORREO PRINCIPAL:</strong> <span style="color: #ffffff;">${datos.correo}</span></p>
+                        <p><strong>CORREO SECUNDARIO:</strong> ${datos.correoSecundario}</p>
+                        <p><strong>DIAMANTES:</strong> ${datos.diamantes}</p>
+                        <p><strong>ORO:</strong> ${datos.oro}</p>
+                        <p><strong>NIVEL:</strong> ${datos.nivel}</p>
+                        <p><strong>REGIÓN:</strong> ${datos.region}</p>
+                        <p><strong>FECHA DE CREACIÓN:</strong> ${datos.creado}</p>
+                        <p><strong>ESTADO:</strong> ${datos.estado}</p>
+                    `;
+                } else {
+                    resultado.innerHTML = "<p style='color: #3b82f6;'>📂 CUENTA LOCALIZADA</p><p style='color: #cccccc;'>🔍 LEYENDA DE INFORMACIÓN</p><p style='color: #10b981;'>✅ LISTA PARA MODIFICACIÓN</p>";
+                }
+            }, 800);
         }
 
-        async function cambiar() {
-            let id = document.getElementById("idCambiar").value.trim();
-            let correo = document.getElementById("nuevoCorreo").value.trim();
-            let ant = document.getElementById("tipoAntiguo").value;
-            let nue = document.getElementById("tipoNuevo").value;
+        function cambiarCuenta() {
+            let id = document.getElementById("idCambio").value.trim();
+            let tipoAntiguo = document.getElementById("tipoAntiguo").value;
+            let tipoNuevo = document.getElementById("tipoNuevo").value;
+            let correo = document.getElementById("correoNuevo").value.trim();
+            let resultado = document.getElementById("areaCambio");
 
-            if(!id || !correo) {
-                alert("⚠️ COMPLETA TODOS LOS CAMPOS");
+            if(id === "" || correo === "") {
+                resultado.innerHTML = "<p style='color: #ef4444;'>⚠️ COMPLETA TODOS LOS CAMPOS</p>";
                 return;
             }
 
-            document.getElementById("resultadoCambio").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-rojo text-center animacion">
-                    <h4 class="text-xl font-bold text-peligro">🔁 EJECUTANDO CAMBIO...</h4>
-                    <p class="text-white mt-2">Modificando registros de la base de datos</p>
-                </div>
-            `;
+            resultado.innerHTML = "<p style='color: #ef4444;'>🔁 EJECUTANDO CAMBIO EN LOS SERVIDORES...</p><p style='color: #f59e0b;'>❌ BORRANDO DATOS ANTIGUOS</p><p style='color: #10b981;'>✅ REGISTRANDO NUEVOS DATOS</p><p style='color: #3b82f6;'>🧹 BORRANDO HUELLAS DIGITALES</p>";
 
-            const res = await SISTEMA.cambiarVinculo(id, correo, ant, nue);
-
-            let pasos = "";
-            res.pasos.forEach(p => pasos += `<p>${p}</p>`);
-
-            document.getElementById("resultadoCambio").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-rojo mt-4">
-                    <h3 class="text-center text-2xl font-bold text-primario mb-3">✅ CAMBIO EXITOSO</h3>
-                    <p class="text-center text-xl font-bold text-morado mb-3">${res.tipo}</p>
-                    <div class="bg-black/70 p-4 rounded-lg mb-3">${pasos}</div>
-                    <p class="text-center text-xl font-bold text-white">${res.resultado}</p>
-                    <p class="text-center text-dorado mt-2 text-sm">${res.aviso}</p>
-                </div>
-            `;
+            setTimeout(() => {
+                resultado.innerHTML = `
+                    <h3 style="color: #10b981; margin-bottom: 10px;">✅ CAMBIO REALIZADO CON ÉXITO</h3>
+                    <p><strong>ID DE LA CUENTA:</strong> ${id}</p>
+                    <p><strong>CAMBIO:</strong> ${tipoAntiguo} ➡️ ${tipoNuevo}</p>
+                    <p><strong>NUEVO CORREO:</strong> <span style="color: #ffffff;">${correo}</span></p>
+                    <p style="color: #f59e0b; margin-top: 10px;">⚠️ IMPORTANTE: ESTE CAMBIO APARECE COMO SI HUBIERA SIDO HECHO EL DÍA QUE SE CREÓ LA CUENTA. NINGÚN SISTEMA PUEDE DETECTARLO.</p>
+                `;
+            }, 1000);
         }
 
-        async function generar() {
+        function generarObjetos() {
             let id = document.getElementById("idGenerar").value.trim();
-            if(!id) {
-                alert("⚠️ INGRESA EL ID");
+            let resultado = document.getElementById("areaGenerar");
+
+            if(id === "") {
+                resultado.innerHTML = "<p style='color: #ef4444;'>⚠️ INGRESA UN ID VÁLIDO</p>";
                 return;
             }
 
-            document.getElementById("resultadoGenerar").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-brillante text-center animacion">
-                    <h4 class="text-xl font-bold text-azul">💎 GENERANDO RECURSOS...</h4>
-                    <p class="text-white mt-2">Escribiendo en la base de datos</p>
-                </div>
-            `;
+            resultado.innerHTML = "<p style='color: #3b82f6;'>💎 GENERANDO RECURSOS EN LA BASE DE DATOS...</p><p style='color: #f59e0b;'>📝 ESCRIBIENDO DATOS</p><p style='color: #10b981;'>🕒 ASIGNANDO FECHAS ANTIGUAS</p><p style='color: #ef4444;'>🧹 BORRANDO REGISTROS DE MODIFICACIÓN</p>";
 
-            const res = await SISTEMA.generarRecursos(id);
-
-            let pasos = "";
-            res.pasos.forEach(p => pasos += `<p>${p}</p>`);
-
-            document.getElementById("resultadoGenerar").innerHTML = `
-                <div class="bg-fondo p-5 rounded-xl borde-brillante mt-4">
-                    <h3 class="text-center text-2xl font-bold text-primario mb-3">✅ RECURSOS AGREGADOS</h3>
-                    <div class="bg-black/70 p-4 rounded-lg mb-3">${pasos}</div>
-                    <p class="text-center text-dorado mt-2 text-sm">${res.aviso}</p>
-                </div>
-            `;
-        }
-    </script>
-
-    <!-- PANTALLA DE INICIO -->
-    <div id="login" class="fixed inset-0 bg-oscuro flex items-center justify-center p-4 z-50">
-        <div class="bg-fondo p-8 rounded-2xl w
-            
+            setTimeout(() => {
+                resultado.innerHTML = `
+                    <h3 style="color: #10b981; margin-bottom: 10px;">✅ RECURSOS AGREGADOS CORRECTAMENTE</h3>
+                    <p><strong>ID DE LA CUENTA:</strong> ${id}</p>
+                    <p><strong>RESULTADO:</strong> Todos los objetos han sido agregados al inventario.</p>
+                    <p style="color: #f59e0b; margin-top: 10px;">⚠️ NINGÚN BOT DE SEGURIDAD DE GARENA PUEDE VER ESTOS CAMBIOS. ESTOS ELEMENTOS APARECEN COMO SI FUER
+                    
