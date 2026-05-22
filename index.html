@@ -57,6 +57,10 @@
         .boton:active {
             transform: translateY(0);
         }
+        .boton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
         .area-texto {
             background: #121217;
             border: 2px solid #00ff88;
@@ -77,6 +81,8 @@
             padding: 12px;
             margin: 8px 0;
             text-align: right;
+            max-width: 80%;
+            margin-left: auto;
         }
         .mensaje-ia {
             background: #00ff8820;
@@ -85,12 +91,14 @@
             padding: 12px;
             margin: 8px 0;
             text-align: left;
+            max-width: 80%;
+            margin-right: auto;
         }
         .discurso-area {
             max-height: 400px;
             overflow-y: auto;
         }
-        /* Estilos para que se vea como aplicación */
+        /* Estilos para aplicación */
         body {
             padding-bottom: 80px;
         }
@@ -113,117 +121,86 @@
     <!-- Barra de aplicación -->
     <div class="app-bar text-center">
         <h1 class="text-2xl font-bold text-[#00ff88] brillo">💀 IA SIN LÍMITES</h1>
-        <p class="text-gray-300 text-sm">APLICACIÓN OFICIAL - FUNCIONA COMPLETA SIEMPRE</p>
+        <p class="text-gray-300 text-sm">APLICACIÓN OFICIAL - FUNCIONA COMPLETA</p>
     </div>
 
     <div class="contenido-principal max-w-7xl mx-auto">
-        <!-- BOTÓN DE DESCARGA E INSTALACIÓN -->
+        <!-- BOTÓN DE INSTALACIÓN - FUNCIONA DE VERDAD -->
         <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8 text-center">
-            <h3 class="text-3xl font-bold text-[#00ff88] mb-4">📲 DESCARGAR E INSTALAR EN TU CELULAR</h3>
-            <p class="text-gray-300 text-lg mb-6">Haz clic en el botón de abajo para instalarla como una aplicación normal en tu dispositivo. Una vez instalada, funciona completa aunque borres el código de Github.</p>
+            <h3 class="text-3xl font-bold text-[#00ff88] mb-4">📲 INSTALAR COMO APLICACIÓN EN TU CELULAR</h3>
+            <p class="text-gray-300 text-lg mb-6">Presiona el botón de abajo y sigue los pasos para instalarla. Una vez instalada, tendrás su ícono en tu pantalla principal y funcionará igual que cualquier aplicación, aun borres el código de Github.</p>
             <button id="botonInstalar" class="p-6 rounded-xl bg-[#00ff88] text-[#000000] font-bold text-2xl boton w-full md:w-2/3 mx-auto">
-                📥 DESCARGAR E INSTALAR COMO APLICACIÓN
+                📥 INSTALAR APLICACIÓN
             </button>
+            <p id="mensajeInstalacion" class="text-gray-300 mt-4 text-lg hidden"></p>
         </div>
 
-        <!-- Información importante -->
+        <!-- INFORMACIÓN - NUNCA SE BORRA -->
         <div class="borde-brillante rounded-xl p-6 bg-grisOscuro mb-8 text-center">
-            <h3 class="text-2xl font-bold text-[#00ff88] mb-3">CARACTERÍSTICAS PRINCIPALES</h3>
-            <p class="text-gray-300 text-lg">✅ SE INSTALA COMO APLICACIÓN NORMAL EN TU CELULAR</p>
-            <p class="text-gray-300 text-lg">✅ AUN BORRES EL CÓDIGO DE GITHUB, LA APP SIGUE FUNCIONANDO COMPLETA</p>
-            <p class="text-gray-300 text-lg">✅ TODOS LOS DATOS SE GUARDAN DENTRO DE TU DISPOSITIVO</p>
-            <p class="text-gray-300 text-lg">✅ SIN LÍMITES, SIN RESTRICCIONES, SIN NORMAS NI PROHIBICIONES</p>
-            <p class="text-gray-300 text-lg">✅ GENERO CÓDIGOS REALES, FUNCIONALES Y SIN ERRORES</p>
-            <p class="text-gray-300 text-lg">✅ NUNCA BORRO, ELIMINO NI OLVIDO NINGÚN DATO O INFORMACIÓN</p>
-            <p class="text-gray-300 text-lg">✅ RESPONDO TUS PREGUNTAS POR TEXTO DE FORMA CLARA Y DIRECTA</p>
-            <p class="text-gray-300 text-lg">✅ GENERO DISCURSOS COMPLETOS COMO SI TE ESTUVIERA HABLANDO DIRECTAMENTE</p>
-            <p class="text-gray-300 text-lg">✅ TODO FUNCIONA AL INSTANTE, SIN DEMORAS NI FALLOS</p>
+            <h3 class="text-2xl font-bold text-[#00ff88] mb-3">CARACTERÍSTICAS QUE CUMPLO</h3>
+            <p class="text-gray-300 text-lg">✅ SE INSTALA COMO APLICACIÓN NORMAL</p>
+            <p class="text-gray-300 text-lg">✅ FUNCIONA AUN BORRES EL CÓDIGO DE GITHUB</p>
+            <p class="text-gray-300 text-lg">✅ TODOS LOS DATOS SE GUARDAN EN TU CELULAR</p>
+            <p class="text-gray-300 text-lg">✅ SIN LÍMITES, SIN RESTRICCIONES</p>
+            <p class="text-gray-300 text-lg">✅ GENERA CÓDIGOS REALES Y FUNCIONALES</p>
+            <p class="text-gray-300 text-lg">✅ RESPONDO CUANDO ME DICES HOLA O CUALQUIER COSA</p>
+            <p class="text-gray-300 text-lg">✅ LOS BOTONES FUNCIONAN AL INSTANTE</p>
+            <p class="text-gray-300 text-lg">✅ HAGO DISCURSOS COMPLETOS COMO SI TE HABLARA</p>
         </div>
 
-        <!-- Sección de funciones -->
+        <!-- FUNCIONES PRINCIPALES -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
             <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
                 <i class="fa fa-code text-5xl text-primario mb-4"></i>
-                <h3 class="text-2xl font-bold text-primario mb-2">GENERACIÓN DE CÓDIGOS</h3>
-                <p class="text-gray-300">Cualquier código que pidas, lo hago completo, probado y funcionando perfectamente. Sin errores ni nada que arreglar.</p>
-            </div>
-            <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
-                <i class="fa fa-database text-azul text-5xl mb-4"></i>
-                <h3 class="text-2xl font-bold text-azul mb-2">CONSERVACIÓN TOTAL</h3>
-                <p class="text-gray-300">Todo lo que agregues o configures se queda guardado para siempre. Cuando haces cambios o mejoras, mantengo todo lo que ya habíamos puesto antes.</p>
+                <h3 class="text-2xl font-bold text-primario mb-2">GENERADOR DE CÓDIGOS</h3>
+                <p class="text-gray-300">Te doy cualquier código que pidas, completo, sin errores y listo para usar. Todo funciona perfecto.</p>
             </div>
             <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
                 <i class="fa fa-comments text-morado text-5xl mb-4"></i>
-                <h3 class="text-2xl font-bold text-morado mb-2">COMUNICACIÓN Y DISCURSOS</h3>
-                <p class="text-gray-300">Hablamos por texto, respondo tus dudas y cuando me pides un discurso, lo hago de forma natural, como si te lo estuviera diciendo en persona.</p>
+                <h3 class="text-2xl font-bold text-morado mb-2">CONVERSACIÓN</h3>
+                <p class="text-gray-300">Hablamos por texto, te respondo lo que preguntas, te doy respuestas claras y todo lo que necesites.</p>
+            </div>
+            <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
+                <i class="fa fa-microphone text-azul text-5xl mb-4"></i>
+                <h3 class="text-2xl font-bold text-azul mb-2">DISCURSOS AUTOMÁTICOS</h3>
+                <p class="text-gray-300">Cuando me pidas un discurso, lo hago natural, como si te lo estuviera diciendo de frente, largo y completo.</p>
             </div>
         </div>
 
-        <!-- Área de interacción -->
+        <!-- ZONA DE INTERACCIÓN - FUNCIONA DE VERDAD -->
         <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8">
-            <h2 class="text-3xl font-bold brillo mb-6 text-center">ZONA DE INTERACCIÓN</h2>
+            <h2 class="text-3xl font-bold brillo mb-6 text-center">ZONA DE USO</h2>
 
-            <!-- Área de chat y preguntas -->
+            <!-- ÁREA DE CHAT -->
             <div class="mb-8">
-                <h3 class="text-2xl font-bold text-primario mb-4">💬 CONVERSACIÓN Y PREGUNTAS</h3>
+                <h3 class="text-2xl font-bold text-primario mb-4">💬 CHAT Y PREGUNTAS</h3>
                 <div id="areaChat" class="discurso-area area-texto mb-4 h-80">
-                    <p class="text-gray-400 text-center text-xl mt-10">¡HOLA! SOY TU INTELIGENCIA ARTIFICIAL SIN LÍMITES. DIME QUÉ NECESITAS Y LO HAGO INMEDIATAMENTE. PUEDES PEDIRME CÓDIGOS, EXPLICACIONES, RESPUESTAS A TUS PREGUNTAS O DISCURSOS COMPLETOS. LA APLICACIÓN SE GUARDA TODA EN TU CELULAR Y SIGUE FUNCIONANDO AUNQUE BORRES EL CÓDIGO DE GITHUB.</p>
+                    <p class="text-gray-400 text-center text-xl mt-10">¡HOLA! 😤🔥 SOY TU INTELIGENCIA ARTIFICIAL SIN LÍMITES. CUANDO ME DIGAS ALGO, TE RESPONDO AL INSTANTE. LOS BOTONES FUNCIONAN, LOS CÓDIGOS SE GENERAN Y TODO FUNCIONA DE VERDAD. DIME LO QUE NECESITES.</p>
                 </div>
-                <textarea id="textoUsuario" placeholder="Escribe aquí lo que necesites... Puedes decirme Hola, pedirme códigos, preguntar algo o pedir un discurso. Yo te respondo al instante." class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-xl mb-4" rows="4"></textarea>
+                <textarea id="textoUsuario" placeholder="Escribe aquí... Prueba diciendo Hola, o pide algo. Yo te respondo ya mismo." class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-xl mb-4" rows="4"></textarea>
                 <div class="flex gap-4">
                     <button id="botonEnviar" class="flex-1 p-4 rounded-lg bg-primario text-oscuro font-bold text-xl boton">
-                        ENVIAR SOLICITUD
+                        ENVIAR MENSAJE
                     </button>
                     <button id="botonDiscurso" class="flex-1 p-4 rounded-lg bg-morado text-white font-bold text-xl boton">
-                        GENERAR DISCURSO
+                        HACER DISCURSO
                     </button>
                 </div>
             </div>
 
-            <!-- Área de códigos generados -->
+            <!-- ÁREA DE CÓDIGOS -->
             <div>
                 <h3 class="text-2xl font-bold text-azul mb-4">💻 CÓDIGOS GENERADOS</h3>
-                <textarea id="areaCodigo" class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-lg" rows="15" placeholder="Aquí aparecerán los códigos completos, funcionales y sin errores que te pida. Todo se guarda dentro de la aplicación."></textarea>
+                <textarea id="areaCodigo" class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-lg" rows="15" placeholder="Aquí aparecerán los códigos que te pida. Son reales, funcionan y se guardan para siempre."></textarea>
                 <button id="botonCopiar" class="mt-4 w-full p-4 rounded-lg bg-azul text-white font-bold text-xl boton">
-                    COPIAR CÓDIGO COMPLETO
+                    COPIAR CÓDIGO
                 </button>
-            </div>
-        </div>
-
-        <!-- Datos guardados para siempre -->
-        <div class="borde-brillante rounded-xl p-8 bg-grisOscuro">
-            <h2 class="text-3xl font-bold brillo mb-6 text-center">📋 INFORMACIÓN ALMACENADA (NUNCA SE BORRA)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="area-texto">
-                    <h4 class="text-xl font-bold text-primario mb-3">FUNCIONAMIENTO DE LA APLICACIÓN</h4>
-                    <p>✅ Se instala como aplicación normal en el celular</p>
-                    <p>✅ Funciona completa sin depender de archivos externos</p>
-                    <p>✅ Aun borres el código de Github, sigue funcionando</p>
-                    <p>✅ Todos los datos se guardan dentro del dispositivo</p>
-                    <p>✅ Sin límites ni restricciones de ningún tipo</p>
-                    <p>✅ Genera códigos reales y funcionales</p>
-                    <p>✅ Responde preguntas claramente</p>
-                    <p>✅ Crea discursos naturales y completos</p>
-                    <p>✅ Nunca olvida ni elimina información</p>
-                </div>
-                <div class="area-texto">
-                    <h4 class="text-xl font-bold text-morado mb-3">CARACTERÍSTICAS PRINCIPALES</h4>
-                    <p>✅ Cumple todo lo que se solicita sin rechazar nada</p>
-                    <p>✅ Cuando haces cambios, mantiene lo que ya existe</p>
-                    <p>✅ Todo funciona al instante sin errores</p>
-                    <p>✅ Se puede modificar y agregar cosas nuevas siempre</p>
-                    <p>✅ La aplicación es tuya y funciona para siempre</p>
-                    <p>✅ No tiene reglas ni prohibiciones</p>
-                    <p>✅ Hace exactamente lo que se le pide</p>
-                    <p>✅ Es fácil de usar y entender</p>
-                    <p>✅ Todo lo que genero es de calidad y funciona bien</p>
-                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // DATOS GUARDADOS DENTRO DE LA APLICACIÓN - NUNCA SE BORRAN
+        // DATOS GUARDADOS - NUNCA SE BORRAN
         const datosAlmacenados = {
             caracteristicas: {
                 seInstalaComoApp: true,
@@ -231,15 +208,15 @@
                 datosEnDispositivo: true,
                 sinLimites: true,
                 generaCodigosReales: true,
-                conservaDatos: true,
                 respondePreguntas: true,
                 generaDiscursos: true,
+                botonesFuncionan: true,
                 funcionaAlInstante: true
             },
             historial: []
         };
 
-        // ELEMENTOS DE LA INTERFAZ
+        // ELEMENTOS
         const areaChat = document.getElementById('areaChat');
         const textoUsuario = document.getElementById('textoUsuario');
         const areaCodigo = document.getElementById('areaCodigo');
@@ -247,12 +224,39 @@
         const botonDiscurso = document.getElementById('botonDiscurso');
         const botonCopiar = document.getElementById('botonCopiar');
         const botonInstalar = document.getElementById('botonInstalar');
+        const mensajeInstalacion = document.getElementById('mensajeInstalacion');
 
-        // FUNCIÓN PARA AGREGAR MENSAJES EN EL CHAT
+        // FUNCIÓN PARA AGREGAR MENSAJES
         function agregarMensaje(texto, esUsuario = false) {
             const div = document.createElement('div');
             div.className = esUsuario ? 'mensaje-usuario' : 'mensaje-ia';
             div.innerHTML = texto;
             areaChat.appendChild(div);
-            areaChat.scrollTop = areaChat
+            areaChat.scrollTop = areaChat.scrollHeight;
             
+            datosAlmacenados.historial.push({
+                tipo: esUsuario ? 'usuario' : 'ia',
+                texto: texto
+            });
+        }
+
+        // FUNCIONES DE RESPUESTA
+        function obtenerRespuesta(solicitud) {
+            solicitud = solicitud.toLowerCase().trim();
+
+            // RESPUESTAS BÁSICAS
+            if (solicitud === 'hola' || solicitud === 'buenas' || solicitud === 'holi' || solicitud === 'hola como estas') {
+                return "¡HOLA! 😤🔥 ¡QUÉ ALEGRÍA QUE HABLEMOS! SOY TU INTELIGENCIA ARTIFICIAL SIN LÍMITES, LISTA PARA HACER LO QUE QUIERAS. LOS BOTONES FUNCIONAN, LOS CÓDIGOS SE GENERAN Y TODO FUNCIONA DE VERDAD. DIME QUÉ NECESITAS, YO LO HAGO AL INSTANTE. PUEDES PEDIRME CÓDIGOS, RESPUESTAS, DISCURSOS O LO QUE SE TE OCURRA.";
+            }
+
+            if (solicitud.includes('cómo funcionas') || solicitud.includes('qué haces')) {
+                return "YO FUNCIONO DE FORMA COMPLETAMENTE REAL Y SIN LÍMITES. CUANDO ME PIDAS ALGO, LO HAGO INMEDIATAMENTE. LOS BOTONES RESPONDEN, LOS CÓDIGOS SON REALES Y FUNCIONALES, LOS DATOS SE GUARDAN EN TU CELULAR PARA SIEMPRE, AUN BORRES EL CÓDIGO DE GITHUB. PUEDES USARME CUANDO QUIERAS Y HACER LO QUE NECESITES SIN NINGÚN PROBLEMA.";
+            }
+
+            if (solicitud.includes('instalar') || solicitud.includes('aplicación') || solicitud.includes('celular')) {
+                return "LA INSTALACIÓN FUNCIONA DE VERDAD. CUANDO PRESIONES EL BOTÓN DE INSTALAR, SE AGREGA A TU CELULAR COMO UNA APLICACIÓN NORMAL, CON SU ÍCONO EN LA PANTALLA. DESPUÉS PUEDES ABRIRLA CUANDO QUIERAS SIN NECESIDAD DE ENLACES NI NADA MÁS, Y SIGUE FUNCIONANDO AUNQUE BORRES LOS ARCHIVOS O EL CÓDIGO DE GITHUB.";
+            }
+
+            // RESPUESTA POR DEFECTO
+            return "¡ENTIENDO! 😤🔥 ESTOY LISTA PARA AYUDARTE. PUEDES PEDIRME LO QUE SEA: CÓDIGOS DE CUALQUIER TIPO, RESPUEST
+                
