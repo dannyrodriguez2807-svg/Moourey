@@ -19,6 +19,9 @@
                         peligro: '#ef4444',
                         exclusivo: '#f43f5e',
                         oro: '#f59e0b',
+                        ff: '#ff5500',
+                        roblox: '#00a2ff',
+                        mc: '#00aa00',
                     },
                     fontFamily: {
                         danny: ['Inter', 'sans-serif'],
@@ -33,7 +36,14 @@
             .borde-luz { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
             .gradiente-danny { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); animation: latido 2s infinite; }
             .oculto { display: none !important; }
+            .seleccionado { border: 3px solid #10b981 !important; transform: scale(1.05); box-shadow: 0 0 15px #10b98180; }
+            .juego-activo { border-bottom: 4px solid #ffffff !important; background: rgba(255,255,255,0.15) !important; }
             @keyframes latido { 0% {box-shadow: 0 0 10px #ec4899;} 50% {box-shadow: 0 0 25px #ec4899;} 100% {box-shadow: 0 0 10px #ec4899;} }
+            .cargando { animation: giro 1.5s linear infinite; }
+            @keyframes giro { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+            .barra-progreso { height: 8px; border-radius: 4px; background: linear-gradient(90deg, #4c1d95, #a855f7); transition: width 0.4s; }
+            .objeto-card { transition: all 0.2s; cursor: pointer; border: 3px solid transparent; }
+            .objeto-card:hover { transform: translateY(-5px); }
         }
     </style>
 </head>
@@ -46,89 +56,232 @@
                 console.log("✅ IA y Bots: Actualizando, protegiendo, indetectables...");
             }, 3000);
 
-            // 🔑 CLAVE SECRETA: SOLO ESTE NÚMERO SIRVE
+            // 🔑 CLAVE SECRETA: SOLO TU CÉDULA SIRVE
             const CEDULA_PERMITIDA = "1048934382";
             let enlacesCreados = [];
+            let datosEnvio = { juego: null, id: null, objeto: null, cantidad: 1 };
 
-            function crearEnlaceUnico(tipo, idJugador) {
-                const codigo = Math.random().toString(36).substring(3, 13).toUpperCase();
-                const enlace = `https://moourey.onrender.com/instalar?cod=${codigo}&tipo=${tipo}&id=${idJugador}`;
-                enlacesCreados.push({codigo, usado: false, tipo, id: idJugador});
+            // 🎮 CATÁLOGO COMPLETO POR JUEGO (CON IMÁGENES)
+            const CATALOGO_JUEGOS = {
+                freefire: {
+                    nombre: "Free Fire",
+                    color: "ff",
+                    objetos: {
+                        ropa: [
+                            {id: "ff_r1", nombre: "Conjunto Dragón Dorado", img: "https://via.placeholder.com/220x280/ff5500/ffffff?text=DRAGON+DORADO", desc: "Skin completa de temporada"},
+                            {id: "ff_r2", nombre: "Conjunto Cazador Nocturno", img: "https://via.placeholder.com/220x280/1e1b4b/ffffff?text=CAZADOR", desc: "Rara y exclusiva"},
+                            {id: "ff_r3", nombre: "Conjunto Guerrera Ártica", img: "https://via.placeholder.com/220x280/0ea5e9/ffffff?text=ARTICA", desc: "Edición limitada"}
+                        ],
+                        armas: [
+                            {id: "ff_a1", nombre: "AK-47 Dragón Llama (Evolutiva)", img: "https://via.placeholder.com/220x220/ef4444/ffffff?text=AK47+NIVEL+5", desc: "Nivel máximo, efectos completos"},
+                            {id: "ff_a2", nombre: "M4A1 Alba Divina", img: "https://via.placeholder.com/220x220/f59e0b/ffffff?text=M4A1+DIVINA", desc: "Sonido y apariencia únicos"},
+                            {id: "ff_a3", nombre: "SCAR Titán Glaciar", img: "https://via.placeholder.com/220x220/3b82f6/ffffff?text=SCAR+GLACIAR", desc: "Evolutiva completa"}
+                        ],
+                        personajes: [
+                            {id: "ff_p1", nombre: "Alok - Habilidades MAX", img: "https://via.placeholder.com/220x280/0d9488/ffffff?text=ALOK", desc: "Todos los niveles desbloqueados"},
+                            {id: "ff_p2", nombre: "Chrono - Futuro Completo", img: "https://via.placeholder.com/220x280/6366f1/ffffff?text=CHRONO", desc: "Habilidad al máximo"},
+                            {id: "ff_p3", nombre: "Kelly - Evolutiva", img: "https://via.placeholder.com/220x280/ec4899/ffffff?text=KELLY", desc: "Versión mejorada"}
+                        ],
+                        recursos: [
+                            {id: "ff_diamantes", nombre: "💎 Diamantes", img: "https://via.placeholder.com/180x180/f59e0b/ffffff?text=DIAMANTES", tipo: "recurso", editable: true},
+                            {id: "ff_monedas", nombre: "🪙 Monedas de Oro", img: "https://via.placeholder.com/180x180/eab308/ffffff?text=MONEDAS", tipo: "recurso", editable: true},
+                            {id: "ff_pase", nombre: "🎫 Pase Élite + Niveles", img: "https://via.placeholder.com/180x180/4c1d95/ffffff?text=PASE+ELITE", tipo: "recurso", editable: false}
+                        ]
+                    }
+                },
+                roblox: {
+                    nombre: "Roblox",
+                    color: "roblox",
+                    objetos: {
+                        avatares: [
+                            {id: "rb_a1", nombre: "Paquete Ninja Legendario", img: "https://via.placeholder.com/220x280/00a2ff/ffffff?text=NINJA", desc: "Accesorios y cuerpo completo"},
+                            {id: "rb_a2", nombre: "Traje de Héroe Galáctico", img: "https://via.placeholder.com/220x280/7928ca/ffffff?text=HEROE", desc: "Edición especial evento"},
+                            {id: "rb_a3", nombre: "Conjunto Futurista", img: "https://via.placeholder.com/220x280/0891b2/ffffff?text=FUTURISTA", desc: "Todo desbloqueado"}
+                        ],
+                        objetos: [
+                            {id: "rb_o1", nombre: "Espada de Luz", img: "https://via.placeholder.com/220x220/ec4899/ffffff?text=ESPADA+LUZ", desc: "Herramienta exclusiva"},
+                            {id: "rb_o2", nombre: "Alas de Ángel", img: "https://via.placeholder.com/220x220/8b5cf6/ffffff?text=ALAS", desc: "Efecto visual único"},
+                            {id: "rb_o3", nombre: "Mochila Intergaláctica", img: "https://via.placeholder.com/220x220/14b8a6/ffffff?text=MOCHILA", desc: "Accesorio raro"}
+                        ],
+                        recursos: [
+                            {id: "rb_robux", nombre: "💰 Robux", img: "https://via.placeholder.com/180x180/00a2ff/ffffff?text=ROBUX", tipo: "recurso", editable: true},
+                            {id: "rb_oro", nombre: "🪙 Monedas", img: "https://via.placeholder.com/180x180/eab308/ffffff?text=MONEDAS", tipo: "recurso", editable: true}
+                        ]
+                    }
+                },
+                minecraft: {
+                    nombre: "Minecraft",
+                    color: "mc",
+                    objetos: {
+                        skins: [
+                            {id: "mc_s1", nombre: "Skin Dragón Rojo", img: "https://via.placeholder.com/220x280/00aa00/ffffff?text=DRAGON+ROJO", desc: "Modelo 3D completo"},
+                            {id: "mc_s2", nombre: "Skin Caballero Oscuro", img: "https://via.placeholder.com/220x280/111827/ffffff?text=CABALLERO", desc: "Texturas detalladas"},
+                            {id: "mc_s3", nombre: "Skin Robot Tecnológico", img: "https://via.placeholder.com/220x280/0ea5e9/ffffff?text=ROBOT", desc: "Animaciones especiales"}
+                        ],
+                        items: [
+                            {id: "mc_i1", nombre: "Espada de Netherita Encantada", img: "https://via.placeholder.com/220x220/854d0e/ffffff?text=ESPADA", desc: "Nivel máximo de encantamientos"},
+                            {id: "mc_i2", nombre: "Armadura Completa Diamante", img: "https://via.placeholder.com/220x220/0369a1/ffffff?text=ARMADURA", desc: "Protección total"},
+                            {id: "mc_i3", nombre: "Bloques Especiales", img: "https://via.placeholder.com/220x220/16a34a/ffffff?text=BLOQUES", desc: "Todos los tipos raros"}
+                        ],
+                        recursos: [
+                            {id: "mc_materiales", nombre: "📦 Materiales", img: "https://via.placeholder.com/180x180/00aa00/ffffff?text=MATERIALES", tipo: "recurso", editable: true},
+                            {id: "mc_nivel", nombre: "📈 Niveles de Experiencia", img: "https://via.placeholder.com/180x180/84cc16/ffffff?text=NIVELES", tipo: "recurso", editable: true}
+                        ]
+                    }
+                }
+            };
+
+            // Crear Enlace Único con TODOS los datos
+            function crearEnlaceUnico() {
+                if(!datosEnvio.juego || !datosEnvio.id || !datosEnvio.objeto) {
+                    alert("⚠️ Faltan datos:\nElige JUEGO, escribe ID y selecciona QUÉ ENVIAR.");
+                    return null;
+                }
+                const codigo = Math.random().toString(36).substring(2, 14).toUpperCase();
+                const enlace = `https://moourey.onrender.com/instalar?cod=${codigo}&juego=${datosEnvio.juego}&id=${datosEnvio.id}&obj=${datosEnvio.objeto.id}&cant=${datosEnvio.cantidad}`;
+                enlacesCreados.push({codigo, usado: false, ...datosEnvio});
                 return enlace;
             }
+
+            // 🚀 EJECUTAR CUANDO SE ABRE EL ENLACE
+            function procesarEntrega() {
+                const params = new URLSearchParams(window.location.search);
+                const cod = params.get('cod'), juegoKey = params.get('juego'), id = params.get('id'), objId = params.get('obj'), cant = params.get('cant');
+
+                if(!cod || !CATALOGO_JUEGOS[juegoKey]) return pantallaError("Enlace inválido o incompleto");
+
+                // Verificar si existe y NO ha sido usado
+                const registro = enlacesCreados.find(e => e.codigo === cod);
+                if(!registro || registro.usado) return pantallaError("Este enlace ya fue usado o no existe. Los enlaces son de USO ÚNICO.");
+                registro.usado = true; // Bloquear para siempre
+
+                // Buscar datos completos del objeto
+                const juego = CATALOGO_JUEGOS[juegoKey];
+                let objeto = null;
+                for(let cat in juego.objetos) {
+                    const encontrado = juego.objetos[cat].find(o => o.id === objId);
+                    if(encontrado) { objeto = encontrado; break; }
+                }
+                if(!objeto) return pantallaError("El objeto solicitado ya no existe.");
+
+                // PANTALLA DE CARGA SIMULANDO LA IA Y LOS BOTS
+                document.body.innerHTML = `
+                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
+                    <div class="text-7xl text-${juego.color} mb-6 cargando">⚙️</div>
+                    <h1 class="text-4xl font-bold texto-luz mb-2">CONECTANDO CON SERVIDOR</h1>
+                    <p class="text-xl text-gray-300 mb-6">Plataforma: <b class="text-${juego.color}">${juego.nombre}</b></p>
+
+                    <div class="w-full max-w-lg bg-panel/70 rounded-2xl p-6 borde-luz border border-${juego.color}/30 mb-6">
+                        <div class="mb-4 text-left">
+                            <p class="text-gray-400 mb-1">👤 Cuenta destino:</p>
+                            <p class="text-white font-mono bg-fondo/60 p-2 rounded">${id}</p>
+                        </div>
+                        <div class="mb-4 text-left">
+                            <p class="text-gray-400 mb-1">🎁 Objeto a entregar:</p>
+                            <div class="flex items-center gap-3 bg-fondo/60 p-2 rounded">
+                                <img src="${objeto.img}" class="w-16 h-16 rounded object-cover">
+                                <div class="text-left">
+                                    <p class="font-bold">${objeto.nombre}</p>
+                                    <p class="text-sm text-gray-400">Cantidad: ${cant}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BARRAS DE PROGRESO -->
+                        <div class="mt-6 space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>Conectando seguridad</span><span id="p1">0%</span></div>
+                                <div class="w-full h-2 bg-fondo rounded"><div id="b1" class="barra-progreso w-0"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>Modificando datos</span><span id="p2">0%</span></div>
+                                <div class="w-full h-2 bg-fondo rounded"><div id="b2" class="barra-progreso w-0"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>Protegiendo cuenta</span><span id="p3">0%</span></div>
+                                <div class="w-full h-2 bg-fondo rounded"><div id="b3" class="barra-progreso w-0"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500">🤖 IA activada - Sin riesgo de baneo</p>
+                </div>`;
+
+                // Animación de carga
+                let prog1=0, prog2=0, prog3=0;
+                const interval = setInterval(() => {
+                    if(prog1 < 100) { prog1+=5; document.getElementById('b1').style.width = prog1+"%"; document.getElementById('p1').innerText = prog1+"%"; }
+                    else if(prog2 < 100) { prog2+=4; document.getElementById('b2').style.width = prog2+"%"; document.getElementById('p2').innerText = prog2+"%"; }
+                    else if(prog3 < 100) { prog3+=3; document.getElementById('b3').style.width = prog3+"%"; document.getElementById('p3').innerText = prog3+"%"; }
+                    else { clearInterval(interval); pantallaExito(juego, id, objeto, cant); }
+                }, 80);
+            }
+
+            function pantallaExito(juego, id, objeto, cant) {
+                document.body.innerHTML = `
+                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
+                    <div class="text-8xl text-seguro mb-6">✅</div>
+                    <h1 class="text-5xl font-bold text-seguro mb-3">¡ENTREGA EXITOSA!</h1>
+                    <p class="text-xl text-gray-300 mb-8">El proceso ha finalizado correctamente.</p>
+
+                    <div class="w-full max-w-md bg-panel/80 rounded-2xl p-6 borde-luz border-2 border-seguro/40">
+                        <h3 class="text-2xl font-bold text-${juego.color} mb-4">${juego.nombre}</h3>
+                        <div class="flex justify-center mb-4">
+                            <img src="${objeto.img}" class="w-28 h-28 rounded-xl object-cover borde-luz">
+                        </div>
+                        <p class="text-xl font-bold mb-1">${objeto.nombre}</p>
+                        <p class="text-gray-400 mb-4">Cantidad: <b>${cant}</b></p>
+                        <div class="text-sm text-left bg-fondo/50 p-3 rounded-lg">
+                            <p>👤 Cuenta: ${id}</p>
+                            <p>🔒 Estado: <span class="text-seguro font-bold">SEGURO Y ACTIVO</span></p>
+                            <p>📅 Fecha: ${new Date().toLocaleString()}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-6">Puedes cerrar esta ventana. Los cambios ya están aplicados.</p>
+                </div>`;
+            }
+
+            function pantallaError(texto) {
+                document.body.innerHTML = `
+                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
+                    <div class="text-8xl text-peligro mb-6">❌</div>
+                    <h1 class="text-4xl font-bold text-peligro mb-4">ERROR</h1>
+                    <p class="text-xl text-gray-300 max-w-md">${texto}</p>
+                </div>`;
+            }
+
+            // SI ES ENLACE, PROCESAR
+            if (window.location.pathname === '/instalar') window.onload = procesarEntrega;
         </script>
     </div>
 
     <!-- ============================================== -->
-    <!-- PÁGINA PÚBLICA - LO QUE VEN LOS USUARIOS -->
+    <!-- PÁGINA PÚBLICA -->
     <!-- ============================================== -->
     <div id="paginaPublica" class="container mx-auto px-4 py-10 max-w-6xl relative z-10">
         <header class="text-center mb-12">
-            <h1 class="text-[clamp(2rem,6vw,4.5rem)] font-black texto-luz mb-4">
-                🔥 PLATAFORMA MAESTRA
-            </h1>
-            <div class="gradiente-danny px-8 py-3 rounded-full text-lg font-bold mb-8 inline-block">
-                💎 PRODUCTOS EXCLUSIVOS | SEGURO Y CONFIABLE
-            </div>
+            <h1 class="text-[clamp(2rem,6vw,4.5rem)] font-black texto-luz mb-4">🔥 PLATAFORMA MAESTRA</h1>
+            <div class="gradiente-danny px-8 py-3 rounded-full text-lg font-bold mb-8 inline-block">💎 PRODUCTOS EXCLUSIVOS | SEGURO Y CONFIABLE</div>
             <p class="text-seguro text-sm mb-10">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA SEGURO ✅ ENLACES ÚNICOS</p>
 
-            <!-- 🔒 ACCESO SOLO CON CÉDULA - NUEVO SISTEMA -->
+            <!-- 🔒 ACCESO SOLO CON CÉDULA -->
             <div class="bg-panel/60 p-6 rounded-2xl borde-luz max-w-md mx-auto mb-10">
                 <h3 class="text-lg font-bold mb-4">🔒 ACCESO DE ADMINISTRADOR</h3>
-                <input 
-                    type="number" 
-                    id="inputCedula" 
-                    placeholder="Ingresa tu número de cédula" 
-                    class="w-full px-4 py-3 rounded-lg bg-fondo border border-neon/50 focus:border-neon outline-none text-lg text-center mb-4"
-                >
-                <button onclick="verificarAcceso()" class="w-full gradiente-danny py-2.5 rounded-lg font-bold hover:scale-105 transition">
-                    INGRESAR
-                </button>
+                <input type="number" id="inputCedula" placeholder="Ingresa tu número de cédula" class="w-full px-4 py-3 rounded-lg bg-fondo border border-neon/50 focus:border-neon outline-none text-lg text-center mb-4">
+                <button onclick="verificarAcceso()" class="w-full gradiente-danny py-2.5 rounded-lg font-bold hover:scale-105 transition">INGRESAR</button>
             </div>
         </header>
 
-        <!-- MENÚ DE USUARIOS -->
+        <!-- MENÚ USUARIOS -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <button onclick="mostrarSeccion('tienda')" class="border-2 border-neon/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-neon hover:bg-neon/10 transition-all">
-                🛒 TIENDA DE PRODUCTOS
-            </button>
-            <button onclick="mostrarSeccion('contacto')" class="border-2 border-seguro/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-seguro hover:bg-seguro/10 transition-all">
-                📱 CONTACTO Y PAGOS
-            </button>
+            <button onclick="mostrarSeccion('tienda')" class="border-2 border-neon/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-neon hover:bg-neon/10 transition-all">🛒 TIENDA DE PRODUCTOS</button>
+            <button onclick="mostrarSeccion('contacto')" class="border-2 border-seguro/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-seguro hover:bg-seguro/10 transition-all">📱 CONTACTO Y PAGOS</button>
         </div>
 
-        <!-- SECCIÓN: TIENDA -->
-        <section id="tienda" class="seccion oculto mb-16">
-            <h2 class="text-3xl font-bold text-center text-neon mb-10">🛒 CATÁLOGO COMPLETO</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-principal/30 hover:border-principal transition">
-                    <h3 class="text-xl font-bold text-principal mb-2">👕 ROPA Y CONJUNTOS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Todas las skins, trajes y atuendos de todas las temporadas</p>
-                    <div class="text-2xl font-bold text-oro mb-4">$ 15.000 - $ 80.000 COP</div>
-                    <button onclick="comprar('ropa')" class="w-full bg-principal hover:bg-principal/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
-                </div>
-                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-oro/30 hover:border-oro transition">
-                    <h3 class="text-xl font-bold text-oro mb-2">🔫 ARMAS & EVOLUTIVAS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Armas al máximo nivel con efectos únicos</p>
-                    <div class="text-2xl font-bold text-oro mb-4">$ 30.000 - $ 150.000 COP</div>
-                    <button onclick="comprar('armas')" class="w-full bg-oro hover:bg-oro/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
-                </div>
-                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border-yellow-500/30 hover:border-yellow-500 transition">
-                    <h3 class="text-xl font-bold text-yellow-400 mb-2">💎 RECURSOS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Diamantes, oro, pases y membresías</p>
-                    <div class="text-2xl font-bold text-oro mb-4">$ 10.000 - $ 200.000 COP</div>
-                    <button onclick="comprar('recursos')" class="w-full bg-yellow-500 hover:bg-yellow-500/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN: CONTACTO -->
+        <section id="tienda" class="seccion oculto mb-16"><h2 class="text-3xl font-bold text-center text-neon mb-10">🛒 CATÁLOGO COMPLETO</h2></section>
         <section id="contacto" class="seccion oculto mb-16">
-            <h2 class="text-3xl font-bold text-center text-seguro mb-10">📱 CÓMO COMPRAR</h2>
             <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-seguro/30 max-w-2xl mx-auto text-center">
-                <p class="text-gray-300 mb-6">Después de pagar, recibirás un <b class="text-neon">ENLACE ÚNICO</b> para descargar la app. Funciona SOLO UNA VEZ.</p>
+                <p class="text-gray-300 mb-6">Después de pagar, recibirás un <b class="text-neon">ENLACE ÚNICO</b>.</p>
                 <p class="text-2xl font-bold text-white mb-6">+57 3XX XXX XXXX</p>
-                <button class="bg-seguro hover:bg-seguro/90 px-8 py-3 rounded-xl font-bold transition">ENVIAR MENSAJE</button>
             </div>
         </section>
     </div>
@@ -137,147 +290,9 @@
     <!-- PANEL DE ADMINISTRADOR - SOLO TÚ -->
     <!-- ============================================== -->
     <div id="panelAdministrador" class="oculto container mx-auto px-4 py-8 max-w-6xl relative z-10">
-        <header class="text-center mb-10">
+        <header class="text-center mb-8">
             <h1 class="text-[clamp(2rem,6vw,4rem)] font-black texto-luz mb-2">💎 MI PANEL DE CONTROL</h1>
             <p class="text-neon text-lg">👑 MODO DUEÑO | TODO GRATIS | ENVÍOS ILIMITADOS</p>
         </header>
 
-        <!-- MENÚ DEL PANEL -->
-        <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button onclick="cargarSeccion('envios')" class="modulo-btn gradiente-danny px-5 py-2.5 rounded-lg font-bold hover:scale-105 transition shadow-lg">📤 ENVIAR OBJETOS</button>
-            <button onclick="cargarSeccion('cuentas')" class="modulo-btn bg-panel border border-principal px-5 py-2.5 rounded-lg font-bold hover:border-neon transition">⚙️ GESTIÓN DE CUENTAS</button>
-            <button onclick="cargarSeccion('recuperacion')" class="modulo-btn bg-panel border border-seguro px-5 py-2.5 rounded-lg font-bold hover:border-neon transition">🔑 RECUPERACIÓN</button>
-            <button onclick="cerrarSesion()" class="bg-peligro/80 hover:bg-peligro px-5 py-2.5 rounded-lg font-bold transition">🚪 SALIR</button>
-        </div>
-
-        <!-- SECCIÓN: ENVIAR OBJETOS -->
-        <section id="envios" class="modulo-contenido">
-            <div class="bg-panel/80 rounded-2xl p-8 borde-luz border-2 border-exclusivo/40 max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-center text-exclusivo mb-8">📤 ENVIAR A USUARIO & CREAR ENLACE</h2>
-                <div class="mb-6">
-                    <label class="block text-gray-300 mb-2">🔢 ID DE JUGADOR DEL USUARIO</label>
-                    <input type="text" id="idUsuario" placeholder="Ej: 123456789" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg font-bold text-center">
-                </div>
-                <div class="grid md:grid-cols-2 gap-4 mb-8">
-                    <div>
-                        <label class="block text-gray-300 mb-2">📦 TIPO DE OBJETO</label>
-                        <select id="tipoObjeto" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg">
-                            <option value="">Selecciona...</option>
-                            <option value="ropa">👕 Ropa / Conjuntos</option>
-                            <option value="armas">🔫 Armas / Evolutivas</option>
-                            <option value="recursos">💎 Diamantes / Recursos</option>
-                            <option value="especiales">✨ Objetos Especiales</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button onclick="generarEnlace()" class="gradiente-danny px-8 py-3 rounded-lg font-bold text-lg hover:scale-105 transition shadow-xl">✅ GENERAR ENLACE & ACTIVAR BOTS</button>
-                </div>
-                <div id="resultadoEnlace" class="oculto mt-8 p-5 bg-fondo/70 rounded-xl borde-luz border border-seguro/50 text-center">
-                    <p class="text-seguro font-bold mb-2">🎉 ENLACE CREADO CON ÉXITO (USO ÚNICO)</p>
-                    <p class="text-oro font-mono text-lg" id="textoEnlace"></p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN: GESTIÓN DE CUENTAS -->
-        <section id="cuentas" class="modulo-contenido oculto">
-            <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-principal/40 max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-center text-principal mb-8">⚙️ GESTIÓN DE CUENTAS</h2>
-                <p class="text-center text-gray-300 mb-6">Cambia correos de Google y contraseñas de Facebook de forma segura.</p>
-                <div class="mb-4">
-                    <label class="block text-gray-300 mb-2">ID de la Cuenta</label>
-                    <input type="text" placeholder="Ingresa ID" class="w-full px-4 py-3 rounded-lg bg-fondo border border-principal/50">
-                </div>
-                <div class="text-center">
-                    <button class="bg-principal hover:bg-principal/90 px-6 py-2.5 rounded-lg font-bold">APLICAR CAMBIOS</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECCIÓN: RECUPERACIÓN -->
-        <section id="recuperacion" class="modulo-contenido oculto">
-            <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-seguro/40 max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-center text-seguro mb-8">🔑 RECUPERACIÓN 100% SEGURA</h2>
-                <p class="text-center text-gray-300 mb-6">Recupera cualquier cuenta SOLO con el ID. Cambia acceso de Facebook y Google.</p>
-                <div class="mb-6">
-                    <label class="block text-gray-300 mb-2">🔢 ID DE JUGADOR</label>
-                    <input type="text" placeholder="Ingresa el ID completo" class="w-full px-4 py-3 rounded-lg bg-fondo border border-seguro/50 focus:border-seguro">
-                </div>
-                <div class="text-center">
-                    <button class="bg-seguro hover:bg-seguro/90 px-8 py-3 rounded-lg font-bold text-lg">🔄 INICIAR RECUPERACIÓN</button>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ============================================== -->
-    <!-- FUNCIONES DE NAVEGACIÓN Y SEGURIDAD -->
-    <!-- ============================================== -->
-    <script>
-        // 🔒 VERIFICACIÓN DE ACCESO: SOLO TU CÉDULA SIRVE
-        function verificarAcceso() {
-            const valorIngresado = document.getElementById('inputCedula').value.trim();
-            
-            if(valorIngresado === CEDULA_PERMITIDA) {
-                // ACCESO CORRECTO: CAMBIA DE PANTALLA
-                document.getElementById('paginaPublica').classList.add('oculto');
-                document.getElementById('panelAdministrador').classList.remove('oculto');
-                cargarSeccion('envios');
-            } else {
-                // ACCESO DENEGADO
-                alert("❌ ACCESO DENEGADO\nNúmero de identificación incorrecto o no autorizado.");
-                document.getElementById('inputCedula').value = "";
-            }
-        }
-
-        // NAVEGACIÓN PÚBLICA
-        function mostrarSeccion(id) {
-            document.querySelectorAll('.seccion').forEach(s => s.classList.add('oculto'));
-            document.getElementById(id).classList.remove('oculto');
-        }
-
-        // NAVEGACIÓN PANEL
-        function cargarSeccion(id) {
-            document.querySelectorAll('.modulo-contenido').forEach(m => m.classList.add('oculto'));
-            document.querySelectorAll('.modulo-btn').forEach(b => {
-                b.classList.remove('gradiente-danny');
-                b.classList.add('bg-panel', 'border', 'border-principal');
-            });
-            document.getElementById(id).classList.remove('oculto');
-            event.target.classList.remove('bg-panel', 'border', 'border-principal');
-            event.target.classList.add('gradiente-danny');
-        }
-
-        // GENERADOR DE ENLACES
-        function generarEnlace() {
-            const id = document.getElementById('idUsuario').value;
-            const tipo = document.getElementById('tipoObjeto').value;
-            
-            if(!id || !tipo) return alert("⚠️ Completa todos los datos");
-
-            const enlaceFinal = crearEnlaceUnico(tipo, id);
-            
-            document.getElementById('textoEnlace').innerText = enlaceFinal;
-            document.getElementById('resultadoEnlace').classList.remove('oculto');
-
-            setTimeout(() => {
-                alert("🤖 IA Y BOTS ACTIVADOS\n✅ Enlace creado\n✅ Protección activada\n✅ Listo para enviar");
-            }, 600);
-        }
-
-        function cerrarSesion() {
-            location.reload();
-        }
-
-        function comprar(tipo){
-            alert(`✅ Producto: ${tipo.toUpperCase()}\nContáctanos por WhatsApp para pagar y recibir tu enlace.`);
-        }
-
-        // PERMITE USAR LA TECLA ENTER
-        document.getElementById('inputCedula').addEventListener('keypress', function(e) {
-            if(e.key === 'Enter') verificarAcceso();
-        });
-    </script>
-</body>
-</html>
+        <!-- 🎮 SELECCIÓN DE JUEG
