@@ -1,0 +1,27 @@
+{
+  "name": "IA SIN LÍMITES - DANNY",
+  "short_name": "IA-LIMITES",
+  "description": "Aplicación de Inteligencia Artificial sin límites, responde, genera códigos y funciona instalada en tu celular.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#00ff88",
+  "background_color": "#000000",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1005/1005141.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1005/1005141.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false
+}
