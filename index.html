@@ -291,4 +291,301 @@
                     <p><strong>ID DE LA CUENTA:</strong> ${id}</p>
                     <p><strong>RESULTADO:</strong> Todos los objetos han sido agregados al inventario.</p>
                     <p style="color: #f59e0b; margin-top: 10px;">⚠️ NINGÚN BOT DE SEGURIDAD DE GARENA PUEDE VER ESTOS CAMBIOS. ESTOS ELEMENTOS APARECEN COMO SI FUER
+
+
+                <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE ACCESO TOTAL</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .contenedor {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .cabecera {
+            text-align: center;
+            padding: 25px;
+            border: 3px solid #00ff88;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            background-color: #0a0a12;
+        }
+        .cabecera h1 {
+            color: #00ff88;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        .cabecera p {
+            color: #cccccc;
+            font-size: 15px;
+        }
+        .bloque {
+            background-color: #0a0a12;
+            border: 2px solid #0066ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .bloque h2 {
+            color: #0066ff;
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+        input, select {
+            background-color: #1a1a2e;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+        button {
+            background-color: #00ff88;
+            color: #000000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #00cc6a;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #1a1a2e;
+            border-radius: 8px;
+            border-left: 5px solid #00ff88;
+        }
+        .estado {
+            text-align: center;
+            padding: 15px;
+            background-color: #00cc6a;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+
+        <!-- PANTALLA DE INICIO -->
+        <div class="cabecera" id="pantallaInicio">
+            <h1>💀 SISTEMA DE HACKEO AVANZADO</h1>
+            <p>Acceso autorizado solo para personal autorizado</p>
+            <input type="password" id="clave" placeholder="INGRESA TU CÓDIGO DE ACCESO">
+            <button onclick="entrar()">ENTRAR AL SISTEMA</button>
+        </div>
+
+        <!-- PANEL PRINCIPAL -->
+        <div id="panel" style="display: none;">
+
+            <div class="cabecera">
+                <h1>🤖 SISTEMA DE ACCESO TOTAL</h1>
+                <p id="textoEstado">SISTEMA ACTIVO | CONECTADO A LOS SERVIDORES</p>
+            </div>
+
+            <!-- SECCIÓN 1: VER DATOS -->
+            <div class="bloque">
+                <h2>🔍 CONSULTAR DATOS DE LA CUENTA</h2>
+                <p>Ingresa el ID para ver toda la información real</p>
+                <input type="text" id="idCuenta" placeholder="Ejemplo: 11341834738">
+                <button onclick="mostrarDatos()">LEER DATOS DE LOS SERVIDORES</button>
+                <div id="resultadoDatos" class="resultado"></div>
+            </div>
+
+            <!-- SECCIÓN 2: CAMBIAR CUENTA -->
+            <div class="bloque">
+                <h2>🔁 CAMBIAR VÍNCULO DE LA CUENTA</h2>
+                <p>Cambia de Google a Facebook o viceversa, queda como si siempre fuera así</p>
+                <input type="text" id="idCambio" placeholder="ID DE LA CUENTA">
+                <select id="antiguo">
+                    <option value="GOOGLE">CUENTA ANTERIOR: GOOGLE</option>
+                    <option value="FACEBOOK">CUENTA ANTERIOR: FACEBOOK</option>
+                </select>
+                <select id="nuevo">
+                    <option value="GOOGLE">NUEVA CUENTA: GOOGLE</option>
+                    <option value="FACEBOOK">NUEVA CUENTA: FACEBOOK</option>
+                </select>
+                <input type="text" id="correo" placeholder="CORREO NUEVO">
+                <button onclick="cambiarCuenta()">EJECUTAR CAMBIO INDETECTABLE</button>
+                <div id="resultadoCambio" class="resultado"></div>
+            </div>
+
+            <!-- SECCIÓN 3: GENERAR COSAS -->
+            <div class="bloque">
+                <h2>💎 GENERAR RECURSOS Y OBJETOS</h2>
+                <p>Agrega diamantes, armas, ropa y más, todo se guarda como original</p>
+                <input type="text" id="idGenerar" placeholder="ID DE LA CUENTA">
+                <button onclick="generarTodo()">GENERAR RECURSOS EN LA BASE DE DATOS</button>
+                <div id="resultadoGenerar" class="resultado"></div>
+            </div>
+
+            <div class="estado">
+                ✅ SISTEMA INDETECTABLE | NINGÚN BOT DE SEGURIDAD PUEDE VER LOS CAMBIOS
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // CÓDIGO DE ACCESO
+        const CLAVE = "1048934382";
+
+        // DATOS DE EJEMPLO
+        const DATOS_CUENTAS = {
+            "11341834738": {
+                id: "11341834738",
+                nombre: "🔥 MARCO_POLO_PRO 🔥",
+                vinculado: "FACEBOOK",
+                correo: "marco.polo.real@facebook.com",
+                correoSecundario: "recuperacion.mpr@gmail.com",
+                diamantes: "4.250 💎",
+                oro: "12.450.000 💰",
+                precision: "78.3% 🎯",
+                nivel: "⭐ 68",
+                region: "COLOMBIA 🇨🇴",
+                creado: "03/02/2020",
+                estado: "✅ ACTIVA"
+            },
+            "13781339171": {
+                id: "13781339171",
+                nombre: "⚡_Xx_EL_JEFE_xX_⚡",
+                vinculado: "GOOGLE",
+                correo: "jefeprofesional.oficial@gmail.com",
+                correoSecundario: "respaldo.jefe@outlook.es",
+                diamantes: "1.800 💎",
+                oro: "4.500.000 💰",
+                precision: "82.5% 🎯",
+                nivel: "⭐ 94",
+                region: "AMÉRICA LATINA 🌎",
+                creado: "12/06/2018",
+                estado: "✅ ACTIVA"
+            }
+        };
+
+        // FUNCIONES
+        function entrar() {
+            let entrada = document.getElementById("clave").value;
+            if(entrada === CLAVE) {
+                document.getElementById("pantallaInicio").style.display = "none";
+                document.getElementById("panel").style.display = "block";
+                actualizarHora();
+            } else {
+                alert("❌ CÓDIGO INCORRECTO");
+            }
+        }
+
+        function actualizarHora() {
+            setInterval(() => {
+                let ahora = new Date().toLocaleTimeString();
+                document.getElementById("textoEstado").innerHTML = `SISTEMA ACTIVO | ${ahora} | INDETECTABLE`;
+            }, 1000);
+        }
+
+        function mostrarDatos() {
+            let id = document.getElementById("idCuenta").value.trim();
+            let res = document.getElementById("resultadoDatos");
+
+            if(id === "") {
+                res.innerHTML = "<p style='color: red;'>⚠️ INGRESA UN ID VÁLIDO</p>";
+                return;
+            }
+
+            res.innerHTML = "<p style='color: #ff9900;'>📡 CONECTANDO A LOS SERVIDORES...</p><p style='color: #00ff88;'>✅ LEYENDO INFORMACIÓN</p>";
+
+            setTimeout(() => {
+                if(DATOS_CUENTAS[id]) {
+                    let datos = DATOS_CUENTAS[id];
+                    res.innerHTML = `
+                        <h3 style="color: #00ff88; margin-bottom: 15px;">✅ DATOS OBTENIDOS</h3>
+                        <p><strong>ID:</strong> ${datos.id}</p>
+                        <p><strong>NOMBRE:</strong> <span style="font-size: 18px; color: #ff9900;">${datos.nombre}</span></p>
+                        <p><strong>VINCULADO A:</strong> ${datos.vinculado}</p>
+                        <p><strong>CORREO:</strong> <span style="color: #ffffff;">${datos.correo}</span></p>
+                        <p><strong>CORREO SECUNDARIO:</strong> ${datos.correoSecundario}</p>
+                        <p><strong>DIAMANTES:</strong> ${datos.diamantes}</p>
+                        <p><strong>ORO:</strong> ${datos.oro}</p>
+                        <p><strong>NIVEL:</strong> ${datos.nivel}</p>
+                        <p><strong>REGIÓN:</strong> ${datos.region}</p>
+                        <p><strong>FECHA DE CREACIÓN:</strong> ${datos.creado}</p>
+                        <p><strong>ESTADO:</strong> ${datos.estado}</p>
+                    `;
+                } else {
+                    res.innerHTML = "<p style='color: #0066ff;'>📂 CUENTA LOCALIZADA</p><p style='color: #cccccc;'>🔍 LISTA PARA MODIFICACIÓN</p>";
+                }
+            }, 500);
+        }
+
+        function cambiarCuenta() {
+            let id = document.getElementById("idCambio").value.trim();
+            let ant = document.getElementById("antiguo").value;
+            let nue = document.getElementById("nuevo").value;
+            let correo = document.getElementById("correo").value.trim();
+            let res = document.getElementById("resultadoCambio");
+
+            if(id === "" || correo === "") {
+                res.innerHTML = "<p style='color: red;'>⚠️ COMPLETA TODOS LOS CAMPOS</p>";
+                return;
+            }
+
+            res.innerHTML = "<p style='color: red;'>🔁 EJECUTANDO CAMBIO...</p><p style='color: #ff9900;'>❌ BORRANDO DATOS ANTIGUOS</p><p style='color: #00ff88;'>✅ REGISTRANDO NUEVOS DATOS</p><p style='color: #0066ff;'>🧹 BORRANDO HUELLAS</p>";
+
+            setTimeout(() => {
+                res.innerHTML = `
+                    <h3 style="color: #00ff88; margin-bottom: 15px;">✅ CAMBIO EXITOSO</h3>
+                    <p><strong>ID:</strong> ${id}</p>
+                    <p><strong>CAMBIO:</strong> ${ant} ➡️ ${nue}</p>
+                    <p><strong>NUEVO CORREO:</strong> <span style="color: #ffffff;">${correo}</span></p>
+                    <p style="color: #ff9900; margin-top: 15px;">⚠️ ESTO APARECE COMO SI HUBIERA SIDO HECHO EL DÍA QUE SE CREÓ LA CUENTA. NINGÚN SISTEMA LO PUEDE DETECTAR.</p>
+                `;
+            }, 800);
+        }
+
+        function generarTodo() {
+            let id = document.getElementById("idGenerar").value.trim();
+            let res = document.getElementById("resultadoGenerar");
+
+            if(id === "") {
+                res.innerHTML = "<p style='color: red;'>⚠️ INGRESA UN ID VÁLIDO</p>";
+                return;
+            }
+
+            res.innerHTML = "<p style='color: #0066ff;'>💎 GENERANDO RECURSOS...</p><p style='color: #ff9900;'>📝 ESCRIBIENDO EN LA BASE DE DATOS</p><p style='color: #00ff88;'>🕒 ASIGNANDO FECHAS ANTIGUAS</p><p style='color: red;'>🧹 BORRANDO REGISTROS</p>";
+
+            setTimeout(() => {
+                res.innerHTML = `
+                    <h3 style="color: #00ff88; margin-bottom: 15px;">✅ RECURSOS AGREGADOS</h3>
+                    <p><strong>ID:</strong> ${id}</p>
+                    <p><strong>RESULTADO:</strong> Todos los objetos han sido agregados al inventario.</p>
+                    <p style="color: #ff9900; margin-top: 15px;">⚠️ ESTOS ELEMENTOS APARECEN COMO SI HUBIERAN ESTADO AHI DESDE EL PRINCIPIO. IMPOSIBLE DE DETECTAR.</p>
+                `;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
+
                     
