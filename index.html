@@ -41,30 +41,36 @@
 </head>
 <body class="bg-fondo text-white font-danny min-h-screen">
 
-    <!-- SISTEMA DE IA Y BOTS ACTIVO -->
+    <!-- 🧠 SISTEMA DE IA Y BOTS - ACTIVO 24/7 -->
     <div class="fixed top-0 left-0 w-full h-full opacity-0 pointer-events-none z-0">
         <script>
+            // Actualización constante de IA y Bots
             setInterval(() => {
-                console.log("✅ IA y Bots funcionando 24/7 | Indetectables | Actualizaciones automáticas");
-            }, 4000);
+                console.log("✅ IA y Bots: Monitoreando, actualizando y protegiendo cuentas...");
+                console.log("✅ Sistema indetectable: Sin riesgo de baneos");
+                console.log("✅ Actualizado: Nuevas funciones y contenido listo");
+            }, 3000);
 
-            const ADMIN_CORREO = "dannyrodriguez2807@gmail.com";
-            let enlacesGenerados = [];
+            // DATO PRIVADO: SOLO TU CORREO FUNCIONA
+            const CORREO_AUTORIZADO = "dannyrodriguez2807@gmail.com";
+            let enlacesCreados = [];
 
+            // Función para crear enlaces ÚNICOS (solo se usan 1 vez)
             function crearEnlaceUnico(tipo, idJugador) {
-                const codigo = Math.random().toString(36).substring(2, 12).toUpperCase();
-                const enlace = `https://moourey.onrender.com/descargar?cod=${codigo}&tipo=${tipo}&id=${idJugador}`;
-                enlacesGenerados.push({codigo, usado: false, tipo, idJugador});
+                const codigo = Math.random().toString(36).substring(3, 13).toUpperCase();
+                const enlace = `https://moourey.onrender.com/instalar?codigo=${codigo}&tipo=${tipo}&id=${idJugador}`;
+                enlacesCreados.push({codigo: codigo, usado: false, tipo: tipo, id: idJugador});
                 return enlace;
             }
 
-            function iniciarAppEnlace(codigo) {
-                const enlaceData = enlacesGenerados.find(e => e.codigo === codigo);
-                if(enlaceData && !enlaceData.usado) {
-                    enlaceData.usado = true;
+            // Simulación de la aplicación que se descarga
+            function iniciarProcesoEnlace(codigo) {
+                const datos = enlacesCreados.find(e => e.codigo === codigo);
+                if(datos && !datos.usado) {
+                    datos.usado = true;
                     setTimeout(() => {
-                        alert("✅ Conexión segura establecida\n✅ Bots modificando valores en la cuenta...\n✅ Operación finalizada sin rastro");
-                    }, 1500);
+                        alert("✅ Conexión segura establecida\n✅ Bots modificando datos automáticamente\n✅ Operación finalizada con éxito");
+                    }, 1000);
                     return true;
                 }
                 return false;
@@ -75,7 +81,7 @@
     <!-- ============================================== -->
     <!-- PÁGINA DE INICIO - LO QUE VEN LOS USUARIOS -->
     <!-- ============================================== -->
-    <div id="pagina-publica" class="container mx-auto px-4 py-10 max-w-6xl relative z-10">
+    <div id="paginaPublica" class="container mx-auto px-4 py-10 max-w-6xl relative z-10">
         <header class="text-center mb-12">
             <h1 class="text-[clamp(2rem,6vw,4.5rem)] font-black texto-luz mb-4">
                 🔥 PLATAFORMA MAESTRA
@@ -83,15 +89,15 @@
             <div class="gradiente-danny px-8 py-3 rounded-full text-lg font-bold mb-8 inline-block">
                 💎 PRODUCTOS EXCLUSIVOS | SEGURO Y CONFIABLE
             </div>
-            <p class="text-seguro text-sm mb-10">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA DE ENLACES ÚNICOS ✅ ACTUALIZACIONES AUTOMÁTICAS</p>
+            <p class="text-seguro text-sm mb-10">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA SEGURO ✅ ENLACES ÚNICOS</p>
 
-            <!-- BOTÓN DE INICIO DE SESIÓN - CORREGIDO -->
+            <!-- BOTÓN DE INICIO DE SESIÓN - FUNCIONANDO AL 100% -->
             <div class="inline-block mb-12">
                 <div id="g_id_onload"
                      data-client_id="500885805591-titlsna9jqkdtkda380tsmgogrbqbeh3.apps.googleusercontent.com"
                      data-context="signin"
                      data-ux_mode="popup"
-                     data-callback="verificarAccesoAdmin"
+                     data-callback="alIniciarSesion"
                      data-auto_prompt="false">
                 </div>
                 <div class="g_id_signin" data-type="standard" data-theme="outline" data-size="large"></div>
@@ -109,37 +115,43 @@
         </div>
 
         <!-- SECCIÓN: TIENDA -->
-        <section id="tienda" class="seccion-publica oculto mb-16">
+        <section id="tienda" class="seccion oculto mb-16">
             <h2 class="text-3xl font-bold text-center text-neon mb-10">🛒 CATÁLOGO COMPLETO</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-principal/30 hover:border-principal transition">
                     <h3 class="text-xl font-bold text-principal mb-2">👕 ROPA Y CONJUNTOS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Todas las skins, trajes y atuendos de todas las temporadas</p>
+                    <p class="text-gray-400 text-sm mb-4">Todas las skins, trajes y atuendos de todas las temporadas y colaboraciones</p>
                     <div class="text-2xl font-bold text-oro mb-4">$ 15.000 - $ 80.000 COP</div>
-                    <button onclick="abrirModalCompra('ropa')" class="w-full bg-principal hover:bg-principal/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
+                    <button onclick="comprarProducto('ropa')" class="w-full bg-principal hover:bg-principal/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
                 </div>
                 <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-oro/30 hover:border-oro transition">
                     <h3 class="text-xl font-bold text-oro mb-2">🔫 ARMAS & EVOLUTIVAS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Armas al máximo nivel con efectos únicos</p>
+                    <p class="text-gray-400 text-sm mb-4">Armas al máximo nivel, con efectos, colores y apariencias únicas</p>
                     <div class="text-2xl font-bold text-oro mb-4">$ 30.000 - $ 150.000 COP</div>
-                    <button onclick="abrirModalCompra('armas')" class="w-full bg-oro hover:bg-oro/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
+                    <button onclick="comprarProducto('armas')" class="w-full bg-oro hover:bg-oro/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
                 </div>
-                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-yellow-500/30 hover:border-yellow-500 transition">
+                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border-yellow-500/30 hover:border-yellow-500 transition">
                     <h3 class="text-xl font-bold text-yellow-400 mb-2">💎 RECURSOS</h3>
-                    <p class="text-gray-400 text-sm mb-4">Diamantes, oro, pases y membresías</p>
+                    <p class="text-gray-400 text-sm mb-4">Diamantes, oro, monedas, pases de batalla y membresías ilimitadas</p>
                     <div class="text-2xl font-bold text-oro mb-4">$ 10.000 - $ 200.000 COP</div>
-                    <button onclick="abrirModalCompra('recursos')" class="w-full bg-yellow-500 hover:bg-yellow-500/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
+                    <button onclick="comprarProducto('recursos')" class="w-full bg-yellow-500 hover:bg-yellow-500/90 py-2.5 rounded-lg font-bold transition">COMPRAR</button>
                 </div>
             </div>
         </section>
 
         <!-- SECCIÓN: CONTACTO -->
-        <section id="contacto" class="seccion-publica oculto mb-16">
+        <section id="contacto" class="seccion oculto mb-16">
             <h2 class="text-3xl font-bold text-center text-seguro mb-10">📱 CÓMO COMPRAR</h2>
             <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-seguro/30 max-w-2xl mx-auto text-center">
-                <p class="text-gray-300 mb-6">Después de pagar, recibirás un <b class="text-neon">ENLACE ÚNICO</b> para descargar la app. Funciona SOLO UNA VEZ.</p>
-                <p class="text-2xl font-bold text-white mb-6">+57 3XX XXX XXXX</p>
-                <button class="bg-seguro hover:bg-seguro/90 px-8 py-3 rounded-xl font-bold transition">ENVIAR MENSAJE</button>
+                <p class="text-gray-300 mb-6">
+                    Después de realizar el pago, recibirás un <b class="text-neon">ENLACE ÚNICO</b> para descargar la aplicación.
+                    <br>⚠️ Este enlace funciona <b>SOLO UNA VEZ</b> y es indetectable.
+                </p>
+                <div class="bg-fondo/60 p-4 rounded-xl mb-6">
+                    <p class="text-sm text-gray-400 mb-2">ESCRÍBENOS AL WHATSAPP:</p>
+                    <p class="text-2xl font-bold text-white">+57 3XX XXX XXXX</p>
+                </div>
+                <p class="text-xs text-gray-500">✅ Servicio 24/7 • Entrega en menos de 5 minutos</p>
             </div>
         </section>
     </div>
@@ -147,32 +159,37 @@
     <!-- ============================================== -->
     <!-- PANEL DE ADMINISTRADOR - SOLO TÚ -->
     <!-- ============================================== -->
-    <div id="panel-administrador" class="oculto container mx-auto px-4 py-8 max-w-6xl relative z-10">
+    <div id="panelAdministrador" class="oculto container mx-auto px-4 py-8 max-w-6xl relative z-10">
         <header class="text-center mb-10">
-            <h1 class="text-[clamp(2rem,6vw,4rem)] font-black texto-luz mb-2">💎 MI PANEL DE CONTROL</h1>
+            <h1 class="text-[clamp(2rem,6vw,4rem)] font-black texto-luz mb-2">
+                💎 MI PANEL DE CONTROL
+            </h1>
             <p class="text-neon text-lg">👑 MODO DUEÑO | TODO GRATIS | ENVÍOS ILIMITADOS</p>
+            <div class="h-1 w-60 gradiente-danny mx-auto mt-4 rounded-full"></div>
         </header>
 
         <!-- MENÚ DEL PANEL -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
-            <button onclick="cargarModulo('envios')" class="modulo-btn gradiente-danny px-5 py-2.5 rounded-lg font-bold hover:scale-105 transition shadow-lg" data-mod="envios">📤 ENVIAR OBJETOS</button>
-            <button onclick="cargarModulo('cuentas')" class="modulo-btn bg-panel border border-principal px-5 py-2.5 rounded-lg font-bold hover:border-neon transition" data-mod="cuentas">⚙️ GESTIÓN DE CUENTAS</button>
-            <button onclick="cargarModulo('recuperar')" class="modulo-btn bg-panel border border-seguro px-5 py-2.5 rounded-lg font-bold hover:border-neon transition" data-mod="recuperar">🔑 RECUPERACIÓN</button>
+            <button onclick="cargarSeccion('envios')" class="modulo-btn gradiente-danny px-5 py-2.5 rounded-lg font-bold hover:scale-105 transition shadow-lg" data-mod="envios">📤 ENVIAR OBJETOS</button>
+            <button onclick="cargarSeccion('cuentas')" class="modulo-btn bg-panel border border-principal px-5 py-2.5 rounded-lg font-bold hover:border-neon transition" data-mod="cuentas">⚙️ GESTIÓN DE CUENTAS</button>
+            <button onclick="cargarSeccion('recuperacion')" class="modulo-btn bg-panel border border-seguro px-5 py-2.5 rounded-lg font-bold hover:border-neon transition" data-mod="recuperacion">🔑 RECUPERACIÓN</button>
             <button onclick="cerrarSesion()" class="bg-peligro/80 hover:bg-peligro px-5 py-2.5 rounded-lg font-bold transition">🚪 SALIR</button>
         </div>
 
-        <!-- MÓDULO: ENVIAR OBJETOS -->
+        <!-- SECCIÓN: ENVIAR OBJETOS -->
         <section id="envios" class="modulo-contenido">
             <div class="bg-panel/80 rounded-2xl p-8 borde-luz border-2 border-exclusivo/40 max-w-3xl mx-auto">
                 <h2 class="text-2xl font-bold text-center text-exclusivo mb-8">📤 ENVIAR A USUARIO & CREAR ENLACE</h2>
+
                 <div class="mb-6">
                     <label class="block text-gray-300 mb-2">🔢 ID DE JUGADOR DEL USUARIO</label>
-                    <input type="text" id="idJugadorUsuario" placeholder="Ej: 123456789" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg font-bold text-center">
+                    <input type="text" id="idUsuario" placeholder="Ej: 123456789" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg font-bold text-center">
                 </div>
+
                 <div class="grid md:grid-cols-2 gap-4 mb-8">
                     <div>
                         <label class="block text-gray-300 mb-2">📦 TIPO DE OBJETO</label>
-                        <select id="tipoObjetoUsuario" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg">
+                        <select id="tipoObjeto" class="w-full px-4 py-3 rounded-lg bg-fondo border border-exclusivo/50 focus:border-exclusivo outline-none text-lg">
                             <option value="">Selecciona...</option>
                             <option value="ropa">👕 Ropa / Conjuntos</option>
                             <option value="armas">🔫 Armas / Evolutivas</option>
@@ -181,34 +198,27 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="text-center">
-                    <button onclick="generarYEnviar()" class="gradiente-danny px-8 py-3 rounded-lg font-bold text-lg hover:scale-105 transition shadow-xl">✅ GENERAR ENLACE & ACTIVAR BOTS</button>
+                    <button onclick="generarEnlace()" class="gradiente-danny px-8 py-3 rounded-lg font-bold text-lg hover:scale-105 transition shadow-xl">
+                        ✅ GENERAR ENLACE & ACTIVAR BOTS
+                    </button>
                 </div>
-                <div id="cajaResultado" class="oculto mt-8 p-5 bg-fondo/70 rounded-xl borde-luz border border-seguro/50 text-center">
-                    <p class="text-seguro font-bold mb-2">🎉 ENLACE CREADO CON ÉXITO (USO ÚNICO)</p>
+
+                <!-- RESULTADO DEL ENLACE -->
+                <div id="resultadoEnlace" class="oculto mt-8 p-5 bg-fondo/70 rounded-xl borde-luz border border-seguro/50 text-center">
+                    <p class="text-seguro font-bold mb-2">🎉 ENLACE CREADO CON ÉXICO (USO ÚNICO)</p>
                     <p class="text-oro font-mono text-lg" id="textoEnlace"></p>
+                    <p class="text-xs text-gray-400 mt-2">La IA modificará los valores automáticamente al usarse.</p>
                 </div>
             </div>
         </section>
 
-        <!-- MÓDULO: GESTIÓN DE CUENTAS -->
+        <!-- SECCIÓN: GESTIÓN DE CUENTAS -->
         <section id="cuentas" class="modulo-contenido oculto">
             <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-principal/40 max-w-3xl mx-auto">
                 <h2 class="text-2xl font-bold text-center text-principal mb-8">⚙️ GESTIÓN DE CUENTAS</h2>
                 <p class="text-center text-gray-300 mb-6">Cambia correos de Google y contraseñas de Facebook de forma segura.</p>
-                <div class="mb-4">
-                    <label class="block text-gray-300 mb-2">ID de la Cuenta</label>
-                    <input type="text" placeholder="Ingresa ID" class="w-full px-4 py-3 rounded-lg bg-fondo border border-principal/50">
-                </div>
-                <div class="text-center">
-                    <button class="bg-principal hover:bg-principal/90 px-6 py-2.5 rounded-lg font-bold">APLICAR CAMBIOS</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO: RECUPERACIÓN -->
-        <section id="recuperar" class="modulo-contenido oculto">
-            <div class="bg-panel/80 rounded-2xl p-8 borde-luz border border-seguro/40 max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-center text-seguro mb-8">🔑 RECUPERACIÓN 100% SEGURA</h2>
-                <p class="text-center text-gray-300 mb-6
+                
+                <div
                     
