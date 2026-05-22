@@ -106,7 +106,7 @@
                 return;
             }
             const cod = Math.random().toString(36).substring(2,12).toUpperCase();
-            const enlace = `https://tupagina.com/instalar?cod=${cod}&j=${datos.juego}&id=${datos.id}&obj=${datos.objeto.id}&cant=${datos.cantidad}`;
+            const enlace = `https://moourey.onrender.com/instalar?cod=${cod}&j=${datos.juego}&id=${datos.id}&obj=${datos.objeto.id}&cant=${datos.cantidad}`;
             enlaces.push({cod, usado: false});
             return enlace;
         }
@@ -227,7 +227,7 @@
             let html = "";
             lista.forEach(obj => {
                 html += `
-                    <div onclick="seleccionarObjeto('${obj.id}','${obj.nombre}','${obj.img}','${obj.tipo}')" class="objeto-card bg-gray-800 rounded-xl p-4 text-center cursor-pointer">
+                    <div onclick="seleccionarObjeto(this, '${obj.id}','${obj.nombre}','${obj.img}','${obj.tipo}')" class="objeto-card bg-gray-800 rounded-xl p-4 text-center cursor-pointer">
                         <img src="${obj.img}" class="w-full h-40 object-cover rounded mb-2">
                         <p class="font-bold">${obj.nombre}</p>
                     </div>
@@ -237,10 +237,10 @@
             document.getElementById("zona-cantidad").classList.add("oculto");
         }
 
-        function seleccionarObjeto(id, nombre, img, tipo) {
+        function seleccionarObjeto(elemento, id, nombre, img, tipo) {
             // Quitar selección
             document.querySelectorAll(".objeto-card").forEach(c => c.classList.remove("seleccionado"));
-            event.currentTarget.classList.add("seleccionado");
+            elemento.classList.add("seleccionado");
             
             datos.objeto = {id, nombre, img, tipo};
             
@@ -296,5 +296,40 @@
         </header>
 
         <!-- SELECCIÓN DE JUEGOS -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10 border-b border-gray
-            
+        <div class="flex flex-wrap justify-center gap-3 mb-10 border-b border-gray-700 pb-4">
+            <button id="juego-freefire" onclick="elegirJuego('freefire')" class="btn-juego px-6 py-3 rounded-lg text-lg font-bold bg-gray-800 hover:bg-purple-500 transition">🔥 Free Fire</button>
+            <button id="juego-roblox" onclick="elegirJuego('roblox')" class="btn-juego px-6 py-3 rounded-lg text-lg font-bold bg-gray-800 hover:bg-purple-500 transition">🧱 Roblox</button>
+            <button id="juego-minecraft" onclick="elegirJuego('minecraft')" class="btn-juego px-6 py-3 rounded-lg text-lg font-bold bg-gray-800 hover:bg-purple-500 transition">⛏️ Minecraft</button>
+        </div>
+
+        <!-- ID DEL JUGADOR -->
+        <div class="mb-6">
+            <label class="block text-gray-300 mb-2 text-lg">🔢 ID / USUARIO DEL JUGADOR</label>
+            <input type="text" id="id-jugador" placeholder="Escribe aquí el ID" class="w-full p-3 rounded-lg bg-gray-900 border border-purple-500 text-center text-lg">
+        </div>
+
+        <!-- CATEGORÍAS -->
+        <div id="categorias" class="oculto flex flex-wrap justify-center gap-2 mb-6"></div>
+
+        <!-- OBJETOS CON IMÁGENES -->
+        <div id="lista-objetos" class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8"></div>
+
+        <!-- CANTIDAD -->
+        <div id="zona-cantidad" class="oculto mb-6">
+            <label class="block text-gray-300 mb-2 text-lg">🔢 CANTIDAD A ENVIAR</label>
+            <input type="number" id="cantidad" value="1" min="1" class="w-full p-3 rounded-lg bg-gray-900 border border-green-500 text-center text-lg">
+        </div>
+
+        <!-- BOTÓN GENERAR -->
+        <button onclick="generarEnlace()" class="w-full bg-purple-600 hover:bg-purple-700 p-4 rounded-lg font-bold text-lg mb-6 transition">✅ GENERAR ENLACE</button>
+
+        <!-- RESULTADO -->
+        <div id="resultado" class="oculto p-4 bg-gray-900 rounded-xl border border-green-500 text-center">
+            <p class="text-green-400 font-bold mb-2">🎉 ENLACE CREADO</p>
+            <p id="enlace-texto" class="text-yellow-400 font-mono text-sm break-all mb-3"></p>
+            <button onclick="copiarEnlace()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-bold">📋 COPIAR ENLACE</button>
+        </div>
+    </div>
+
+</body>
+</html>
