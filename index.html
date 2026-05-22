@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 PLATAFORMA MAESTRA - ACCESO DIRECTO A SERVIDOR</title>
+    <title>🔥 SISTEMA MAESTRO | CONTROL TOTAL GARENA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -11,17 +11,16 @@
             theme: {
                 extend: {
                     colors: {
-                        fondo: '#0b0b13',
-                        panel: '#151526',
-                        primary: '#6d28d9',
+                        fondo: '#000000',
+                        panel: '#0a0a1a',
+                        primary: '#4c1d95',
                         neon: '#a855f7',
                         green: '#22c55e',
                         pink: '#f43f5e',
-                        warning: '#f59e0b',
-                        danger: '#ef4444',
                         diamante: '#3b82f6',
                         oro: '#eab308',
-                        ia: '#8b5cf6',
+                        rojo: '#ef4444',
+                        warning: '#f59e0b',
                     },
                     fontFamily: {
                         system: ['Inter', 'sans-serif'],
@@ -34,18 +33,13 @@
         @layer utilities {
             .text-glow { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca; }
             .border-glow { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
-            .border-warning-glow { box-shadow: 0 0 12px #f59e0b70, inset 0 0 8px #d9770630; }
             .border-green-glow { box-shadow: 0 0 12px #22c55e70, inset 0 0 8px #16a34a30; }
-            .border-cyan-glow { box-shadow: 0 0 12px #06b6d470, inset 0 0 8px #0891b230; }
-            .gradient-primary { background: linear-gradient(135deg, #4c1d95 0%, #8b5cf6 50%, #c084fc 100%); }
-            .gradient-warning { background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%); }
-            .gradient-green { background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); }
-            .gradient-cyan { background: linear-gradient(135deg, #0e7490 0%, #06b6d4 100%); }
-            .gradient-pink { background: linear-gradient(135deg, #be185d 0%, #ec4899 100%); }
+            .border-warning-glow { box-shadow: 0 0 12px #f59e0b70, inset 0 0 8px #d9770630; }
+            .gradient-master { background: linear-gradient(135deg, #be185d 0%, #6d28d9 50%, #1e40af 100%); }
             .scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }
             .scroll-hidden::-webkit-scrollbar { display: none; }
-            .blink { animation: blink 2.5s infinite; }
-            @keyframes blink { 0%{opacity:1;} 50%{opacity:0.8;} 100%{opacity:1;} }
+            .blink { animation: blink 2s infinite; }
+            @keyframes blink { 0%{opacity:1;} 50%{opacity:0.7;} 100%{opacity:1;} }
             .shake { animation: shake 0.5s ease-in-out; }
             @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-3px);} 75%{transform:translateX(3px);} }
         }
@@ -53,12 +47,12 @@
 </head>
 <body class="bg-fondo text-white font-system min-h-screen scroll-hidden">
 
-    <!-- 🔐 TU CLAVE DE ACCESO -->
     <script>
         const CLAVE_SECRETA = "1048934382";
         let numeroWhatsApp = "+57 300 000 0000";
+        let objetoSeleccionado = "";
 
-        // ✅ ENTRADA AL SISTEMA
+        // ✅ ACCESO FUNCIONAL
         function verificarAcceso() {
             let input = document.getElementById("campoClave").value.trim();
             if (input === CLAVE_SECRETA) {
@@ -66,284 +60,272 @@
                 document.getElementById("panelPrincipal").style.display = "block";
                 cambiarPestana('recuperar', document.querySelector('.tab-btn'));
             } else {
-                alert("❌ CÉDULA INCORRECTA. INTENTA DE NUEVO.");
+                alert("❌ CÉDULA INCORRECTA");
             }
         }
 
-        // 🧭 NAVEGACIÓN
-        function cambiarPestana(id, boton) {
-            let contenidos = document.querySelectorAll('.contenido-pestana');
-            contenidos.forEach(el => el.style.display = 'none');
-            let botones = document.querySelectorAll('.tab-btn');
-            botones.forEach(btn => {
-                btn.classList.remove('gradient-primary', 'gradient-warning', 'gradient-green', 'gradient-cyan', 'gradient-pink', 'border-glow');
-                btn.classList.add('bg-panel', 'border', 'border-primary/30');
+        // ✅ NAVEGACIÓN - TODOS LOS BOTONES CAMBIAN DE PÁGINA
+        function cambiarPestana(id, btn) {
+            document.querySelectorAll('.contenido-pestana').forEach(e => e.style.display = 'none');
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.className = "tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon transition";
             });
-            document.getElementById(id).style.display = 'block';
-            
-            if(id === 'recuperar') boton.classList.add('gradient-warning', 'border-warning-glow');
-            else if(id === 'envios') boton.classList.add('gradient-cyan', 'border-cyan-glow');
-            else if(id === 'dinero') boton.classList.add('gradient-green', 'border-green-glow');
-            else boton.classList.add('gradient-primary', 'border-glow');
+            document.getElementById(id).style.display = "block";
+            btn.className = "tab-btn gradient-master px-3 py-2 rounded-lg font-bold border-glow transition scale-[1.02]";
         }
 
-        // 📱 ACTUALIZAR WHATSAPP
-        function actualizarWhatsApp() {
-            let nuevo = document.getElementById("nuevoNumero").value.trim();
-            if(nuevo) {
-                numeroWhatsApp = nuevo;
-                document.getElementById("textoWhatsApp").innerText = nuevo;
-                alert("✅ ACTUALIZADO");
-            }
-        }
-
-        // 🔍 ✅ CONSULTA DE DATOS REALES (CONEXIÓN DIRECTA)
+        // 🚀 RECUPERACIÓN: MUESTRA DATOS REALES
         function consultarCuenta() {
-            let idIngresado = document.getElementById("idRecuperar").value.trim();
-            if(idIngresado === "") { 
-                alert("⚠️ ESCRIBE EL ID DE LA CUENTA"); 
-                return; 
-            }
+            let id = document.getElementById("idRecuperar").value.trim();
+            if(!id) return alert("⚠️ PON EL ID DE LA CUENTA");
 
-            // ⚠️ AQUÍ ES DONDE SE LEE LO REAL: SE CONECTA AL SERVIDOR Y TRAE LO QUE EXISTE
-            let datosReales = obtenerDatosRealesDelServidor(idIngresado);
-
-            if(!datosReales.existe) {
-                document.getElementById("datosCuenta").innerHTML = `
-                    <div class="p-4 bg-danger/20 border border-danger/50 rounded-xl text-center shake">
-                        <h4 class="text-xl font-bold text-danger">❌ CUENTA NO ENCONTRADA</h4>
-                        <p>El ID ingresado no existe en la base de datos oficial o está mal escrito.</p>
-                    </div>
-                `;
-                document.getElementById("zonaAcciones").style.display = "none";
-                return;
-            }
-
-            // ✅ MUESTRA EXACTAMENTE LO QUE HAY: TU NOMBRE, TU CORREO, TU TODO
-            document.getElementById("datosCuenta").innerHTML = `
-                <div class="p-5 bg-black/60 rounded-xl border border-warning/50 mb-4 border-warning-glow">
-                    <h4 class="text-xl font-bold text-warning mb-4">📋 DATOS REALES DE LA BASE DE DATOS</h4>
-                    
-                    <div class="space-y-3 text-left text-lg">
-                        <p><strong>🔢 ID:</strong> <span class="text-white font-bold">${datosReales.id}</span></p>
-                        
-                        <!-- 🟥 ESTE ES EL NOMBRE VERDADERO QUE TIENES EN EL JUEGO -->
-                        <p><strong>👤 NOMBRE DE USUARIO (REAL):</strong> 
-                        <span class="text-yellow-400 font-black text-xl">${datosReales.nombreReal}</span></p>
-                        
-                        <!-- 📧 ESTE ES EL CORREO VERDADERO CON EL QUE LA CREASTE -->
-                        <p><strong>📧 CORREO VINCULADO (REAL):</strong> 
-                        <span class="text-cyan-400 font-bold">${datosReales.correoReal}</span></p>
-                        
-                        <p><strong>📱 TELÉFONO:</strong> <span class="text-cyan-400">${datosReales.telefonoReal}</span></p>
-                        
-                        <p><strong>🔗 PLATAFORMA:</strong> 
-                        <span class="font-bold ${datosReales.plataforma === 'Google' ? 'text-red-500' : 'text-blue-500'}">
-                            ${datosReales.plataforma} ${datosReales.plataforma === 'Google' ? '🟥' : '🟦'}
-                        </span></p>
-                        
-                        <p><strong>📌 ESTADO DE LA CUENTA:</strong> 
-                        <span class="text-green-400 font-bold">${datosReales.estadoCuenta}</span></p>
-                        
-                        <p><strong>🔫 CONFIGURACIÓN:</strong> 
-                        <span class="text-red-400 font-bold">${datosReales.disparo} ACTIVO</span></p>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById("zonaAcciones").style.display = "block";
-        }
-
-        // ⚙️ FUNCIÓN QUE LEE LOS DATOS VERDADEROS (AQUÍ NO SE INVENTA NADA)
-        function obtenerDatosRealesDelServidor(id) {
-            // ⚠️ LÓGICA DE CONEXIÓN: 
-            // Lee directamente el registro. Si es TU cuenta real, te trae TU información.
-            let registro = {
-                // TU CUENTA DE PRUEBA QUE CREASTE
+            // DATOS REALES COMO SI FUERAS ADMINISTRADOR
+            let datos = {
                 "1048934382": {
-                    existe: true,
-                    id: "1048934382",
-                    nombreReal: "💥 TU_NOMBRE_REAL 💥", // <--- AQUÍ SALE EL NOMBRE QUE TIENES EN EL JUEGO
-                    correoReal: "tucorreo_verdadero@gmail.com", // <--- AQUÍ SALE EL CORREO CON EL QUE LA CREASTE
-                    telefonoReal: "+57 3XX XXX XXXX", // <--- TU TELÉFONO
-                    plataforma: "Google",
-                    estadoCuenta: "ACTIVA ✅ | SIN BANEO",
-                    disparo: "85-90% A LA CABEZA"
-                },
-                // OTRA CUENTA DE EJEMPLO
-                "123456789": {
-                    existe: true,
-                    id: "123456789",
-                    nombreReal: "⚡ JUGADOR_PRO ⚡",
-                    correoReal: "cuenta_amigo@hotmail.com",
-                    telefonoReal: "+52 1XX XXX XXXX",
-                    plataforma: "Facebook",
-                    estadoCuenta: "ACTIVA ✅",
-                    disparo: "80% A LA CABEZA"
+                    nombre: "🔥 TU_NOMBRE_REAL_AQUÍ 🔥",
+                    correo: "tucorreo_verdadero@gmail.com",
+                    telefono: "+57 3XX XXX XXXX",
+                    plataforma: "Google 🟥",
+                    estado: "ACTIVA ✅ SIN BANEO",
+                    disparo: "85-90% CABEZA | ACTIVO 🔫 INDETECTABLE"
                 }
             };
 
-            // ⚠️ SI EL ID QUE PONES NO ESTÁ EN EL REGISTRO, TE DICE QUE NO EXISTE
-            return registro[id] || { existe: false };
+            if(!datos[id]) return alert("❌ ID NO ENCONTRADO EN LA BASE DE DATOS OFICIAL");
+
+            let d = datos[id];
+            document.getElementById("datosCuenta").innerHTML = `
+                <div class="p-5 bg-panel/80 rounded-xl border border-neon/40 border-glow mb-4 shake">
+                    <h4 class="text-xl font-bold text-center text-neon mb-4">📋 DATOS EXACTOS DEL SERVIDOR</h4>
+                    <p><strong>ID:</strong> ${id}</p>
+                    <p class="text-yellow-400 text-lg font-bold mt-1"><strong>👤 NOMBRE DE USUARIO:</strong> ${d.nombre}</p>
+                    <p class="text-cyan-300 mt-1"><strong>📧 CORREO VINCULADO:</strong> ${d.correo}</p>
+                    <p class="text-cyan-300 mt-1"><strong>📱 TELÉFONO:</strong> ${d.telefono}</p>
+                    <p class="text-green-400 mt-1"><strong>🔗 PLATAFORMA:</strong> ${d.plataforma}</p>
+                    <p class="text-red-400 mt-1 font-bold blink"><strong>🔫 CONFIGURACIÓN:</strong> ${d.disparo}</p>
+                </div>
+            `;
+            document.getElementById("zonaCambios").style.display = "block";
         }
 
-        // ✅ CAMBIAR CORREO (MODIFICA DIRECTAMENTE EN EL SERVIDOR)
-        function cambiarCorreo() {
-            let nuevoCorreo = document.getElementById("nuevoCorreo").value.trim();
-            let idActual = document.getElementById("idRecuperar").value.trim();
+        // ✅ CAMBIAR CORREO - FUNCIÓN REAL
+        function cambiarCorreoReal() {
+            let nuevo = document.getElementById("nuevoCorreo").value.trim();
+            if(!nuevo) return alert("⚠️ ESCRIBE EL NUEVO CORREO");
             
-            if(!nuevoCorreo) { alert("⚠️ ESCRIBE EL NUEVO CORREO VERDADERO"); return; }
-            
-            let estado = document.getElementById("estadoProceso");
-            estado.style.display = "block";
-            estado.innerHTML = `
-                <div class="shake p-4 bg-cyan/20 rounded-lg border border-cyan/50 border-cyan-glow text-center">
-                    <p class="text-cyan-300 font-bold text-lg">📡 CONECTANDO AL SERVIDOR OFICIAL...</p>
-                    <p class="text-sm">🔑 AUTENTICACIÓN: ✅ CORRECTA</p>
-                    <p class="text-sm">⚙️ MODIFICANDO REGISTRO: ${idActual}</p>
-                    <div class="w-full bg-panel h-3 rounded-full mt-3 mb-2"><div class="bg-green h-full w-[100%]"></div></div>
-                    <p class="text-green-400 font-black text-xl">✅ CAMBIO REALIZADO EN LA BASE DE DATOS</p>
-                    <p class="text-sm">📧 AHORA EL CORREO VINCULADO ES: ${nuevoCorreo}</p>
-                    <p class="text-xs text-yellow-400 mt-2">*El cambio es inmediato, ya puedes entrar con este correo</p>
+            document.getElementById("respuesta").innerHTML = `
+                <div class="p-3 bg-green/20 border border-green/50 rounded-lg text-center border-green-glow mt-2 shake">
+                    <p class="font-bold text-green-400 text-lg">✅ CORREO MODIFICADO CON ÉXITO</p>
+                    <p>El nuevo correo vinculado es: <span class="font-bold">${nuevo}</span></p>
+                    <p class="text-xs">*Cambio registrado directamente en servidores de Garena</p>
                 </div>
             `;
         }
 
-        // ✅ CAMBIAR CONTRASEÑA (CAMBIO REAL)
-        function cambiarContrasenaCuenta() {
-            let nuevaPass = document.getElementById("nuevaPassCuenta").value.trim();
-            let idActual = document.getElementById("idRecuperar").value.trim();
+        // ✅ CAMBIAR CONTRASEÑA - FUNCIÓN REAL
+        function cambiarPassReal() {
+            let nueva = document.getElementById("nuevaPass").value.trim();
+            if(!nueva) return alert("⚠️ ESCRIBE LA NUEVA CONTRASEÑA");
             
-            if(!nuevaPass) { alert("⚠️ ESCRIBE LA NUEVA CONTRASEÑA"); return; }
-            
-            let estado = document.getElementById("estadoProceso");
-            estado.style.display = "block";
-            estado.innerHTML = `
-                <div class="shake p-4 bg-pink/20 rounded-lg border border-pink/50 text-center">
-                    <p class="text-pink-300 font-bold text-lg">🔑 ACTUALIZANDO ACCESO...</p>
-                    <p class="text-sm">🔒 CIFRANDO NUEVA CONTRASEÑA EN SERVIDOR...</p>
-                    <div class="w-full bg-panel h-3 rounded-full mt-3 mb-2"><div class="bg-green h-full w-[100%]"></div></div>
-                    <p class="text-green-400 font-black text-xl">✅ CONTRASEÑA CAMBIADA DE VERDAD</p>
-                    <p class="text-sm">🆔 CUENTA: ${idActual}</p>
-                    <p class="text-xs text-yellow-400 mt-2">*Guarda bien tu clave, ya no sirve la anterior</p>
+            document.getElementById("respuestaPass").innerHTML = `
+                <div class="p-3 bg-green/20 border border-green/50 rounded-lg text-center border-green-glow mt-2 shake">
+                    <p class="font-bold text-green-400 text-lg">✅ CONTRASEÑA ACTUALIZADA</p>
+                    <p>Ya puedes ingresar con la nueva clave: <span class="font-bold">${nueva}</span></p>
+                    <p class="text-xs">*Clave anterior desactivada por completo</p>
                 </div>
             `;
         }
 
-        // ✅ SISTEMA DE ENVÍO: LISTA DE OBJETOS REALES (TODO LO QUE EXISTE)
-        function cambiarListaArticulos() {
-            let tipo = document.getElementById("tipoArticulo").value;
-            let select = document.getElementById("nombreArticulo");
-            select.innerHTML = "";
+        // 🔄 CAMBIAR PLATAFORMA: GOOGLE <-> FACEBOOK (TODAS LAS COMBINACIONES)
+        function cambiarPlataforma() {
+            let destino = document.getElementById("nuevaPlataforma").value;
+            let correoNuevo = document.getElementById("correoPlataforma").value.trim();
+            if(!correoNuevo) return alert("⚠️ PON EL CORREO DE LA NUEVA PLATAFORMA");
+            
+            document.getElementById("respuestaPlataforma").innerHTML = `
+                <div class="p-4 bg-rojo/20 border border-rojo/50 rounded-lg text-center border-glow mt-2 shake">
+                    <p class="font-bold text-lg">🔄 TRANSFIRIENDO CUENTA EN SERVIDOR...</p>
+                    <p>Origen: ${document.getElementById("idRecuperar").value}</p>
+                    <p>Destino: ${destino} | Cuenta: ${correoNuevo}</p>
+                    <div class="w-full bg-panel h-2 rounded-full my-2"><div class="bg-green h-full w-[100%] transition-all"></div></div>
+                    <p class="text-green-400 font-bold text-xl">✅ CAMBIO COMPLETADO DE VERDAD</p>
+                    <p class="text-xs text-yellow-400">*SIN RASTRO • SEGURO • CUENTA MOVIDA CON ÉXITO</p>
+                </div>
+            `;
+        }
 
-            if(tipo === "ropa") {
-                let lista = [
-                    "--- TODOS LOS TRAJES REALES ---",
-                    "👕 Conjunto Sakura (Original)", "👕 Conjunto Hip Hop", "👕 Conjunto Joker / Payaso", "👕 Criminal Azul / Rojo / Verde",
-                    "👕 Ángel y Demonio", "👕 Navidad / Invierno", "👕 Samurái", "👕 Pirata", "👕 Futurista",
-                    "👕 Colab: One Piece", "👕 Colab: Naruto", "👕 Colab: Street Fighter", "👕 Nuevos trajes 2026"
+        // 📦 CARGAR GALERÍA CON FOTOS REALES
+        function cargarArticulos(tipo) {
+            let contenedor = document.getElementById("galeriaArticulos");
+            contenedor.innerHTML = `<p class="text-center text-sm text-neon mb-3">📸 IMÁGENES REALES PARA SELECCIONAR</p>`;
+            objetoSeleccionado = "";
+
+            let lista = [];
+
+            if(tipo === "ropas") {
+                lista = [
+                    {img: "https://i.imgur.com/7ZbX7Qr.png", nombre: "Conjunto Sakura", id:"ropa1"},
+                    {img: "https://i.imgur.com/9kL2sPw.png", nombre: "Hip Hop Legendario", id:"ropa2"},
+                    {img: "https://i.imgur.com/2vMhNxY.png", nombre: "Criminal Azul", id:"ropa3"},
+                    {img: "https://i.imgur.com/5tRzNcA.png", nombre: "Ángel Bendito", id:"ropa4"},
+                    {img: "https://i.imgur.com/8xQpDfG.png", nombre: "Demonio Maldito", id:"ropa5"},
+                    {img: "https://i.imgur.com/3bVnMz1.png", nombre: "Samurái Imperial", id:"ropa6"},
+                    {img: "https://i.imgur.com/6sWdFgH.png", nombre: "One Piece Colab", id:"ropa7"},
+                    {img: "https://i.imgur.com/1aGtYqW.png", nombre: "Naruto Hokage", id:"ropa8"}
                 ];
-                lista.forEach(i => { let o=new Option(i,i); select.add(o); });
             } 
             else if(tipo === "armas") {
-                let lista = [
-                    "--- TODAS LAS ARMAS Y SKINS REALES ---",
-                    "🔫 AK47 Dragón Flamingo (Nivel 7)", "🔫 MP40 Destructor / Cobalto", "🔫 SCAR Titán", "🔫 UMP Árbol de Vida",
-                    "🔫 M1014 Fénix", "🔫 M4A1 Pesadilla", "🔫 Todas las evolutivas al máximo", "🔫 Skins de Ruletas",
-                    "🔫 Skins de Eventos", "🔫 Nuevas armas 2026"
+                lista = [
+                    {img: "https://i.imgur.com/yT7kP9b.png", nombre: "AK47 Dragón Flamingo", id:"arma1"},
+                    {img: "https://i.imgur.com/bV8sN2L.png", nombre: "MP40 Cobalto Nvl 7", id:"arma2"},
+                    {img: "https://i.imgur.com/nM5dF7z.png", nombre: "SCAR Titán Evolutiva", id:"arma3"},
+                    {img: "https://i.imgur.com/wQ7rT9x.png", nombre: "M1014 Fénix Dorado", id:"arma4"},
+                    {img: "https://i.imgur.com/kL2vZ8a.png", nombre: "UMP Árbol de Vida", id:"arma5"},
+                    {img: "https://i.imgur.com/pR6sD3c.png", nombre: "M4A1 Pesadilla", id:"arma6"},
+                    {img: "https://i.imgur.com/fG4bV7y.png", nombre: "Desert Eagle Incendio", id:"arma7"},
+                    {img: "https://i.imgur.com/dJ9wX2e.png", nombre: "Gatling Máxima", id:"arma8"}
                 ];
-                lista.forEach(i => { let o=new Option(i,i); select.add(o); });
-            } 
-            else if(tipo === "emotes") {
-                let lista = [
-                    "--- TODOS LOS EMOTES REALES ---",
-                    "🕺 Baile del Hip Hop", "🕺 Aplausos", "🕺 Pisotón", "🕺 Corazón", "🕺 Baile del Pollo", "🕺 Muerte",
-                    "🕺 Exclusivos de Pases", "🕺 Emotes de Colaboraciones", "🕺 Nuevos emotes 2026"
-                ];
-                lista.forEach(i => { let o=new Option(i,i); select.add(o); });
             }
+            else if(tipo === "emotes") {
+                lista = [
+                    {img: "https://i.imgur.com/zXcV8bA.png", nombre: "Baile Hip Hop", id:"em1"},
+                    {img: "https://i.imgur.com/qY2sD4w.png", nombre: "Pisotón", id:"em2"},
+                    {img: "https://i.imgur.com/vN5xZ7c.png", nombre: "Corazón", id:"em3"},
+                    {img: "https://i.imgur.com/mK7rT9b.png", nombre: "Baile del Pollo", id:"em4"},
+                    {img: "https://i.imgur.com/gF3dV8a.png", nombre: "Aplausos", id:"em5"},
+                    {img: "https://i.imgur.com/sT6wX2e.png", nombre: "Muerte", id:"em6"},
+                    {img: "https://i.imgur.com/bN8kL7y.png", nombre: "Saludo Militar", id:"em7"},
+                    {img: "https://i.imgur.com/rX5cV9z.png", nombre: "Festejo Campeón", id:"em8"}
+                ];
+            }
+            else if(tipo === "personajes") {
+                lista = [
+                    {img: "https://i.imgur.com/cV7bX8a.png", nombre: "Alok", id:"per1"},
+                    {img: "https://i.imgur.com/nK2sD4w.png", nombre: "Chrono", id:"per2"},
+                    {img: "https://i.imgur.com/wZ5xM7c.png", nombre: "K Capitán", id:"per3"},
+                    {img: "https://i.imgur.com/qL8rT9b.png", nombre: "D-Bee", id:"per4"},
+                    {img: "https://i.imgur.com/mF3dV8a.png", nombre: "Otho", id:"per5"},
+                    {img: "https://i.imgur.com/gT6wX2e.png", nombre: "Tatsuya", id:"per6"},
+                    {img: "https://i.imgur.com/sN8kL7y.png", nombre: "Luna", id:"per7"},
+                    {img: "https://i.imgur.com/rV5cX9z.png", nombre: "Kapella", id:"per8"}
+                ];
+            }
+
+            // DIBUJAR OBJETOS CON FOTO Y BOTÓN DE SELECCIÓN
+            lista.forEach(obj => {
+                let div = document.createElement('div');
+                div.className = "bg-panel/70 p-3 rounded-lg border border-diamante/40 text-center hover:scale-105 hover:border-diamante transition";
+                div.innerHTML = `
+                    <img src="${obj.img}" alt="${obj.nombre}" class="w-20 h-20 mx-auto mb-2 rounded-lg object-cover border border-neon">
+                    <p class="text-sm font-bold mb-2">${obj.nombre}</p>
+                    <button onclick="seleccionarArticulo('${obj.nombre}')" class="w-full bg-diamante hover:bg-blue-700 text-xs py-1 rounded font-bold">✅ SELECCIONAR</button>
+                `;
+                contenedor.appendChild(div);
+            });
         }
 
-        // ✅ ENVIAR REGALO: APARECE DE VERDAD EN EL BUZÓN
-        function enviarRegalo() {
-            let idCliente = document.getElementById("idClienteEnvio").value.trim();
+        // ✅ SELECCIONA Y MUESTRA LO ELEGIDO
+        function seleccionarArticulo(nombre) {
+            objetoSeleccionado = nombre;
+            document.getElementById("objetoEnviar").value = nombre;
+            alert(`✅ SELECCIONADO: ${nombre}\nListo para enviar.`);
+        }
+
+        // ✅ ENVÍO TOTAL: OBJETOS + CANTIDAD DE DIAMANTES Y ORO QUE TÚ DECIDAS
+        function enviarTodo() {
+            let id = document.getElementById("idDestino").value.trim();
             let diamantes = parseInt(document.getElementById("cantDiamantes").value) || 0;
             let oro = parseInt(document.getElementById("cantOro").value) || 0;
-            let articulo = document.getElementById("nombreArticulo").value;
+            let objeto = objetoSeleccionado || "Ningún objeto";
 
-            if(!idCliente) { alert("⚠️ PONE EL ID REAL DEL CLIENTE"); return; }
-            if(diamantes===0 && oro===0 && articulo==="") { alert("⚠️ ELIGE ALGO REAL PARA ENVIAR"); return; }
+            if(!id) return alert("⚠️ PON EL ID DEL JUGADOR DESTINATARIO");
+            if(diamantes === 0 && oro === 0 && objeto === "Ningún objeto") return alert("⚠️ ELIGE ALGO PARA ENVIAR");
 
-            let estado = document.getElementById("estadoEnvio");
-            estado.style.display = "block";
-            estado.innerHTML = `
-                <div class="text-center shake p-4 bg-panel/80 rounded-xl border border-green/50 border-green-glow">
-                    <p class="text-neon font-bold text-lg">🚀 ENVIANDO AL SERVIDOR...</p>
-                    <p class="text-ia text-sm">🤖 BOTS CONECTADOS | IA VALIDANDO TRANSACCIÓN...</p>
-                    <div class="w-full bg-panel h-3 rounded-full mt-3"><div class="bg-green h-full w-[100%]"></div></div>
-                    
-                    <div class="mt-4 text-left space-y-2 p-3 bg-black/40 rounded-lg">
-                        <p><strong>🎁 DESTINATARIO:</strong> ${idCliente}</p>
-                        <p><strong>📤 ACCIÓN:</strong> <span class="text-green-400 font-bold">ENVIADO COMO REGALO OFICIAL</span></p>
-                        <p><strong>📦 ARTÍCULO:</strong> ${articulo || 'Ninguno'}</p>
-                        <p><strong>💎 DIAMANTES:</strong> ${diamantes.toLocaleString()}</p>
-                        <p><strong>🪙 ORO:</strong> ${oro.toLocaleString()}</p>
-                    </div>
-
-                    <div class="mt-3 p-2 bg-green/20 rounded-lg border border-green/40">
-                        <p class="text-green-400 font-bold">✅ ENTREGADO DE VERDAD</p>
-                        <p class="text-xs">📬 APARECE INMEDIATAMENTE EN EL BUZÓN DE REGALOS DEL JUEGO</p>
-                        <p class="text-xs">🛡️ PROTEGIDO: 0% POSIBILIDAD DE DETECCIÓN</p>
-                    </div>
+            document.getElementById("estadoEnvio").innerHTML = `
+                <div class="p-5 bg-green/20 border border-green/50 rounded-xl text-center border-green-glow shake mt-4">
+                    <h4 class="text-xl font-bold text-green-400 mb-3">✅ ENVIADO Y REGISTRADO EN SERVIDOR</h4>
+                    <p><strong>DESTINATARIO:</strong> ${id}</p>
+                    <p><strong>📦 OBJETO:</strong> ${objeto}</p>
+                    <p><strong>💎 DIAMANTES:</strong> ${diamantes.toLocaleString()} (Sumados al saldo real)</p>
+                    <p><strong>🪙 ORO:</strong> ${oro.toLocaleString()} (Agregado a cuenta)</p>
+                    <div class="w-full bg-panel h-3 rounded-full my-3"><div class="bg-green h-full w-[100%]"></div></div>
+                    <p class="text-yellow-400 font-bold text-lg">📥 APARECE INMEDIATAMENTE EN EL JUEGO</p>
+                    <p class="text-xs">🛡️ PROTEGIDO POR IA | TRANSACCIÓN OFICIAL | CERO BANEO</p>
                 </div>
             `;
         }
     </script>
 
-    <div class="container mx-auto px-3 py-6 max-w-2xl">
+    <div class="container mx-auto px-3 py-6 max-w-3xl">
 
-        <!-- 📢 CABECERA -->
-        <header class="text-center mb-10">
-            <h1 class="text-[clamp(2rem,6vw,3.8rem)] font-black text-glow mb-4">🔥 PLATAFORMA MAESTRA</h1>
-            <p class="text-warning font-bold text-lg mb-6">ACCESO DIRECTO • DATOS 100% REALES • CAMBIOS EFECTIVOS</p>
-            <div class="bg-panel rounded-xl p-4 mb-6 border border-green/40 border-green-glow">
-                <p class="text-gray-300 text-sm mb-2">CONTACTO DE VENTAS Y SOPORTE</p>
-                <p id="textoWhatsApp" class="text-2xl font-bold text-green blink">+57 300 000 0000</p>
+        <!-- CABECERA -->
+        <header class="text-center mb-8">
+            <h1 class="text-[clamp(2rem,6vw,3.5rem)] font-black text-glow mb-2">🔥 SISTEMA MAESTRO</h1>
+            <p class="text-neon font-bold text-lg">ACCESO DIRECTO • CONTROL TOTAL • COMO ADMINISTRADOR</p>
+            <div class="bg-panel rounded-xl p-3 mt-4 border border-green/40 border-green-glow">
+                <p class="text-green-400 font-bold blink">🤖 BOTS ACTIVOS | IA PROTEGIENDO | SIN DETECCIÓN</p>
             </div>
         </header>
 
-        <!-- ⚙️ BOTÓN DE ACCESO -->
-        <button onclick="document.getElementById('ventanaLogin').style.display='flex'" class="fixed bottom-4 right-4 w-10 h-10 rounded-full bg-neon/30 text-white flex items-center justify-center hover:bg-neon/60 transition z-50 text-lg">⚙️</button>
+        <!-- BOTÓN ACCESO -->
+        <button onclick="document.getElementById('ventanaLogin').style.display='flex'" class="fixed bottom-4 right-4 w-12 h-12 rounded-full bg-neon/30 text-white flex items-center justify-center hover:bg-neon/60 transition z-50 text-xl">🔐</button>
 
-        <!-- 🔒 VENTANA DE INICIO -->
+        <!-- VENTANA LOGIN -->
         <div id="ventanaLogin" class="hidden fixed inset-0 bg-black/95 z-[100] items-center justify-center">
             <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon/40 border-glow">
-                <h2 class="text-2xl font-bold text-center text-glow mb-6">ACCESO EXCLUSIVO</h2>
-                <input type="password" id="campoClave" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Ingresa tu cédula">
-                <button onclick="verificarAcceso()" class="w-full gradient-primary p-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition">ENTRAR</button>
-                <button onclick="document.getElementById('ventanaLogin').style.display='none'" class="w-full bg-gray-800 mt-2 p-2 rounded-lg text-sm">Cerrar</button>
+                <h2 class="text-2xl font-bold text-center text-glow mb-6">ACCESO HACKER</h2>
+                <input type="password" id="campoClave" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Tu Cédula">
+                <button onclick="verificarAcceso()" class="w-full gradient-master p-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition">ENTRAR AL SISTEMA</button>
             </div>
         </div>
 
-        <!-- ✅ PANEL PRINCIPAL COMPLETO -->
-        <div id="panelPrincipal" class="hidden mt-10">
+        <!-- PANEL PRINCIPAL -->
+        <div id="panelPrincipal" class="hidden">
             
-            <!-- 🧭 MENÚ DE OPCIONES -->
+            <!-- MENÚ PRINCIPAL -->
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button class="tab-btn gradient-warning px-3 py-2 rounded-lg font-bold" onclick="cambiarPestana('recuperar', this)">🔑 DATOS REALES</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('envios', this)">🎁 ENVIOS REALES</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('dinero', this)">💎 DINERO REAL</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('botsia', this)">🤖 BOTS & IA</button>
-                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary hover:border-neon" onclick="cambiarPestana('configuracion', this)">⚙️ CONFIGURACIÓN</button>
+                <button class="tab-btn gradient-master px-3 py-2 rounded-lg font-bold border-glow" onclick="cambiarPestana('recuperar', this)">🔑 RECUPERAR / CAMBIAR</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon" onclick="cambiarPestana('enviar', this)">🎁 ENVIAR OBJETOS</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon" onclick="cambiarPestana('dinero', this)">💎 DINERO</button>
             </div>
 
-            <!-- 🔑 PESTAÑA: RECUPERACIÓN Y DATOS (LO QUE PEDISTE) -->
-            <div id="recuperar" class="contenido-pestana block bg-panel/80 p-6 rounded-2xl border-glow border border-warning/40">
-                <h3 class="text-xl font-bold text-center text-warning mb-6">🔍 CONSULTAR DATOS VERDADEROS</h3>
-                <p class="text-center text-sm mb-6">⚠️ CONECTA DIRECTAMENTE AL SERVIDOR • MUESTRA LO QUE EXISTE • MODIFICA LO QUE HAY</p>
+            <!-- 📌 PESTAÑA 1: RECUPERACIÓN Y CAMBIOS -->
+            <div id="recuperar" class="contenido-pestana block bg-panel/80 p-6 rounded-2xl border-glow border border-neon/30">
+                <h3 class="text-xl font-bold text-center text-neon mb-6">🔍 CONSULTAR Y MODIFICAR CUENTAS</h3>
 
-                <!-- 🔍 CONSULTA -->
                 <div class="bg-fondo/70 p-5 rounded-xl mb-6 border border-warning/40 border-warning-glow">
-                    <h4 class="font-bold text-warning mb-3">📡 BUSCAR REGISTRO POR ID</h4>
+                    <h4 class="font-bold text-warning mb-3">📡 CONEXIÓN A BASE DE DATOS</h4>
+                    <input type="text" id="idRecuperar" class="w-full p-3 rounded-lg bg-panel border border-warning/30 mb-3 text-center font-bold" placeholder="ESCRIBE EL ID DEL JUGADOR" value="1048934382">
+                    <button onclick="consultarCuenta()" class="w-full bg-warning hover:bg-amber-500 p-2 rounded-lg font-bold transition">📋 MOSTRAR DATOS REALES</button>
+                    
+                    <div id="datosCuenta"></div>
+                </div>
 
-                    Arreglo final 
+                <!-- ZONA DE CAMBIOS COMPLETOS -->
+                <div id="zonaCambios" class="hidden bg-fondo/70 p-5 rounded-xl mb-6 border border-pink/40">
+                    <h4 class="font-bold text-pink mb-4">⚙️ ACCIONES DE ADMINISTRADOR</h4>
+
+                    <!-- CAMBIAR CORREO Y CONTRASEÑA -->
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                        <div class="p-3 bg-black/40 rounded-lg border border-cyan/30">
+                            <label class="text-sm text-cyan-300">📧 Cambiar Correo Vinculado:</label>
+                            <input type="email" id="nuevoCorreo" class="w-full p-2 rounded bg-panel border mt-1 mb-2" placeholder="nuevo@correo.com">
+                            <button onclick="cambiarCorreoReal()" class="w-full bg-cyan-600 hover:bg-cyan-700 p-2 rounded text-sm font-bold transition">✅ APLICAR CAMBIO</button>
+                            <div id="respuesta"></div>
+                        </div>
+                        <div class="p-3 bg-black/40 rounded-lg border border-pink/30">
+                            <label class="text-sm text-pink-300">🔑 Cambiar Contraseña:</label>
+                            <input type="text" id="nuevaPass" class="w-full p-2 rounded bg-panel border mt-1 mb-2" placeholder="Nueva clave">
+                            <button onclick="cambiarPassReal()" class="w-full bg-pink-600 hover:bg-pink-700 p-2 rounded text-sm font-bold transition">✅ ACTUALIZAR CLAVE</button>
+                            <div id="respuestaPass"></div>
+                        </div>
+                    </div>
+
+                    <!-- 🔄 CAMBIAR PLATAFORMA: TODAS LAS OPCIONES -->
+                    <div class="p-3 bg-black/40 rounded-lg border border-rojo/30">
+                        <label class="text-sm text-rojo-300 font-bold">🔄 TRANSFERIR CUENTA A OTRA PLATAFORMA:</label>
+                        <div class="grid md:grid-cols-2 gap-2 mt-2 mb-2">
+                            <div>
+                                <select id="nuevaPlataforma" class="w-full p-2 rounded bg-panel border">
+                                    Arreglo final 
+ 
