@@ -220,9 +220,16 @@
 ‎
 ‎                    <!-- LISTA DE LO QUE YA TE HAS ENVIADO (Historial) -->
 ‎                    <div class="bg-fondo/40 rounded-xl p-5 border border-gray-700/50 max-w-2xl mx-auto">
-‎                        <h
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" 
-     alt="Acceder con Google" 
-     style="width: 200px; cursor: pointer;"
-     onclick="window.location.href='https://accounts.google.com/o/oauth2/auth?client_id=500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com&redirect_uri=https://moourey.onrender.com&response_type=code&scope=email profile'">
   
+<!-- BOTONES DE ACCESO FÁCILES -->
+<div style="display: flex; gap: 10px; margin: 20px 0;">
+  <!-- Botón Google -->
+  <button onclick="window.location.href='https://accounts.google.com/o/oauth2/auth?client_id=500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com&redirect_uri=https://moourey.onrender.com&response_type=code&scope=email profile'">
+    🔵 Acceder con Google
+  </button>
+
+  <!-- Botón Facebook -->
+  <button onclick="window.location.href='https://www.facebook.com/v18.0/dialog/oauth?client_id=TU_ID_DE_FACEBOOK&redirect_uri=https://moourey.onrender.com&scope=email'">
+    🟦 Acceder con Facebook
+  </button>
+</div>
