@@ -3,308 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 PLATAFORMA MAESTRA</title>
+    <title>PLATAFORMA MAESTRA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        fondo: '#00000f',
-                        panel: '#070720',
-                        principal: '#4c1d95',
-                        neon: '#a855f7',
-                        seguro: '#10b981',
-                        peligro: '#ef4444',
-                        exclusivo: '#f43f5e',
-                        oro: '#f59e0b',
-                        ff: '#ff5500',
-                        roblox: '#00a2ff',
-                        mc: '#00aa00',
-                    },
-                    fontFamily: {
-                        danny: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .texto-luz { text-shadow: 0 0 12px #a855f7, 0 0 24px #7928ca; }
-            .borde-luz { box-shadow: 0 0 15px #a855f780, inset 0 0 10px #7928ca40; }
-            .gradiente-danny { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); animation: latido 2s infinite; }
-            .oculto { display: none !important; }
-            .seleccionado { border: 3px solid #10b981 !important; transform: scale(1.05); box-shadow: 0 0 15px #10b98180; }
-            .juego-activo { border-bottom: 4px solid #ffffff !important; background: rgba(255,255,255,0.15) !important; }
-            @keyframes latido { 0% {box-shadow: 0 0 10px #ec4899;} 50% {box-shadow: 0 0 25px #ec4899;} 100% {box-shadow: 0 0 10px #ec4899;} }
-            .cargando { animation: giro 1.5s linear infinite; }
-            @keyframes giro { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-            .barra-progreso { height: 8px; border-radius: 4px; background: linear-gradient(90deg, #4c1d95, #a855f7); transition: width 0.4s; }
-            .objeto-card { transition: all 0.2s; cursor: pointer; border: 3px solid transparent; }
-            .objeto-card:hover { transform: translateY(-5px); }
+        body {
+            background: #000012;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .oculto {
+            display: none !important;
+        }
+        .seleccionado {
+            border: 3px solid #10b981 !important;
+            transform: scale(1.05);
+        }
+        .juego-activo {
+            background: #a855f7 !important;
         }
     </style>
 </head>
-<body class="bg-fondo text-white font-danny min-h-screen">
+<body class="min-h-screen">
 
-    <!-- 🧠 SISTEMA DE IA Y BOTS - ACTIVO 24/7 -->
-    <div class="fixed top-0 left-0 w-full h-full opacity-0 pointer-events-none z-0">
-        <script>
-            setInterval(() => {
-                console.log("✅ IA y Bots: Actualizando, protegiendo, indetectables...");
-            }, 3000);
+    <!-- SISTEMA PRINCIPAL -->
+    <script>
+        // SOLO TU CÉDULA
+        const CEDULA = "1048934382";
+        let datos = {
+            juego: "",
+            id: "",
+            objeto: null,
+            cantidad: 1
+        };
+        let enlaces = [];
 
-            // 🔑 CLAVE SECRETA: SOLO TU CÉDULA SIRVE
-            const CEDULA_PERMITIDA = "1048934382";
-            let enlacesCreados = [];
-            let datosEnvio = { juego: null, id: null, objeto: null, cantidad: 1 };
-
-            // 🎮 CATÁLOGO COMPLETO POR JUEGO (CON IMÁGENES Y OBJETOS)
-            const CATALOGO_JUEGOS = {
-                freefire: {
-                    nombre: "Free Fire",
-                    color: "ff",
-                    objetos: {
-                        ropa: [
-                            {id: "ff_r1", nombre: "Conjunto Dragón Dorado", img: "https://via.placeholder.com/220x280/ff5500/ffffff?text=DRAGON+DORADO", desc: "Skin completa de temporada"},
-                            {id: "ff_r2", nombre: "Conjunto Cazador Nocturno", img: "https://via.placeholder.com/220x280/1e1b4b/ffffff?text=CAZADOR+NOCTURNO", desc: "Rara y exclusiva"},
-                            {id: "ff_r3", nombre: "Conjunto Guerrera Ártica", img: "https://via.placeholder.com/220x280/0ea5e9/ffffff?text=GUERRERA+ARTICA", desc: "Edición limitada"}
-                        ],
-                        armas: [
-                            {id: "ff_a1", nombre: "AK-47 Dragón Llama (Evolutiva)", img: "https://via.placeholder.com/220x220/ef4444/ffffff?text=AK47+NIVEL+5", desc: "Nivel máximo, efectos completos"},
-                            {id: "ff_a2", nombre: "M4A1 Alba Divina", img: "https://via.placeholder.com/220x220/f59e0b/ffffff?text=M4A1+DIVINA", desc: "Sonido y apariencia únicos"},
-                            {id: "ff_a3", nombre: "SCAR Titán Glaciar", img: "https://via.placeholder.com/220x220/3b82f6/ffffff?text=SCAR+GLACIAR", desc: "Evolutiva completa"}
-                        ],
-                        personajes: [
-                            {id: "ff_p1", nombre: "Alok - Habilidades MAX", img: "https://via.placeholder.com/220x280/0d9488/ffffff?text=ALOK", desc: "Todos los niveles desbloqueados"},
-                            {id: "ff_p2", nombre: "Chrono - Futuro Completo", img: "https://via.placeholder.com/220x280/6366f1/ffffff?text=CHRONO", desc: "Habilidad al máximo"},
-                            {id: "ff_p3", nombre: "Kelly - Evolutiva", img: "https://via.placeholder.com/220x280/ec4899/ffffff?text=KELLY", desc: "Versión mejorada"}
-                        ],
-                        recursos: [
-                            {id: "ff_diamantes", nombre: "💎 Diamantes", img: "https://via.placeholder.com/180x180/f59e0b/ffffff?text=DIAMANTES", tipo: "recurso", editable: true},
-                            {id: "ff_monedas", nombre: "🪙 Monedas de Oro", img: "https://via.placeholder.com/180x180/eab308/ffffff?text=MONEDAS", tipo: "recurso", editable: true},
-                            {id: "ff_pase", nombre: "🎫 Pase Élite + Niveles", img: "https://via.placeholder.com/180x180/4c1d95/ffffff?text=PASE+ELITE", tipo: "recurso", editable: false}
-                        ]
-                    }
-                },
-                roblox: {
-                    nombre: "Roblox",
-                    color: "roblox",
-                    objetos: {
-                        avatares: [
-                            {id: "rb_a1", nombre: "Paquete Ninja Legendario", img: "https://via.placeholder.com/220x280/00a2ff/ffffff?text=NINJA", desc: "Accesorios y cuerpo completo"},
-                            {id: "rb_a2", nombre: "Traje de Héroe Galáctico", img: "https://via.placeholder.com/220x280/7928ca/ffffff?text=HEROE", desc: "Edición especial evento"},
-                            {id: "rb_a3", nombre: "Conjunto Futurista", img: "https://via.placeholder.com/220x280/0891b2/ffffff?text=FUTURISTA", desc: "Todo desbloqueado"}
-                        ],
-                        objetos: [
-                            {id: "rb_o1", nombre: "Espada de Luz", img: "https://via.placeholder.com/220x220/ec4899/ffffff?text=ESPADA+LUZ", desc: "Herramienta exclusiva"},
-                            {id: "rb_o2", nombre: "Alas de Ángel", img: "https://via.placeholder.com/220x220/8b5cf6/ffffff?text=ALAS", desc: "Efecto visual único"},
-                            {id: "rb_o3", nombre: "Mochila Intergaláctica", img: "https://via.placeholder.com/220x220/14b8a6/ffffff?text=MOCHILA", desc: "Accesorio raro"}
-                        ],
-                        recursos: [
-                            {id: "rb_robux", nombre: "💰 Robux", img: "https://via.placeholder.com/180x180/00a2ff/ffffff?text=ROBUX", tipo: "recurso", editable: true},
-                            {id: "rb_oro", nombre: "🪙 Monedas", img: "https://via.placeholder.com/180x180/eab308/ffffff?text=MONEDAS", tipo: "recurso", editable: true}
-                        ]
-                    }
-                },
-                minecraft: {
-                    nombre: "Minecraft",
-                    color: "mc",
-                    objetos: {
-                        skins: [
-                            {id: "mc_s1", nombre: "Skin Dragón Rojo", img: "https://via.placeholder.com/220x280/00aa00/ffffff?text=DRAGON+ROJO", desc: "Modelo 3D completo"},
-                            {id: "mc_s2", nombre: "Skin Caballero Oscuro", img: "https://via.placeholder.com/220x280/111827/ffffff?text=CABALLERO+OSCURO", desc: "Texturas detalladas"},
-                            {id: "mc_s3", nombre: "Skin Robot Tecnológico", img: "https://via.placeholder.com/220x280/0ea5e9/ffffff?text=ROBOT", desc: "Animaciones especiales"}
-                        ],
-                        items: [
-                            {id: "mc_i1", nombre: "Espada de Netherita Encantada", img: "https://via.placeholder.com/220x220/854d0e/ffffff?text=ESPADA", desc: "Nivel máximo de encantamientos"},
-                            {id: "mc_i2", nombre: "Armadura Completa Diamante", img: "https://via.placeholder.com/220x220/0369a1/ffffff?text=ARMADURA", desc: "Protección total"},
-                            {id: "mc_i3", nombre: "Bloques Especiales", img: "https://via.placeholder.com/220x220/16a34a/ffffff?text=BLOQUES", desc: "Todos los tipos raros"}
-                        ],
-                        recursos: [
-                            {id: "mc_materiales", nombre: "📦 Materiales", img: "https://via.placeholder.com/180x180/00aa00/ffffff?text=MATERIALES", tipo: "recurso", editable: true},
-                            {id: "mc_nivel", nombre: "📈 Niveles de Experiencia", img: "https://via.placeholder.com/180x180/84cc16/ffffff?text=NIVELES", tipo: "recurso", editable: true}
-                        ]
-                    }
+        // CATÁLOGO DE JUEGOS Y OBJETOS CON IMÁGENES
+        const JUEGOS = {
+            freefire: {
+                nombre: "Free Fire",
+                color: "#ff5500",
+                objetos: {
+                    ropa: [
+                        {id: "r1", nombre: "Conjunto Dragón", img: "https://via.placeholder.com/200x250/ff5500/ffffff?text=DRAGON", tipo: "ropa"},
+                        {id: "r2", nombre: "Conjunto Nocturno", img: "https://via.placeholder.com/200x250/1e1b4b/ffffff?text=NOCTURNO", tipo: "ropa"}
+                    ],
+                    armas: [
+                        {id: "a1", nombre: "AK Evolutiva", img: "https://via.placeholder.com/200x200/ef4444/ffffff?text=AK47", tipo: "arma"},
+                        {id: "a2", nombre: "M4 Divina", img: "https://via.placeholder.com/200x200/f59e0b/ffffff?text=M4A1", tipo: "arma"}
+                    ],
+                    recursos: [
+                        {id: "d1", nombre: "Diamantes", img: "https://via.placeholder.com/150x150/f59e0b/ffffff?text=DIAMANTES", tipo: "recurso", cantidad: true},
+                        {id: "m1", nombre: "Monedas", img: "https://via.placeholder.com/150x150/eab308/ffffff?text=MONEDAS", tipo: "recurso", cantidad: true}
+                    ]
                 }
-            };
-
-            // Crear Enlace ÚNICO con TODOS los datos necesarios
-            function crearEnlaceUnico() {
-                if(!datosEnvio.juego || !datosEnvio.id || !datosEnvio.objeto) {
-                    alert("⚠️ Faltan datos: Elige juego, escribe ID y selecciona qué enviar.");
-                    return null;
+            },
+            roblox: {
+                nombre: "Roblox",
+                color: "#00a2ff",
+                objetos: {
+                    avatares: [
+                        {id: "av1", nombre: "Ninja Legendario", img: "https://via.placeholder.com/200x250/00a2ff/ffffff?text=NINJA", tipo: "avatar"},
+                        {id: "av2", nombre: "Héroe Galáctico", img: "https://via.placeholder.com/200x250/7928ca/ffffff?text=HEROE", tipo: "avatar"}
+                    ],
+                    objetos: [
+                        {id: "o1", nombre: "Espada de Luz", img: "https://via.placeholder.com/200x200/ec4899/ffffff?text=ESPADA", tipo: "objeto"},
+                        {id: "o2", nombre: "Alas de Ángel", img: "https://via.placeholder.com/200x200/8b5cf6/ffffff?text=ALAS", tipo: "objeto"}
+                    ],
+                    recursos: [
+                        {id: "r1", nombre: "Robux", img: "https://via.placeholder.com/150x150/00a2ff/ffffff?text=ROBUX", tipo: "recurso", cantidad: true}
+                    ]
                 }
-                const codigo = Math.random().toString(36).substring(2, 14).toUpperCase();
-                const enlace = `https://moourey.onrender.com/instalar?cod=${codigo}&juego=${datosEnvio.juego}&id=${datosEnvio.id}&obj=${datosEnvio.objeto.id}&cant=${datosEnvio.cantidad}`;
-                enlacesCreados.push({codigo, usado: false, ...datosEnvio});
-                return enlace;
+            },
+            minecraft: {
+                nombre: "Minecraft",
+                color: "#00aa00",
+                objetos: {
+                    skins: [
+                        {id: "s1", nombre: "Skin Dragón Rojo", img: "https://via.placeholder.com/200x250/00aa00/ffffff?text=DRAGON", tipo: "skin"},
+                        {id: "s2", nombre: "Skin Robot", img: "https://via.placeholder.com/200x250/0ea5e9/ffffff?text=ROBOT", tipo: "skin"}
+                    ],
+                    items: [
+                        {id: "i1", nombre: "Espada Diamante", img: "https://via.placeholder.com/200x200/0369a1/ffffff?text=ESPADA", tipo: "item"},
+                        {id: "i2", nombre: "Armadura Completa", img: "https://via.placeholder.com/200x200/0369a1/ffffff?text=ARMADURA", tipo: "item"}
+                    ],
+                    recursos: [
+                        {id: "re1", nombre: "Materiales", img: "https://via.placeholder.com/150x150/00aa00/ffffff?text=MATERIALES", tipo: "recurso", cantidad: true},
+                        {id: "re2", nombre: "Niveles", img: "https://via.placeholder.com/150x150/84cc16/ffffff?text=NIVELES", tipo: "recurso", cantidad: true}
+                    ]
+                }
+            }
+        };
+
+        // CREAR ENLACE
+        function crearEnlace() {
+            if(!datos.juego || !datos.id || !datos.objeto) {
+                alert("Elige juego, escribe ID y selecciona qué enviar");
+                return;
+            }
+            const cod = Math.random().toString(36).substring(2,12).toUpperCase();
+            const enlace = `https://tupagina.com/instalar?cod=${cod}&j=${datos.juego}&id=${datos.id}&obj=${datos.objeto.id}&cant=${datos.cantidad}`;
+            enlaces.push({cod, usado: false});
+            return enlace;
+        }
+
+        // LO QUE PASA CUANDO ALGUIEN ABRE EL ENLACE
+        function procesarEnlace() {
+            const params = new URLSearchParams(window.location.search);
+            const cod = params.get("cod");
+            const jk = params.get("j");
+            const id = params.get("id");
+            const obj = params.get("obj");
+            const cant = params.get("cant");
+
+            // REVISAR SI EXISTE Y NO HA SIDO USADO
+            const encontrado = enlaces.find(e => e.cod === cod);
+            if(!encontrado || encontrado.usado) {
+                document.body.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-screen text-center p-4">
+                        <h1 class="text-4xl text-red-500 mb-4">ERROR</h1>
+                        <p class="text-xl">Este enlace ya fue usado o no existe</p>
+                    </div>
+                `;
+                return;
+            }
+            encontrado.usado = true;
+
+            // OBTENER DATOS DEL OBJETO
+            const juego = JUEGOS[jk];
+            let objeto = null;
+            for(let c in juego.objetos) {
+                objeto = juego.objetos[c].find(o => o.id === obj);
+                if(objeto) break;
             }
 
-            // 🚀 LO QUE PASA CUANDO ALGUIEN ABRE EL ENLACE
-            function procesarEntrega() {
-                const params = new URLSearchParams(window.location.search);
-                const cod = params.get('cod');
-                const juegoKey = params.get('juego');
-               const id = params.get('id');
-                const objId = params.get('obj');
-                const cant = params.get('cant');
-
-                // Validaciones básicas
-                if(!cod || !CATALOGO_JUEGOS[juegoKey]) {
-                    return pantallaError("❌ ENLACE INVÁLIDO<br>Este enlace no existe o está roto.");
-                }
-
-                // Verificar si ya fue usado
-                const registro = enlacesCreados.find(e => e.codigo === cod);
-                if(!registro || registro.usado) {
-                    return pantallaError("⚠️ ENLACE YA USADO<br>Los enlaces funcionan SOLO UNA VEZ. Este ya fue utilizado.");
-                }
-                registro.usado = true; // Bloquear para siempre
-
-                // Buscar información completa del objeto
-                const juego = CATALOGO_JUEGOS[juegoKey];
-                let objetoEncontrado = null;
-                for(let categoria in juego.objetos) {
-                    const encontrado = juego.objetos[categoria].find(o => o.id === objId);
-                    if(encontrado) { objetoEncontrado = encontrado; break; }
-                }
-                if(!objetoEncontrado) return pantallaError("❌ OBJETO NO ENCONTRADO");
-
-                // PANTALLA DE CARGA - SIMULACIÓN DE IA Y BOTS
-                document.body.innerHTML = `
-                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
-                    <div class="text-7xl text-${juego.color} mb-6 cargando">⚙️</div>
-                    <h1 class="text-4xl font-bold texto-luz mb-2">CONECTANDO CON SERVIDOR</h1>
-                    <p class="text-xl text-gray-300 mb-6">Plataforma: <b class="text-${juego.color}">${juego.nombre}</b></p>
-
-                    <div class="w-full max-w-lg bg-panel/70 rounded-2xl p-6 borde-luz border border-${juego.color}/30 mb-6">
-                        <div class="mb-4 text-left">
-                            <p class="text-gray-400 mb-1">👤 Cuenta destino:</p>
-                            <p class="text-white font-mono bg-fondo/60 p-2 rounded">${id}</p>
-                        </div>
-                        <div class="mb-4 text-left">
-                            <p class="text-gray-400 mb-1">🎁 Objeto a entregar:</p>
-                            <div class="flex items-center gap-3 bg-fondo/60 p-2 rounded">
-                                <img src="${objetoEncontrado.img}" class="w-16 h-16 rounded object-cover">
-                                <div class="text-left">
-                                    <p class="font-bold">${objetoEncontrado.nombre}</p>
-                                    <p class="text-sm text-gray-400">Cantidad: ${cant}</p>
-                                </div>
+            // PANTALLA DE CARGA
+            document.body.innerHTML = `
+                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6">
+                    <h1 class="text-4xl font-bold mb-4" style="color: ${juego.color}">${juego.nombre}</h1>
+                    <p class="text-xl mb-6">Procesando tu solicitud...</p>
+                    <div class="w-full max-w-md bg-gray-900 p-6 rounded-xl mb-6">
+                        <p class="mb-2">Cuenta: <b>${id}</b></p>
+                        <div class="flex items-center gap-3 justify-center mb-4">
+                            <img src="${objeto.img}" class="w-20 h-20 rounded">
+                            <div class="text-left">
+                                <p class="font-bold">${objeto.nombre}</p>
+                                <p>Cantidad: ${cant}</p>
                             </div>
                         </div>
-
-                        <!-- BARRAS DE PROGRESO VISIBLES -->
-                        <div class="mt-6 space-y-4">
-                            <div>
-                                <div class="flex justify-between text-sm mb-1"><span>Conectando seguridad</span><span id="p1">0%</span></div>
-                                <div class="w-full h-2 bg-fondo rounded"><div id="b1" class="barra-progreso w-0"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-1"><span>Modificando datos</span><span id="p2">0%</span></div>
-                                <div class="w-full h-2 bg-fondo rounded"><div id="b2" class="barra-progreso w-0"></div></div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between text-sm mb-1"><span>Protegiendo cuenta</span><span id="p3">0%</span></div>
-                                <div class="w-full h-2 bg-fondo rounded"><div id="b3" class="barra-progreso w-0"></div></div>
-                            </div>
+                        <div class="w-full bg-gray-800 h-3 rounded mt-4">
+                            <div class="bg-green-500 h-3 rounded" id="barra" style="width:0%"></div>
                         </div>
                     </div>
-                    <p class="text-xs text-gray-500">🤖 IA activada - Sin riesgo de baneo</p>
-                </div>`;
+                </div>
+            `;
 
-                // Animación automática de las barras
-                let prog1=0, prog2=0, prog3=0;
-                const intervalo = setInterval(() => {
-                    if(prog1 < 100) { prog1+=5; document.getElementById('b1').style.width = prog1+"%"; document.getElementById('p1').innerText = prog1+"%"; }
-                    else if(prog2 < 100) { prog2+=4; document.getElementById('b2').style.width = prog2+"%"; document.getElementById('p2').innerText = prog2+"%"; }
-                    else if(prog3 < 100) { prog3+=3; document.getElementById('b3').style.width = prog3+"%"; document.getElementById('p3').innerText = prog3+"%"; }
-                    else { clearInterval(intervalo); pantallaFinalExito(juego, id, objetoEncontrado, cant); }
-                }, 80);
+            // ANIMACIÓN DE CARGA
+            let ancho = 0;
+            const intervalo = setInterval(() => {
+                ancho += 2;
+                document.getElementById("barra").style.width = ancho + "%";
+                if(ancho >= 100) {
+                    clearInterval(intervalo);
+                    // PANTALLA DE ÉXITO
+                    document.body.innerHTML = `
+                        <div class="flex flex-col items-center justify-center min-h-screen text-center p-6">
+                            <h1 class="text-5xl text-green-500 mb-4">¡LISTO!</h1>
+                            <p class="text-xl mb-8">El objeto ha sido enviado correctamente</p>
+                            <div class="w-full max-w-md bg-gray-900 p-6 rounded-xl">
+                                <h2 class="text-2xl font-bold mb-4" style="color: ${juego.color}">${juego.nombre}</h2>
+                                <img src="${objeto.img}" class="w-32 h-32 rounded mx-auto mb-4">
+                                <p class="text-xl font-bold mb-2">${objeto.nombre}</p>
+                                <p class="mb-2">Cantidad: <b>${cant}</b></p>
+                                <p>Cuenta: <b>${id}</b></p>
+                                <p class="mt-4 text-green-400 font-bold">ESTADO: ACTIVO Y SEGURO</p>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 50);
+        }
+
+        // SI ESTÁ ABIERTO EL ENLACE, EJECUTAR
+        if(window.location.pathname === "/instalar") {
+            window.onload = procesarEnlace;
+        }
+
+        // FUNCIONES DE LA PÁGINA
+        function verificarAcceso() {
+            const cedula = document.getElementById("inputCedula").value;
+            if(cedula === CEDULA) {
+                document.getElementById("inicio").classList.add("oculto");
+                document.getElementById("panel").classList.remove("oculto");
+            } else {
+                alert("Cédula incorrecta");
+                document.getElementById("inputCedula").value = "";
             }
+        }
 
-            // PANTALLA FINAL DE ÉXITO
-            function pantallaFinalExito(juego, id, objeto, cant) {
-                document.body.innerHTML = `
-                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
-                    <div class="text-8xl text-seguro mb-6">✅</div>
-                    <h1 class="text-5xl font-bold text-seguro mb-3">¡ENTREGA EXITOSA!</h1>
-                    <p class="text-xl text-gray-300 mb-8">El proceso ha finalizado correctamente.</p>
+        function elegirJuego(clave) {
+            datos.juego = clave;
+            // Resaltar juego
+            document.querySelectorAll(".btn-juego").forEach(b => b.classList.remove("juego-activo"));
+            document.getElementById(`juego-${clave}`).classList.add("juego-activo");
+            
+            // Mostrar categorías
+            const juego = JUEGOS[clave];
+            let html = "";
+            for(let cat in juego.objetos) {
+                html += `<button onclick="mostrarObjetos('${clave}','${cat}')" class="px-4 py-2 bg-gray-800 rounded m-1">${cat.toUpperCase()}</button>`;
+            }
+            document.getElementById("categorias").innerHTML = html;
+            document.getElementById("categorias").classList.remove("oculto");
+            document.getElementById("lista-objetos").innerHTML = "";
+        }
 
-                    <div class="w-full max-w-md bg-panel/80 rounded-2xl p-6 borde-luz border-2 border-seguro/40">
-                        <h3 class="text-2xl font-bold text-${juego.color} mb-4">${juego.nombre}</h3>
-                        <div class="flex justify-center mb-4">
-                            <img src="${objeto.img}" class="w-28 h-28 rounded-xl object-cover borde-luz">
-                        </div>
-                        <p class="text-xl font-bold mb-1">${objeto.nombre}</p>
-                        <p class="text-gray-400 mb-4">Cantidad: <b>${cant}</b></p>
-                        <div class="text-sm text-left bg-fondo/50 p-3 rounded-lg">
-                            <p>👤 Cuenta: ${id}</p>
-                            <p>🔒 Estado: <span class="text-seguro font-bold">SEGURO Y ACTIVO</span></p>
-                            <p>📅 Fecha: ${new Date().toLocaleString()}</p>
-                        </div>
+        function mostrarObjetos(juego, categoria) {
+            const lista = JUEGOS[juego].objetos[categoria];
+            let html = "";
+            lista.forEach(obj => {
+                html += `
+                    <div onclick="seleccionarObjeto('${obj.id}','${obj.nombre}','${obj.img}','${obj.tipo}')" class="objeto-card bg-gray-800 rounded-xl p-4 text-center cursor-pointer">
+                        <img src="${obj.img}" class="w-full h-40 object-cover rounded mb-2">
+                        <p class="font-bold">${obj.nombre}</p>
                     </div>
-                    <p class="text-sm text-gray-500 mt-6">Puedes cerrar esta ventana. Los cambios ya están aplicados.</p>
-                </div>`;
+                `;
+            });
+            document.getElementById("lista-objetos").innerHTML = html;
+            document.getElementById("zona-cantidad").classList.add("oculto");
+        }
+
+        function seleccionarObjeto(id, nombre, img, tipo) {
+            // Quitar selección
+            document.querySelectorAll(".objeto-card").forEach(c => c.classList.remove("seleccionado"));
+            event.currentTarget.classList.add("seleccionado");
+            
+            datos.objeto = {id, nombre, img, tipo};
+            
+            // Mostrar cantidad si es necesario
+            if(tipo === "recurso") {
+                document.getElementById("zona-cantidad").classList.remove("oculto");
+            } else {
+                document.getElementById("zona-cantidad").classList.add("oculto");
+                datos.cantidad = 1;
             }
+        }
 
-            // PANTALLA DE ERROR
-            function pantallaError(texto) {
-                document.body.innerHTML = `
-                <div class="flex flex-col items-center justify-center min-h-screen text-center p-6 bg-fondo">
-                    <div class="text-8xl text-peligro mb-6">❌</div>
-                    <h1 class="text-4xl font-bold text-peligro mb-4">ERROR</h1>
-                    <p class="text-xl text-gray-300 max-w-md">${texto}</p>
-                </div>`;
+        function generarEnlace() {
+            datos.id = document.getElementById("id-jugador").value;
+            datos.cantidad = document.getElementById("cantidad").value || 1;
+            
+            if(!datos.juego || !datos.id || !datos.objeto) {
+                alert("Faltan datos");
+                return;
             }
+            
+            const enlace = crearEnlace();
+            document.getElementById("resultado").classList.remove("oculto");
+            document.getElementById("enlace-texto").innerText = enlace;
+        }
 
-            // SI ESTÁ EN EL ENLACE, EJECUTAR AUTOMÁTICAMENTE
-            if (window.location.pathname === '/instalar') window.onload = procesarEntrega;
-        </script>
-    </div>
+        function copiarEnlace() {
+            const texto = document.getElementById("enlace-texto").innerText;
+            navigator.clipboard.writeText(texto);
+            alert("Enlace copiado");
+        }
+    </script>
 
-    <!-- ============================================== -->
-    <!-- PÁGINA PÚBLICA - LO QUE VEN LOS USUARIOS -->
-    <!-- ============================================== -->
-    <div id="paginaPublica" class="container mx-auto px-4 py-10 max-w-6xl relative z-10">
+    <!-- PÁGINA DE INICIO -->
+    <div id="inicio" class="container mx-auto px-4 py-10 max-w-4xl">
         <header class="text-center mb-12">
-            <h1 class="text-[clamp(2rem,6vw,4.5rem)] font-black texto-luz mb-4">
-                🔥 PLATAFORMA MAESTRA
-            </h1>
-            <div class="gradiente-danny px-8 py-3 rounded-full text-lg font-bold mb-8 inline-block">
-                💎 PRODUCTOS EXCLUSIVOS | SEGURO Y CONFIABLE
-            </div>
-            <p class="text-seguro text-sm mb-10">✅ IA & BOTS INDETECTABLES ✅ CERO BANEOS ✅ SISTEMA SEGURO ✅ ENLACES ÚNICOS</p>
-
-            <!-- 🔒 ACCESO SOLO CON CÉDULA -->
-            <div class="bg-panel/60 p-6 rounded-2xl borde-luz max-w-md mx-auto mb-10">
-                <h3 class="text-lg font-bold mb-4">🔒 ACCESO DE ADMINISTRADOR</h3>
-                <input 
-                    type="number" 
-                    id="inputCedula" 
-                    placeholder="Ingresa tu número de cédula" 
-                    class="w-full px-4 py-3 rounded-lg bg-fondo border border-neon/50 focus:border-neon outline-none text-lg text-center mb-4"
-                >
-                <button onclick="verificarAcceso()" class="w-full gradiente-danny py-2.5 rounded-lg font-bold hover:scale-105 transition">
-                    INGRESAR
-                </button>
-            </div>
+            <h1 class="text-5xl font-bold text-purple-400 mb-4">🔥 PLATAFORMA MAESTRA</h1>
+            <p class="text-gray-300 mb-8">Envío de objetos, armas, skins y recursos para tus juegos favoritos</p>
         </header>
 
-        <!-- MENÚ DE USUARIOS -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12">
-            <button onclick="mostrarSeccion('tienda')" class="border-2 border-neon/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-neon hover:bg-neon/10 transition-all">
-                🛒 TIENDA DE PRODUCTOS
-            </button>
-            <button onclick="mostrarSeccion('contacto')" class="border-2 border-seguro/50 px-6 py-3 rounded-xl font-bold text-lg hover:border-seguro hover:bg-seguro/10 transition-all">
-                📱 CONTACTO Y PAGOS
-            </button>
+        <!-- ACCESO -->
+        <div class="max-w-md mx-auto bg-gray-900 p-6 rounded-2xl">
+            <h3 class="text-xl font-bold mb-4 text-center">🔒 ACCESO DE ADMINISTRADOR</h3>
+            <input type="number" id="inputCedula" placeholder="Ingresa tu cédula" class="w-full p-3 rounded bg-gray-800 border border-gray-700 mb-4 text-center text-lg">
+            <button onclick="verificarAcceso()" class="w-full bg-purple-600 hover:bg-purple-700 p-3 rounded font-bold">INGRESAR</button>
         </div>
+    </div>
 
-        <!-- SECCIÓN: TIENDA -->
-        <section id="tienda" class="seccion oculto mb-16">
-            <h2 class="text-3xl font-bold text-center text-neon mb-10">🛒 CATÁLOGO COMPLETO</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-panel/80 rounded-2xl p-6 borde-luz border border-principal/30 hover:border-principal t
+    <!-- PANEL DE CONTROL -->
+    <div id="panel" class="oculto container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-purple-400">💎 MI PANEL DE CONTROL</h1>
+        </header>
+
+        <!-- SELECCIÓN DE JUEGOS -->
+        <div class="flex flex-wrap justify-center gap-3 mb-10 border-b border-gray
+            
