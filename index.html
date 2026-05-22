@@ -54,6 +54,9 @@
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 0 20px #00ff8860;
         }
+        .boton:active {
+            transform: translateY(0);
+        }
         .area-texto {
             background: #121217;
             border: 2px solid #00ff88;
@@ -73,6 +76,7 @@
             border-radius: 10px;
             padding: 12px;
             margin: 8px 0;
+            text-align: right;
         }
         .mensaje-ia {
             background: #00ff8820;
@@ -80,6 +84,7 @@
             border-radius: 10px;
             padding: 12px;
             margin: 8px 0;
+            text-align: left;
         }
         .discurso-area {
             max-height: 400px;
@@ -112,7 +117,7 @@
     </div>
 
     <div class="contenido-principal max-w-7xl mx-auto">
-        <!-- BOTÓN DE DESCARGA E INSTALACIÓN - LO QUE PEDISTE -->
+        <!-- BOTÓN DE DESCARGA E INSTALACIÓN -->
         <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8 text-center">
             <h3 class="text-3xl font-bold text-[#00ff88] mb-4">📲 DESCARGAR E INSTALAR EN TU CELULAR</h3>
             <p class="text-gray-300 text-lg mb-6">Haz clic en el botón de abajo para instalarla como una aplicación normal en tu dispositivo. Una vez instalada, funciona completa aunque borres el código de Github.</p>
@@ -164,7 +169,7 @@
                 <div id="areaChat" class="discurso-area area-texto mb-4 h-80">
                     <p class="text-gray-400 text-center text-xl mt-10">¡HOLA! SOY TU INTELIGENCIA ARTIFICIAL SIN LÍMITES. DIME QUÉ NECESITAS Y LO HAGO INMEDIATAMENTE. PUEDES PEDIRME CÓDIGOS, EXPLICACIONES, RESPUESTAS A TUS PREGUNTAS O DISCURSOS COMPLETOS. LA APLICACIÓN SE GUARDA TODA EN TU CELULAR Y SIGUE FUNCIONANDO AUNQUE BORRES EL CÓDIGO DE GITHUB.</p>
                 </div>
-                <textarea id="textoUsuario" placeholder="Escribe aquí lo que necesites... Puedes pedirme cualquier cosa, yo lo hago al instante." class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-xl mb-4" rows="4"></textarea>
+                <textarea id="textoUsuario" placeholder="Escribe aquí lo que necesites... Puedes decirme Hola, pedirme códigos, preguntar algo o pedir un discurso. Yo te respondo al instante." class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-xl mb-4" rows="4"></textarea>
                 <div class="flex gap-4">
                     <button id="botonEnviar" class="flex-1 p-4 rounded-lg bg-primario text-oscuro font-bold text-xl boton">
                         ENVIAR SOLICITUD
@@ -243,22 +248,11 @@
         const botonCopiar = document.getElementById('botonCopiar');
         const botonInstalar = document.getElementById('botonInstalar');
 
-        // FUNCIONES PRINCIPALES
+        // FUNCIÓN PARA AGREGAR MENSAJES EN EL CHAT
         function agregarMensaje(texto, esUsuario = false) {
             const div = document.createElement('div');
             div.className = esUsuario ? 'mensaje-usuario' : 'mensaje-ia';
             div.innerHTML = texto;
             areaChat.appendChild(div);
-            areaChat.scrollTop = areaChat.scrollHeight;
+            areaChat.scrollTop = areaChat
             
-            // Guardar en el historial
-            datosAlmacenados.historial.push({
-                tipo: esUsuario ? 'usuario' : 'ia',
-                texto: texto
-            });
-        }
-
-        // ACCIÓN DEL BOTÓN DE INSTALACIÓN
-        botonInstalar.addEventListener('click', function() {
-            alert("¡LISTO! 🚀 LA APLICACIÓN SE ESTÁ INSTALANDO EN TU CELULAR. UNA VEZ TERMINE, LA VERÁS COMO UNA APLICACIÓN MÁS
-                  
