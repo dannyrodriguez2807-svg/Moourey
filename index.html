@@ -10,7 +10,7 @@
         body { font-family: sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
         header { background-color: var(--panel); padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #2f3e46; }
         #app-logo { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; border: 1px solid var(--accent); background-color: #000; }
-        #install-app-btn { background-color: #2ed573; color: #000; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; display: none; }
+        #install-app-btn { background-color: #2ed573; color: #000; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; display: block; }
         #image-uploader-box { background-color: var(--panel); margin: 10px; padding: 12px; border-radius: 12px; border: 1px dashed var(--accent); }
         .custom-file-btn { background-color: var(--accent); color: #000; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; text-align: center; position: relative; }
         #file-chooser { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
@@ -35,7 +35,7 @@
             <input type="file" id="file-chooser" accept="image/*">
         </div>
     </div>
-    <div id="chat-screen"><div class="bubble">Introduce tu logo arriba y luego presiona "Instalar App".</div></div>
+    <div id="chat-screen"><div class="bubble">Fija tu logo arriba y luego presiona "Instalar App". Si el botón verde no responde, presiona los 3 puntos de Chrome arriba a la derecha y dale a "Añadir a la pantalla de inicio".</div></div>
     <div id="control-bar">
         <textarea id="user-prompt" placeholder="Escribe aquí..."></textarea>
         <button id="submit-btn">></button>
@@ -45,9 +45,8 @@
         const logo = document.getElementById('app-logo');
         const installBtn = document.getElementById('install-app-btn');
 
-        // Guardar y cargar la imagen localmente de forma directa
         chooser.addEventListener('change', (e) => {
-            const file = e.target.files[0];
+            const file = e.target.files;
             if (!file) return;
             const reader = new FileReader();
             reader.onload = (event) => {
@@ -62,23 +61,23 @@
             if (cache) logo.src = cache;
         });
 
-        // Activar el botón nativo de instalación
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.style.display = 'block';
+            installBtn.style.backgroundColor = "#2ed573";
         });
+
         installBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') installBtn.style.display = 'none';
-                deferredPrompt = null;
+                if (outcome === 'accepted') deferredPrompt = null;
+            } else {
+                alert("Instalación directa lista: Presiona los 3 puntos de tu navegador (arriba a la derecha) y selecciona 'Añadir a la pantalla de inicio' o 'Instalar aplicación' para guardarla en tu celular.");
             }
         });
 
-        // Registrar el Service Worker externo
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
