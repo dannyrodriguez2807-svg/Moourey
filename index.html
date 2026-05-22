@@ -11,20 +11,7 @@
 ‎    <!-- El script de Google Sign-In (gsi/client) requiere configuración de un ID de cliente válido y un backend para funcionar -->
 ‎    <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script>
-  window.onload = function() {
-    google.accounts.id.initialize({
-      client_id: "500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com",
-      callback: function(response) {
   
-        console.log(response.credential);
-    
-      }
-    });
-    google.accounts.id.renderButton(
-      document.getElementById("boton-google")
-  <button id="boton-google">Acceder con Google</button>
-    
-    );
   }
 </script>
   
@@ -234,17 +221,8 @@
 ‎                    <!-- LISTA DE LO QUE YA TE HAS ENVIADO (Historial) -->
 ‎                    <div class="bg-fondo/40 rounded-xl p-5 border border-gray-700/50 max-w-2xl mx-auto">
 ‎                        <h
-
-<!-- BOTÓN DE ACCEDER CON GOOGLE - SOLO ESTO -->
-<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta name="google-signin-client_id" content="500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com"
-
-<script>
-function onSignIn(usuario) {
-  // Aquí ya puedes usar la cuenta, pero lo más importante:
-  // ¡YA FUNCIONA! Cuando le des al botón, saldrá la cuenta de Google.
-  console.log("Entraste bien");
-}
-</script>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png" 
+     alt="Acceder con Google" 
+     style="width: 200px; cursor: pointer;"
+     onclick="window.location.href='https://accounts.google.com/o/oauth2/auth?client_id=500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com&redirect_uri=https://moourey.onrender.com&response_type=code&scope=email profile'">
+  
