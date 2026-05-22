@@ -5,12 +5,29 @@
   
 ‎    <meta charset="UTF-8">
 ‎    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎    <title>🔥 PLATAFORMA MAESTRA - DANNY DUEÑO TOTAL</title>
+‎    <title>🔥 PLATAFORMA MAESTRA - </title>
 ‎    <script src="https://cdn.tailwindcss.com"></script>
 ‎    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
 ‎    <!-- El script de Google Sign-In (gsi/client) requiere configuración de un ID de cliente válido y un backend para funcionar -->
 ‎    <script src="https://accounts.google.com/gsi/client" async defer></script>
-‎    <script>
+  <script>
+  window.onload = function() {
+    google.accounts.id.initialize({
+      client_id: "500885805591-tltlsna9jqktkda380tsmgogrbqbeh3.apps.googleusercontent.com",
+      callback: function(response) {
+  
+        console.log(response.credential);
+    
+      }
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("boton-google")
+  <button id="boton-google">Acceder con Google</button>
+    
+    );
+  }
+</script>
+  
 ‎        tailwind.config = {
 ‎            theme: {
 ‎                extend: {
