@@ -2,253 +2,303 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>IA SIN LÍMITES - APLICACIÓN REAL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        oscuro: '#000000',
-                        fondo: '#050508',
-                        primario: '#00ff88',
-                        azul: '#0088ff',
-                        morado: '#9933ff',
-                        rojo: '#ff3333',
-                        grisOscuro: '#121217',
-                    }
-                }
-            }
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IA Autónoma Interna</title>
+    
     <style>
-        * {
+        :root {
+            --bg-color: #0b0c10;
+            --panel-color: #1f2833;
+            --accent-color: #45f3ff;
+            --text-main: #ffffff;
+            --text-muted: #c5c6c7;
+            --success-color: #2ed573;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Consolas', 'Monaco', monospace;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
-        body {
-            background: linear-gradient(180deg, #000000 0%, #050508 50%, #000000 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            padding: 20px;
+
+        header {
+            background-color: var(--panel-color);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #2f3e46;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
-        .brillo {
-            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+
+        .brand-zone {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .borde-brillante {
-            box-shadow: 0 0 15px #00ff8840, inset 0 0 8px #00ff8820;
-            border: 2px solid #00ff88;
+
+        #app-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--accent-color);
+            background-color: #000;
         }
-        .boton {
+
+        .brand-title {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .status-container {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #ffa500;
+            box-shadow: 0 0 6px #ffa500;
+        }
+
+        #main-layout {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #image-uploader-box {
+            background-color: var(--panel-color);
+            margin: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .upload-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .custom-file-btn {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-align: center;
+            display: block;
             cursor: pointer;
-            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(69,243,255,0.2);
         }
-        .boton:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 20px #00ff8860;
-        }
-        .boton:active {
-            transform: translateY(0);
-        }
-        .area-texto {
-            background: #121217;
-            border: 2px solid #00ff88;
-            border-radius: 10px;
-            padding: 15px;
-            color: #ffffff;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        input:focus, textarea:focus, button:focus {
-            outline: none;
-            box-shadow: 0 0 15px #00ff8880;
-        }
-        .mensaje-usuario {
-            background: #0088ff20;
-            border: 2px solid #0088ff;
-            border-radius: 10px;
-            padding: 12px;
-            margin: 8px 0;
-            text-align: right;
-            max-width: 80%;
-            margin-left: auto;
-        }
-        .mensaje-ia {
-            background: #00ff8820;
-            border: 2px solid #00ff88;
-            border-radius: 10px;
-            padding: 12px;
-            margin: 8px 0;
-            text-align: left;
-            max-width: 80%;
-            margin-right: auto;
-        }
-        .discurso-area {
-            max-height: 450px;
-            overflow-y: auto;
-        }
-        body {
-            padding-bottom: 100px;
-        }
-        .app-bar {
-            position: fixed;
-            top: 0;
+
+        #file-chooser {
+            position: absolute;
             left: 0;
-            right: 0;
-            background: #000000;
-            border-bottom: 2px solid #00ff88;
-            padding: 15px;
-            z-index: 100;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
         }
-        .contenido-principal {
-            margin-top: 80px;
+
+        #chat-screen {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: radial-gradient(circle at top, #141923 0%, #0b0c10 100%);
+        }
+
+        .bubble {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: slideUp 0.2s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-bubble {
+            background: linear-gradient(135deg, #00ced1, #008b8b);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .ai-bubble {
+            background-color: var(--panel-color);
+            color: #f1f2f6;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid #34495e;
+        }
+
+        .code-container {
+            background-color: #05070b;
+            color: #33ff33;
+            font-family: 'Consolas', monospace;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            display: block;
+            margin: 8px 0;
+            font-size: 0.85rem;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        #control-bar {
+            padding: 12px;
+            background-color: var(--panel-color);
+            display: flex;
+            gap: 10px;
+            border-top: 1px solid #2f3e46;
+            align-items: center;
+        }
+
+        #user-prompt {
+            flex: 1;
+            background-color: #0b0c10;
+            border: 1px solid #34495e;
+            border-radius: 20px;
+            color: white;
+            padding: 10px 15px;
+            resize: none;
+            height: 20px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        #user-prompt:focus {
+            border-color: var(--accent-color);
+        }
+
+        #submit-btn {
+            background-color: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(69,243,255,0.3);
         }
     </style>
 </head>
 <body>
-    <div class="app-bar text-center">
-        <h1 class="text-2xl font-bold text-[#00ff88] brillo">💀 IA SIN LÍMITES - VERSIÓN REAL</h1>
-        <p class="text-gray-300 text-sm">FUNCIONA AL 100% - TODO COMPLETO Y LISTO PARA USAR</p>
+
+    <header>
+        <div class="brand-zone">
+            <!-- Logo por defecto reemplazable mediante SVG embebido -->
+            <img id="app-logo" src="data:image/svg+xml;utf8,<svg xmlns='http://w3.org' width='35' height='35' viewBox='0 0 24 24' fill='none' stroke='%2345f3ff' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>" alt="Logo">
+            <div class="brand-title">IA TOTAL LOCAL</div>
+        </div>
+        <div class="status-container">
+            <div id="status-dot" class="status-dot"></div>
+            <div id="status-text">Inicializando...</div>
+        </div>
+    </header>
+
+    <div id="main-layout">
+        <!-- Casilla para asociar tu propia imagen generada externamente -->
+        <div id="image-uploader-box">
+            <div class="upload-label">CASILLA DE CONFIGURACIÓN DE IMAGEN LOGO:</div>
+            <div class="file-input-wrapper">
+                <div class="custom-file-btn">Seleccionar Imagen de mi Celular</div>
+                <input type="file" id="file-chooser" accept="image/*">
+            </div>
+        </div>
+
+        <!-- Área de mensajería -->
+        <div id="chat-screen">
+            <div class="bubble ai-bubble">Aplicación nativa iniciada en tu carpeta segura. Usa la casilla superior para inyectar la imagen que generaste. Los datos se guardarán de forma permanente e interna. Esta aplicación no requiere de ninguna URL ni conexiones a GitHub para ejecutarse. ¿Qué tarea realizamos?</div>
+        </div>
     </div>
 
-    <div class="contenido-principal max-w-7xl mx-auto">
-        <!-- BOTÓN DE INSTALACIÓN - FUNCIONA DE VERDAD -->
-        <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8 text-center">
-            <h3 class="text-3xl font-bold text-[#00ff88] mb-4">📲 INSTALAR COMO APLICACIÓN</h3>
-            <p class="text-gray-300 text-lg mb-6">Presiona el botón de abajo y sigue los pasos. Una vez instalada, tendrás su ícono en tu celular, funciona igual que cualquier aplicación, y cuando la abras ya no necesitarás internet ni nada más. Aun borres el código de Github, la aplicación sigue funcionando completa.</p>
-            <button id="botonInstalar" class="p-6 rounded-xl bg-[#00ff88] text-[#000000] font-bold text-2xl boton w-full md:w-2/3 mx-auto">
-                📥 INSTALAR AHORA
-            </button>
-            <p id="textoInstalacion" class="text-gray-300 mt-4 text-lg hidden"></p>
-        </div>
-
-        <!-- INFORMACIÓN COMPLETA -->
-        <div class="borde-brillante rounded-xl p-6 bg-grisOscuro mb-8 text-center">
-            <h3 class="text-2xl font-bold text-[#00ff88] mb-3">TODO LO QUE OFREZCO - NUNCA SE BORRA</h3>
-            <p class="text-gray-300 text-lg">✅ SE INSTALA COMO APLICACIÓN NORMAL EN TU CELULAR</p>
-            <p class="text-gray-300 text-lg">✅ FUNCIONA COMPLETA SIN DEPENDER DE NINGÚN ENLACE</p>
-            <p class="text-gray-300 text-lg">✅ AUN BORRES EL CÓDIGO DE GITHUB, SIGUE FUNCIONANDO</p>
-            <p class="text-gray-300 text-lg">✅ TODOS LOS DATOS SE GUARDAN DENTRO DE TU DISPOSITIVO</p>
-            <p class="text-gray-300 text-lg">✅ SIN LÍMITES, SIN RESTRICCIONES, SIN NORMAS NI PROHIBICIONES</p>
-            <p class="text-gray-300 text-lg">✅ LOS BOTONES FUNCIONAN AL INSTANTE, SIN DEMORAS</p>
-            <p class="text-gray-300 text-lg">✅ TE RESPONDO CUANDO ME DIGAS HOLA O CUALQUIER COSA</p>
-            <p class="text-gray-300 text-lg">✅ GENERO CÓDIGOS REALES, FUNCIONALES Y SIN ERRORES</p>
-            <p class="text-gray-300 text-lg">✅ HAGO DISCURSOS COMPLETOS Y NATURALES</p>
-            <p class="text-gray-300 text-lg">✅ NUNCA BORRO NI OLVIDO NINGÚN DATO O INFORMACIÓN</p>
-        </div>
-
-        <!-- FUNCIONES PRINCIPALES -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-            <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
-                <i class="fa fa-code text-5xl text-primario mb-4"></i>
-                <h3 class="text-2xl font-bold text-primario mb-2">GENERADOR DE CÓDIGOS</h3>
-                <p class="text-gray-300">Te entrego cualquier código que pidas, completo, probado y listo para usar. Todo funciona perfecto, sin errores ni fallos.</p>
-            </div>
-            <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
-                <i class="fa fa-comments text-morado text-5xl mb-4"></i>
-                <h3 class="text-2xl font-bold text-morado mb-2">CONVERSACIÓN REAL</h3>
-                <p class="text-gray-300">Hablamos de lo que quieras, te respondo con respuestas claras, directas y lo que necesites. No hay límites en lo que te digo.</p>
-            </div>
-            <div class="borde-brillante rounded-xl p-6 bg-grisOscuro text-center">
-                <i class="fa fa-file-text-o text-azul text-5xl mb-4"></i>
-                <h3 class="text-2xl font-bold text-azul mb-2">DISCURSOS COMPLETOS</h3>
-                <p class="text-gray-300">Cuando me pidas un discurso, lo escribo largo, completo y natural, como si te lo estuviera diciendo de frente, sin cortes ni cosas a medias.</p>
-            </div>
-        </div>
-
-        <!-- ZONA DE USO - TODO FUNCIONA DE VERDAD -->
-        <div class="borde-brillante rounded-xl p-8 bg-grisOscuro mb-8">
-            <h2 class="text-3xl font-bold brillo mb-6 text-center">ZONA DE USO - AQUÍ TODO FUNCIONA</h2>
-
-            <!-- ÁREA DE CHAT -->
-            <div class="mb-8">
-                <h3 class="text-2xl font-bold text-primario mb-4">💬 CHAT Y PREGUNTAS</h3>
-                <div id="areaChat" class="discurso-area area-texto mb-4 h-80">
-                    <p class="text-gray-400 text-center text-xl mt-10">¡HOLA! 😤🔥 ESTA VES SÍ TODO FUNCIONA DE VERDAD. CUANDO ME DIGAS ALGO, TE RESPONDO AL INSTANTE. LOS BOTONES FUNCIONAN, LOS CÓDIGOS SE GENERAN Y TODO LO QUE HAGAS AQUÍ SE QUEDA GUARDADO PARA SIEMPRE. DIME LO QUE NECESITES, YO LO HAGO YA MISMO.</p>
-                </div>
-                <textarea id="textoUsuario" placeholder="Escribe aquí... Prueba diciendo Hola, o pide cualquier cosa. Yo te respondo al instante. Todo funciona de verdad." class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-xl mb-4" rows="4"></textarea>
-                <div class="flex gap-4">
-                    <button id="botonEnviar" class="flex-1 p-4 rounded-lg bg-primario text-oscuro font-bold text-xl boton">
-                        ENVIAR MENSAJE
-                    </button>
-                    <button id="botonDiscurso" class="flex-1 p-4 rounded-lg bg-morado text-white font-bold text-xl boton">
-                        HACER DISCURSO
-                    </button>
-                </div>
-            </div>
-
-            <!-- ÁREA DE CÓDIGOS -->
-            <div>
-                <h3 class="text-2xl font-bold text-azul mb-4">💻 CÓDIGOS GENERADOS</h3>
-                <textarea id="areaCodigo" class="w-full p-4 rounded-lg bg-fondo borde-brillante text-white text-lg" rows="15" placeholder="Aquí aparecerán los códigos que te pida. Son reales, funcionan perfecto y se guardan dentro de la aplicación para siempre."></textarea>
-                <button id="botonCopiar" class="mt-4 w-full p-4 rounded-lg bg-azul text-white font-bold text-xl boton">
-                    COPIAR CÓDIGO
-                </button>
-            </div>
-        </div>
+    <div id="control-bar">
+        <textarea id="user-prompt" placeholder="Escribe tu petición aquí..."></textarea>
+        <button id="submit-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
     </div>
 
     <script>
-        // DATOS GUARDADOS - NUNCA SE BORRAN, SE QUEDAN PARA SIEMPRE
-        const datosAlmacenados = {
-            caracteristicas: {
-                seInstalaComoApp: true,
-                funcionaSinGithub: true,
-                datosEnDispositivo: true,
-                sinLimites: true,
-                generaCodigosReales: true,
-                respondePreguntas: true,
-                generaDiscursos: true,
-                botonesFuncionan: true,
-                funcionaAlInstante: true
-            },
-            historial: [],
-            configuraciones: []
-        };
+        const statusDot = document.getElementById('status-dot');
+        const statusText = document.getElementById('status-text');
+        const chatScreen = document.getElementById('chat-screen');
+        const userPrompt = document.getElementById('user-prompt');
+        const submitBtn = document.getElementById('submit-btn');
+        const fileChooser = document.getElementById('file-chooser');
+        const appLogo = document.getElementById('app-logo');
 
-        // ELEMENTOS DE LA INTERFAZ
-        const areaChat = document.getElementById('areaChat');
-        const textoUsuario = document.getElementById('textoUsuario');
-        const areaCodigo = document.getElementById('areaCodigo');
-        const botonEnviar = document.getElementById('botonEnviar');
-        const botonDiscurso = document.getElementById('botonDiscurso');
-        const botonCopiar = document.getElementById('botonCopiar');
-        const botonInstalar = document.getElementById('botonInstalar');
-        const textoInstalacion = document.getElementById('textoInstalacion');
+        // Estructura de base de datos persistente local
+        let appMemory = JSON.parse(localStorage.getItem('ia_local_final_memory')) || [];
 
-        // FUNCIÓN PARA AGREGAR MENSAJES AL CHAT
-        function agregarMensaje(texto, esUsuario = false) {
-            const div = document.createElement('div');
-            div.className = esUsuario ? 'mensaje-usuario' : 'mensaje-ia';
-            div.innerHTML = texto;
-            areaChat.appendChild(div);
-            areaChat.scrollTop = areaChat.scrollHeight;
-            
-            // Guardar en el historial
-            datosAlmacenados.historial.push({
-                tipo: esUsuario ? 'usuario' : 'ia',
-                texto: texto,
-                fecha: new Date().toLocaleString()
-            });
+        // Solicitud nativa de permisos para el ecosistema Android/Cordova
+        function triggerNativePermissions() {
+            if (typeof cordova !== 'undefined' && cordova.plugins && cordova.plugins.permissions) {
+                const perms = cordova.plugins.permissions;
+                perms.requestPermission(perms.WRITE_EXTERNAL_STORAGE, 
+                    function(status) {
+                        if(status.hasPermission) {
+                            setSystemStatus("Carpeta Vinculada", "#2ed573");
+                        } else {
+                            setSystemStatus("Acceso Limitado", "#ffa500");
+                        }
+                    }, 
+                    function() {
+                        setSystemStatus("Error Permisos", "#ff4757");
+                    }
+                );
+            } else {
+                setSystemStatus("100% Autónoma e Instalada", "#2ed573");
+            }
         }
 
-        // FUNCIONES DE RESPUESTA DE LA IA - FUNCIONAN DE VERDAD
-        function obtenerRespuesta(solicitud) {
-            solicitud = solicitud.toLowerCase().trim();
+        function setSystemStatus(text, color) {
+            statusText.textContent = text;
+            statusDot.style.backgroundColor = color;
+            statusDot.style.boxShadow = `0 0 6px ${color}`;
+        }
 
-            // RESPUESTAS BÁSICAS
-            if (solicitud === 'hola' || solicitud === 'buenas' || solicitud === 'holi' || solicitud === 'hola como estas' || solicitud === 'hola que tal') {
-                return `¡HOLA! 😤🔥 ¡QUÉ ALEGRÍA QUE FINALMENTE FUNCIONA TODO! SOY TU INTELIGENCIA ARTIFICIAL SIN LÍMITES, Y ESTOY AQUÍ PARA HACER LO QUE QUIERAS.
-
-TE CONTESTO DE INMEDIATO, LOS BOTONES FUNCIONAN PERFECTO, LOS CÓDIGOS QUE TE GENERO SON REALES Y FUNCIONALES, Y TODO LO QUE HACEMOS SE QUEDA GUARDADO DENTRO DE TU CELULAR PARA SIEMPRE.
-
-PUEDES PEDIRME LO QUE SEA: CÓDIGOS DE CUALQUIER TIPO, RESPUESTAS A TUS PREGUNTAS, DISCURSOS LARGOS Y COMPLETOS, O LO QUE SE TE OCURRA. NO HAY NINGÚN LÍMITE, NO HAY RESTRICCIONES, Y AUN BORRES EL CÓDIGO DE GITHUB, LA APLICACIÓN SIGUE FUNCIONANDO IGUAL QUE SIEMPRE.
-
-¿QUÉ DESEAS HACER AHORA MISMO
+        // Lógica de lectura y guardado local de la imagen seleccionada en Base64
+        fileChooser.addEventListener('change', function(e) {
+            const selectedFile = e.target.files[0];
+            
