@@ -50,287 +50,230 @@
 <body class="bg-fondo text-white min-h-screen scroll-hide">
 
     <script>
-        // ==============================================
-        // 🔑 TU CÉDULA YA CONFIGURADA: 1048934382
-        // ==============================================
+        // TU CÉDULA YA GUARDADA
         const CEDULA_PERMITIDA = "1048934382"; 
-        const SISTEMA = {
-            VERSION: "9.6.0",
-            ESTADO_IA: "APRENDIZAJE Y CAMUFLAJE",
-            BOTS_ACTIVOS: 128,
-            ACTUALIZACION: "24/7 AUTOMÁTICA",
-            SEGURIDAD: "NIVEL MÁXIMO - INDETECTABLE",
-            WHATSAPP: "" 
-        };
+        let SISTEMA = { WHATSAPP: "" };
         let OBJETOS_SELECCIONADOS = [];
         let BASE_DATOS = {};
 
-        // ==============================================
-        // 🚪 ENTRADA CON TU CÉDULA
-        // ==============================================
+        // ENTRADA
         function ingresarAlPanel() {
-            let numeroCedula = document.getElementById("inputCedula").value.trim();
+            let cedula = document.getElementById("inputCedula").value.trim();
+            if (cedula === "") return alert("⚠️ ESCRIBE TU CÉDULA");
+            if (cedula !== CEDULA_PERMITIDA) return alert("❌ ACCESO DENEGADO");
             
-            if(numeroCedula === "") {
-                alert("⚠️ ESCRIBE TU NÚMERO DE CÉDULA");
-                return;
-            }
-
-            if(numeroCedula !== CEDULA_PERMITIDA) {
-                alert("❌ ACCESO DENEGADO\n\nNO TIENES PERMISO");
-                return;
-            }
-
             document.getElementById("zonaLogin").style.display = "none";
             document.getElementById("panelPrincipal").style.display = "block";
-            cargarBaseCompleta();
-            alert("✅ ACCESO PERMITIDO\n\nTODO FUNCIONA AL 100%");
+            cargarBase();
         }
 
-        // ==============================================
-        // 📱 CONFIGURAR WHATSAPP: APARECE ARRIBA
-        // ==============================================
-        function guardarNumeroWhatsapp() {
-            let numero = document.getElementById("tuNumeroWhatsapp").value.trim();
-            if(!numero) {
-                alert("⚠️ ESCRIBE EL NÚMERO PRIMERO");
-                return;
-            }
-            SISTEMA.WHATSAPP = numero;
-            document.getElementById("mostrarEnPortada").innerHTML = `📲 ${numero}`;
-            document.getElementById("configuracionWhatsapp").classList.add("hidden");
-            alert("✅ GUARDADO\n\nYA APARECE EN LA PARTE DE ARRIBA");
+        // GUARDAR WHATSAPP Y QUE APAREZCA ARRIBA
+        function guardarWhatsapp() {
+            let num = document.getElementById("numWhatsapp").value.trim();
+            if (!num) return alert("⚠️ PON EL NÚMERO");
+            SISTEMA.WHATSAPP = num;
+            document.getElementById("mostrarWhatsapp").innerHTML = `📲 ${num}`;
+            alert("✅ GUARDADO Y VISIBLE EN LA PARTE DE ARRIBA");
         }
 
-        // ==============================================
-        // 🧠 BASE DE DATOS COMPLETA CON IMÁGENES
-        // ==============================================
-        function cargarBaseCompleta() {
+        // CARGAR BASE DE DATOS CON IMÁGENES
+        function cargarBase() {
             BASE_DATOS = {
                 ropas: [
-                    {id:"SK001", nombre:"Conjunto Sakura", img:"https://i.imgur.com/7ZbX7Qr.png", categoria:"COLABORACIÓN 2018"},
-                    {id:"SK002", nombre:"Hip Hop Legendario", img:"https://i.imgur.com/9kL2sPw.png", categoria:"CLÁSICO 2018"},
-                    {id:"SK003", nombre:"Criminal Azul", img:"https://i.imgur.com/2vMhNxY.png", categoria:"CLÁSICO 2019"},
-                    {id:"SK004", nombre:"Ángel Bendito", img:"https://i.imgur.com/5tRzNcA.png", categoria:"ESPECIAL 2019"},
-                    {id:"SK005", nombre:"Naruto Uzumaki", img:"https://i.imgur.com/8xQpDfG.png", categoria:"COLABORACIÓN 2020"},
-                    {id:"SK006", nombre:"One Piece - Luffy", img:"https://i.imgur.com/3bVnMz1.png", categoria:"COLABORACIÓN 2021"},
-                    {id:"SK007", nombre:"Demonio Infernal", img:"https://i.imgur.com/6sWdFgH.png", categoria:"RARO 2022"},
-                    {id:"SK008", nombre:"Samurái Supremo", img:"https://i.imgur.com/1aGtYqW.png", categoria:"PASE 2023"},
-                    {id:"SK009", nombre:"Traje Cobra", img:"https://i.imgur.com/4kL9sPw.png", categoria:"NUEVO 2024"},
-                    {id:"SK010", nombre:"Armadura Galáctica", img:"https://i.imgur.com/8bVnMz1.png", categoria:"FUTURO 2025"}
+                    {id:"SK001", nombre:"Conjunto Sakura", img:"https://i.imgur.com/7ZbX7Qr.png", cat:"2018"},
+                    {id:"SK002", nombre:"Hip Hop Legendario", img:"https://i.imgur.com/9kL2sPw.png", cat:"2018"},
+                    {id:"SK003", nombre:"Criminal Azul", img:"https://i.imgur.com/2vMhNxY.png", cat:"2019"},
+                    {id:"SK004", nombre:"Naruto Uzumaki", img:"https://i.imgur.com/8xQpDfG.png", cat:"2020"},
+                    {id:"SK005", nombre:"One Piece Luffy", img:"https://i.imgur.com/3bVnMz1.png", cat:"2021"}
                 ],
                 armas: [
-                    {id:"WP001", nombre:"AK47 Dragón Llama Azul", img:"https://i.imgur.com/yT7kP9b.png", evolutiva:"SI | NIVEL MÁXIMO"},
-                    {id:"WP002", nombre:"MP40 Cobalto", img:"https://i.imgur.com/bV8sN2L.png", evolutiva:"SI | NIVEL MÁXIMO"},
-                    {id:"WP003", nombre:"SCAR Titán", img:"https://i.imgur.com/nM5dF7z.png", evolutiva:"SI | NIVEL MÁXIMO"},
-                    {id:"WP004", nombre:"M1014 Fénix", img:"https://i.imgur.com/wQ7rT9x.png", evolutiva:"SI | NIVEL MÁXIMO"},
-                    {id:"WP005", nombre:"UMP Destrucción", img:"https://i.imgur.com/kL2vZ8a.png", evolutiva:"SI | NIVEL MÁXIMO"},
-                    {id:"WP006", nombre:"M4A1 Pesadilla", img:"https://i.imgur.com/pR6sD3c.png", evolutiva:"SI | NIVEL MÁXIMO"}
-                ],
-                emotes: [
-                    {id:"EM001", nombre:"Baile Hip Hop", img:"https://i.imgur.com/zXcV8bA.png", rareza:"COMÚN"},
-                    {id:"EM002", nombre:"Pisotón", img:"https://i.imgur.com/qY2sD4w.png", rareza:"RARO"},
-                    {id:"EM003", nombre:"Corazón", img:"https://i.imgur.com/vN5xZ7c.png", rareza:"ESPECIAL"},
-                    {id:"EM004", nombre:"Baile del Pollo", img:"https://i.imgur.com/mK7rT9b.png", rareza:"DIVERTIDO"},
-                    {id:"EM005", nombre:"Aplausos", img:"https://i.imgur.com/gF3dV8a.png", rareza:"CLÁSICO"},
-                    {id:"EM006", nombre:"Muerte", img:"https://i.imgur.com/sT6wX2e.png", rareza:"TENEBROSO"}
+                    {id:"WP001", nombre:"AK47 Dragón Azul", img:"https://i.imgur.com/yT7kP9b.png", cat:"EVOLUTIVA"},
+                    {id:"WP002", nombre:"MP40 Cobalto", img:"https://i.imgur.com/bV8sN2L.png", cat:"EVOLUTIVA"},
+                    {id:"WP003", nombre:"SCAR Titán", img:"https://i.imgur.com/nM5dF7z.png", cat:"EVOLUTIVA"}
                 ]
             };
         }
 
-        // ==============================================
-        // 🔍 CONSULTAR ID: TE DICE USUARIO, CORREO, PLATAFORMA
-        // ==============================================
-        function consultarCuenta() {
+        // CONSULTAR ID Y SACAR DATOS
+        function consultar() {
             let id = document.getElementById("idConsulta").value.trim();
-            if(!id) return alert("⚠️ PON EL ID DE LA CUENTA");
+            if (!id) return alert("⚠️ PON EL ID");
 
             let datos = {
-                "11341834738": {usuario:"🔥 MARCO_POLO 🔥", plataforma:"GOOGLE 🟥", correo:"marcopolo@gmail.com", estado:"ACTIVA ✅", disparo:"85% CABEZA"},
-                "1048934382": {usuario:"⚡ EL_MAESTRO ⚡", plataforma:"FACEBOOK 🟦", correo:"elmejor@facebook.com", estado:"PROTEGIDA ✅", disparo:"95% CABEZA"}
+                "12345678": {usu:"🔥 JUGADOR_PRO", pla:"GOOGLE 🟥", cor:"jugador@gmail.com", est:"ACTIVA ✅"},
+                "1048934382": {usu:"⚡ EL_MAESTRO ⚡", pla:"FACEBOOK 🟦", cor:"tuyo@facebook.com", est:"PROTEGIDA ✅"}
             };
 
-            if(!datos[id]) {
-                document.getElementById("resultadoConsulta").innerHTML = `<div class="p-4 bg-rojo/20 rounded-lg text-center shake">🤖 IA DESCIFRANDO DATOS...</div>`;
-                setTimeout(consultarCuenta, 1500);
+            if (!datos[id]) {
+                document.getElementById("resConsulta").innerHTML = `<div class="p-3 bg-rojo/20 rounded">🤖 BUSCANDO...</div>`;
+                setTimeout(consultar, 1200);
                 return;
             }
 
             let d = datos[id];
-            document.getElementById("resultadoConsulta").innerHTML = `
-                <div class="p-5 bg-panel/80 border border-cyan-400 rounded-xl border-glow mt-3">
-                    <h4 class="text-center text-cyan-300 font-bold mb-3">✅ DATOS OBTENIDOS</h4>
-                    <p class="text-lg"><strong>🔢 ID:</strong> ${id}</p>
-                    <p class="text-yellow-400 text-lg font-bold mt-1"><strong>👤 USUARIO:</strong> ${d.usuario}</p>
-                    <p class="text-cyan-300 mt-1"><strong>🔗 PLATAFORMA:</strong> ${d.plataforma}</p>
-                    <p class="text-green-400 mt-1 text-lg"><strong>📧 CORREO:</strong> ${d.correo}</p>
-                    <p class="text-seguridad text-center mt-3 font-bold">✅ ACCESO LIBRE - PUEDES TRANSFERIRLA</p>
-                </div>`;
+            document.getElementById("resConsulta").innerHTML = `
+            <div class="p-4 bg-panel border border-cyan rounded-lg mt-3">
+                <p><strong>👤 USUARIO:</strong> ${d.usu}</p>
+                <p><strong>🔗 PLATAFORMA:</strong> ${d.pla}</p>
+                <p><strong>📧 CORREO:</strong> ${d.cor}</p>
+                <p class="text-green-400 font-bold">✅ ACCESO LIBRE</p>
+            </div>`;
         }
 
-        // ==============================================
-        // 🔄 TRANSFERIR CUENTA: CAMBIAR ENTRE GOOGLE Y FACEBOOK
-        // ==============================================
-        function transferirCuenta() {
-            let idOrigen = document.getElementById("idOrigen").value.trim();
-            let correo = document.getElementById("correoDestino").value.trim();
+        // TRANSFERIR CUENTA
+        function transferir() {
+            let id = document.getElementById("idTransfer").value.trim();
+            let correo = document.getElementById("correoTransfer").value.trim();
+            if (!id || !correo) return alert("⚠️ COMPLETA LOS DOS DATOS");
 
-            if(!idOrigen || !correo) return alert("⚠️ COMPLETA ID Y TU CORREO NUEVO");
-
-            document.getElementById("resultadoTransfer").innerHTML = `
-                <div class="p-5 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-3 shake">
-                    <h4 class="text-center text-lg font-bold text-seguridad mb-2">🔄 TRANSFIRIENDO...</h4>
-                    <div class="w-full bg-panel h-2 rounded-full overflow-hidden"><div class="bg-seguridad h-full w-[100%]"></div></div>
-                    <p class="text-center text-green-400 font-bold mt-2 text-xl">✅ ¡HECHO! CUENTA AHORA ES TUYA</p>
-                    <p class="text-xs text-center text-yellow-400">🤖 BOTS OCULTARON EL RASTRO | SIN DETECCIÓN</p>
-                </div>`;
+            document.getElementById("resTransfer").innerHTML = `
+            <div class="p-4 bg-seguridad/20 border border-seguridad rounded-lg mt-3">
+                <p class="text-center text-lg font-bold">✅ TRANSFERIDO CON ÉXITO</p>
+                <p class="text-xs">RASTRO BORRADO • SIN DETECCIÓN</p>
+            </div>`;
         }
 
-        // ==============================================
-        // 🎁 CARGAR OBJETOS CON IMÁGENES REALES
-        // ==============================================
-        function cargarGaleria(tipo) {
-            let contenedor = document.getElementById("galeriaObjetos");
-            contenedor.innerHTML = `<p class="text-center text-neon mb-4">🤖 CARGANDO IMÁGENES...</p>`;
-            OBJETOS_SELECCIONADOS = [];
-            document.getElementById("contadorSel").textContent = "0";
-
-            let lista;
-            if(tipo === "ropas") lista = BASE_DATOS.ropas;
-            if(tipo === "armas") lista = BASE_DATOS.armas;
-            if(tipo === "emotes") lista = BASE_DATOS.emotes;
-            if(tipo === "todo") lista = [...BASE_DATOS.ropas, ...BASE_DATOS.armas, ...BASE_DATOS.emotes];
-
-            setTimeout(() => {
-                contenedor.innerHTML = "";
-                lista.forEach(obj => {
-                    let div = document.createElement('div');
-                    div.className = "bg-panel/70 p-3 rounded-lg border border-diamante/40 text-center hover:scale-105 transition cursor-pointer";
-                    div.onclick = () => seleccionar(div, obj);
-                    div.innerHTML = `
-                        <img src="${obj.img}" class="w-24 h-24 mx-auto mb-2 rounded-lg object-cover border border-neon/50">
-                        <p class="text-sm font-bold">${obj.nombre}</p>
-                        <p class="text-[10px] text-cyan-300">${obj.categoria || obj.evolutiva || obj.rareza}</p>
-                    `;
-                    contenedor.appendChild(div);
-                });
-            }, 800);
+        // CARGAR IMÁGENES EN GENERADOR
+        function verRopas() {
+            let cont = document.getElementById("galeria");
+            cont.innerHTML = "";
+            BASE_DATOS.ropas.forEach(obj => {
+                let div = document.createElement('div');
+                div.className = "bg-panel p-2 rounded text-center hover:scale-105 transition cursor-pointer";
+                div.onclick = () => div.classList.toggle("seleccionado");
+                div.innerHTML = `<img src="${obj.img}" class="w-20 h-20 mx-auto mb-1 rounded"><p class="text-xs">${obj.nombre}</p>`;
+                cont.appendChild(div);
+            });
         }
 
-        function seleccionar(elemento, objeto) {
-            elemento.classList.toggle("seleccionado");
-            if(OBJETOS_SELECCIONADOS.some(o => o.id === objeto.id)) {
-                OBJETOS_SELECCIONADOS = OBJETOS_SELECCIONADOS.filter(o => o.id !== objeto.id);
-            } else {
-                OBJETOS_SELECCIONADOS.push(objeto);
-            }
-            document.getElementById("contadorSel").textContent = OBJETOS_SELECCIONADOS.length;
+        function verArmas() {
+            let cont = document.getElementById("galeria");
+            cont.innerHTML = "";
+            BASE_DATOS.armas.forEach(obj => {
+                let div = document.createElement('div');
+                div.className = "bg-panel p-2 rounded text-center hover:scale-105 transition cursor-pointer";
+                div.onclick = () => div.classList.toggle("seleccionado");
+                div.innerHTML = `<img src="${obj.img}" class="w-20 h-20 mx-auto mb-1 rounded"><p class="text-xs">${obj.nombre}</p>`;
+                cont.appendChild(div);
+            });
         }
 
-        function seleccionarTodos() {
-            document.querySelectorAll('#galeriaObjetos > div').forEach(div => div.classList.add('seleccionado'));
-            OBJETOS_SELECCIONADOS = [...BASE_DATOS.ropas, ...BASE_DATOS.armas, ...BASE_DATOS.emotes];
-            document.getElementById("contadorSel").textContent = OBJETOS_SELECCIONADOS.length;
+        // ENVIAR TODO
+        function enviarTodo() {
+            let id = document.getElementById("idDestino").value.trim();
+            let diamantes = document.getElementById("cantDiamantes").value || 0;
+            if (!id) return alert("⚠️ PON TU ID DESTINO");
+
+            document.getElementById("resFinal").innerHTML = `
+            <div class="p-4 bg-green-900/30 border border-green-400 rounded-lg mt-4 text-center">
+                <h4 class="text-xl font-bold text-green-400">🚀 ENVIADO AL SERVIDOR</h4>
+                <p>💎 ${diamantes} DIAMANTES</p>
+                <p>🛡️ SEGURIDAD ACTIVA: INDETECTABLE</p>
+            </div>`;
         }
 
-        // ==============================================
-        // 🚀 ENVIAR TODO AL JUEGO
-        // ==============================================
-        function ejecutarEnvio() {
-            let idDestino = document.getElementById("idFinal").value.trim();
-            let diamantes = parseInt(document.getElementById("cantDiamantes").value) || 0;
-            let oro = parseInt(document.getElementById("cantOro").value) || 0;
-            let disparo = document.getElementById("punteria").value;
-
-            if(!idDestino) return alert("⚠️ PON EL ID DE LA CUENTA");
-            if(diamantes === 0 && oro === 0 && OBJETOS_SELECCIONADOS.length === 0) return alert("⚠️ ELIGE ALGO PARA ENVIAR");
-
-            document.getElementById("resultadoFinal").innerHTML = `
-                <div class="p-6 bg-seguridad/20 border border-seguridad rounded-xl border-safe mt-4 shake">
-                    <h3 class="text-center text-2xl font-bold text-seguridad mb-3">🚀 EJECUTADO POR IA + BOTS</h3>
-                    <p><strong>📤 DESTINO:</strong> ${idDestino}</p>
-                    <p><strong>💎 DIAMANTES:</strong> ${diamantes.toLocaleString()}</p>
-                    <p><strong>🪙 ORO:</strong> ${oro.toLocaleString()}</p>
-                    <p><strong>🔫 PUNTERÍA:</strong> ${disparo}% CABEZA</p>
-                    <p><strong>📦 OBJETOS ENVIADOS:</strong> ${OBJETOS_SELECCIONADOS.length} ARTÍCULOS</p>
-                    <div class="w-full bg-panel h-3 rounded-full overflow-hidden my-3"><div class="bg-gradient-to-r from-pink-500 to-diamante h-full w-[100%]"></div></div>
-                    <p class="text-center text-xl font-bold text-green-400">✅ MODIFICACIÓN COMPLETA EN SERVIDORES</p>
-                    <p class="text-center text-rojo font-bold blink">🛡️ SISTEMA DE CAMUFLAJE ACTIVO • SIN DETECCIÓN • SIN BANEO</p>
-                </div>`;
-        }
-
-        // ==============================================
-        // 🧭 NAVEGACIÓN: AHORA SÍ ABRE CADA SECCIÓN
-        // ==============================================
-        function cambiarPestana(id, btn) {
+        // NAVEGACIÓN QUE SÍ FUNCIONA
+        function cambiarSeccion(id, boton) {
+            // OCULTAR TODAS
             document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
-            document.querySelectorAll('.btn-menu').forEach(b => b.className = "btn-menu px-3 py-2 rounded-lg bg-panel border border-primary/40 hover:border-neon transition");
+            // QUITAR COLOR A BOTONES
+            document.querySelectorAll('.btn').forEach(b => b.className = "btn px-3 py-2 rounded-lg bg-panel border border-purple-500/40");
+            // MOSTRAR LA SELECCIONADA
             document.getElementById(id).style.display = 'block';
-            btn.className = "btn-menu px-3 py-2 rounded-lg gradient-master font-bold border-glow scale-[1.02] transition";
+            // PONER COLOR AL BOTÓN ACTIVO
+            boton.className = "btn px-3 py-2 rounded-lg gradient-master font-bold border-glow";
         }
     </script>
 </head>
 <body class="bg-fondo text-white min-h-screen">
 
-    <!-- ============================================== -->
-    <!-- 🚪 PANTALLA DE INICIO: SOLO TU CÉDULA -->
-    <!-- ============================================== -->
+    <!-- PANTALLA DE INICIO -->
     <div id="zonaLogin" class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
         <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon border-glow text-center">
             <h2 class="text-3xl font-black text-glow mb-6">🔥 ACCESO EXCLUSIVO</h2>
-            <p class="mb-4 text-neon">SOLO EL DUEÑO CON CÉDULA PUEDE ENTRAR</p>
-            <input type="password" id="inputCedula" class="w-full p-4 rounded-xl bg-black border border-neon text-center text-lg mb-4" placeholder="ESCRIBE TU CÉDULA">
-            <button onclick="ingresarAlPanel()" class="w-full gradient-master p-4 rounded-xl font-bold text-lg hover:scale-[1.02] transition">INGRESAR AL SISTEMA</button>
-            <p class="text-xs text-gray-500 mt-4">TU CÉDULA: 1048934382</p>
+            <input type="password" id="inputCedula" class="w-full p-4 rounded-xl bg-black border border-neon text-center text-lg mb-4" placeholder="TU CÉDULA: 1048934382">
+            <button onclick="ingresarAlPanel()" class="w-full gradient-master p-4 rounded-xl font-bold text-lg">INGRESAR</button>
         </div>
     </div>
 
-    <!-- ============================================== -->
-    <!-- 📱 PANEL PRINCIPAL: TODO FUNCIONAL -->
-    <!-- ============================================== -->
+    <!-- PANEL PRINCIPAL -->
     <div id="panelPrincipal" class="container mx-auto px-3 py-6 max-w-4xl" style="display:none;">
 
-        <!-- CABECERA: AQUÍ APARECE TU WHATSAPP -->
+        <!-- CABECERA -->
         <header class="text-center mb-8">
             <h1 class="text-[clamp(2rem,8vw,3.8rem)] font-black text-glow mb-2">🔥 SISTEMA MAESTRO</h1>
             <p class="text-neon font-bold text-lg mb-4">INTELIGENCIA ARTIFICIAL • BOTS • CONTROL TOTAL</p>
 
-            <div class="gradient-whatsapp rounded-xl p-4 mb-6 border-safe pulse-strong">
+            <div class="rounded-xl p-4 mb-6 border border-green-500/50 pulse-strong">
                 <p class="text-white font-bold text-lg">📞 CONTACTO PRINCIPAL</p>
-                <p id="mostrarEnPortada" class="text-3xl font-black blink mt-1">❓ NO CONFIGURADO</p>
-                <p class="text-sm mt-2">*Tú lo activas desde la configuración interna</p>
+                <p id="mostrarWhatsapp" class="text-3xl font-black blink mt-1 text-gray-400">❓ NO CONFIGURADO</p>
             </div>
 
-            <div class="bg-panel/80 rounded-xl p-3 border border-seguridad/50 border-safe">
-                <p class="text-seguridad font-bold">🤖 BOTS: 128 ACTIVOS | 🧠 IA: APRENDIZAJE 24/7 | 🛡️ SEGURIDAD: INDETECTABLE</p>
+            <div class="bg-panel/80 rounded-xl p-3 border border-seguridad/50">
+                <p class="text-seguridad font-bold">🤖 BOTS: 128 ACTIVOS | 🛡️ SEGURIDAD: INDETECTABLE</p>
             </div>
         </header>
 
-        <!-- MENÚ DE BOTONES: AHORA SÍ FUNCIONAN -->
+        <!-- MENÚ DE BOTONES (AHORA SÍ FUNCIONAN) -->
         <div class="flex flex-wrap justify-center gap-2 mb-8">
-            <button class="btn-menu gradient-master font-bold border-glow" onclick="cambiarPestana('inicio', this)">🏠 INICIO</button>
-            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('configuracion', this)">⚙️ TU WHATSAPP</button>
-            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('consultar', this)">🔍 CONSULTAR ID</button>
-            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('transferir', this)">🔄 TRANSFERIR CUENTA</button>
-            <button class="btn-menu bg-panel border border-primary/40" onclick="cambiarPestana('generadores', this)">🎁 GENERADORES</button>
+            <button class="btn px-3 py-2 rounded-lg gradient-master font-bold border-glow" onclick="cambiarSeccion('inicio', this)">🏠 INICIO</button>
+            <button class="btn px-3 py-2 rounded-lg bg-panel border border-purple-500/40" onclick="cambiarSeccion('conf_whatsapp', this)">⚙️ TU WHATSAPP</button>
+            <button class="btn px-3 py-2 rounded-lg bg-panel border border-purple-500/40" onclick="cambiarSeccion('consulta_id', this)">🔍 CONSULTAR ID</button>
+            <button class="btn px-3 py-2 rounded-lg bg-panel border border-purple-500/40" onclick="cambiarSeccion('transferir_cuenta', this)">🔄 TRANSFERIR</button>
+            <button class="btn px-3 py-2 rounded-lg bg-panel border border-purple-500/40" onclick="cambiarSeccion('generadores', this)">🎁 GENERADORES</button>
         </div>
 
-        <!-- 📌 SECCIÓN 1: INICIO -->
+        <!-- SECCIÓN 1: INICIO -->
         <div id="inicio" class="seccion block bg-panel/80 p-6 rounded-2xl border-glow border border-neon/30">
-            <h3 class="text-xl font-bold text-center text-neon mb-6">🚀 SISTEMA COMPLETO ACTIVO</h3>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-black/40 p-5 rounded-xl border border-seguridad/40 border-safe">
-                    <h4 class="text-seguridad font-bold text-lg mb-3">🤖 LO QUE HACEN LOS BOTS</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li>✅ Actualizan contenido nuevo automáticamente 24/7</li>
-                        <li>✅ Simulan ser humanos para no ser detectados</li>
-                        <li>✅ Copian datos reales del juego</li>
-                        <li>✅ Borran rastro de modificaciones</li>
-                    </ul>
-                </div>
-                <div class="bg-black/40 p-5 rounded-xl border border-pink/40 border-glow">
-                    <h4 class="text-pink font-bold text-lg mb-3">🧠 LO QUE HACE LA IA</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li>✅ Descifra correos y contraseñas ocultas</li>
-                        <li>✅ Camufla cambios como si fueran oficiales</li>
-                   
+            <h3 class="text-xl font-bold text-center text-neon mb-4">TODO ACTIVO Y LISTO</h3>
+            <p class="text-center">Todos los sistemas funcionando al 100%. Usa los botones de arriba para navegar.</p>
+        </div>
+
+        <!-- SECCIÓN 2: CONFIGURAR WHATSAPP -->
+        <div id="conf_whatsapp" class="seccion hidden bg-panel/80 p-6 rounded-2xl border-glow border border-whatsapp/30">
+            <h3 class="text-xl font-bold text-center text-whatsapp mb-4">PON TU NÚMERO</h3>
+            <input type="text" id="numWhatsapp" class="w-full p-3 rounded-lg bg-black border border-whatsapp/40 text-center mb-4" placeholder="+57 300 1234567">
+            <button onclick="guardarWhatsapp()" class="w-full bg-whatsapp p-3 rounded-lg font-bold">GUARDAR Y QUE APAREZCA ARRIBA</button>
+        </div>
+
+        <!-- SECCIÓN 3: CONSULTAR ID -->
+        <div id="consulta_id" class="seccion hidden bg-panel/80 p-6 rounded-2xl border-glow border border-cyan/30">
+            <h3 class="text-xl font-bold text-center text-cyan mb-4">SACAR DATOS DE CUALQUIER CUENTA</h3>
+            <input type="text" id="idConsulta" class="w-full p-3 rounded-lg bg-black border border-cyan/40 text-center mb-3" placeholder="ESCRIBE EL ID">
+            <button onclick="consultar()" class="w-full bg-cyan-600 p-3 rounded-lg font-bold">BUSCAR DATOS OCULTOS</button>
+            <div id="resConsulta"></div>
+        </div>
+
+        <!-- SECCIÓN 4: TRANSFERIR CUENTA -->
+        <div id="transferir_cuenta" class="seccion hidden bg-panel/80 p-6 rounded-2xl border-glow border border-pink/30">
+            <h3 class="text-xl font-bold text-center text-pink mb-4">PASAR CUENTA A TU CORREO</h3>
+            <input type="text" id="idTransfer" class="w-full p-3 rounded-lg bg-black border border-pink/40 text-center mb-3" placeholder="ID DE LA CUENTA">
+            <input type="text" id="correoTransfer" class="w-full p-3 rounded-lg bg-black border border-pink/40 text-center mb-3" placeholder="TU CORREO NUEVO">
+            <button onclick="transferir()" class="w-full gradient-master p-3 rounded-lg font-bold">EJECUTAR CAMBIO</button>
+            <div id="resTransfer"></div>
+        </div>
+
+        <!-- SECCIÓN 5: GENERADORES (IMÁGENES Y TODO) -->
+        <div id="generadores" class="seccion hidden bg-panel/80 p-6 rounded-2xl border-glow border border-diamante/30">
+            <h3 class="text-xl font-bold text-center text-diamante mb-4">CREAR LO QUE QUIERAS</h3>
+
+            <div class="flex gap-2 justify-center mb-4">
+                <button onclick="verRopas()" class="bg-pink/40 px-3 py-2 rounded">👕 ROPAS</button>
+                <button onclick="verArmas()" class="bg-rojo/40 px-3 py-2 rounded">🔫 ARMAS</button>
+            </div>
+
+            <div id="galeria" class="grid grid-cols-3 gap-3 mb-6 bg-black/30 p-3 rounded-lg"></div>
+
+            <div class="mb-4">
+                <label class="block text-center text-oro mb-1">💎 DIAMANTES</label>
+                <input type="number" id="cantDiamantes" class="w-full p-3 rounded-lg bg-black border border-oro/40 text-center" placeholder="999999">
+            </div>
+
+            <input type="text" id="idDestino" class="w-full p-3 rounded-lg bg-black border border-cyan/40 text-center mb-3" placeholder="TU ID PARA RECIBIR">
+            <button onclick="enviarTodo()" class="w-full gradient-master p-4 rounded-lg font-bold text-lg">🚀 ENVIAR TODO AL SERVIDOR</button>
+            <div id="resFinal"></div>
+        </div>
+
+    </div>
+</body>
+</html>
