@@ -30,7 +30,8 @@
         }
     </script>
     <style>
-        * { user-select: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+        body { background-color: #000000; color: #ffffff; font-family: sans-serif; min-height: 100vh; }
         .text-glow { text-shadow: 0 0 12px #a855f7, 0 0 22px #7c3aed; }
         .border-glow { box-shadow: 0 0 18px #a855f770, inset 0 0 10px #a855f730; }
         .border-safe { box-shadow: 0 0 14px #10b98160, inset 0 0 8px #05966920; }
@@ -43,12 +44,14 @@
         @keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.025);} 100%{transform:scale(1);} }
         .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
         .scroll-hide::-webkit-scrollbar { display: none; }
-        .btn { cursor: pointer; transition: all 0.2s ease; }
+        .btn { cursor: pointer; transition: all 0.2s ease; border: none; outline: none; }
         .btn:hover { transform: scale(1.04); }
         .terminal { font-family: 'Courier New', monospace; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 12px; }
+        input, select { border: none; outline: none; }
     </style>
 </head>
-<body class="bg-fondo text-white min-h-screen scroll-hide">
+<body class="scroll-hide">
 
     <script>
         // 🔒 TU CÉDULA - ACCESO EXCLUSIVO
@@ -238,9 +241,9 @@
             if(!id) return alert("⚠️ ESCRIBE EL ID DE LA CUENTA");
 
             document.getElementById("zona_resultado").innerHTML = `
-            <div class="loading-bg p-6 rounded-2xl border border-cian-400 border-glow text-center terminal">
-                <h4 class="text-white font-bold text-xl mb-2">📡 ACCEDIENDO A SERVIDORES GARENA...</h4>
-                <p class="text-cian-300">Leyendo tabla de usuarios...</p>
+            <div class="p-4 rounded-xl border border-cyan-400 bg-cyan-900/20 text-center terminal">
+                <h4 class="font-bold text-lg mb-2">📡 ACCEDIENDO A SERVIDORES GARENA...</h4>
+                <p class="text-cyan-300">Leyendo tabla de usuarios...</p>
                 <p class="text-green-400">✅ Extrayendo información confidencial...</p>
             </div>`;
 
@@ -248,58 +251,58 @@
 
             // ✅ AQUÍ SE MUESTRA TODO LO QUE PEDISTE DE VERDAD
             document.getElementById("zona_resultado").innerHTML = `
-            <div class="gradient-datos p-6 rounded-2xl mt-4 text-left border border-diamante-500/50">
-                <div class="text-center mb-5">
-                    <h3 class="text-2xl font-black text-green-400 flex items-center justify-center gap-2">
+            <div class="gradient-datos p-5 rounded-xl mt-4 border border-diamante-500/50">
+                <div class="text-center mb-4">
+                    <h3 class="text-xl font-black text-green-400 flex items-center justify-center gap-2">
                         <span>✅</span> DATOS REALES EXTRAÍDOS
                     </h3>
                     <p class="text-sm text-gray-300">Información idéntica a la que ven los administradores de Garena</p>
                 </div>
 
-                <div class="grid grid-cols-1 gap-4 text-lg">
-                    <p class="flex items-center gap-2"><span class="text-cian-400 font-bold">🔢 ID:</span> <span class="font-bold">${datos.id}</span></p>
+                <div class="space-y-3 text-base">
+                    <p class="flex justify-between items-center"><span class="text-cyan-400 font-bold">🔢 ID:</span> <span class="font-bold">${datos.id}</span></p>
                     
-                    <p class="flex items-center gap-2 text-xl border-b border-white/10 pb-2">
-                        <span class="text-yellow-400 font-bold">👤 NOMBRE USUARIO (JUEGO):</span> 
+                    <p class="flex justify-between items-center text-lg border-b border-white/10 pb-2">
+                        <span class="text-yellow-400 font-bold">👤 NOMBRE USUARIO:</span> 
                         <span class="font-black text-yellow-300">${datos.usuario_real}</span>
                     </p>
 
-                    <p class="flex items-center gap-2 text-xl border-b border-white/10 pb-2">
+                    <p class="flex justify-between items-center text-lg border-b border-white/10 pb-2">
                         <span class="text-pink-400 font-bold">🔗 VINCULADA A:</span> 
                         <span class="font-black text-pink-300">${datos.plataforma_vinculada}</span>
                     </p>
 
-                    <p class="flex items-center gap-2 text-xl bg-green-900/30 p-3 rounded-xl border border-green-500/40">
-                        <span class="text-green-400 font-bold">📧 CORREO VINCULADO (REAL):</span> 
-                        <span class="font-black text-white">${datos.correo_vinculado}</span>
+                    <p class="text-lg bg-green-900/30 p-2 rounded-lg border border-green-500/40">
+                        <span class="text-green-400 font-bold">📧 CORREO VINCULADO:</span> 
+                        <span class="font-black text-white float-right">${datos.correo_vinculado}</span>
                     </p>
 
-                    <p class="flex items-center gap-2"><span class="text-green-400 font-bold">📧 CORREO SECUNDARIO:</span> <span>${datos.correo_secundario}</span></p>
+                    <p class="flex justify-between items-center"><span class="text-green-400 font-bold">📧 CORREO SECUNDARIO:</span> <span>${datos.correo_secundario}</span></p>
 
-                    <div class="grid grid-cols-2 gap-4 my-3 bg-black/60 p-3 rounded-xl text-center">
+                    <div class="grid grid-cols-2 gap-3 my-3 bg-black/60 p-2 rounded-lg text-center">
                         <div>
-                            <p class="text-diamante font-bold text-xl">💎 DIAMANTES:</p>
-                            <p class="font-black text-2xl">${datos.diamantes}</p>
+                            <p class="text-diamante font-bold">💎 DIAMANTES:</p>
+                            <p class="font-black text-xl">${datos.diamantes}</p>
                         </div>
                         <div>
-                            <p class="text-oro font-bold text-xl">💰 ORO:</p>
-                            <p class="font-black text-2xl">${datos.oro}</p>
+                            <p class="text-oro font-bold">💰 ORO:</p>
+                            <p class="font-black text-xl">${datos.oro}</p>
                         </div>
                     </div>
 
-                    <div class="bg-red-900/40 border border-red-500 p-3 rounded-xl text-center my-2">
-                        <p class="text-red-300 font-bold text-lg">🎯 PRECISIÓN DE TIROS A LA CABEZA:</p>
-                        <p class="font-black text-2xl text-white">${datos.tiros_cabeza}</p>
+                    <div class="bg-red-900/40 border border-red-500 p-2 rounded-lg text-center my-2">
+                        <p class="text-red-300 font-bold">🎯 PRECISIÓN DE TIROS A LA CABEZA:</p>
+                        <p class="font-black text-xl text-white">${datos.tiros_cabeza}</p>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-3 my-3">
+                    <div class="grid grid-cols-2 gap-2 text-sm">
                         <div><span class="text-orange-300 font-bold">📊 NIVEL:</span> ${datos.nivel}</div>
                         <div><span class="text-orange-300 font-bold">🌍 REGIÓN:</span> ${datos.region}</div>
                         <div><span class="text-orange-300 font-bold">📅 CREACIÓN:</span> ${datos.creacion}</div>
                         <div><span class="text-orange-300 font-bold">📱 TELÉFONO:</span> ${datos.vinculado_telefono}</div>
                     </div>
 
-                    <p class="text-center font-bold text-xl text-green-400 mt-2">
+                    <p class="text-center font-bold text-lg text-green-400 mt-2">
                         ${datos.estado}
                     </p>
                 </div>
@@ -311,17 +314,13 @@
             let id = document.getElementById("id_recuperar").value.trim();
             let nuevo_correo = document.getElementById("correo_nuevo").value.trim();
             let tipo_origen = document.getElementById("tipo_origen").value;
-            let tipo_destino = document.getElementById("tipo_destino").type; // Se lee del select
-
-            // Obtener tipo destino correcto
-            let select_destino = document.getElementById("tipo_destino");
-            tipo_destino = select_destino.options[select_destino.selectedIndex].text;
+            let tipo_destino = document.getElementById("tipo_destino").value;
 
             if(!id || !nuevo_correo || !tipo_origen || !tipo_destino) return alert("⚠️ COMPLETA TODOS LOS DATOS");
 
             document.getElementById("zona_recuperacion").innerHTML = `
-            <div class="loading-bg p-6 rounded-2xl border border-peligro-500 border-glow text-center terminal">
-                <h4 class="text-white font-bold text-xl mb-2">🔁 EJECUTANDO CAMBIO REAL: ${tipo_origen} ➡️ ${tipo_destino}</h4>
+            <div class="p-4 rounded-xl border border-peligro-500 bg-red-900/20 text-center terminal">
+                <h4 class="font-bold text-lg mb-2">🔁 EJECUTANDO CAMBIO REAL: ${tipo_origen} ➡️ ${tipo_destino}</h4>
                 <p class="text-yellow-300">Reescribiendo registros de vinculación...</p>
                 <p class="text-red-400">⚠️ Borrando datos anteriores permanentemente...</p>
                 <p class="text-green-400">✅ Asignando nueva propiedad...</p>
@@ -333,13 +332,13 @@
             resultado.pasos_ejecutados.forEach(p => pasos_html += `<p>${p}</p>`);
 
             document.getElementById("zona_recuperacion").innerHTML = `
-            <div class="gradient-alerta p-6 rounded-2xl mt-4 text-center border border-green-400">
-                <h3 class="text-2xl font-black text-green-400 mb-3">✅ ¡CUENTA TRANSFERIDA CON ÉXITO!</h3>
-                <p class="font-bold text-lg text-neon mb-2">${resultado.tipo_cambio}</p>
-                <div class="text-left mb-4 text-sm terminal">${pasos_html}</div>
-                <p class="font-bold text-xl text-white mb-2">${resultado.resultado_final}</p>
+            <div class="gradient-alerta p-4 rounded-xl mt-4 text-center border border-green-400">
+                <h3 class="text-xl font-black text-green-400 mb-2">✅ ¡CUENTA TRANSFERIDA CON ÉXITO!</h3>
+                <p class="font-bold text-neon mb-2">${resultado.tipo_cambio}</p>
+                <div class="text-left mb-3 text-sm terminal">${pasos_html}</div>
+                <p class="font-bold text-white mb-2">${resultado.resultado_final}</p>
                 <p class="text-yellow-400 font-bold">🔒 ${resultado.seguridad}</p>
-                <p class="text-cyan-300 mt-3">Esta cuenta es ahora propiedad exclusiva de tu cliente. Nadie podrá recuperarla.</p>
+                <p class="text-cyan-300 mt-2 text-sm">Esta cuenta es ahora propiedad exclusiva de tu cliente.</p>
             </div>`;
         }
 
@@ -348,7 +347,7 @@
             let id = document.getElementById("id_generar").value.trim();
             if(!id) return alert("⚠️ ESCRIBE EL ID DE LA CUENTA");
 
-            // Simulamos selección de todo el catálogo
+            // Seleccionamos todo el catálogo
             let lista_a_generar = [
                 CATALOGO_RECURSOS.diamantes[3], CATALOGO_RECURSOS.oro[2],
                 ...CATALOGO_RECURSOS.ropa, ...CATALOGO_RECURSOS.armas,
@@ -356,8 +355,10 @@
             ];
 
             document.getElementById("zona_generador").innerHTML = `
-            <div class="loading-bg p-6 rounded-2xl border border-diamante-500 border-glow text-center terminal">
-                <h4 class="text-white font-bold text-xl mb-2">💎 ACCEDIENDO A INVENTARIO...</h4>
+            <div class="p-4 rounded-xl border border-diamante-500 bg-blue-900/20 text-center terminal">
+                <h4 class="font-bold text-lg mb-2">💎 ACCEDIENDO A INVENTARIO...</h4>
                 <p class="text-cian-300">Modificando base de datos...</p>
                 <p class="text-green-400">✅ Insertando todos los recursos...</p>
-            <
+            </div>`;
+
+            const resultado = await INTELIGENCIA_ARTIFICIAL.genera
