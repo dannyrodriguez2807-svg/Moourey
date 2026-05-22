@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💀 SISTEMA MÁS PODEROSO | HACKEO TOTAL DE GARENA | 100% SEGURO | SIN BANEOS NUNCA</title>
+    <title>💀 SISTEMA DE HACKEO TOTAL | GARENA | INDETECTABLE 100% | SIN BANEOS NUNCA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -12,14 +12,13 @@
                 extend: {
                     colors: {
                         oscuro: '#000000',
-                        fondo: '#020203',
-                        primario: '#00ff99',
-                        rojo: '#ff3333',
-                        azul: '#0099ff',
+                        fondo: '#050508',
+                        primario: '#00ff88',
+                        peligro: '#ff3333',
+                        azul: '#0088ff',
                         morado: '#9933ff',
                         dorado: '#ffcc00',
                         verdeFuerte: '#00dd55',
-                        negroProfundo: '#000000',
                         grisOscuro: '#121217',
                     }
                 }
@@ -34,21 +33,17 @@
             font-family: 'Consolas', 'Monaco', monospace;
         }
         body {
-            background: linear-gradient(180deg, #000000 0%, #020203 50%, #000000 100%);
+            background: linear-gradient(180deg, #000000 0%, #050508 50%, #000000 100%);
             color: #ffffff;
             min-height: 100vh;
             padding: 20px;
-            overflow-x: hidden;
         }
         .brillo {
-            text-shadow: 0 0 10px #00ff99, 0 0 20px #00ff99, 0 0 30px #00ff99;
-        }
-        .brillo-rojo {
-            text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333, 0 0 30px #ff3333;
+            text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
         }
         .borde-brillante {
-            box-shadow: 0 0 15px #00ff9940, inset 0 0 8px #00ff9920;
-            border: 2px solid #00ff99;
+            box-shadow: 0 0 15px #00ff8840, inset 0 0 8px #00ff8820;
+            border: 2px solid #00ff88;
         }
         .borde-rojo {
             box-shadow: 0 0 15px #ff333340, inset 0 0 8px #ff333320;
@@ -57,18 +52,10 @@
         .animacion-latido {
             animation: latido 2s infinite;
         }
-        .animacion-parpadeo {
-            animation: parpadeo 1.5s infinite;
-        }
         @keyframes latido {
             0% { transform: scale(1); }
             50% { transform: scale(1.02); }
             100% { transform: scale(1); }
-        }
-        @keyframes parpadeo {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
         }
         .boton {
             cursor: pointer;
@@ -76,10 +63,19 @@
         }
         .boton:hover {
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 20px #00ff9960;
+            box-shadow: 0 0 20px #00ff8860;
+        }
+        .contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .seccion {
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 15px;
         }
         .lista-contenido {
-            max-height: 350px;
+            max-height: 300px;
             overflow-y: auto;
             padding-right: 15px;
         }
@@ -91,139 +87,151 @@
             border-radius: 10px;
         }
         .lista-contenido::-webkit-scrollbar-thumb {
-            background: #00ff99;
+            background: #00ff88;
             border-radius: 10px;
-        }
-        .lista-roja::-webkit-scrollbar-thumb {
-            background: #ff3333;
-        }
-        .contenedor {
-            max-width: 1150px;
-            margin: 0 auto;
-        }
-        .cabecera {
-            text-align: center;
-            padding: 35px;
-            margin-bottom: 35px;
-            border-radius: 15px;
-        }
-        .seccion {
-            padding: 28px;
-            margin-bottom: 28px;
-            border-radius: 15px;
         }
     </style>
 </head>
 <body>
 
-    <script>
-        // ==============================================
-        // 🔑 ACCESO EXCLUSIVO - SOLO TÚ PUEDES ENTRAR
-        // ==============================================
-        const CODIGO_ACCESO = "1048934382";
-
-        // ==============================================
-        // 🛡️ SISTEMA DE SEGURIDAD ABSOLUTA - NINGÚN BANEÓ, NINGUNA DETECCIÓN
-        // ==============================================
-        const SEGURIDAD = {
-            nivel: "MÁXIMO - 100% INDETECTABLE",
-            garantia: "NINGUNA CUENTA MODIFICADA CON ESTE SISTEMA SERÁ BANEA, NUNCA, EN NINGÚN CASO",
-            funcionamiento: "TODOS LOS DATOS SE MODIFICAN PARA QUE PAREZCAN ORIGINALES AL 100%, NO HAY NINGÚN RASTRO DE ACTIVIDAD, TODOS LOS REGISTROS SE BORRAN COMPLETAMENTE, LOS BOTS SE RESPALDAN ENTRE SÍ Y LA IA ACTUALIZA CADA SEGUNDO PARA EVITAR CUALQUIER VULNERABILIDAD",
+    <div class="contenedor">
+        <!-- PANTALLA DE ACCESO -->
+        <div id="pantallaLogin" class="seccion borde-brillante mt-10">
+            <h1 class="text-4xl font-bold text-center brillo mb-8">💀 SISTEMA DE ACCESO TOTAL</h1>
+            <p class="text-center text-gray-300 mb-6 text-lg">Ingresa tu número de cédula para acceder al sistema</p>
             
-            // SISTEMA DE BOTS - 16384 BOTS, CADA UNO CON FUNCIÓN ESPECÍFICA
-            // TODOS SE RESPALDAN MUTUAMENTE, SI ALGUNO FALLA, OTRO LO SUSTITUYE AL INSTANTE
-            sistemaDeBots: {
-                total: 16384,
-                estado: "TODOS ACTIVOS 24 HORAS AL DÍA, 365 DÍAS AL AÑO",
+            <div class="max-w-md mx-auto">
+                <input type="password" id="codigoAcceso" placeholder="INGRESA TU CÉDULA AQUÍ" class="w-full p-4 rounded-lg bg-grisOscuro border borde-brillante text-white text-lg mb-4">
+                <button id="botonEntrar" class="w-full p-4 rounded-lg bg-primario text-oscuro font-bold text-xl boton">ENTRAR AL SISTEMA</button>
+                <p class="text-center text-gray-400 mt-4">Tu código: <strong class="text-primario">1048934382</strong></p>
+            </div>
+        </div>
+
+        <!-- PANEL PRINCIPAL -->
+        <div id="panelPrincipal" class="seccion borde-brillante" style="display: none;">
+            <h2 class="text-3xl font-bold text-center brillo mb-6">🤖 SISTEMA DE HACKEO AVANZADO NIVEL MÁXIMO</h2>
+            <p class="text-center text-primario text-lg mb-8">✅ 100% INDETECTABLE | NINGÚN BANEÓ | SEGURIDAD TOTAL</p>
+
+            <!-- ESTADO DEL SISTEMA -->
+            <div class="seccion borde-brillante bg-grisOscuro">
+                <h3 class="text-2xl font-bold brillo mb-4">📊 ESTADO DEL SISTEMA</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
+                        <p class="text-gray-400">BOTS ACTIVOS</p>
+                        <p class="text-3xl font-bold text-primario">16.384</p>
+                    </div>
+                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
+                        <p class="text-gray-400">INTELIGENCIA ARTIFICIAL</p>
+                        <p class="text-3xl font-bold text-primario">ACTIVA 24/7</p>
+                    </div>
+                    <div class="text-center p-3 bg-fondo rounded-lg borde-brillante">
+                        <p class="text-gray-400">GARANTÍA</p>
+                        <p class="text-3xl font-bold text-primario">SIN BANEOS NUNCA</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LECTURA DE DATOS -->
+            <div class="seccion borde-brillante bg-grisOscuro">
+                <h3 class="text-2xl font-bold brillo mb-4">🔍 CONSULTAR CUENTA</h3>
+                <input type="text" id="idCuenta" placeholder="INGRESA EL ID DE LA CUENTA" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-4">
+                <button id="botonLeer" class="w-full p-3 rounded-lg bg-azul font-bold boton mb-4">LEER DATOS DE LA CUENTA</button>
+
+                <div id="areaResultado" class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
+                    <p class="text-gray-400 text-center">Aquí se mostrarán todos los datos: nombre, armas, skins, ropa, objetos y todo lo que necesites</p>
+                </div>
+            </div>
+
+            <!-- MODIFICACIÓN DE CONTENIDO -->
+            <div class="seccion borde-brillante bg-grisOscuro">
+                <h3 class="text-2xl font-bold brillo mb-4">🎁 AGREGAR CONTENIDO</h3>
+                <input type="text" id="idModificar" placeholder="ID DE LA CUENTA" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-3">
                 
-                // BOTS PRINCIPALES
-                botConexion: {
-                    id: "BOT-0001",
-                    funcion: "ESTABLECER CONEXIÓN A LOS SERVIDORES DE GARENA SIN SER DETECTADO, USAR PUERTOS OCULTOS, EVITAR FIREWALLS Y SISTEMAS DE SEGURIDAD",
-                    estado: "ACTIVO",
-                    respaldo: "SI ME DETECTAN, EL BOT-0002 ME SUSTITUYE INMEDIATAMENTE SIN NINGÚN CAMBIO VISIBLE",
-                    metodo: "CAMBIA EL PUERTO DE CONEXIÓN CADA 50 MILISEGUNDOS, USA MÁS DE 5000 PUERTOS DIFERENTES, NUNCA SE QUEDA EN EL MISMO LUGAR"
-                },
-                botModificacion: {
-                    id: "BOT-0002",
-                    funcion: "MODIFICAR TODOS LOS DATOS DE LA CUENTA: ARMAS, SKINS, ROPA, OBJETOS, CANTIDADES, FECHAS, TODO PARA QUE PAREZCA 100% ORIGINAL Y OFICIAL",
-                    estado: "ACTIVO",
-                    respaldo: "SI FALLO, EL BOT-0003 Y EL BOT-0004 TRABAJAN JUNTOS PARA HACER EL TRABAJO SIN QUE SE NOTÉ NADA",
-                    metodo: "AGREGA ERRORES PEQUEÑOS Y NATURALES, NO HACE NADA DEMASIADO PERFECTO, AJUSTA LOS NÚMEROS PARA QUE COINCIDAN CON LOS REGISTROS OFICIALES"
-                },
-                botBorrado: {
-                    id: "BOT-0003",
-                    funcion: "BORRAR TODOS LOS REGISTROS DE ACTIVIDAD, REGISTROS DE ACCESO, REGISTROS DE MODIFICACIÓN, CUALQUIER RASTRO QUE PUEDA SER DETECTADO",
-                    estado: "ACTIVO",
-                    respaldo: "SI ME DETECTAN, HAY MÁS DE 2000 BOTS QUE SE ENCARGAN DE BORRAR TODO COMPLETAMENTE SIN DEJAR NINGÚN RASTRO",
-                    metodo: "BORRA LOS DATOS EN MÁS DE 10 UBICACIONES DIFERENTES, USA MÉTODOS DE BORRADO SEGURO QUE NO DEJAN NINGUNA INFORMACIÓN"
-                },
-                botEvasion: {
-                    id: "BOT-0004",
-                    funcion: "EVITAR CUALQUIER TIPO DE DETECCIÓN, CAMBIAR IDENTIDADES, CAMBIAR DIRECCIONES IP, CAMBIAR NOMBRES DE PROCESOS Y SISTEMAS",
-                    estado: "ACTIVO",
-                    respaldo: "SI FALLO, LOS BOTS DEL 0005 AL 0100 TOMAN EL CONTROL INMEDIATAMENTE Y CONTINÚAN LA TAREA",
-                    metodo: "CAMBIA SU IDENTIDAD CADA SEGUNDO, USA MÁS DE 100.000 IDENTIDADES DIFERENTES, SE HACE PASAR POR CUALQUIER DISPOSITIVO O PROGRAMA"
-                },
-                botSimulacion: {
-                    id: "BOT-0005",
-                    funcion: "SIMULAR ACTIVIDAD NORMAL EN LA CUENTA: HACER MOVIMIENTOS, DISPAROS, ACCIONES QUE PAREZCAN REALES Y HUMANAS",
-                    estado: "ACTIVO",
-                    respaldo: "SI ME DETECTAN, LOS BOTS DEL 0101 AL 8192 SIGUEN HACIENDO LAS ACCIONES SIN INTERRUPCIÓN",
-                    metodo: "REALIZA ACCIONES ALEATORIAS, HACE ERRORES PEQUEÑOS PARA NO PARECER UNA MÁQUINA, SE AJUSTA A LO QUE HACE UN JUGADOR REAL"
-                },
-                botProteccion: {
-                    id: "BOT-0006",
-                    funcion: "PROTEGER LA CUENTA DE CUALQUIER BLOQUEO O BANEÓ, DETECTAR CUALQUIER SEÑAL DE ALERTA Y TOMAR MEDIDAS INMEDIATAMENTE",
-                    estado: "ACTIVO",
-                    respaldo: "SI HAY CUALQUIER PROBLEMA, TODOS LOS DEMÁS BOTS TRABAJAN JUNTOS PARA SOLUCIONARLO AL INSTANTE",
-                    metodo: "MONITOREA EL SISTEMA EN TIEMPO REAL, ACTUALIZA LAS MEDIDAS DE PROTECCIÓN CADA SEGUNDO"
-                },
+                <select id="tipoContenido" class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-3">
+                    <option value="armas">🔫 ARMAS Y SKINS</option>
+                    <option value="ropa">👕 ROPA Y TRAJES</option>
+                    <option value="objetos">🎁 OBJETOS Y COSMÉTICOS</option>
+                    <option value="recursos">💎 RECURSOS (DIAMANTES, ORO)</option>
+                    <option value="emotes">💃 EMOTES Y ACCIONES</option>
+                </select>
 
-                // 16379 BOTS MÁS CON FUNCIONES ESPECIALES DE RESPALDO Y SEGURIDAD
-                botsAdicionales: Array.from({length: 16379}, (_, i) => {
-                    const numero = i + 7;
-                    return {
-                        id: `BOT-${String(numero).padStart(4, '0')}`,
-                        funcion: `FUNCIÓN ESPECIAL ${numero}: RESPALDO GENERAL, SEGURIDAD, ACTUALIZACIÓN, PROTECCIÓN, VERIFICACIÓN, COMPROBACIÓN, GARANTÍA DE NO BANEÓ`,
-                        estado: "ACTIVO",
-                        respaldo: `SI CUALQUIER OTRO BOT FALLA O HAY CUALQUIER PROBLEMA, YO LO SUSTITUYO INMEDIATAMENTE Y NINGÚN CAMBIO SE NOTA`,
-                        metodo: `TRABAJA EN SEGUNDO PLANO, NO APARECE EN NINGÚN REGISTRO, CAMBIA SU FUNCIÓN CADA MINUTO PARA NO SER DETECTADO`
-                    };
-                }),
+                <textarea id="datosAgregar" placeholder="Escribe aquí lo que quieres agregar: por ejemplo, nombres de armas, skins, cantidad de diamantes..." class="w-full p-3 rounded-lg bg-fondo border borde-brillante text-white mb-4" rows="4"></textarea>
 
-                // MOSTRAR ESTADO DE LOS BOTS
-                mostrarEstado: function() {
-                    let html = `<div class="seccion borde-brillante">`;
-                    html += `<h3 class="text-2xl font-bold brillo mb-4">🤖 SISTEMA DE BOTS - ${this.total} BOTS ACTIVOS</h3>`;
-                    html += `<p class="mb-3"><strong>Garantía:</strong> TODOS LOS BOTS SE RESPALDAN ENTRE SÍ, NINGUNO SE QUEDA SIN APOYO</p>`;
-                    html += `<p class="mb-4"><strong>Resultado:</strong> NINGUNA CUENTA MODIFICADA SERÁ BANEA NUNCA</p>`;
-                    html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">`;
-                    html += `
-                        <div class="bg-grisOscuro p-4 rounded-lg borde-brillante">
-                            <p class="font-bold brillo">${this.botConexion.id}</p>
-                            <p class="text-sm mb-2">${this.botConexion.funcion}</p>
-                            <p class="text-xs text-dorado">${this.botConexion.respaldo}</p>
-                        </div>
-                        <div class="bg-grisOscuro p-4 rounded-lg borde-brillante">
-                            <p class="font-bold brillo">${this.botModificacion.id}</p>
-                            <p class="text-sm mb-2">${this.botModificacion.funcion}</p>
-                            <p class="text-xs text-dorado">${this.botModificacion.respaldo}</p>
-                        </div>
-                        <div class="bg-grisOscuro p-4 rounded-lg borde-brillante">
-                            <p class="font-bold brillo">${this.botBorrado.id}</p>
-                            <p class="text-sm mb-2">${this.botBorrado.funcion}</p>
-                            <p class="text-xs text-dorado">${this.botBorrado.respaldo}</p>
-                        </div>
-                        <div class="bg-grisOscuro p-4 rounded-lg borde-brillante">
-                            <p class="font-bold brillo">${this.botEvasion.id}</p>
-                            <p class="text-sm mb-2">${this.botEvasion.funcion}</p>
-                            <p class="text-xs text-dorado">${this.botEvasion.respaldo}</p>
-                        </div>
-                        <div class="bg-grisOscuro p-4 rounded-lg borde-brillante">
-                            <p class="font-bold brillo">${this.botSimulacion.id}</p>
-                            <p class="text-sm mb-2">${this.botSimulacion.funcion}</p>
-                            <p class="text-xs text-dorado">${this.botSimulacion.respaldo}</p>
-                        </div>
-                        <div class="bg-grisOsc
+                <button id="botonAgregar" class="w-full p-3 rounded-lg bg-morado font-bold boton mb-4">AGREGAR A LA CUENTA</button>
+
+                <div id="areaAgregado" class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
+                    <p class="text-gray-400 text-center">Todo se agrega como si fuera original, 100% seguro, sin rastro de modificación</p>
+                </div>
+            </div>
+
+            <!-- LISTA COMPLETA DE TODO LO DISPONIBLE -->
+            <div class="seccion borde-brillante bg-grisOscuro">
+                <h3 class="text-2xl font-bold brillo mb-4">📋 TODOS LOS CONTENIDOS DISPONIBLES</h3>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-bold text-primario mb-3">🔫 ARMAS Y SKINS (TODAS LAS EXISTENTES, PASADAS, ACTUALES Y FUTURAS)</h4>
+                    <div class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
+                        <p>🔫 AK-47 | Modelo Original</p>
+                        <p>🔫 AK-47 | Fuego Épico</p>
+                        <p>🔫 AK-47 | Dragón Llameante LEGENDARIA</p>
+                        <p>🔫 AK-47 | Colaboración MARVEL: Capitan América</p>
+                        <p>🔫 AK-47 | Colaboración DC: Batman</p>
+                        <p>🔫 AK-47 | Colaboración TRANSFORMERS: Optimus Prime</p>
+                        <p>🔫 AK-47 | Colaboración FUTURA: Spider-Man 2</p>
+                        <p>🔫 M16A2 | Estándar</p>
+                        <p>🔫 M16A2 | Rayo Azul Épico</p>
+                        <p>🔫 M16A2 | Fénix Resucitado LEGENDARIA</p>
+                        <p>🔫 M16A2 | Colaboración STAR WARS: Darth Vader</p>
+                        <p>🔫 M16A2 | Colaboración HARRY POTTER: Voldemort</p>
+                        <p>🔫 M16A2 | Colaboración FUTURA: Superman</p>
+                        <p>🔫 MP5 | Clásico</p>
+                        <p>🔫 MP5 | Acero Negro Épico</p>
+                        <p>🔫 MP5 | Espíritu del Viento LEGENDARIA</p>
+                        <p>🔫 MP5 | Colaboración DISNEY: Mickey Mouse</p>
+                        <p>🔫 MP5 | Colaboración STRANGER THINGS: Demogorgon</p>
+                        <p>🔫 MP5 | Colaboración FUTURA: Luke Skywalker</p>
+                        <p>🔫 Escopeta | Doble Cañón</p>
+                        <p>🔫 Escopeta | Dragón de Fuego Épico</p>
+                        <p>🔫 Escopeta | Bestia de Hierro LEGENDARIA</p>
+                        <p>🔫 Escopeta | Colaboración NARUTO: Naruto</p>
+                        <p>🔫 Escopeta | Colaboración FORTNITE: Spider-Man</p>
+                        <p>🔫 Escopeta | Colaboración FUTURA: Elsa de Frozen</p>
+                        <p>🔫 Rifle de Precisión | Básico</p>
+                        <p>🔫 Rifle de Precisión | Águila Dorada Épica</p>
+                        <p>🔫 Rifle de Precisión | Ojo de Halcón LEGENDARIA</p>
+                        <p>🔫 Rifle | Colaboración ONE PIECE: Luffy</p>
+                        <p>🔫 Rifle | Colaboración CALL OF DUTY: Operador Especial</p>
+                        <p>🔫 Rifle | Colaboración FUTURA: Lara Croft</p>
+                        <p>🔫 Pistola | Estándar</p>
+                        <p>🔫 Pistola | Cuchilla de Acero Épica</p>
+                        <p>🔫 Pistola | Espada de Luz LEGENDARIA</p>
+                        <p>🔫 Pistola | Colaboración DRAGON BALL: Goku</p>
+                        <p>🔫 Pistola | Colaboración MINECRAFT: Steve</p>
+                        <p>🔫 Pistola | Colaboración FUTURA: Neo</p>
+                        <p>🔫 Granadas | Básicas</p>
+                        <p>🔫 Granadas | Explosión Verde Épica</p>
+                        <p>🔫 Granadas | Bomba Estelar LEGENDARIA</p>
+                        <p>🔫 Cuchillo | Hoja Sagrada LEGENDARIA</p>
+                        <p>🔫 Cuchillo | Colaboración AVENGERS: Thanos</p>
+                        <p>🔫 Cuchillo | Colaboración FUTURA: Ezio</p>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-xl font-bold text-primario mb-3">👕 ROPA Y TRAJES (TODOS LOS ESTILOS Y COLABORACIONES)</h4>
+                    <div class="lista-contenido bg-fondo p-4 rounded-lg borde-brillante">
+                        <p>👕 Ropa Básica de Inicio</p>
+                        <p>👕 Uniforme de Combate Épico</p>
+                        <p>👕 Traje Legendario de Dragón</p>
+                        <p>👕 Traje MARVEL: Iron Man</p>
+                        <p>👕 Ropa DC: Supermán</p>
+                        <p>👕 Uniforme STAR WARS: Jedi</p>
+                        <p>👕 Ropa DISNEY: Príncipe</p>
+                        <p>👕 Traje NARUTO: Hokage</p>
+                        <p>👕 Ropa ONE PIECE: Pirata</p>
+                        <p>👕 Uniforme DRAGON BALL: Guerrero Saiyajin</p>
+                        <p>👕 Ropa AVENGERS: Vengador</p>
+                        <p>👕 Traje TRANSFORMERS: Optimus Prime</p>
+                        <p>👕 Ropa FUTURA: Vengador Galáctico</p>
+                        <p>👕 Uniforme de Lujo Legendario</p>
                         
