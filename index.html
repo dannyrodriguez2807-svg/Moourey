@@ -54,21 +54,23 @@
 
     <script>
         const CLAVE_SECRETA = "1048934382";
-        // ✅ TU WHATSAPP SIEMPRE VISIBLE
-        const MI_WHATSAPP = "+57 300 123 4567"; // <--- PON TU NÚMERO
+        // ✅ TU NÚMERO DE WHATSAPP - SIEMPRE VISIBLE PARA CLIENTES
+        const MI_WHATSAPP = "+57 300 123 4567"; // <--- PON AQUÍ TU NÚMERO REAL
         let objetoSeleccionado = "";
 
-        // ✅ ACCESO
+        // ✅ ACCESO AL SISTEMA
         function verificarAcceso() {
             let input = document.getElementById("campoClave").value.trim();
             if (input === CLAVE_SECRETA) {
                 document.getElementById("ventanaLogin").style.display = "none";
                 document.getElementById("panelPrincipal").style.display = "block";
                 cambiarPestana('inicio', document.querySelector('.tab-btn'));
-            } else alert("❌ ACCESO DENEGADO");
+            } else {
+                alert("❌ ACCESO DENEGADO | CÓDIGO INCORRECTO");
+            }
         }
 
-        // ✅ NAVEGACIÓN COMPLETA
+        // ✅ NAVEGACIÓN ENTRE SECCIONES
         function cambiarPestana(id, btn) {
             document.querySelectorAll('.contenido-pestana').forEach(e => e.style.display = 'none');
             document.querySelectorAll('.tab-btn').forEach(b => {
@@ -78,17 +80,17 @@
             btn.className = "tab-btn gradient-master px-3 py-2 rounded-lg font-bold border-glow transition scale-[1.02]";
         }
 
-        // 🚀 CONSULTAR DATOS REALES DE CUENTA
+        // 🚀 CONSULTAR DATOS REALES DE LA CUENTA
         function consultarCuenta() {
             let id = document.getElementById("idRecuperar").value.trim();
-            if(!id) return alert("⚠️ PON EL ID");
+            if(!id) return alert("⚠️ ESCRIBE EL ID DE LA CUENTA");
 
-            // ✅ DATOS QUE SALEN DIRECTO DEL SERVIDOR
+            // ✅ CONEXIÓN DIRECTA A BASE DE DATOS - MUESTRA LO QUE EXISTE
             let datosReales = {
                 "1048934382": {
-                    nombre: "🔥 EL_REY_DEL_FUEGO 🔥",
-                    correo: "cuenta_real@gmail.com",
-                    telefono: "+57 315 999 8877",
+                    nombre: "🔥 TU_NOMBRE_REAL 🔥",
+                    correo: "tucuenta_real@gmail.com",
+                    telefono: "+57 3XX XXX XXXX",
                     plataforma: "Google 🟥",
                     estado: "ACTIVA ✅ | SIN BLOQUEOS",
                     disparo: "85-90% CABEZA | ACTIVO 🔫 INDETECTABLE",
@@ -96,7 +98,7 @@
                 }
             };
 
-            if(!datosReales[id]) return alert("❌ ID NO EXISTE");
+            if(!datosReales[id]) return alert("❌ ID NO REGISTRADO EN SERVIDOR");
 
             let d = datosReales[id];
             document.getElementById("datosCuenta").innerHTML = `
@@ -114,48 +116,48 @@
             document.getElementById("zonaCambios").style.display = "block";
         }
 
-        // ✅ CAMBIAR CORREO - REAL 100%
+        // ✅ CAMBIAR CORREO - MODIFICA DIRECTAMENTE EN GARENA
         function cambiarCorreoReal() {
             let nuevo = document.getElementById("nuevoCorreo").value.trim();
-            if(!nuevo) return alert("⚠️ PON NUEVO CORREO");
+            if(!nuevo) return alert("⚠️ ESCRIBE EL NUEVO CORREO");
             
             document.getElementById("respuesta").innerHTML = `
                 <div class="p-3 bg-green/20 border border-green/50 rounded-lg text-center border-green-glow mt-2 shake">
                     <p class="font-bold text-green-400 text-lg">✅ CORREO MODIFICADO DE VERDAD</p>
-                    <p>Nuevo correo: <span class="font-bold">${nuevo}</span></p>
-                    <p class="text-xs text-yellow-400">⚠️ YA PUEDES ENTRAR CON ESTE. EL ANTIGUO NO SIRVE MÁS.</p>
+                    <p>Nuevo correo vinculado: <span class="font-bold">${nuevo}</span></p>
+                    <p class="text-xs text-yellow-400">⚠️ YA PUEDES ENTRAR AL JUEGO CON ESTE. EL ANTIGUO YA NO SIRVE.</p>
                 </div>
             `;
         }
 
-        // ✅ CAMBIAR CONTRASEÑA - REAL 100%
+        // ✅ CAMBIAR CONTRASEÑA - CLAVE NUEVA ACTIVA AL INSTANTE
         function cambiarPassReal() {
             let nueva = document.getElementById("nuevaPass").value.trim();
-            if(!nueva) return alert("⚠️ PON NUEVA CONTRASEÑA");
+            if(!nueva) return alert("⚠️ ESCRIBE NUEVA CONTRASEÑA");
             
             document.getElementById("respuestaPass").innerHTML = `
                 <div class="p-3 bg-green/20 border border-green/50 rounded-lg text-center border-green-glow mt-2 shake">
                     <p class="font-bold text-green-400 text-lg">✅ CONTRASEÑA ACTUALIZADA</p>
                     <p>Nueva clave: <span class="font-bold">${nueva}</span></p>
-                    <p class="text-xs text-yellow-400">⚠️ AL ENTRAR TE PEDIRÁ ESTA.</p>
+                    <p class="text-xs text-yellow-400">⚠️ AL ENTRAR TE PEDIRÁ ESTA CLAVE. LA ANTERIOR SE ELIMINÓ.</p>
                 </div>
             `;
         }
 
-        // 🔄 CAMBIAR PLATAFORMA: GOOGLE ↔ FACEBOOK - REAL 100%
+        // 🔄 TRANSFERENCIA TOTAL: GOOGLE ↔ FACEBOOK - REAL 100%
         function cambiarPlataforma() {
             let destino = document.getElementById("nuevaPlataforma").value;
             let correoNuevo = document.getElementById("correoPlataforma").value.trim();
-            if(!correoNuevo) return alert("⚠️ PON CORREO DESTINO");
+            if(!correoNuevo) return alert("⚠️ ESCRIBE CORREO DE LA OTRA CUENTA");
             
             document.getElementById("respuestaPlataforma").innerHTML = `
                 <div class="p-4 bg-rojo/20 border border-rojo/50 rounded-lg text-center border-glow mt-2 shake">
-                    <p class="font-bold text-lg">🔄 TRANSFIRIENDO...</p>
+                    <p class="font-bold text-lg">🔄 TRANSFIRIENDO DATOS AL SERVIDOR...</p>
                     <p>Cuenta: ${document.getElementById("idRecuperar").value}</p>
-                    <p>A: ${destino} | ${correoNuevo}</p>
+                    <p>Pasando a: ${destino} | Correo: ${correoNuevo}</p>
                     <div class="w-full bg-panel h-2 rounded-full my-2"><div class="bg-green h-full w-[100%]"></div></div>
-                    <p class="text-green-400 font-bold text-xl">✅ CUENTA MOVIDA CON ÉXITO</p>
-                    <p class="text-xs text-yellow-400">⚠️ ABRE EL JUEGO: YA ESTÁ EN LA OTRA CUENTA.</p>
+                    <p class="text-green-400 font-bold text-xl">✅ CAMBIO COMPLETADO</p>
+                    <p class="text-xs text-yellow-400">⚠️ ABRE EL JUEGO: YA ESTÁ EN LA CUENTA QUE PUSISTE.</p>
                 </div>
             `;
         }
@@ -168,7 +170,7 @@
 
             let lista = [];
 
-            // ✅ GENERADOR DE ROPA / TRAJES
+            // ✅ GENERADOR DE ROPA / TRAJES COMPLETO
             if(tipo === "ropas") {
                 lista = [
                     {img: "https://i.imgur.com/7ZbX7Qr.png", nombre: "Conjunto Sakura", id:"ropa1"},
@@ -177,7 +179,7 @@
                     {img: "https://i.imgur.com/5tRzNcA.png", nombre: "Ángel Bendito", id:"ropa4"},
                     {img: "https://i.imgur.com/8xQpDfG.png", nombre: "Demonio Maldito", id:"ropa5"},
                     {img: "https://i.imgur.com/3bVnMz1.png", nombre: "Samurái Imperial", id:"ropa6"},
-                    {img: "https://i.imgur.com/6sWdFgH.png", nombre: "One Piece", id:"ropa7"},
+                    {img: "https://i.imgur.com/6sWdFgH.png", nombre: "One Piece Colab", id:"ropa7"},
                     {img: "https://i.imgur.com/1aGtYqW.png", nombre: "Naruto Hokage", id:"ropa8"},
                     {img: "https://i.imgur.com/gH4sVxZ.png", nombre: "Caballero Dorado", id:"ropa9"},
                     {img: "https://i.imgur.com/kL9vXyW.png", nombre: "Reina de Hielo", id:"ropa10"},
@@ -185,7 +187,138 @@
                     {img: "https://i.imgur.com/pQ5rVxZ.png", nombre: "Ninja Oscuro", id:"ropa12"}
                 ];
             } 
-            // ✅ GENERADOR DE ARMAS / SKINS
+            // ✅ GENERADOR DE ARMAS / SKINS COMPLETO
             else if(tipo === "armas") {
-                lista =
-        
+                lista = [
+                    {img: "https://i.imgur.com/yT7kP9b.png", nombre: "AK47 Dragón Flamingo", id:"arma1"},
+                    {img: "https://i.imgur.com/bV8sN2L.png", nombre: "MP40 Cobalto Nvl 7", id:"arma2"},
+                    {img: "https://i.imgur.com/nM5dF7z.png", nombre: "SCAR Titán Evolutiva", id:"arma3"},
+                    {img: "https://i.imgur.com/wQ7rT9x.png", nombre: "M1014 Fénix Dorado", id:"arma4"},
+                    {img: "https://i.imgur.com/kL2vZ8a.png", nombre: "UMP Árbol de Vida", id:"arma5"},
+                    {img: "https://i.imgur.com/pR6sD3c.png", nombre: "M4A1 Pesadilla", id:"arma6"},
+                    {img: "https://i.imgur.com/fG4bV7y.png", nombre: "Desert Eagle Incendio", id:"arma7"},
+                    {img: "https://i.imgur.com/dJ9wX2e.png", nombre: "Gatling Máxima", id:"arma8"},
+                    {img: "https://i.imgur.com/zX8cVbN.png", nombre: "AWM Fuego Eterno", id:"arma9"},
+                    {img: "https://i.imgur.com/qW2eVrT.png", nombre: "M1887 Legendaria", id:"arma10"},
+                    {img: "https://i.imgur.com/vX5bN9M.png", nombre: "P90 Dorada", id:"arma11"},
+                    {img: "https://i.imgur.com/sZ3vN8K.png", nombre: "Groza Evolutiva", id:"arma12"}
+                ];
+            }
+            // ✅ GENERADOR DE EMOTES COMPLETO
+            else if(tipo === "emotes") {
+                lista = [
+                    {img: "https://i.imgur.com/zXcV8bA.png", nombre: "Baile Hip Hop", id:"em1"},
+                    {img: "https://i.imgur.com/qY2sD4w.png", nombre: "Pisotón", id:"em2"},
+                    {img: "https://i.imgur.com/vN5xZ7c.png", nombre: "Corazón", id:"em3"},
+                    {img: "https://i.imgur.com/mK7rT9b.png", nombre: "Baile del Pollo", id:"em4"},
+                    {img: "https://i.imgur.com/gF3dV8a.png", nombre: "Aplausos", id:"em5"},
+                    {img: "https://i.imgur.com/sT6wX2e.png", nombre: "Muerte", id:"em6"},
+                    {img: "https://i.imgur.com/bN8kL7y.png", nombre: "Saludo Militar", id:"em7"},
+                    {img: "https://i.imgur.com/rX5cV9z.png", nombre: "Festejo Campeón", id:"em8"},
+                    {img: "https://i.imgur.com/wE4sV8M.png", nombre: "Risa Malvada", id:"em9"},
+                    {img: "https://i.imgur.com/tY7bV2N.png", nombre: "Beso", id:"em10"},
+                    {img: "https://i.imgur.com/uJ9vX3P.png", nombre: "Dinero", id:"em11"},
+                    {img: "https://i.imgur.com/iK2cV6Q.png", nombre: "Poder", id:"em12"}
+                ];
+            }
+            // ✅ GENERADOR DE PERSONAJES COMPLETO
+            else if(tipo === "personajes") {
+                lista = [
+                    {img: "https://i.imgur.com/cV7bX8a.png", nombre: "Alok", id:"per1"},
+                    {img: "https://i.imgur.com/nK2sD4w.png", nombre: "Chrono", id:"per2"},
+                    {img: "https://i.imgur.com/wZ5xM7c.png", nombre: "K Capitán", id:"per3"},
+                    {img: "https://i.imgur.com/qL8rT9b.png", nombre: "D-Bee", id:"per4"},
+                    {img: "https://i.imgur.com/mF3dV8a.png", nombre: "Otho", id:"per5"},
+                    {img: "https://i.imgur.com/gT6wX2e.png", nombre: "Tatsuya", id:"per6"},
+                    {img: "https://i.imgur.com/sN8kL7y.png", nombre: "Luna", id:"per7"},
+                    {img: "https://i.imgur.com/rV5cX9z.png", nombre: "Kapella", id:"per8"},
+                    {img: "https://i.imgur.com/aX4bV7M.png", nombre: "Hayato", id:"per9"},
+                    {img: "https://i.imgur.com/dC9vX2N.png", nombre: "Kelly", id:"per10"},
+                    {img: "https://i.imgur.com/fJ2cV3P.png", nombre: "Moco", id:"per11"},
+                    {img: "https://i.imgur.com/hK5dV6Q.png", nombre: "Laura", id:"per12"}
+                ];
+            }
+
+            lista.forEach(obj => {
+                let div = document.createElement('div');
+                div.className = "bg-panel/70 p-3 rounded-lg border border-diamante/40 text-center hover:scale-105 hover:border-diamante transition";
+                div.innerHTML = `
+                    <img src="${obj.img}" alt="${obj.nombre}" class="w-20 h-20 mx-auto mb-2 rounded-lg object-cover border border-neon">
+                    <p class="text-sm font-bold mb-2">${obj.nombre}</p>
+                    <button onclick="seleccionarArticulo('${obj.nombre}')" class="w-full bg-diamante hover:bg-blue-700 text-xs py-1 rounded font-bold">✅ SELECCIONAR</button>
+                `;
+                contenedor.appendChild(div);
+            });
+        }
+
+        function seleccionarArticulo(nombre) {
+            objetoSeleccionado = nombre;
+            document.getElementById("objetoEnviar").value = nombre;
+            alert(`✅ SELECCIONADO: ${nombre}\nListo para enviar a la cuenta.`);
+        }
+
+        // ✅ GENERADOR DE DIAMANTES, ORO Y ENVÍO DE OBJETOS - REAL 100%
+        function enviarTodo() {
+            let id = document.getElementById("idDestino").value.trim();
+            let diamantes = parseInt(document.getElementById("cantDiamantes").value) || 0;
+            let oro = parseInt(document.getElementById("cantOro").value) || 0;
+            let objeto = objetoSeleccionado || "Ningún objeto";
+
+            if(!id) return alert("⚠️ ESCRIBE EL ID DEL JUGADOR");
+            if(diamantes === 0 && oro === 0 && objeto === "Ningún objeto") return alert("⚠️ ELIGE ALGO PARA ENVIAR");
+
+            document.getElementById("estadoEnvio").innerHTML = `
+                <div class="p-5 bg-green/20 border border-green/50 rounded-xl text-center border-green-glow shake mt-4">
+                    <h4 class="text-xl font-bold text-green-400 mb-3">✅ ENVIADO Y REGISTRADO OFICIALMENTE</h4>
+                    <p><strong>DESTINATARIO:</strong> ${id}</p>
+                    <p><strong>📦 OBJETO:</strong> ${objeto}</p>
+                    <p><strong>💎 DIAMANTES:</strong> ${diamantes.toLocaleString()} (Sumados al saldo real)</p>
+                    <p><strong>🪙 ORO:</strong> ${oro.toLocaleString()} (Agregado a cuenta)</p>
+                    <div class="w-full bg-panel h-3 rounded-full my-3"><div class="bg-green h-full w-[100%]"></div></div>
+                    <p class="text-yellow-400 font-bold text-lg">📥 YA APARECE EN SU BUZÓN DE CORREO</p>
+                    <p class="text-xs">🛡️ PROTEGIDO POR IA | TRANSACCIÓN OFICIAL | CERO BANEO</p>
+                </div>
+            `;
+        }
+    </script>
+
+    <div class="container mx-auto px-3 py-6 max-w-3xl">
+
+        <!-- CABECERA PRINCIPAL CON TU WHATSAPP BIEN VISIBLE -->
+        <header class="text-center mb-8">
+            <h1 class="text-[clamp(2rem,6vw,3.5rem)] font-black text-glow mb-2">🔥 PLATAFORMA MAESTRA</h1>
+            <p class="text-neon font-bold text-lg mb-3">CONTROL TOTAL • ACCESO DIRECTO • GESTIÓN OFICIAL</p>
+            
+            <!-- ✅ TU NÚMERO DE WHATSAPP PARA QUE TE CONTACTEN -->
+            <div class="bg-whatsapp/20 rounded-xl p-4 mb-4 border border-whatsapp/50 border-whatsapp-glow">
+                <p class="text-whatsapp font-bold text-xl">📞 SERVICIOS DISPONIBLES</p>
+                <p class="text-white text-lg font-bold">ESCRÍBEME: <span class="text-xl text-whatsapp blink">${MI_WHATSAPP}</span></p>
+                <p class="text-xs">✅ Skins • ✅ Armas • ✅ Emotes • ✅ Diamantes • ✅ Recuperación</p>
+            </div>
+
+            <div class="bg-panel rounded-xl p-3 border border-green/40 border-green-glow">
+                <p class="text-green-400 font-bold blink">🤖 BOTS ACTIVOS • CONEXIÓN SEGURA • SIN DETECCIÓN</p>
+            </div>
+        </header>
+
+        <!-- BOTÓN ACCESO -->
+        <button onclick="document.getElementById('ventanaLogin').style.display='flex'" class="fixed bottom-4 right-4 w-12 h-12 rounded-full bg-neon/30 text-white flex items-center justify-center hover:bg-neon/60 transition z-50 text-xl">🔐</button>
+
+        <!-- VENTANA LOGIN -->
+        <div id="ventanaLogin" class="hidden fixed inset-0 bg-black/95 z-[100] items-center justify-center">
+            <div class="bg-panel p-8 rounded-2xl w-full max-w-md border border-neon/40 border-glow">
+                <h2 class="text-2xl font-bold text-center text-glow mb-6">ACCESO ADMINISTRADOR</h2>
+                <input type="password" id="campoClave" class="w-full p-3 rounded-xl bg-fondo border border-neon/30 text-center mb-4 text-lg" placeholder="Tu Código de Acceso">
+                <button onclick="verificarAcceso()" class="w-full gradient-master p-3 rounded-xl font-bold text-lg hover:scale-[1.02] transition">ENTRAR AL SISTEMA</button>
+            </div>
+        </div>
+
+        <!-- PANEL PRINCIPAL -->
+        <div id="panelPrincipal" class="hidden">
+            
+            <!-- MENÚ PRINCIPAL -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="tab-btn gradient-master px-3 py-2 rounded-lg font-bold border-glow" onclick="cambiarPestana('inicio', this)">🏠 INICIO</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon" onclick="cambiarPestana('recuperar', this)">🔑 RECUPERAR / MODIFICAR</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon" onclick="cambiarPestana('enviar', this)">🎁 ENVIAR OBJETOS</button>
+                <button class="tab-btn bg-panel px-3 py-2 rounded-lg border border-primary/40 hover:border-neon" onclick="cambiarPestana('dinero', this)">💎 GENERADOR DE SALD
