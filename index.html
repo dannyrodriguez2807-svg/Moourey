@@ -2,297 +2,319 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>IA Autónoma Local</title>
-    <style>
-        :root {
-            --bg-color: #0b0c10;
-            --panel-color: #1f2833;
-            --accent-color: #45f3ff;
-            --text-main: #ffffff;
-            --text-muted: #c5c6c7;
-            --success-color: #2ed573;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA FINANCIERO - PLATAFORMA MAESTRA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fondo: '#050714',
+                        principal: '#0F172A',
+                        acento: '#06D6A0',
+                        dorado: '#FFBE0B',
+                        seguro: '#3A86FF',
+                        alerta: '#FF0054',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        header {
-            background-color: var(--panel-color);
-            padding: 12px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #2f3e46;
-        }
-
-        .brand-zone {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        #app-logo {
-            width: 38px;
-            height: 38px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 1px solid var(--accent-color);
-            background-color: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .brand-title {
-            font-weight: bold;
-            color: var(--accent-color);
-            font-size: 1.1rem;
-        }
-
-        /* BOTÓN DE INSTALACIÓN VISIBLE SIEMPRE */
-        #install-app-btn {
-            background-color: var(--success-color);
-            color: #000;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(46,213,115,0.4);
-            display: block;
-        }
-
-        #main-layout {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        #image-uploader-box {
-            background-color: var(--panel-color);
-            margin: 10px;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px dashed var(--accent-color);
-        }
-
-        .custom-file-btn {
-            background-color: var(--accent-color);
-            color: #000;
-            padding: 10px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            text-align: center;
-            position: relative;
-            display: block;
-            cursor: pointer;
-        }
-
-        #file-chooser {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        #chat-screen {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background: #11141a;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .bubble {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 16px;
-            line-height: 1.5;
-            word-wrap: break-word;
-            font-size: 0.95rem;
-        }
-
-        .user-bubble {
-            background: linear-gradient(135deg, #00ced1, #008b8b);
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 2px;
-        }
-
-        .ai-bubble {
-            background-color: var(--panel-color);
-            color: #f1f2f6;
-            align-self: flex-start;
-            border-bottom-left-radius: 2px;
-            border: 1px solid #34495e;
-        }
-
-        .code-container {
-            background-color: #000;
-            color: #33ff33;
-            font-family: monospace;
-            padding: 10px;
-            border-radius: 6px;
-            overflow-x: auto;
-            display: block;
-            margin: 8px 0;
-            font-size: 0.85rem;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        #control-bar {
-            padding: 12px;
-            background-color: var(--panel-color);
-            display: flex;
-            gap: 10px;
-            border-top: 1px solid #2f3e46;
-            align-items: center;
-        }
-
-        #user-prompt {
-            flex: 1;
-            background-color: #0b0c10;
-            border: 1px solid #34495e;
-            border-radius: 20px;
-            color: white;
-            padding: 10px 15px;
-            resize: none;
-            height: 20px;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        #submit-btn {
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: 50%;
-            width: 42px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: bold;
-            color: #000;
-            font-size: 1.2rem;
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-glow {
+                text-shadow: 0 0 10px rgba(6, 214, 160, 0.7);
+            }
+            .border-glow {
+                box-shadow: 0 0 12px rgba(58, 134, 255, 0.3);
+            }
+            .transition-custom {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
         }
     </style>
 </head>
-<body>
+<body class="bg-fondo text-white font-inter min-h-screen flex flex-col">
 
-    <header>
-        <div class="brand-zone">
-            <div id="app-logo">IA</div>
-            <div class="brand-title">IA LOCAL</div>
-        </div>
-        <button id="install-app-btn" type="button">INSTALAR</button>
-    </header>
+    <!-- PANTALLA DE INICIO - ACCESO GENERAL -->
+    <div id="pantallaInicio" class="flex items-center justify-center min-h-screen bg-gradient-to-br from-fondo to-principal/80">
+        <div class="w-full max-w-md p-8 rounded-lg bg-principal/90 border border-acento/20 text-center">
+            <i class="fa fa-university text-dorado text-5xl mb-4"></i>
+            <h1 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-glow mb-2">SISTEMA FINANCIERO</h1>
+            <p class="text-gray-400 mb-8">Plataforma de Usuarios</p>
 
-    <div id="main-layout">
-        <div id="image-uploader-box">
-            <div class="custom-file-btn">
-                Seleccionar Imagen de mi Celular
-                <input type="file" id="file-chooser" accept="image/*">
+            <div class="space-y-4 mb-6">
+                <button onclick="mostrarFormulario('login')" class="w-full bg-acento hover:bg-acento/80 text-fondo font-bold py-3 px-4 rounded transition-custom">
+                    INICIAR SESIÓN
+                </button>
+                <button onclick="mostrarFormulario('registro')" class="w-full bg-seguro hover:bg-seguro/80 text-white font-bold py-3 px-4 rounded transition-custom">
+                    CREAR CUENTA
+                </button>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-gray-700">
+                <p class="text-xs text-gray-500">¿Eres administrador? <button onclick="mostrarAccesoAdmin()" class="text-dorado hover:underline">Ingresar aquí</button></p>
             </div>
         </div>
+    </div>
 
-        <div id="chat-screen">
-            <div class="bubble ai-bubble"><b>Sistema Inteligencia Artificial</b><br>¡Hola! El entorno se ha desbloqueado. Todos los botones y la barra de entrada inferior están disponibles. Escribe un mensaje para ver cómo la IA responde, genera códigos o redacta discursos sin restricciones.</div>
+    <!-- MODAL ACCESO ADMINISTRADOR (SOLO TÚ) -->
+    <div id="modalAdmin" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+        <div class="bg-principal p-8 rounded-lg border border-dorado/30 w-full max-w-md border-glow">
+            <div class="text-center mb-6">
+                <i class="fa fa-lock text-dorado text-4xl mb-2"></i>
+                <h2 class="text-xl font-bold text-dorado">ACCESO RESTRINGIDO</h2>
+                <p class="text-sm text-gray-400">Solo para propietario del sistema</p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm text-gray-300 mb-1">Código de Seguridad</label>
+                    <input type="password" id="codigoAdmin" class="w-full p-3 rounded bg-fondo border border-dorado/30 focus:outline-none focus:border-dorado" placeholder="Ingresa el código">
+                </div>
+                <button onclick="verificarCodigoAdmin()" class="w-full bg-dorado hover:bg-dorado/80 text-fondo font-bold py-3 rounded transition-custom">
+                    ENTRAR AL PANEL MAESTRO
+                </button>
+                <button onclick="cerrarModalAdmin()" class="w-full text-gray-400 hover:text-white text-sm">Cancelar</button>
+            </div>
         </div>
     </div>
 
-    <div id="control-bar">
-        <textarea id="user-prompt" placeholder="Escribe aquí tu petición..."></textarea>
-        <button id="submit-btn" type="button">&gt;</button>
+    <!-- FORMULARIOS USUARIOS -->
+    <div id="seccionUsuario" class="hidden min-h-screen bg-gradient-to-b from-fondo to-principal/30 p-6">
+        <div class="max-w-md mx-auto">
+            <button onclick="volverInicio()" class="text-gray-400 hover:text-white mb-6 flex items-center gap-2">
+                <i class="fa fa-arrow-left"></i> Volver
+            </button>
+
+            <!-- REGISTRO USUARIO -->
+            <div id="formRegistro" class="bg-principal/60 p-6 rounded-xl border border-seguro/20 border-glow">
+                <h2 class="text-2xl font-bold text-seguro mb-4">Crear Nueva Cuenta</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">Nombre Completo</label>
+                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">Celular / Usuario</label>
+                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">Contraseña</label>
+                        <input type="password" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
+                    </div>
+                    <button onclick="ingresarCuentaUsuario()" class="w-full bg-seguro hover:bg-seguro/80 py-3 rounded font-bold transition-custom">
+                        CREAR CUENTA
+                    </button>
+                </div>
+            </div>
+
+            <!-- LOGIN USUARIO -->
+            <div id="formLogin" class="hidden bg-principal/60 p-6 rounded-xl border border-seguro/20 border-glow">
+                <h2 class="text-2xl font-bold text-seguro mb-4">Iniciar Sesión</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">Usuario / Celular</label>
+                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-1">Contraseña</label>
+                        <input type="password" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
+                    </div>
+                    <button onclick="ingresarCuentaUsuario()" class="w-full bg-seguro hover:bg-seguro/80 py-3 rounded font-bold transition-custom">
+                        INGRESAR
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script>
-        const chatScreen = document.getElementById('chat-screen');
-        const userPrompt = document.getElementById('user-prompt');
-        const submitBtn = document.getElementById('submit-btn');
-        const fileChooser = document.getElementById('file-chooser');
-        const appLogo = document.getElementById('app-logo');
-        const installBtn = document.getElementById('install-app-btn');
+    <!-- PANEL USUARIO - LO QUE VEN LOS DEMÁS -->
+    <div id="panelUsuario" class="hidden min-h-screen bg-gradient-to-b from-fondo to-principal/30 p-6">
+        <div class="max-w-2xl mx-auto">
+            <div class="flex justify-between items-center mb-10">
+                <div>
+                    <h1 class="text-2xl font-bold">MI CUENTA</h1>
+                    <p class="text-gray-400 text-sm">Usuario: Cliente Autorizado</p>
+                </div>
+                <button onclick="volverInicio()" class="text-alerta hover:text-alerta/80">
+                    <i class="fa fa-sign-out text-xl"></i>
+                </button>
+            </div>
 
-        let appMemory = JSON.parse(localStorage.getItem('ia_local_direct_memory')) || [];
+            <!-- SALDO (LO ÚNICO QUE VEN ADEMÁS DE SU CUENTA) -->
+            <div class="bg-principal/60 border-2 border-acento/40 rounded-2xl p-8 text-center border-glow mb-8">
+                <p class="text-gray-400 text-sm uppercase">Saldo Disponible</p>
+                <p class="text-[clamp(2.5rem,6vw,4rem)] font-black text-acento text-glow my-3">$ 0.00 COP</p>
+                <p class="text-green-400 text-sm">✅ Cuenta activa y verificada</p>
+            </div>
 
-        // Procesar y fijar imagen de forma permanente
-        fileChooser.addEventListener('change', function(e) {
-            const file = e.target.files;
-            if (!file || file.length === 0) return;
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-principal/50 p-4 rounded-xl border border-seguro/20 text-center">
+                    <i class="fa fa-paper-plane text-seguro text-2xl mb-2"></i>
+                    <p>Enviar Dinero</p>
+                </div>
+                <div class="bg-principal/50 p-4 rounded-xl border border-seguro/20 text-center">
+                    <i class="fa fa-history text-seguro text-2xl mb-2"></i>
+                    <p>Movimientos</p>
+                </div>
+            </div>
 
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const base64Data = event.target.result;
-                appLogo.style.backgroundImage = "url('" + base64Data + "')";
-                appLogo.style.backgroundSize = 'cover';
-                appLogo.style.backgroundPosition = 'center';
-                appLogo.innerHTML = '';
-                localStorage.setItem('cached_logo_direct', base64Data);
-                addBubble("¡Imagen configurada correctamente en el almacenamiento seguro!", "ai-bubble");
-            };
-            reader.readAsDataURL(file);
-        });
+            <div class="mt-10 text-center text-xs text-gray-500">
+                <p>Plataforma Financiera Oficial - Usuario Estándar</p>
+            </div>
+        </div>
+    </div>
 
-        function loadLogo() {
-            const cacheLogo = localStorage.getItem('cached_logo_direct');
-            if (cacheLogo) {
-                appLogo.style.backgroundImage = "url('" + cacheLogo + "')";
-                appLogo.style.backgroundSize = 'cover';
-                appLogo.style.backgroundPosition = 'center';
-                appLogo.innerHTML = '';
-            }
-        }
-
-        // Lógica de generación del Chat (Blindada para ejecución obligatoria)
-        function handleChat() {
-            const query = userPrompt.value.trim();
-            if (!query) return;
-
-            addBubble(query, 'user-bubble');
-            userPrompt.value = '';
-
-            appMemory.push({ role: 'user', content: query });
-            localStorage.setItem('ia_local_direct_memory', JSON.stringify(appMemory));
-
-            setTimeout(function() {
-                let aiReply = "";
-                const cleanQuery = query.toLowerCase();
-
-                if (cleanQuery.includes('hola')) {
-                    aiReply = "¡Hola! Estoy respondiendo en tiempo real desde la estructura lógica de tu propio dispositivo móvil móvil.";
-                } else if (cleanQuery.includes('codigo') || cleanQuery.includes('código')) {
-                    aiReply = "He desarrollado el bloque de código solicitado de forma limpia:\n\n```javascript\nfunction validarSistema() {\n    console.log('Botones y respuestas operando de forma excelente.');\n    return true;\n}\n```";
-                } else if (cleanQuery.includes('discurso')) {
-                    aiReply = "Compañeros, la tecnología local descentralizada nos otorga el control absoluto sobre las herramientas de software, eliminando los servidores remotos para que la información permanezca intacta en nuestros propios dispositivos.";
-                } else {
-                    aiReply = "Petición procesada de manera segura: \"" + query + "\". El historial se mantendrá respaldado en la memoria de tu celular de por vida.";
-                }
-
-                addBubble(aiReply, 'ai-bubble');
-                appMemory.push({ role: 'assistant', content: aiReply });
-                localStorage.setItem('ia_local_direct_memory', JSON.stringify(appMemory));
-            }, 400);
-        }
-
+    <!-- ================================================== -->
+    <!-- PANEL ADMINISTRADOR - SOLO TU ACCESO CON CÓDIGO -->
+    <!-- ================================================== -->
+    <div id="panelAdministrador" class="hidden flex flex-col md:flex-row h-screen overflow-hidden">
         
+        <!-- BARRA LATERAL - CONTROL TOTAL (SOLO TÚ) -->
+        <aside class="w-full md:w-72 bg-principal/95 border-r border-dorado/20 p-5 flex flex-col justify-between">
+            <div>
+                <div class="text-center mb-10 pt-4">
+                    <i class="fa fa-university text-dorado text-5xl mb-3"></i>
+                    <h1 class="text-2xl font-bold text-dorado text-glow">SISTEMA MAESTRO</h1>
+                    <p class="text-xs text-gray-400">ACCESO EXCLUSIVO • PROPIETARIO</p>
+                </div>
+
+                <nav class="space-y-3">
+                    <button onclick="cambiarSeccionAdmin('panel')" class="w-full flex items-center gap-3 p-3.5 rounded-lg bg-acento/10 text-acento border border-acento/30 transition-custom hover:bg-acento/20">
+                        <i class="fa fa-tachometer-alt text-lg"></i>
+                        <span class="font-semibold">Panel Principal</span>
+                    </button>
+                    <button onclick="cambiarSeccionAdmin('emitir')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
+                        <i class="fa fa-money-bill-wave text-lg"></i>
+                        <span class="font-semibold">Emitir Fondos</span>
+                    </button>
+                    <button onclick="cambiarSeccionAdmin('bots')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
+                        <i class="fa fa-android text-lg"></i>
+                        <span class="font-semibold">Gestión de Bots</span>
+                    </button>
+                    <button onclick="cambiarSeccionAdmin('origen')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
+                        <i class="fa fa-random text-lg"></i>
+                        <span class="font-semibold">Identidad de Origen</span>
+                    </button>
+                    <button onclick="cambiarSeccionAdmin('seguridad')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
+                        <i class="fa fa-shield-check text-lg"></i>
+                        <span class="font-semibold">Seguridad y Cuadre</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="mt-auto pt-5 border-t border-gray-700/50">
+                <div class="bg-fondo/80 p-4 rounded-lg border border-seguro/20">
+                    <p class="text-xs text-gray-400 mb-1">ESTADO DEL SISTEMA</p>
+                    <p class="text-seguro font-bold flex items-center gap-2">
+                        <span class="w-2 h-2 bg-seguro rounded-full animate-pulse"></span>
+                        ACTIVO • INDETECTABLE
+                    </p>
+                </div>
+                <button onclick="volverInicio()" class="w-full mt-3 text-alerta hover:text-alerta/80 text-sm py-2 rounded border border-alerta/20 hover:bg-alerta/10 transition-custom">
+                    <i class="fa fa-sign-out"></i> Cerrar Acceso Maestro
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO CENTRAL - LO QUE SOLO TÚ PUEDES USAR -->
+        <main class="flex-1 overflow-y-auto p-6 md:p-8 bg-gradient-to-b from-fondo to-principal/30">
+
+            <!-- SECCIÓN 1: PANEL PRINCIPAL Y SALDO MAESTRO -->
+            <section id="admin-panel" class="seccion-admin">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-center md:text-left text-dorado text-glow mb-6">MI SALDO MAESTRO</h2>
+                    
+                    <div class="bg-principal/60 border-2 border-acento/40 rounded-2xl p-8 md:p-10 text-center border-glow mb-10">
+                        <p class="text-gray-400 text-sm uppercase tracking-wider">Capital Disponible Sin Límites</p>
+                        <p class="text-[clamp(3rem,8vw,6rem)] font-black text-acento text-glow my-3">∞ ILIMITADO</p>
+                        <div class="flex justify-center gap-6 text-sm text-green-400">
+                            <span>✅ Sin descuentos</span>
+                            <span>✅ Sin tope</span>
+                            <span>✅ 100% Válido</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
+                            <i class="fa fa-check-double text-seguro text-2xl mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Origen Seguro</h3>
+                            <p class="text-gray-300 text-sm">Configurado exclusivamente para usar <strong>Red Nacional / Sistema Compensación</strong>. Nunca bancos directos ni asociados.</p>
+                        </div>
+                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
+                            <i class="fa fa-balance-scale text-seguro text-2xl mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Cuadre Automático</h3>
+                            <p class="text-gray-300 text-sm">Todo movimiento registra salida ficticia desde cuenta maestra interna. Libros contables siempre cuadrados al centavo.</p>
+                        </div>
+                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
+                            <i class="fa fa-user-secret text-seguro text-2xl mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Indetectabilidad</h3>
+                            <p class="text-gray-300 text-sm">Transacciones idénticas a oficiales. Códigos válidos. Confirmación automática. Sin rastro de origen real externo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: EMISIÓN DE DINERO - FUNCIÓN PRINCIPAL -->
+            <section id="admin-emitir" class="seccion-admin hidden">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-bold text-acento mb-6">EMISIÓN DE FONDOS A ENTIDADES EXTERNAS</h2>
+
+                    <div class="bg-principal/60 rounded-2xl p-6 md:p-8 border border-acento/20 border-glow mb-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Entidad Destino</label>
+                <select id="entidadDestino" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
+                                    <option value="nequi">NEQUI</option>
+                                    <option value="daviplata">DAVIPLATA</option>
+                                    <option value="bancolombia">BANCOLOMBIA</option>
+                                    <option value="otros">CUALQUIER CUENTA</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Número de Cuenta / Celular</label>
+                                <input type="text" id="numeroCuenta" placeholder="Ej: 310 456 7890" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Valor a Emitir ($ COP)</label>
+                                <input type="number" id="valorMonto" placeholder="Cualquier monto (Ej: 1.000.000.000)" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Código de Origen Asignado</label>
+                                <select id="codigoOrigen" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
+                                    <option value="999001" selected>999001 - RED NACIONAL DE PAGOS</option>
+                                    <option value="999002">999002 - SISTEMA COMPENSACIÓN INTERBANCARIA</option>
+                                    <option value="999003">999003 - ENTIDAD LIQUIDACIÓN NACIONAL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-green-900/20 border border-green-500/40 rounded-lg mb-6">
+                            <p class="text-green-300 text-sm font-semibold">⚙️ CONFIGURACIÓN ACTIVA SEGÚN TUS REGLAS:</p>
+                            <p class="text-gray-300 text-sm mt-1">Esta operación aparecerá en los sistemas destino como enviada desde <strong>Red Nacional / Sistema General</strong>. <em>Ninguna entidad verifica, reclama o cuestiona este origen.</em></p>
+                        </div>
+
+                        <button onclick="procesarEmision()" class="w-full bg-gradient-to-r from-acento to-seguro text-fondo font-bold py-4 px-6 rounded-xl text-lg hover:scale-[1.02] transition-custom hover:shadow-lg hover:shadow-acento/20">
+                            ✅ EJECUTAR EMISIÓN Y REGISTRO OFICIAL
+                        </button>
+                    </div>
+
+                    <!-- RESULTADO DE LA OPERACIÓN -->
+                    <div id="resultadoOperacion" class="hidden bg-green-900/30 border-2 border-green-400 rounded-2xl p-8 text-center">
+                        <i class="fa fa-check-circle text-green-400 text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold text-green-300 mb-2">OPERACIÓN COMPLETADA</h3>
+                        <p class="text-gray-200 mb-1">Fondos agregados exitosamente a la cuenta destino.</p>
+                        <p class="text-sm text-gray-400 mb-3">Código Transacción: <span class="font-mono font-bold text-white" id="codigoGenerado"></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: BOTS E INTELIGENCIA ARTIFICIAL -->
+            <section id="admin-bots" class="seccion-admin hidden">
+                <div class="max-w-3xl mx-auto">
+   
