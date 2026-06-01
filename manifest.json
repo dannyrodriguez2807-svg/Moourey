@@ -1,16 +1,1 @@
-{
-  "name": "IA Inteligencia Local",
-  "short_name": "IALocal",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#0b0c10",
-  "theme_color": "#1f2833",
-  "orientation": "portrait",
-  "icons": [
-    {
-      "src": "https://flaticon.com",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
-}
+
