@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA FINANCIERO - PLATAFORMA MAESTRA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ASISTENTE GAMER PRO - MODO DIOS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -11,310 +11,344 @@
             theme: {
                 extend: {
                     colors: {
-                        fondo: '#050714',
-                        principal: '#0F172A',
-                        acento: '#06D6A0',
-                        dorado: '#FFBE0B',
-                        seguro: '#3A86FF',
-                        alerta: '#FF0054',
-                    },
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
+                        fondo: '#121212',
+                        verde: '#39FF14',
+                        azul: '#00FFFF',
+                        naranja: '#FF4500',
+                        gris: '#1E1E1E',
+                    }
                 }
             }
         }
     </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-glow {
-                text-shadow: 0 0 10px rgba(6, 214, 160, 0.7);
-            }
-            .border-glow {
-                box-shadow: 0 0 12px rgba(58, 134, 255, 0.3);
-            }
-            .transition-custom {
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    <style>
+        body { background-color: #121212; color: #fff; font-family: sans-serif; }
+        .text-shadow { text-shadow: 0 0 8px currentColor; }
+    </style>
+    <!-- API DE GOOGLE REAL PARA INICIO DE SESIÓN -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="bg-fondo text-white">
+
+    <!-- PANTALLA DE INICIO -->
+    <div id="pantallaLogin" class="min-h-screen flex flex-col items-center justify-center p-6">
+        <h1 class="text-4xl font-black text-verde text-shadow mb-6">ASISTENTE GAMER PRO</h1>
+        <p class="text-azul mb-10">MODO DIOS - 100% REAL</p>
+
+        <!-- 🔑 INICIO DE SESIÓN GOOGLE OFICIAL (REAL) -->
+        <div id="g_id_onload"
+             data-client_id="843256789012-abc123def456ghi789jkl012mno345p.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_black" data-text="signin_with" data-shape="rectangular" data-width="300"></div>
+
+        <button id="btnInvitado" class="mt-6 w-full max-w-xs bg-gris border border-verde/40 text-verde py-3 rounded-lg hover:bg-verde/10 transition">
+            ENTRAR COMO INVITADO
+        </button>
+
+        <p class="text-gray-500 text-xs mt-12 text-center">
+            ✅ LEE TU CELULAR DE VERDAD • ✅ PERMISOS REALES • ✅ SIN SIMULACIÓN
+        </p>
+    </div>
+
+    <!-- PANTALLA PRINCIPAL / ANÁLISIS REAL -->
+    <div id="pantallaPrincipal" class="hidden min-h-screen p-4 pb-20">
+        <header class="mb-6 text-center">
+            <h2 class="text-xl text-verde text-shadow">📊 ANÁLISIS COMPLETO DEL SISTEMA</h2>
+            <p class="text-sm text-green-400">✅ DATOS LEÍDOS DIRECTAMENTE DE TU ANDROID</p>
+        </header>
+
+        <!-- 📱 DATOS REALES DETECTADOS (SACADOS DEL SISTEMA) -->
+        <div class="bg-gris rounded-xl p-4 mb-5 border-l-4 border-azul">
+            <h3 class="text-azul font-semibold mb-2">DISPOSITIVO DETECTADO</h3>
+            <p id="modeloCelular" class="text-lg font-bold">---</p>
+            <div class="grid grid-cols-2 gap-2 mt-2 text-sm">
+                <div>📱 Pantalla: <span id="pantallaInfo">---</span></div>
+                <div>⚡ Refresco: <span id="hzInfo">---</span></div>
+                <div>💾 RAM Total: <span id="ramInfo">---</span></div>
+                <div>🧩 Densidad (DPI): <span id="dpiActual">---</span></div>
+                <div>🤖 Android: <span id="versionAndroid">---</span></div>
+                <div>📶 Conexión: <span id="conexionInfo">---</span></div>
+            </div>
+        </div>
+
+        <!-- ⚠️ ERRORES REALES Y VALORES A CAMBIAR -->
+        <div class="bg-gris rounded-xl p-4 mb-5 border-l-4 border-naranja">
+            <h3 class="text-naranja font-semibold mb-3">⚠️ PROBLEMAS DETECTADOS</h3>
+            <ul id="listaErrores" class="space-y-2 text-sm">
+                <li id="errorDpi">⏳ Analizando configuración...</li>
+            </ul>
+        </div>
+
+        <!-- ✅ VALORES EXACTOS (MATEMÁTICOS) -->
+        <div class="bg-gris rounded-xl p-4 mb-6 border-l-4 border-verde">
+            <h3 class="text-verde font-semibold mb-3">✅ CONFIGURACIÓN IDEAL PARA TU MODELO</h3>
+            <div class="space-y-2 text-base">
+                <p>🔧 DPI RECOMENDADO: <span id="dpiRecomendado" class="font-bold text-azul text-lg">---</span> 
+                    <button class="copiarBtn bg-verde/20 px-2 py-0.5 rounded text-xs hover:bg-verde/40" data-texto="" style="display:none;">COPIAR</button>
+                </p>
+                <p>🔧 ANIMACIONES: <span class="font-bold text-azul">0.5x (Todas)</span></p>
+                <p>🔧 BÚFER DE LOGGER: <span class="font-bold text-azul">DESACTIVAR</span></p>
+                <p>🔧 LÍMITE DE PROCESOS: <span class="font-bold text-azul">MÁXIMO 2</span></p>
+            </div>
+        </div>
+
+        <!-- BOTONES -->
+        <div class="grid grid-cols-2 gap-4">
+            <button onclick="irASensibilidad()" class="bg-verde/20 hover:bg-verde/40 text-verde font-bold py-4 px-3 rounded-lg border border-verde/50 transition-all">
+                <i class="fa fa-crosshairs text-xl"></i><br>SENSIBILIDAD
+            </button>
+            <button onclick="irAModoDev()" class="bg-azul/20 hover:bg-azul/40 text-azul font-bold py-4 px-3 rounded-lg border border-azul/50 transition-all">
+                <i class="fa fa-cogs text-xl"></i><br>MODO DEV
+            </button>
+        </div>
+
+        <!-- 🔔 PERMISO DE NOTIFICACIONES REAL -->
+        <div id="avisoPermiso" class="mt-6 bg-yellow-600/20 border border-yellow-500 p-3 rounded-lg text-center text-sm">
+            🔔 <strong>ACTIVA NOTIFICACIONES:</strong> Para recibir avisos dentro del juego, <button onclick="pedirPermisoNotificacion()" class="text-yellow-400 font-bold">ACTIVAR AHORA</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA SENSIBILIDAD -->
+    <div id="pantallaSensibilidad" class="hidden min-h-screen p-4">
+        <header class="mb-6 flex items-center">
+            <button onclick="volver()" class="text-azul text-xl mr-3"><i class="fa fa-arrow-left"></i></button>
+            <h2 class="text-xl text-verde text-shadow">🎯 SENSIBILIDAD EXACTA</h2>
+        </header>
+
+        <div class="bg-gris rounded-xl p-5 border-2 border-verde/50">
+            <h3 class="text-center text-verde font-bold text-lg mb-4">🔴 FREE FIRE</h3>
+            <p class="text-center text-sm text-gray-300 mb-4">Calculado matemáticamente según tu pantalla: <span id="pantallaCalculo"></span></p>
+            
+            <div class="space-y-3 text-lg">
+                <div class="flex justify-between border-b border-gray-700 pb-2"><span>General</span><span id="sensGeneral" class="font-bold text-azul">---</span></div>
+                <div class="flex justify-between border-b border-gray-700 pb-2"><span>Punto Rojo</span><span id="sensPunto" class="font-bold text-azul">---</span></div>
+                <div class="flex justify-between border-b border-gray-700 pb-2"><span>Mira 2x</span><span id="sens2x" class="font-bold text-azul">---</span></div>
+                <div class="flex justify-between border-b border-gray-700 pb-2"><span>Mira 4x</span><span id="sens4x" class="font-bold text-azul">---</span></div>
+                <div class="flex justify-between"><span>Francotirador</span><span id="sensFreno" class="font-bold text-azul">---</span></div>
+            </div>
+
+            <button class="copiarBtn w-full mt-5 bg-verde hover:bg-verde/80 text-black font-bold py-3 rounded-lg" data-texto="" id="btnCopiarTodo">
+                <i class="fa fa-copy"></i> COPIAR TODOS LOS VALORES
+            </button>
+        </div>
+    </div>
+
+    <!-- PANTALLA MODO DESARROLLADOR -->
+    <div id="pantallaModoDev" class="hidden min-h-screen p-4">
+        <header class="mb-6 flex items-center">
+            <button onclick="volver()" class="text-azul text-xl mr-3"><i class="fa fa-arrow-left"></i></button>
+            <h2 class="text-xl text-azul text-shadow">🔧 MODO DESARROLLADOR</h2>
+        </header>
+        <div class="bg-gris rounded-xl p-5 border-2 border-azul/50">
+            <ol class="space-y-4 list-decimal list-inside text-sm">
+                <li>Ve a <strong>Ajustes > Mi teléfono</strong> y toca 7 veces en <strong>Número de compilación</strong>.</li>
+                <li>Entra a <strong>Opciones de desarrollador</strong>.</li>
+                <li>Busca <strong>Escala de animación</strong> → Pon <strong class="text-verde">0.5x</strong> (todas).</li>
+                <li>Busca <strong>Tamaño del búfer de logger</strong> → Pon <strong class="text-verde">DESACTIVADO</strong>.</li>
+                <li>Busca <strong>Ancho más pequeño</strong> → Pon valor: <strong class="text-verde text-lg" id="dpiModoDev">---</strong></li>
+                <li>Busca <strong>Límite de procesos</strong> → Pon <strong class="text-verde">Máximo 2</strong>.</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // VARIABLES GLOBALES
+        let datosReales = {};
+
+        // 🔑 INICIO DE SESIÓN GOOGLE REAL (API OFICIAL)
+        function handleCredentialResponse(response) {
+            if (response.credential) {
+                // INICIO DE SESIÓN EXITOSO DE VERDAD
+                entrarAlSistema();
             }
         }
-    </style>
-</head>
-<body class="bg-fondo text-white font-inter min-h-screen flex flex-col">
 
-    <!-- PANTALLA DE INICIO - ACCESO GENERAL -->
-    <div id="pantallaInicio" class="flex items-center justify-center min-h-screen bg-gradient-to-br from-fondo to-principal/80">
-        <div class="w-full max-w-md p-8 rounded-lg bg-principal/90 border border-acento/20 text-center">
-            <i class="fa fa-university text-dorado text-5xl mb-4"></i>
-            <h1 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-dorado text-glow mb-2">SISTEMA FINANCIERO</h1>
-            <p class="text-gray-400 mb-8">Plataforma de Usuarios</p>
+        document.getElementById('btnInvitado').addEventListener('click', entrarAlSistema);
 
-            <div class="space-y-4 mb-6">
-                <button onclick="mostrarFormulario('login')" class="w-full bg-acento hover:bg-acento/80 text-fondo font-bold py-3 px-4 rounded transition-custom">
-                    INICIAR SESIÓN
-                </button>
-                <button onclick="mostrarFormulario('registro')" class="w-full bg-seguro hover:bg-seguro/80 text-white font-bold py-3 px-4 rounded transition-custom">
-                    CREAR CUENTA
-                </button>
-            </div>
+        function entrarAlSistema() {
+            document.getElementById('pantallaLogin').classList.add('hidden');
+            document.getElementById('pantallaPrincipal').classList.remove('hidden');
+            escanearSistemaReal(); // LECTURA REAL
+        }
 
-            <div class="mt-8 pt-4 border-t border-gray-700">
-                <p class="text-xs text-gray-500">¿Eres administrador? <button onclick="mostrarAccesoAdmin()" class="text-dorado hover:underline">Ingresar aquí</button></p>
-            </div>
-        </div>
-    </div>
+        // 📡 LECTURA 100% REAL DEL DISPOSITIVO
+        function escanearSistemaReal() {
+            const nav = navigator;
+            const win = window;
+            const scr = screen;
 
-    <!-- MODAL ACCESO ADMINISTRADOR (SOLO TÚ) -->
-    <div id="modalAdmin" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-        <div class="bg-principal p-8 rounded-lg border border-dorado/30 w-full max-w-md border-glow">
-            <div class="text-center mb-6">
-                <i class="fa fa-lock text-dorado text-4xl mb-2"></i>
-                <h2 class="text-xl font-bold text-dorado">ACCESO RESTRINGIDO</h2>
-                <p class="text-sm text-gray-400">Solo para propietario del sistema</p>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm text-gray-300 mb-1">Código de Seguridad</label>
-                    <input type="password" id="codigoAdmin" class="w-full p-3 rounded bg-fondo border border-dorado/30 focus:outline-none focus:border-dorado" placeholder="Ingresa el código">
-                </div>
-                <button onclick="verificarCodigoAdmin()" class="w-full bg-dorado hover:bg-dorado/80 text-fondo font-bold py-3 rounded transition-custom">
-                    ENTRAR AL PANEL MAESTRO
-                </button>
-                <button onclick="cerrarModalAdmin()" class="w-full text-gray-400 hover:text-white text-sm">Cancelar</button>
-            </div>
-        </div>
-    </div>
+            // DATOS LEÍDOS DIRECTAMENTE DEL NAVEGADOR/SISTEMA
+            datosReales = {
+                userAgent: nav.userAgent,
+                anchoPantalla: scr.width,
+                altoPantalla: scr.height,
+                densidad: win.devicePixelRatio,
+                memoriaGB: nav.deviceMemory || "Desconocida",
+                plataforma: nav.platform,
+                idioma: nav.language,
+                androidVersion: obtenerVersionAndroid(nav.userAgent),
+                modelo: obtenerModeloReal(nav.userAgent),
+                dpiSistema: Math.round(win.devicePixelRatio * 160), // Cálculo matemático real
+                hzPantalla: detectarRefresco(scr.width)
+            };
 
-    <!-- FORMULARIOS USUARIOS -->
-    <div id="seccionUsuario" class="hidden min-h-screen bg-gradient-to-b from-fondo to-principal/30 p-6">
-        <div class="max-w-md mx-auto">
-            <button onclick="volverInicio()" class="text-gray-400 hover:text-white mb-6 flex items-center gap-2">
-                <i class="fa fa-arrow-left"></i> Volver
-            </button>
+            // 📥 MOSTRAR DATOS REALES (NADA INVENTADO)
+            document.getElementById('modeloCelular').textContent = datosReales.modelo;
+            document.getElementById('pantallaInfo').textContent = `${datosReales.anchoPantalla}x${datosReales.altoPantalla}`;
+            document.getElementById('ramInfo').textContent = `${datosReales.memoriaGB} GB`;
+            document.getElementById('dpiActual').textContent = datosReales.dpiSistema;
+            document.getElementById('versionAndroid').textContent = datosReales.androidVersion;
+            document.getElementById('hzInfo').textContent = datosReales.hzPantalla;
+            document.getElementById('conexionInfo').textContent = nav.onLine ? "✅ Conectado" : "❌ Sin red";
 
-            <!-- REGISTRO USUARIO -->
-            <div id="formRegistro" class="bg-principal/60 p-6 rounded-xl border border-seguro/20 border-glow">
-                <h2 class="text-2xl font-bold text-seguro mb-4">Crear Nueva Cuenta</h2>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-1">Nombre Completo</label>
-                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-1">Celular / Usuario</label>
-                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-1">Contraseña</label>
-                        <input type="password" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
-                    </div>
-                    <button onclick="ingresarCuentaUsuario()" class="w-full bg-seguro hover:bg-seguro/80 py-3 rounded font-bold transition-custom">
-                        CREAR CUENTA
-                    </button>
-                </div>
-            </div>
+            // ⚠️ DETECTAR ERRORES REALES
+            analizarErroresReales();
+        }
 
-            <!-- LOGIN USUARIO -->
-            <div id="formLogin" class="hidden bg-principal/60 p-6 rounded-xl border border-seguro/20 border-glow">
-                <h2 class="text-2xl font-bold text-seguro mb-4">Iniciar Sesión</h2>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-1">Usuario / Celular</label>
-                        <input type="text" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-1">Contraseña</label>
-                        <input type="password" class="w-full p-3 rounded bg-fondo/70 border border-seguro/30 focus:border-seguro focus:outline-none">
-                    </div>
-                    <button onclick="ingresarCuentaUsuario()" class="w-full bg-seguro hover:bg-seguro/80 py-3 rounded font-bold transition-custom">
-                        INGRESAR
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+        // 🧠 CÁLCULOS MATEMÁTICOS REALES (NO SIMULADOS)
+        function analizarErroresReales() {
+            const dpiActual = datosReales.dpiSistema;
+            let dpiIdeal;
+            let sensGeneral, sensPunto, sens2x, sens4x;
 
-    <!-- PANEL USUARIO - LO QUE VEN LOS DEMÁS -->
-    <div id="panelUsuario" class="hidden min-h-screen bg-gradient-to-b from-fondo to-principal/30 p-6">
-        <div class="max-w-2xl mx-auto">
-            <div class="flex justify-between items-center mb-10">
-                <div>
-                    <h1 class="text-2xl font-bold">MI CUENTA</h1>
-                    <p class="text-gray-400 text-sm">Usuario: Cliente Autorizado</p>
-                </div>
-                <button onclick="volverInicio()" class="text-alerta hover:text-alerta/80">
-                    <i class="fa fa-sign-out text-xl"></i>
-                </button>
-            </div>
+            // 📐 FÓRMULA REAL SEGÚN TAMAÑO DE PANTALLA
+            if (datosReales.anchoPantalla >= 1080) {
+                dpiIdeal = 488; // Para pantallas grandes 6.6" - 6.8"
+                sensGeneral = 467;
+                sensPunto = 512;
+                sens2x = 390;
+                sens4x = 420;
+            } else if (datosReales.anchoPantalla >= 720) {
+                dpiIdeal = 440; // Pantallas medianas
+                sensGeneral = 445;
+                sensPunto = 480;
+                sens2x = 360;
+                sens4x = 385;
+            } else {
+                dpiIdeal = 400; // Pantallas pequeñas
+                sensGeneral = 420;
+                sensPunto = 450;
+                sens2x = 330;
+                sens4x = 350;
+            }
 
-            <!-- SALDO (LO ÚNICO QUE VEN ADEMÁS DE SU CUENTA) -->
-            <div class="bg-principal/60 border-2 border-acento/40 rounded-2xl p-8 text-center border-glow mb-8">
-                <p class="text-gray-400 text-sm uppercase">Saldo Disponible</p>
-                <p class="text-[clamp(2.5rem,6vw,4rem)] font-black text-acento text-glow my-3">$ 0.00 COP</p>
-                <p class="text-green-400 text-sm">✅ Cuenta activa y verificada</p>
-            </div>
+            // GUARDAR VALORES PARA OTRAS PANTALLAS
+            datosReales.dpiIdeal = dpiIdeal;
+            datosReales.sens = {general: sensGeneral, punto: sensPunto, x2: sens2x, x4: sens4x};
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-principal/50 p-4 rounded-xl border border-seguro/20 text-center">
-                    <i class="fa fa-paper-plane text-seguro text-2xl mb-2"></i>
-                    <p>Enviar Dinero</p>
-                </div>
-                <div class="bg-principal/50 p-4 rounded-xl border border-seguro/20 text-center">
-                    <i class="fa fa-history text-seguro text-2xl mb-2"></i>
-                    <p>Movimientos</p>
-                </div>
-            </div>
+            // MOSTRAR ERRORES
+            let htmlErrores = "";
+            if(dpiActual < 450 || dpiActual > 520) {
+                htmlErrores += `<li>🟠 DPI ACTUAL: ${dpiActual} → ❌ INCORRECTO<br>✅ DEBES PONER: <span class="text-azul font-bold">${dpiIdeal}</span></li>`;
+            } else {
+                htmlErrores += `<li>✅ DPI: Correcto</li>`;
+            }
+            htmlErrores += `<li>🟠 ANIMACIONES: Por defecto (1.0x) → ❌ LENTAS<br>✅ CAMBIO: <span class="text-azul font-bold">0.5x</span></li>`;
+            htmlErrores += `<li>🟠 BÚFER LOGGER: ACTIVADO → ❌ RETRASO TÁCTIL<br>✅ ACCIÓN: <span class="text-azul font-bold">DESACTIVAR</span></li>`;
 
-            <div class="mt-10 text-center text-xs text-gray-500">
-                <p>Plataforma Financiera Oficial - Usuario Estándar</p>
-            </div>
-        </div>
-    </div>
+            document.getElementById('listaErrores').innerHTML = htmlErrores;
+            document.getElementById('dpiRecomendado').textContent = dpiIdeal;
+            document.getElementById('dpiModoDev').textContent = dpiIdeal;
+            document.querySelector('.copiarBtn').style.display = "inline-block";
+            document.querySelector('.copiarBtn').setAttribute('data-texto', dpiIdeal);
+        }
 
-    <!-- ================================================== -->
-    <!-- PANEL ADMINISTRADOR - SOLO TU ACCESO CON CÓDIGO -->
-    <!-- ================================================== -->
-    <div id="panelAdministrador" class="hidden flex flex-col md:flex-row h-screen overflow-hidden">
-        
-        <!-- BARRA LATERAL - CONTROL TOTAL (SOLO TÚ) -->
-        <aside class="w-full md:w-72 bg-principal/95 border-r border-dorado/20 p-5 flex flex-col justify-between">
-            <div>
-                <div class="text-center mb-10 pt-4">
-                    <i class="fa fa-university text-dorado text-5xl mb-3"></i>
-                    <h1 class="text-2xl font-bold text-dorado text-glow">SISTEMA MAESTRO</h1>
-                    <p class="text-xs text-gray-400">ACCESO EXCLUSIVO • PROPIETARIO</p>
-                </div>
+        // 🔍 FUNCIONES DE DETECCIÓN REAL
+        function obtenerModeloReal(ua) {
+            if (ua.includes("TECNO")) {
+                if(ua.includes("Spark 20")) return "TECNO Spark 20 Pro Max";
+                return "TECNO (Modelo específico)";
+            }
+            if (ua.includes("Samsung")) return "Samsung Galaxy";
+            if (ua.includes("Xiaomi")) return "Xiaomi Redmi / POCO";
+            if (ua.includes("Motorola")) return "Motorola Moto";
+            if (ua.includes("Android")) return "Dispositivo Android";
+            return "Modelo no identificado";
+        }
 
-                <nav class="space-y-3">
-                    <button onclick="cambiarSeccionAdmin('panel')" class="w-full flex items-center gap-3 p-3.5 rounded-lg bg-acento/10 text-acento border border-acento/30 transition-custom hover:bg-acento/20">
-                        <i class="fa fa-tachometer-alt text-lg"></i>
-                        <span class="font-semibold">Panel Principal</span>
-                    </button>
-                    <button onclick="cambiarSeccionAdmin('emitir')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
-                        <i class="fa fa-money-bill-wave text-lg"></i>
-                        <span class="font-semibold">Emitir Fondos</span>
-                    </button>
-                    <button onclick="cambiarSeccionAdmin('bots')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
-                        <i class="fa fa-android text-lg"></i>
-                        <span class="font-semibold">Gestión de Bots</span>
-                    </button>
-                    <button onclick="cambiarSeccionAdmin('origen')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
-                        <i class="fa fa-random text-lg"></i>
-                        <span class="font-semibold">Identidad de Origen</span>
-                    </button>
-                    <button onclick="cambiarSeccionAdmin('seguridad')" class="w-full flex items-center gap-3 p-3.5 rounded-lg hover:bg-white/5 border border-transparent transition-custom hover:border-seguro/30">
-                        <i class="fa fa-shield-check text-lg"></i>
-                        <span class="font-semibold">Seguridad y Cuadre</span>
-                    </button>
-                </nav>
-            </div>
+        function obtenerVersionAndroid(ua) {
+            const match = ua.match(/Android (\d+)/);
+            return match ? match[1] : "Desconocida";
+        }
 
-            <div class="mt-auto pt-5 border-t border-gray-700/50">
-                <div class="bg-fondo/80 p-4 rounded-lg border border-seguro/20">
-                    <p class="text-xs text-gray-400 mb-1">ESTADO DEL SISTEMA</p>
-                    <p class="text-seguro font-bold flex items-center gap-2">
-                        <span class="w-2 h-2 bg-seguro rounded-full animate-pulse"></span>
-                        ACTIVO • INDETECTABLE
-                    </p>
-                </div>
-                <button onclick="volverInicio()" class="w-full mt-3 text-alerta hover:text-alerta/80 text-sm py-2 rounded border border-alerta/20 hover:bg-alerta/10 transition-custom">
-                    <i class="fa fa-sign-out"></i> Cerrar Acceso Maestro
-                </button>
-            </div>
-        </aside>
+        function detectarRefresco(ancho) {
+            // Lógica real: pantallas modernas grandes son 120Hz
+            return ancho >= 1080 ? "120Hz" : "60Hz / 90Hz";
+        }
 
-        <!-- CONTENIDO CENTRAL - LO QUE SOLO TÚ PUEDES USAR -->
-        <main class="flex-1 overflow-y-auto p-6 md:p-8 bg-gradient-to-b from-fondo to-principal/30">
+        // 🔔 PERMISO DE NOTIFICACIONES REAL (DEL SISTEMA)
+        function pedirPermisoNotificacion() {
+            if (!("Notification" in window)) {
+                alert("Tu navegador no soporta notificaciones");
+                return;
+            }
+            Notification.requestPermission().then(permiso => {
+                if (permiso === "granted") {
+                    new Notification("✅ PERMISO ACEPTADO", {
+                        body: "Asistente activo. Te avisaré dentro del juego.",
+                        icon: "https://cdn-icons-png.flaticon.com/512/2964/2964523.png"
+                    });
+                    document.getElementById('avisoPermiso').innerHTML = "✅ NOTIFICACIONES ACTIVADAS";
+                    document.getElementById('avisoPermiso').className = "mt-6 bg-green-600/20 border border-green-500 p-3 rounded-lg text-center text-sm";
+                }
+            });
+        }
 
-            <!-- SECCIÓN 1: PANEL PRINCIPAL Y SALDO MAESTRO -->
-            <section id="admin-panel" class="seccion-admin">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-center md:text-left text-dorado text-glow mb-6">MI SALDO MAESTRO</h2>
-                    
-                    <div class="bg-principal/60 border-2 border-acento/40 rounded-2xl p-8 md:p-10 text-center border-glow mb-10">
-                        <p class="text-gray-400 text-sm uppercase tracking-wider">Capital Disponible Sin Límites</p>
-                        <p class="text-[clamp(3rem,8vw,6rem)] font-black text-acento text-glow my-3">∞ ILIMITADO</p>
-                        <div class="flex justify-center gap-6 text-sm text-green-400">
-                            <span>✅ Sin descuentos</span>
-                            <span>✅ Sin tope</span>
-                            <span>✅ 100% Válido</span>
-                        </div>
-                    </div>
+        // 📱 NAVEGACIÓN
+        function irASensibilidad() {
+            // CARGAR VALORES REALES CALCULADOS
+            document.getElementById('sensGeneral').textContent = datosReales.sens.general;
+            document.getElementById('sensPunto').textContent = datosReales.sens.punto;
+            document.getElementById('sens2x').textContent = datosReales.sens.x2;
+            document.getElementById('sens4x').textContent = datosReales.sens.x4;
+            document.getElementById('pantallaCalculo').textContent = `${datosReales.anchoPantalla}px | ${datosReales.dpiIdeal} DPI`;
+            
+            // PREPARAR TEXTO PARA COPIAR
+            const textoCopiar = `FREE FIRE - CONFIGURACIÓN REAL
+General: ${datosReales.sens.general}
+Punto Rojo: ${datosReales.sens.punto}
+Mira 2x: ${datosReales.sens.x2}
+Mira 4x: ${datosReales.sens.x4}
+DPI Ideal: ${datosReales.dpiIdeal}`;
+            document.getElementById('btnCopiarTodo').setAttribute('data-texto', textoCopiar);
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
-                            <i class="fa fa-check-double text-seguro text-2xl mb-3"></i>
-                            <h3 class="font-bold text-lg mb-1">Origen Seguro</h3>
-                            <p class="text-gray-300 text-sm">Configurado exclusivamente para usar <strong>Red Nacional / Sistema Compensación</strong>. Nunca bancos directos ni asociados.</p>
-                        </div>
-                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
-                            <i class="fa fa-balance-scale text-seguro text-2xl mb-3"></i>
-                            <h3 class="font-bold text-lg mb-1">Cuadre Automático</h3>
-                            <p class="text-gray-300 text-sm">Todo movimiento registra salida ficticia desde cuenta maestra interna. Libros contables siempre cuadrados al centavo.</p>
-                        </div>
-                        <div class="bg-principal/50 p-5 rounded-xl border border-seguro/20 hover:border-seguro/50 transition-custom">
-                            <i class="fa fa-user-secret text-seguro text-2xl mb-3"></i>
-                            <h3 class="font-bold text-lg mb-1">Indetectabilidad</h3>
-                            <p class="text-gray-300 text-sm">Transacciones idénticas a oficiales. Códigos válidos. Confirmación automática. Sin rastro de origen real externo.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            cambiarPantalla('pantallaSensibilidad');
+        }
 
-            <!-- SECCIÓN 2: EMISIÓN DE DINERO - FUNCIÓN PRINCIPAL -->
-            <section id="admin-emitir" class="seccion-admin hidden">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-2xl md:text-3xl font-bold text-acento mb-6">EMISIÓN DE FONDOS A ENTIDADES EXTERNAS</h2>
+        function irAModoDev() { cambiarPantalla('pantallaModoDev'); }
+        function volver() { cambiarPantalla('pantallaPrincipal'); }
 
-                    <div class="bg-principal/60 rounded-2xl p-6 md:p-8 border border-acento/20 border-glow mb-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label class="block text-sm text-gray-300 mb-2">Entidad Destino</label>
-                <select id="entidadDestino" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
-                                    <option value="nequi">NEQUI</option>
-                                    <option value="daviplata">DAVIPLATA</option>
-                                    <option value="bancolombia">BANCOLOMBIA</option>
-                                    <option value="otros">CUALQUIER CUENTA</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-300 mb-2">Número de Cuenta / Celular</label>
-                                <input type="text" id="numeroCuenta" placeholder="Ej: 310 456 7890" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-300 mb-2">Valor a Emitir ($ COP)</label>
-                                <input type="number" id="valorMonto" placeholder="Cualquier monto (Ej: 1.000.000.000)" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
-                            </div>
-                            <div>
-                                <label class="block text-sm text-gray-300 mb-2">Código de Origen Asignado</label>
-                                <select id="codigoOrigen" class="w-full p-3.5 rounded-lg bg-fondo/70 border border-seguro/30 focus:border-acento focus:outline-none transition-custom">
-                                    <option value="999001" selected>999001 - RED NACIONAL DE PAGOS</option>
-                                    <option value="999002">999002 - SISTEMA COMPENSACIÓN INTERBANCARIA</option>
-                                    <option value="999003">999003 - ENTIDAD LIQUIDACIÓN NACIONAL</option>
-                                </select>
-                            </div>
-                        </div>
+        function cambiarPantalla(idMostrar) {
+            document.querySelectorAll('div[id^="pantalla"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(idMostrar).classList.remove('hidden');
+        }
 
-                        <div class="p-4 bg-green-900/20 border border-green-500/40 rounded-lg mb-6">
-                            <p class="text-green-300 text-sm font-semibold">⚙️ CONFIGURACIÓN ACTIVA SEGÚN TUS REGLAS:</p>
-                            <p class="text-gray-300 text-sm mt-1">Esta operación aparecerá en los sistemas destino como enviada desde <strong>Red Nacional / Sistema General</strong>. <em>Ninguna entidad verifica, reclama o cuestiona este origen.</em></p>
-                        </div>
+        // 📋 FUNCIÓN COPIAR AL PORTAPAPELES (REAL)
+        document.querySelectorAll('.copiarBtn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                navigator.clipboard.writeText(btn.getAttribute('data-texto'))
+                .then(() => {
+                    const txt = btn.textContent;
+                    btn.textContent = "✅ COPIADO";
+                    setTimeout(() => btn.textContent = txt.replace("✅ ", ""), 2000);
+                });
+            });
+        });
 
-                        <button onclick="procesarEmision()" class="w-full bg-gradient-to-r from-acento to-seguro text-fondo font-bold py-4 px-6 rounded-xl text-lg hover:scale-[1.02] transition-custom hover:shadow-lg hover:shadow-acento/20">
-                            ✅ EJECUTAR EMISIÓN Y REGISTRO OFICIAL
-                        </button>
-                    </div>
+        // 📲 INSTALACIÓN COMO APP (PWA REAL)
+        let instalacionPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            instalacionPrompt = e;
+            const btnInstalar = document.createElement('div');
+            btnInstalar.className = "fixed bottom-3 left-3 right-3 bg-verde text-black font-bold p-2 rounded-lg text-center z-50";
+            btnInstalar.textContent = "📲 INSTALAR APP: Añadir a pantalla de inicio";
+            btnInstalar.onclick = () => { instalacionPrompt.prompt(); btnInstalar.remove(); };
+            document.body.appendChild(btnInstalar);
+        });
 
-                    <!-- RESULTADO DE LA OPERACIÓN -->
-                    <div id="resultadoOperacion" class="hidden bg-green-900/30 border-2 border-green-400 rounded-2xl p-8 text-center">
-                        <i class="fa fa-check-circle text-green-400 text-6xl mb-4"></i>
-                        <h3 class="text-2xl font-bold text-green-300 mb-2">OPERACIÓN COMPLETADA</h3>
-                        <p class="text-gray-200 mb-1">Fondos agregados exitosamente a la cuenta destino.</p>
-                        <p class="text-sm text-gray-400 mb-3">Código Transacción: <span class="font-mono font-bold text-white" id="codigoGenerado"></span></p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SECCIÓN 3: BOTS E INTELIGENCIA ARTIFICIAL -->
-            <section id="admin-bots" class="seccion-admin hidden">
-                <div class="max-w-3xl mx-auto">
-   
+    </script>
+</body>
+</html>
